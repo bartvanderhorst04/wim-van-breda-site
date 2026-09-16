@@ -100,7 +100,23 @@ html.lenis,html.lenis body{height:auto}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 body{margin:0;background:#FCFCFB;-webkit-font-smoothing:antialiased;font-family:'Archivo',system-ui,sans-serif;color:#111214}
 *{box-sizing:border-box}
-button,input,select,textarea{font-family:inherit}
+/* Sitebrede fix "blauwe tekst op mobiel": <button> (en de overige
+   formulierelementen) krijgen van browsers hun EIGEN standaard tekstkleur
+   (UA-stijl "buttontext"), die niet zomaar van body erft — anders dan bij
+   gewone tekst, links, koppen enz. Op desktop lost dat toevallig op naar
+   zwart/donkergrijs, maar op mobiel Safari (iOS/iPadOS WebKit) lost hetzelfde
+   "buttontext" op naar het systeem-accentblauw zodra een button zelf geen
+   color zet — precies de knoppen/CTA's/kaarttitels uit deze bugmelding
+   (Menu, homepagekaarten, "Bekijk aanbod" enz.) hadden nergens een eigen
+   color-declaratie en leunden dus op dat UA-blauw. Eén regel hier — met de
+   bestaande zwarte huisstijlkleur #111214 — lost dit voor alle knoppen
+   sitebreed op via normale CSS-overerving naar hun binnenkant (spans,
+   h3-kaarttitels, iconen zonder eigen color), zonder losse !important's of
+   per-element aanpassingen. Auteur-CSS wint hier altijd al van de
+   browser-standaardstijl (cascade-origin), dus !important is niet nodig.
+   Elementen met een eigen kleur (gele/rode CTA's, data-arrow spans, enz.)
+   blijven ongemoeid: hun eigen (inline) color-declaratie wint gewoon. */
+button,input,select,textarea{font-family:inherit;color:#111214}
 a{color:#111214;text-decoration:none}
 /* Expliciete :link/:visited/:active naast de algemene a{color} hierboven:
    zonder deze regels leunt de donkere linkkleur uitsluitend op de lagere
