@@ -1714,5 +1714,68 @@ window.MACHINE_IMAGES = {
   "herder-fermex-sct-410h-stobbenfrees": [
     { src: "assets/machines/herder-fermex-sct-410h-stobbenfrees/herder-fermex-sct-410h-stobbenfrees-2.jpg", alt: "Fermex SCW-410H stobbenfrees" },
     { src: "assets/machines/herder-fermex-sct-410h-stobbenfrees/herder-fermex-sct-410h-stobbenfrees-1.jpg", alt: "Fermex SCW-410H stobbenfrees — detail freeskop" }
+  ],
+
+  // --- Nog niet gekoppelde machinefoto's, aangeleverd 2026-09-14, gekoppeld na
+  //     controlerapport + akkoord op 2026-09-16 ---
+  "greentec-ri-obstakelmaaier": [
+    { src: "assets/machines/greentec-ri-obstakelmaaier/greentec-ri-obstakelmaaier-1.webp", alt: "GreenTec RI obstakelmaaier" },
+    { src: "assets/machines/greentec-ri-obstakelmaaier/greentec-ri-obstakelmaaier-2.jpg", alt: "GreenTec RI obstakelmaaier — foto 2" }
+  ],
+  "greentec-gr-greppelfrees": [
+    { src: "assets/machines/greentec-gr-greppelfrees/greentec-gr-greppelfrees-1.jpg", alt: "GreenTec GR greppelfrees" }
+  ],
+  "greentec-scorpion-430-plus-maaiarm": [
+    { src: "assets/machines/greentec-scorpion-430-plus-maaiarm/greentec-scorpion-430-plus-maaiarm-1.webp", alt: "GreenTec Scorpion 430 Plus maaiarm" },
+    { src: "assets/machines/greentec-scorpion-430-plus-maaiarm/greentec-scorpion-430-plus-maaiarm-2.png", alt: "GreenTec Scorpion 430 Plus maaiarm — foto 2" }
+  ],
+  "greentec-hxf-2302-multifunctionele-werktuigdrager": [
+    { src: "assets/machines/greentec-hxf-2302-multifunctionele-werktuigdrager/greentec-hxf-2302-multifunctionele-werktuigdrager-1.jpg", alt: "GreenTec HXF 2302 multifunctionele werktuigdrager" }
+  ],
+  "greentec-hxf-2802-multifunctionele-werktuigdrager": [
+    { src: "assets/machines/greentec-hxf-2802-multifunctionele-werktuigdrager/greentec-hxf-2802-multifunctionele-werktuigdrager-1.jpg", alt: "GreenTec HXF 2802 multifunctionele werktuigdrager" }
+  ],
+  "greentec-hxf-3302-multifunctionele-werktuigdrager": [
+    { src: "assets/machines/greentec-hxf-3302-multifunctionele-werktuigdrager/greentec-hxf-3302-multifunctionele-werktuigdrager-1.jpg", alt: "GreenTec HXF 3302 multifunctionele werktuigdrager" }
+  ],
+  "greentec-br-onkruidborstel": [
+    { src: "assets/machines/greentec-br-onkruidborstel/greentec-br-onkruidborstel-1.jpg", alt: "GreenTec BR onkruidborstel" },
+    { src: "assets/machines/greentec-br-onkruidborstel/greentec-br-onkruidborstel-2.jpg", alt: "GreenTec BR onkruidborstel — foto 2" },
+    { src: "assets/machines/greentec-br-onkruidborstel/greentec-br-onkruidborstel-3.jpg", alt: "GreenTec BR onkruidborstel — foto 3" },
+    { src: "assets/machines/greentec-br-onkruidborstel/greentec-br-onkruidborstel-4.jpg", alt: "GreenTec BR onkruidborstel — foto 4" }
+  ],
+  "ripagreen-easy-kit": [
+    { src: "assets/machines/ripagreen-easy-kit/ripagreen-easy-kit-1.jpg", alt: "HOAF Easy Kit" },
+    { src: "assets/machines/ripagreen-easy-kit/ripagreen-easy-kit-2.jpg", alt: "HOAF Easy Kit — foto 2" },
+    { src: "assets/machines/ripagreen-easy-kit/ripagreen-easy-kit-3.jpg", alt: "HOAF Easy Kit — foto 3" }
+  ],
+  "ripagreen-mobility-kit": [
+    { src: "assets/machines/ripagreen-mobility-kit/ripagreen-mobility-kit-1.jpg", alt: "HOAF Mobility kit" }
+  ],
+  "husmann-h5-houtversnipperaar": [
+    { src: "assets/machines/husmann-h5-houtversnipperaar/husmann-h5-houtversnipperaar-1.jpg", alt: "Husmann H5 houtversnipperaar" }
+  ],
+  "agco-finance": [
+    { src: "assets/machines/agco-finance/agco-finance-1.jpg", alt: "AGCO Finance — Massey Ferguson" }
+  ],
+  "raylink-telemetriesysteem-slim-fleetmanagement-voor-raymo-maaiers": [
+    { src: "assets/machines/raylink-telemetriesysteem-slim-fleetmanagement-voor-raymo-maaiers/raylink-telemetriesysteem-slim-fleetmanagement-voor-raymo-maaiers-1.jpeg", alt: "Raymo Raylink telemetriesysteem — dashboard" },
+    { src: "assets/machines/raylink-telemetriesysteem-slim-fleetmanagement-voor-raymo-maaiers/raylink-telemetriesysteem-slim-fleetmanagement-voor-raymo-maaiers-2.webp", alt: "Raymo Raylink telemetriesysteem — dashboard op laptop en telefoon" }
+  ],
+  "raymo-torpedo-robot-werktuigdrager": [
+    { src: "assets/machines/raymo-torpedo-robot-werktuigdrager/raymo-torpedo-robot-werktuigdrager-1.jpg", alt: "Raymo Torpedo Robot werktuigdrager" },
+    { src: "assets/machines/raymo-torpedo-robot-werktuigdrager/raymo-torpedo-robot-werktuigdrager-2.jpg", alt: "Raymo Torpedo Robot werktuigdrager — foto 2" }
+  ],
+  "votex-roadmaster-klepelmaaier-07": [
+    { src: "assets/machines/votex-roadmaster-klepelmaaier-07/votex-roadmaster-klepelmaaier-07-1.jpg", alt: "Votex Roadmaster klepelmaaier 07" },
+    { src: "assets/machines/votex-roadmaster-klepelmaaier-07/votex-roadmaster-klepelmaaier-07-2.jpg", alt: "Votex Roadmaster klepelmaaier 07 — detail typeplaatje" },
+    { src: "assets/machines/votex-roadmaster-klepelmaaier-07/votex-roadmaster-klepelmaaier-07-3.jpg", alt: "Votex Roadmaster klepelmaaier 07 — foto 3" },
+    { src: "assets/machines/votex-roadmaster-klepelmaaier-07/votex-roadmaster-klepelmaaier-07-4.jpg", alt: "Votex Roadmaster klepelmaaier 07 — foto 4" }
+  ],
+  "vicon-extra-300-serie-frontmaaiers": [
+    { src: "assets/machines/vicon-extra-300-serie-frontmaaiers/vicon-extra-300-serie-frontmaaiers-1.jpg", alt: "Vicon Extra 300 Serie frontmaaiers" },
+    { src: "assets/machines/vicon-extra-300-serie-frontmaaiers/vicon-extra-300-serie-frontmaaiers-2.jpg", alt: "Vicon Extra 300 Serie frontmaaiers — foto 2" },
+    { src: "assets/machines/vicon-extra-300-serie-frontmaaiers/vicon-extra-300-serie-frontmaaiers-3.jpg", alt: "Vicon Extra 300 Serie frontmaaiers — foto 3" },
+    { src: "assets/machines/vicon-extra-300-serie-frontmaaiers/vicon-extra-300-serie-frontmaaiers-4.jpg", alt: "Vicon Extra 300 Serie frontmaaiers — foto 4" }
   ]
 };
