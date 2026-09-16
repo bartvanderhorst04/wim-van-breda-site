@@ -1,0 +1,13 @@
+# Sluit alleen lokale ontwikkel-/backupbestanden uit van de Vercel-deployment.
+# Geen enkel bestand wordt hierdoor lokaal verwijderd — dit .vercelignore
+# bepaalt uitsluitend wat er WEL/NIET wordt meegenomen in de upload.
+
+.DS_Store
+**/.DS_Store
+.thumbnail
+
+# Tijdelijke back-upbestanden die tijdens eerdere Claude Code-sessies zijn
+# gemaakt vóór wijzigingen (Wim van Breda.dc.html.bak-*, .bak-perf-*, enz.)
+*.bak
+*.bak-*
+*.backup-*

@@ -3,6 +3,488 @@
 // Geen vaste aantallen: 1, 2, 3 of meer foto's mag. Een slug die hier ontbreekt
 // toont op de detailpagina simpelweg "Fotografie volgt".
 window.MACHINE_IMAGES = {
+  // --- Reform Metrac H8X + Herder Grenadier giekenstel 3-delig (aangeleverd 2026-09-11) ---
+  "reform-metrac-h8x": [
+    { src: "assets/occasions/reform-metrac-h8x/reform-metrac-h8x-1.jpg", alt: "Reform Metrac H8X occasion" },
+    { src: "assets/occasions/reform-metrac-h8x/reform-metrac-h8x-2.jpg", alt: "Reform Metrac H8X occasion — foto 2" },
+    { src: "assets/occasions/reform-metrac-h8x/reform-metrac-h8x-3.jpg", alt: "Reform Metrac H8X occasion — foto 3" },
+    { src: "assets/occasions/reform-metrac-h8x/reform-metrac-h8x-4.jpg", alt: "Reform Metrac H8X occasion — foto 4" }
+  ],
+  "herder-grenadier-giekenstel-3-delig": [
+    { src: "assets/occasions/herder-grenadier-giekenstel-3-delig/herder-grenadier-giekenstel-1.jpg", alt: "Herder Grenadier giekenstel 3-delig occasion" },
+    { src: "assets/occasions/herder-grenadier-giekenstel-3-delig/herder-grenadier-giekenstel-2.jpg", alt: "Herder Grenadier giekenstel 3-delig occasion — foto 2" },
+    { src: "assets/occasions/herder-grenadier-giekenstel-3-delig/herder-grenadier-giekenstel-3.jpg", alt: "Herder Grenadier giekenstel 3-delig occasion — foto 3" },
+    { src: "assets/occasions/herder-grenadier-giekenstel-3-delig/herder-grenadier-giekenstel-4.jpg", alt: "Herder Grenadier giekenstel 3-delig occasion — foto 4" },
+    { src: "assets/occasions/herder-grenadier-giekenstel-3-delig/herder-grenadier-giekenstel-5.jpg", alt: "Herder Grenadier giekenstel 3-delig occasion — foto 5" },
+    { src: "assets/occasions/herder-grenadier-giekenstel-3-delig/herder-grenadier-giekenstel-6.jpg", alt: "Herder Grenadier giekenstel 3-delig occasion — foto 6" },
+    { src: "assets/occasions/herder-grenadier-giekenstel-3-delig/herder-grenadier-giekenstel-7.jpg", alt: "Herder Grenadier giekenstel 3-delig occasion — foto 7" },
+    { src: "assets/occasions/herder-grenadier-giekenstel-3-delig/herder-grenadier-giekenstel-8.jpg", alt: "Herder Grenadier giekenstel 3-delig occasion — foto 8" },
+    { src: "assets/occasions/herder-grenadier-giekenstel-3-delig/herder-grenadier-giekenstel-9.jpg", alt: "Herder Grenadier giekenstel 3-delig occasion — foto 9" },
+    { src: "assets/occasions/herder-grenadier-giekenstel-3-delig/herder-grenadier-giekenstel-10.jpg", alt: "Herder Grenadier giekenstel 3-delig occasion — foto 10" }
+  ],
+  // --- 5 occasions (aangeleverd 2026-09-11, 20 foto's) ---
+  "as-motor-1000-ovis-radiografische-taludmaaier": [
+    { src: "assets/occasions/as-motor-1000-ovis-radiografische-taludmaaier/as-motor-1000-ovis-1.jpg", alt: "AS-Motor 1000 Ovis radiografische taludmaaier occasion" },
+    { src: "assets/occasions/as-motor-1000-ovis-radiografische-taludmaaier/as-motor-1000-ovis-2.jpg", alt: "AS-Motor 1000 Ovis radiografische taludmaaier occasion — foto 2" },
+    { src: "assets/occasions/as-motor-1000-ovis-radiografische-taludmaaier/as-motor-1000-ovis-3.jpg", alt: "AS-Motor 1000 Ovis radiografische taludmaaier occasion — foto 3" },
+    { src: "assets/occasions/as-motor-1000-ovis-radiografische-taludmaaier/as-motor-1000-ovis-4.jpg", alt: "AS-Motor 1000 Ovis radiografische taludmaaier occasion — foto 4" }
+  ],
+  "votex-roadmaster-1902s-klepelmaaier": [
+    { src: "assets/occasions/votex-roadmaster-1902s-klepelmaaier/votex-roadmaster-1902s-1.jpg", alt: "Votex Roadmaster 1902S klepelmaaier occasion" },
+    { src: "assets/occasions/votex-roadmaster-1902s-klepelmaaier/votex-roadmaster-1902s-2.jpg", alt: "Votex Roadmaster 1902S klepelmaaier occasion — foto 2" },
+    { src: "assets/occasions/votex-roadmaster-1902s-klepelmaaier/votex-roadmaster-1902s-3.jpg", alt: "Votex Roadmaster 1902S klepelmaaier occasion — foto 3" }
+  ],
+  "greentec-rc-162-heggensnoeier": [
+    { src: "assets/occasions/greentec-rc-162-heggensnoeier/greentec-rc162-1.jpg", alt: "GreenTec RC 162 heggensnoeier occasion" },
+    { src: "assets/occasions/greentec-rc-162-heggensnoeier/greentec-rc162-2.jpg", alt: "GreenTec RC 162 heggensnoeier occasion — foto 2" },
+    { src: "assets/occasions/greentec-rc-162-heggensnoeier/greentec-rc162-3.jpg", alt: "GreenTec RC 162 heggensnoeier occasion — foto 3" },
+    { src: "assets/occasions/greentec-rc-162-heggensnoeier/greentec-rc162-4.jpg", alt: "GreenTec RC 162 heggensnoeier occasion — foto 4" }
+  ],
+  "omarv-ter-140-maai-laad-combinatie": [
+    { src: "assets/occasions/omarv-ter-140-maai-laad-combinatie/omarv-ter-140-1.jpg", alt: "Omarv TER 140 maai-laad combinatie occasion" },
+    { src: "assets/occasions/omarv-ter-140-maai-laad-combinatie/omarv-ter-140-2.jpg", alt: "Omarv TER 140 maai-laad combinatie occasion — foto 2" },
+    { src: "assets/occasions/omarv-ter-140-maai-laad-combinatie/omarv-ter-140-3.jpg", alt: "Omarv TER 140 maai-laad combinatie occasion — foto 3" }
+  ],
+
+  // --- Occasions (aangeleverd via WeTransfer, 2026-09-07) ---
+  "massey-ferguson-5s-145": [
+    { src: "assets/occasions/massey-ferguson-5s-145/massey-ferguson-5s145-1.jpg", alt: "Massey Ferguson 5S.145" },
+    { src: "assets/occasions/massey-ferguson-5s-145/massey-ferguson-5s145-2.jpg", alt: "Massey Ferguson 5S.145 — foto 2" },
+    { src: "assets/occasions/massey-ferguson-5s-145/massey-ferguson-5s145-3.jpg", alt: "Massey Ferguson 5S.145 — foto 3" },
+    { src: "assets/occasions/massey-ferguson-5s-145/massey-ferguson-5s145-4.jpg", alt: "Massey Ferguson 5S.145 — foto 4" },
+    { src: "assets/occasions/massey-ferguson-5s-145/massey-ferguson-5s145-5.jpg", alt: "Massey Ferguson 5S.145 — foto 5" },
+    { src: "assets/occasions/massey-ferguson-5s-145/massey-ferguson-5s145-6.jpg", alt: "Massey Ferguson 5S.145 — foto 6" },
+    { src: "assets/occasions/massey-ferguson-5s-145/massey-ferguson-5s145-7.jpg", alt: "Massey Ferguson 5S.145 — foto 7" },
+    { src: "assets/occasions/massey-ferguson-5s-145/massey-ferguson-5s145-8.jpg", alt: "Massey Ferguson 5S.145 — foto 8" },
+    { src: "assets/occasions/massey-ferguson-5s-145/massey-ferguson-5s145-9.jpg", alt: "Massey Ferguson 5S.145 — foto 9" },
+    { src: "assets/occasions/massey-ferguson-5s-145/massey-ferguson-5s145-10.jpg", alt: "Massey Ferguson 5S.145 — foto 10" },
+    { src: "assets/occasions/massey-ferguson-5s-145/massey-ferguson-5s145-11.jpg", alt: "Massey Ferguson 5S.145 — foto 11" },
+    { src: "assets/occasions/massey-ferguson-5s-145/massey-ferguson-5s145-12.jpg", alt: "Massey Ferguson 5S.145 — foto 12" }
+  ],
+  "massey-ferguson-5s-115": [
+    { src: "assets/occasions/massey-ferguson-5s-115/massey-ferguson-5s115-1.jpg", alt: "Massey Ferguson 5S.115" },
+    { src: "assets/occasions/massey-ferguson-5s-115/massey-ferguson-5s115-2.jpg", alt: "Massey Ferguson 5S.115 — foto 2" },
+    { src: "assets/occasions/massey-ferguson-5s-115/massey-ferguson-5s115-3.jpg", alt: "Massey Ferguson 5S.115 — foto 3" },
+    { src: "assets/occasions/massey-ferguson-5s-115/massey-ferguson-5s115-4.jpg", alt: "Massey Ferguson 5S.115 — foto 4" },
+    { src: "assets/occasions/massey-ferguson-5s-115/massey-ferguson-5s115-5.jpg", alt: "Massey Ferguson 5S.115 — foto 5" },
+    { src: "assets/occasions/massey-ferguson-5s-115/massey-ferguson-5s115-6.jpg", alt: "Massey Ferguson 5S.115 — foto 6" },
+    { src: "assets/occasions/massey-ferguson-5s-115/massey-ferguson-5s115-7.jpg", alt: "Massey Ferguson 5S.115 — foto 7" },
+    { src: "assets/occasions/massey-ferguson-5s-115/massey-ferguson-5s115-8.jpg", alt: "Massey Ferguson 5S.115 — foto 8" },
+    { src: "assets/occasions/massey-ferguson-5s-115/massey-ferguson-5s115-9.jpg", alt: "Massey Ferguson 5S.115 — foto 9" },
+    { src: "assets/occasions/massey-ferguson-5s-115/massey-ferguson-5s115-10.jpg", alt: "Massey Ferguson 5S.115 — foto 10" },
+    { src: "assets/occasions/massey-ferguson-5s-115/massey-ferguson-5s115-11.jpg", alt: "Massey Ferguson 5S.115 — foto 11" },
+    { src: "assets/occasions/massey-ferguson-5s-115/massey-ferguson-5s115-12.jpg", alt: "Massey Ferguson 5S.115 — foto 12" }
+  ],
+  "votex-vt-1100-zuigwagen-occasion": [
+    { src: "assets/occasions/votex-vt-1100-zuigwagen-occasion/votex-vt1100-zuigwagen-1.png", alt: "Votex VT 1100 zuigwagen occasion" },
+    { src: "assets/occasions/votex-vt-1100-zuigwagen-occasion/votex-vt1100-zuigwagen-2.png", alt: "Votex VT 1100 zuigwagen occasion — foto 2" },
+    { src: "assets/occasions/votex-vt-1100-zuigwagen-occasion/votex-vt1100-zuigwagen-3.png", alt: "Votex VT 1100 zuigwagen occasion — foto 3" },
+    { src: "assets/occasions/votex-vt-1100-zuigwagen-occasion/votex-vt1100-zuigwagen-4.png", alt: "Votex VT 1100 zuigwagen occasion — foto 4" },
+    { src: "assets/occasions/votex-vt-1100-zuigwagen-occasion/votex-vt1100-zuigwagen-5.png", alt: "Votex VT 1100 zuigwagen occasion — foto 5" },
+    { src: "assets/occasions/votex-vt-1100-zuigwagen-occasion/votex-vt1100-zuigwagen-6.png", alt: "Votex VT 1100 zuigwagen occasion — foto 6" }
+  ],
+  "massey-ferguson-7s-190-met-herder-mbk513-lsh-occasion": [
+    { src: "assets/occasions/massey-ferguson-7s-190-met-herder-mbk513-lsh-occasion/massey-ferguson-7s190-herder-mbk513lsh-1.jpg", alt: "Massey Ferguson 7S.190 met Herder MBK513 LSH occasion" },
+    { src: "assets/occasions/massey-ferguson-7s-190-met-herder-mbk513-lsh-occasion/massey-ferguson-7s190-herder-mbk513lsh-2.jpg", alt: "Massey Ferguson 7S.190 met Herder MBK513 LSH occasion — foto 2" },
+    { src: "assets/occasions/massey-ferguson-7s-190-met-herder-mbk513-lsh-occasion/massey-ferguson-7s190-herder-mbk513lsh-3.jpg", alt: "Massey Ferguson 7S.190 met Herder MBK513 LSH occasion — foto 3" },
+    { src: "assets/occasions/massey-ferguson-7s-190-met-herder-mbk513-lsh-occasion/massey-ferguson-7s190-herder-mbk513lsh-4.jpg", alt: "Massey Ferguson 7S.190 met Herder MBK513 LSH occasion — foto 4" },
+    { src: "assets/occasions/massey-ferguson-7s-190-met-herder-mbk513-lsh-occasion/massey-ferguson-7s190-herder-mbk513lsh-5.jpg", alt: "Massey Ferguson 7S.190 met Herder MBK513 LSH occasion — foto 5" },
+    { src: "assets/occasions/massey-ferguson-7s-190-met-herder-mbk513-lsh-occasion/massey-ferguson-7s190-herder-mbk513lsh-6.jpg", alt: "Massey Ferguson 7S.190 met Herder MBK513 LSH occasion — foto 6" }
+  ],
+  "agrimaster-xb-150-klepelmaaier": [
+    { src: "assets/occasions/agrimaster-xb-150-klepelmaaier/agrimaster-xb150-klepelmaaier-1.jpg", alt: "Agrimaster XB 150 klepelmaaier" },
+    { src: "assets/occasions/agrimaster-xb-150-klepelmaaier/agrimaster-xb150-klepelmaaier-2.jpg", alt: "Agrimaster XB 150 klepelmaaier — foto 2" },
+    { src: "assets/occasions/agrimaster-xb-150-klepelmaaier/agrimaster-xb150-klepelmaaier-3.jpg", alt: "Agrimaster XB 150 klepelmaaier — foto 3" },
+    { src: "assets/occasions/agrimaster-xb-150-klepelmaaier/agrimaster-xb150-klepelmaaier-4.jpg", alt: "Agrimaster XB 150 klepelmaaier — foto 4" },
+    { src: "assets/occasions/agrimaster-xb-150-klepelmaaier/agrimaster-xb150-klepelmaaier-5.jpg", alt: "Agrimaster XB 150 klepelmaaier — foto 5" },
+    { src: "assets/occasions/agrimaster-xb-150-klepelmaaier/agrimaster-xb150-klepelmaaier-6.jpg", alt: "Agrimaster XB 150 klepelmaaier — foto 6" },
+    { src: "assets/occasions/agrimaster-xb-150-klepelmaaier/agrimaster-xb150-klepelmaaier-7.jpg", alt: "Agrimaster XB 150 klepelmaaier — foto 7" }
+  ],
+  "votex-jumbo-frontline-190-klepelmaaier": [
+    { src: "assets/occasions/votex-jumbo-frontline-190-klepelmaaier/votex-jumbo-frontline-190-klepelmaaier-1.jpg", alt: "Votex Jumbo Frontline 190 klepelmaaier" },
+    { src: "assets/occasions/votex-jumbo-frontline-190-klepelmaaier/votex-jumbo-frontline-190-klepelmaaier-2.jpg", alt: "Votex Jumbo Frontline 190 klepelmaaier — foto 2" },
+    { src: "assets/occasions/votex-jumbo-frontline-190-klepelmaaier/votex-jumbo-frontline-190-klepelmaaier-3.jpg", alt: "Votex Jumbo Frontline 190 klepelmaaier — foto 3" },
+    { src: "assets/occasions/votex-jumbo-frontline-190-klepelmaaier/votex-jumbo-frontline-190-klepelmaaier-4.jpg", alt: "Votex Jumbo Frontline 190 klepelmaaier — foto 4" },
+    { src: "assets/occasions/votex-jumbo-frontline-190-klepelmaaier/votex-jumbo-frontline-190-klepelmaaier-5.jpg", alt: "Votex Jumbo Frontline 190 klepelmaaier — foto 5" },
+    { src: "assets/occasions/votex-jumbo-frontline-190-klepelmaaier/votex-jumbo-frontline-190-klepelmaaier-6.jpg", alt: "Votex Jumbo Frontline 190 klepelmaaier — foto 6" },
+    { src: "assets/occasions/votex-jumbo-frontline-190-klepelmaaier/votex-jumbo-frontline-190-klepelmaaier-7.jpg", alt: "Votex Jumbo Frontline 190 klepelmaaier — foto 7" }
+  ],
+  "herder-mrz-550-maaikorf": [
+    { src: "assets/occasions/herder-mrz-550-maaikorf/herder-mrz550-maaikorf-1.jpg", alt: "Herder MRZ 550 maaikorf" },
+    { src: "assets/occasions/herder-mrz-550-maaikorf/herder-mrz550-maaikorf-2.jpg", alt: "Herder MRZ 550 maaikorf — foto 2" },
+    { src: "assets/occasions/herder-mrz-550-maaikorf/herder-mrz550-maaikorf-3.jpg", alt: "Herder MRZ 550 maaikorf — foto 3" },
+    { src: "assets/occasions/herder-mrz-550-maaikorf/herder-mrz550-maaikorf-4.jpg", alt: "Herder MRZ 550 maaikorf — foto 4" },
+    { src: "assets/occasions/herder-mrz-550-maaikorf/herder-mrz550-maaikorf-5.jpg", alt: "Herder MRZ 550 maaikorf — foto 5" }
+  ],
+  "votex-jumbo-190-klepelmaaier": [
+    { src: "assets/occasions/votex-jumbo-190-klepelmaaier/votex-jumbo-190-klepelmaaier-1.jpg", alt: "Votex Jumbo 190 klepelmaaier" },
+    { src: "assets/occasions/votex-jumbo-190-klepelmaaier/votex-jumbo-190-klepelmaaier-2.jpg", alt: "Votex Jumbo 190 klepelmaaier — foto 2" },
+    { src: "assets/occasions/votex-jumbo-190-klepelmaaier/votex-jumbo-190-klepelmaaier-3.jpg", alt: "Votex Jumbo 190 klepelmaaier — foto 3" },
+    { src: "assets/occasions/votex-jumbo-190-klepelmaaier/votex-jumbo-190-klepelmaaier-4.jpg", alt: "Votex Jumbo 190 klepelmaaier — foto 4" },
+    { src: "assets/occasions/votex-jumbo-190-klepelmaaier/votex-jumbo-190-klepelmaaier-5.jpg", alt: "Votex Jumbo 190 klepelmaaier — foto 5" }
+  ],
+  "verlenggiek-180-cm": [
+    { src: "assets/occasions/verlenggiek-180-cm/verlenggiek-180cm-1.jpg", alt: "Verlenggiek 180 cm" },
+    { src: "assets/occasions/verlenggiek-180-cm/verlenggiek-180cm-2.jpg", alt: "Verlenggiek 180 cm — foto 2" },
+    { src: "assets/occasions/verlenggiek-180-cm/verlenggiek-180cm-3.jpg", alt: "Verlenggiek 180 cm — foto 3" }
+  ],
+  "ts-327zs-houtversnipperaar": [
+    { src: "assets/occasions/ts-327zs-houtversnipperaar/ts-327zs-houtversnipperaar-1.jpg", alt: "TS 327ZS houtversnipperaar" },
+    { src: "assets/occasions/ts-327zs-houtversnipperaar/ts-327zs-houtversnipperaar-2.jpg", alt: "TS 327ZS houtversnipperaar — foto 2" },
+    { src: "assets/occasions/ts-327zs-houtversnipperaar/ts-327zs-houtversnipperaar-3.jpg", alt: "TS 327ZS houtversnipperaar — foto 3" },
+    { src: "assets/occasions/ts-327zs-houtversnipperaar/ts-327zs-houtversnipperaar-4.jpg", alt: "TS 327ZS houtversnipperaar — foto 4" },
+    { src: "assets/occasions/ts-327zs-houtversnipperaar/ts-327zs-houtversnipperaar-5.jpg", alt: "TS 327ZS houtversnipperaar — foto 5" },
+    { src: "assets/occasions/ts-327zs-houtversnipperaar/ts-327zs-houtversnipperaar-6.jpg", alt: "TS 327ZS houtversnipperaar — foto 6" }
+  ],
+  "herder-kmwd-130-klepelmaaier": [
+    { src: "assets/occasions/herder-kmwd-130-klepelmaaier/herder-kmwd130-klepelmaaier-1.jpg", alt: "Herder KMWD 130 klepelmaaier" },
+    { src: "assets/occasions/herder-kmwd-130-klepelmaaier/herder-kmwd130-klepelmaaier-2.jpg", alt: "Herder KMWD 130 klepelmaaier — foto 2" },
+    { src: "assets/occasions/herder-kmwd-130-klepelmaaier/herder-kmwd130-klepelmaaier-3.jpg", alt: "Herder KMWD 130 klepelmaaier — foto 3" },
+    { src: "assets/occasions/herder-kmwd-130-klepelmaaier/herder-kmwd130-klepelmaaier-4.jpg", alt: "Herder KMWD 130 klepelmaaier — foto 4" },
+    { src: "assets/occasions/herder-kmwd-130-klepelmaaier/herder-kmwd130-klepelmaaier-5.jpg", alt: "Herder KMWD 130 klepelmaaier — foto 5" },
+    { src: "assets/occasions/herder-kmwd-130-klepelmaaier/herder-kmwd130-klepelmaaier-6.jpg", alt: "Herder KMWD 130 klepelmaaier — foto 6" }
+  ],
+  "herder-km-klepelmaaier": [
+    { src: "assets/occasions/herder-km-klepelmaaier/herder-km-klepelmaaier-1.jpg", alt: "Herder KM klepelmaaier" },
+    { src: "assets/occasions/herder-km-klepelmaaier/herder-km-klepelmaaier-2.jpg", alt: "Herder KM klepelmaaier — foto 2" },
+    { src: "assets/occasions/herder-km-klepelmaaier/herder-km-klepelmaaier-3.jpg", alt: "Herder KM klepelmaaier — foto 3" },
+    { src: "assets/occasions/herder-km-klepelmaaier/herder-km-klepelmaaier-4.jpg", alt: "Herder KM klepelmaaier — foto 4" }
+  ],
+  "votex-jumbo-flex-260-klepelmaaier": [
+    { src: "assets/occasions/votex-jumbo-flex-260-klepelmaaier/votex-jumbo-flex-260-klepelmaaier-1.jpg", alt: "Votex Jumbo Flex 260 klepelmaaier" },
+    { src: "assets/occasions/votex-jumbo-flex-260-klepelmaaier/votex-jumbo-flex-260-klepelmaaier-2.jpg", alt: "Votex Jumbo Flex 260 klepelmaaier — foto 2" },
+    { src: "assets/occasions/votex-jumbo-flex-260-klepelmaaier/votex-jumbo-flex-260-klepelmaaier-3.jpg", alt: "Votex Jumbo Flex 260 klepelmaaier — foto 3" },
+    { src: "assets/occasions/votex-jumbo-flex-260-klepelmaaier/votex-jumbo-flex-260-klepelmaaier-4.jpg", alt: "Votex Jumbo Flex 260 klepelmaaier — foto 4" },
+    { src: "assets/occasions/votex-jumbo-flex-260-klepelmaaier/votex-jumbo-flex-260-klepelmaaier-5.jpg", alt: "Votex Jumbo Flex 260 klepelmaaier — foto 5" },
+    { src: "assets/occasions/votex-jumbo-flex-260-klepelmaaier/votex-jumbo-flex-260-klepelmaaier-6.jpg", alt: "Votex Jumbo Flex 260 klepelmaaier — foto 6" },
+    { src: "assets/occasions/votex-jumbo-flex-260-klepelmaaier/votex-jumbo-flex-260-klepelmaaier-7.jpg", alt: "Votex Jumbo Flex 260 klepelmaaier — foto 7" }
+  ],
+  "ursa-1700-bezem": [
+    { src: "assets/occasions/ursa-1700-bezem/ursa-1700-bezem-1.jpg", alt: "Ursa 1700 Bezem" },
+    { src: "assets/occasions/ursa-1700-bezem/ursa-1700-bezem-2.jpg", alt: "Ursa 1700 Bezem — foto 2" },
+    { src: "assets/occasions/ursa-1700-bezem/ursa-1700-bezem-3.jpg", alt: "Ursa 1700 Bezem — foto 3" },
+    { src: "assets/occasions/ursa-1700-bezem/ursa-1700-bezem-4.jpg", alt: "Ursa 1700 Bezem — foto 4" },
+    { src: "assets/occasions/ursa-1700-bezem/ursa-1700-bezem-5.jpg", alt: "Ursa 1700 Bezem — foto 5" }
+  ],
+  "bladveegunit": [
+    { src: "assets/occasions/bladveegunit/bladveegunit-1.jpg", alt: "Bladveegunit" },
+    { src: "assets/occasions/bladveegunit/bladveegunit-2.jpg", alt: "Bladveegunit — foto 2" },
+    { src: "assets/occasions/bladveegunit/bladveegunit-3.jpg", alt: "Bladveegunit — foto 3" },
+    { src: "assets/occasions/bladveegunit/bladveegunit-4.jpg", alt: "Bladveegunit — foto 4" },
+    { src: "assets/occasions/bladveegunit/bladveegunit-5.jpg", alt: "Bladveegunit — foto 5" }
+  ],
+  "votex-roadmaster-2307-klepelmaaier-2": [
+    { src: "assets/occasions/votex-roadmaster-2307-klepelmaaier-2/votex-roadmaster-2307-klepelmaaier-sn0272-1.jpg", alt: "Votex Roadmaster 2307 klepelmaaier" },
+    { src: "assets/occasions/votex-roadmaster-2307-klepelmaaier-2/votex-roadmaster-2307-klepelmaaier-sn0272-2.jpg", alt: "Votex Roadmaster 2307 klepelmaaier — foto 2" },
+    { src: "assets/occasions/votex-roadmaster-2307-klepelmaaier-2/votex-roadmaster-2307-klepelmaaier-sn0272-3.jpg", alt: "Votex Roadmaster 2307 klepelmaaier — foto 3" },
+    { src: "assets/occasions/votex-roadmaster-2307-klepelmaaier-2/votex-roadmaster-2307-klepelmaaier-sn0272-4.jpg", alt: "Votex Roadmaster 2307 klepelmaaier — foto 4" },
+    { src: "assets/occasions/votex-roadmaster-2307-klepelmaaier-2/votex-roadmaster-2307-klepelmaaier-sn0272-5.jpg", alt: "Votex Roadmaster 2307 klepelmaaier — foto 5" }
+  ],
+  "votex-roadmaster-2307-klepelmaaier": [
+    { src: "assets/occasions/votex-roadmaster-2307-klepelmaaier/votex-roadmaster-2307-klepelmaaier-sn0271-1.jpg", alt: "Votex Roadmaster 2307 klepelmaaier" },
+    { src: "assets/occasions/votex-roadmaster-2307-klepelmaaier/votex-roadmaster-2307-klepelmaaier-sn0271-2.jpg", alt: "Votex Roadmaster 2307 klepelmaaier — foto 2" },
+    { src: "assets/occasions/votex-roadmaster-2307-klepelmaaier/votex-roadmaster-2307-klepelmaaier-sn0271-3.jpg", alt: "Votex Roadmaster 2307 klepelmaaier — foto 3" },
+    { src: "assets/occasions/votex-roadmaster-2307-klepelmaaier/votex-roadmaster-2307-klepelmaaier-sn0271-4.jpg", alt: "Votex Roadmaster 2307 klepelmaaier — foto 4" },
+    { src: "assets/occasions/votex-roadmaster-2307-klepelmaaier/votex-roadmaster-2307-klepelmaaier-sn0271-5.jpg", alt: "Votex Roadmaster 2307 klepelmaaier — foto 5" }
+  ],
+  "votex-roadmaster-1907-klepelmaaier": [
+    { src: "assets/occasions/votex-roadmaster-1907-klepelmaaier/votex-roadmaster-1907-klepelmaaier-1.jpg", alt: "Votex Roadmaster 1907 klepelmaaier" },
+    { src: "assets/occasions/votex-roadmaster-1907-klepelmaaier/votex-roadmaster-1907-klepelmaaier-2.jpg", alt: "Votex Roadmaster 1907 klepelmaaier — foto 2" },
+    { src: "assets/occasions/votex-roadmaster-1907-klepelmaaier/votex-roadmaster-1907-klepelmaaier-3.jpg", alt: "Votex Roadmaster 1907 klepelmaaier — foto 3" },
+    { src: "assets/occasions/votex-roadmaster-1907-klepelmaaier/votex-roadmaster-1907-klepelmaaier-4.jpg", alt: "Votex Roadmaster 1907 klepelmaaier — foto 4" }
+  ],
+  "votex-r-max-240-klepelmaaier-2": [
+    { src: "assets/occasions/votex-r-max-240-klepelmaaier-2/votex-r-max-240-klepelmaaier-sn0043-1.jpg", alt: "Votex R-Max 240 klepelmaaier" },
+    { src: "assets/occasions/votex-r-max-240-klepelmaaier-2/votex-r-max-240-klepelmaaier-sn0043-2.jpg", alt: "Votex R-Max 240 klepelmaaier — foto 2" },
+    { src: "assets/occasions/votex-r-max-240-klepelmaaier-2/votex-r-max-240-klepelmaaier-sn0043-3.jpg", alt: "Votex R-Max 240 klepelmaaier — foto 3" },
+    { src: "assets/occasions/votex-r-max-240-klepelmaaier-2/votex-r-max-240-klepelmaaier-sn0043-4.jpg", alt: "Votex R-Max 240 klepelmaaier — foto 4" },
+    { src: "assets/occasions/votex-r-max-240-klepelmaaier-2/votex-r-max-240-klepelmaaier-sn0043-5.jpg", alt: "Votex R-Max 240 klepelmaaier — foto 5" }
+  ],
+  "votex-landmaster-240-klepelmaaier": [
+    { src: "assets/occasions/votex-landmaster-240-klepelmaaier/votex-landmaster-240-klepelmaaier-1.jpg", alt: "Votex Landmaster 240 klepelmaaier" },
+    { src: "assets/occasions/votex-landmaster-240-klepelmaaier/votex-landmaster-240-klepelmaaier-2.jpg", alt: "Votex Landmaster 240 klepelmaaier — foto 2" },
+    { src: "assets/occasions/votex-landmaster-240-klepelmaaier/votex-landmaster-240-klepelmaaier-3.jpg", alt: "Votex Landmaster 240 klepelmaaier — foto 3" },
+    { src: "assets/occasions/votex-landmaster-240-klepelmaaier/votex-landmaster-240-klepelmaaier-4.jpg", alt: "Votex Landmaster 240 klepelmaaier — foto 4" }
+  ],
+  "kersten-km16550m-bezem": [
+    { src: "assets/occasions/kersten-km16550m-bezem/kersten-km16550m-bezem-1.jpg", alt: "Kersten KM16550M bezem" },
+    { src: "assets/occasions/kersten-km16550m-bezem/kersten-km16550m-bezem-2.jpg", alt: "Kersten KM16550M bezem — foto 2" },
+    { src: "assets/occasions/kersten-km16550m-bezem/kersten-km16550m-bezem-3.jpg", alt: "Kersten KM16550M bezem — foto 3" },
+    { src: "assets/occasions/kersten-km16550m-bezem/kersten-km16550m-bezem-4.jpg", alt: "Kersten KM16550M bezem — foto 4" },
+    { src: "assets/occasions/kersten-km16550m-bezem/kersten-km16550m-bezem-5.jpg", alt: "Kersten KM16550M bezem — foto 5" },
+    { src: "assets/occasions/kersten-km16550m-bezem/kersten-km16550m-bezem-6.jpg", alt: "Kersten KM16550M bezem — foto 6" }
+  ],
+  "hoaf-weedair-75ibe-heteluchtmachine": [
+    { src: "assets/occasions/hoaf-weedair-75ibe-heteluchtmachine/hoaf-weedair-75ibe-heteluchtmachine-1.jpg", alt: "HOAF WeedAIR 75IBE heteluchtmachine" },
+    { src: "assets/occasions/hoaf-weedair-75ibe-heteluchtmachine/hoaf-weedair-75ibe-heteluchtmachine-2.jpg", alt: "HOAF WeedAIR 75IBE heteluchtmachine — foto 2" },
+    { src: "assets/occasions/hoaf-weedair-75ibe-heteluchtmachine/hoaf-weedair-75ibe-heteluchtmachine-3.jpg", alt: "HOAF WeedAIR 75IBE heteluchtmachine — foto 3" },
+    { src: "assets/occasions/hoaf-weedair-75ibe-heteluchtmachine/hoaf-weedair-75ibe-heteluchtmachine-4.jpg", alt: "HOAF WeedAIR 75IBE heteluchtmachine — foto 4" },
+    { src: "assets/occasions/hoaf-weedair-75ibe-heteluchtmachine/hoaf-weedair-75ibe-heteluchtmachine-5.jpg", alt: "HOAF WeedAIR 75IBE heteluchtmachine — foto 5" },
+    { src: "assets/occasions/hoaf-weedair-75ibe-heteluchtmachine/hoaf-weedair-75ibe-heteluchtmachine-6.jpg", alt: "HOAF WeedAIR 75IBE heteluchtmachine — foto 6" },
+    { src: "assets/occasions/hoaf-weedair-75ibe-heteluchtmachine/hoaf-weedair-75ibe-heteluchtmachine-7.jpg", alt: "HOAF WeedAIR 75IBE heteluchtmachine — foto 7" }
+  ],
+  "votex-b20-bladblazer": [
+    { src: "assets/occasions/votex-b20-bladblazer/votex-b20-bladblazer-1.jpg", alt: "Votex B20 bladblazer" },
+    { src: "assets/occasions/votex-b20-bladblazer/votex-b20-bladblazer-2.jpg", alt: "Votex B20 bladblazer — foto 2" },
+    { src: "assets/occasions/votex-b20-bladblazer/votex-b20-bladblazer-3.jpg", alt: "Votex B20 bladblazer — foto 3" }
+  ],
+  "mcconnel-maaiarm-met-heggenslagmaaier": [
+    { src: "assets/occasions/mcconnel-maaiarm-met-heggenslagmaaier/mcconnel-maaiarm-heggenslagmaaier-1.jpg", alt: "McConnel Maaiarm met heggenslagmaaier" },
+    { src: "assets/occasions/mcconnel-maaiarm-met-heggenslagmaaier/mcconnel-maaiarm-heggenslagmaaier-2.jpg", alt: "McConnel Maaiarm met heggenslagmaaier — foto 2" },
+    { src: "assets/occasions/mcconnel-maaiarm-met-heggenslagmaaier/mcconnel-maaiarm-heggenslagmaaier-3.jpg", alt: "McConnel Maaiarm met heggenslagmaaier — foto 3" },
+    { src: "assets/occasions/mcconnel-maaiarm-met-heggenslagmaaier/mcconnel-maaiarm-heggenslagmaaier-4.jpg", alt: "McConnel Maaiarm met heggenslagmaaier — foto 4" },
+    { src: "assets/occasions/mcconnel-maaiarm-met-heggenslagmaaier/mcconnel-maaiarm-heggenslagmaaier-5.jpg", alt: "McConnel Maaiarm met heggenslagmaaier — foto 5" },
+    { src: "assets/occasions/mcconnel-maaiarm-met-heggenslagmaaier/mcconnel-maaiarm-heggenslagmaaier-6.jpg", alt: "McConnel Maaiarm met heggenslagmaaier — foto 6" },
+    { src: "assets/occasions/mcconnel-maaiarm-met-heggenslagmaaier/mcconnel-maaiarm-heggenslagmaaier-7.jpg", alt: "McConnel Maaiarm met heggenslagmaaier — foto 7" }
+  ],
+  "reform-m3l-motormaaier": [
+    { src: "assets/occasions/reform-m3l-motormaaier/reform-m3l-motormaaier-1.jpg", alt: "Reform M3L motormaaier" },
+    { src: "assets/occasions/reform-m3l-motormaaier/reform-m3l-motormaaier-2.jpg", alt: "Reform M3L motormaaier — foto 2" },
+    { src: "assets/occasions/reform-m3l-motormaaier/reform-m3l-motormaaier-3.jpg", alt: "Reform M3L motormaaier — foto 3" },
+    { src: "assets/occasions/reform-m3l-motormaaier/reform-m3l-motormaaier-4.jpg", alt: "Reform M3L motormaaier — foto 4" },
+    { src: "assets/occasions/reform-m3l-motormaaier/reform-m3l-motormaaier-5.jpg", alt: "Reform M3L motormaaier — foto 5" },
+    { src: "assets/occasions/reform-m3l-motormaaier/reform-m3l-motormaaier-6.jpg", alt: "Reform M3L motormaaier — foto 6" },
+    { src: "assets/occasions/reform-m3l-motormaaier/reform-m3l-motormaaier-7.jpg", alt: "Reform M3L motormaaier — foto 7" },
+    { src: "assets/occasions/reform-m3l-motormaaier/reform-m3l-motormaaier-8.jpg", alt: "Reform M3L motormaaier — foto 8" },
+    { src: "assets/occasions/reform-m3l-motormaaier/reform-m3l-motormaaier-9.jpg", alt: "Reform M3L motormaaier — foto 9" }
+  ],
+  "hoaf-thermhit-75m-onkruidbrander-occasion": [
+    { src: "assets/occasions/hoaf-thermhit-75m-onkruidbrander-occasion/hoaf-thermhit-75m-onkruidbrander-occasion-1.jpg", alt: "HOAF ThermHIT 75M onkruidbrander" },
+    { src: "assets/occasions/hoaf-thermhit-75m-onkruidbrander-occasion/hoaf-thermhit-75m-onkruidbrander-occasion-2.jpg", alt: "HOAF ThermHIT 75M onkruidbrander — foto 2" },
+    { src: "assets/occasions/hoaf-thermhit-75m-onkruidbrander-occasion/hoaf-thermhit-75m-onkruidbrander-occasion-3.jpg", alt: "HOAF ThermHIT 75M onkruidbrander — foto 3" },
+    { src: "assets/occasions/hoaf-thermhit-75m-onkruidbrander-occasion/hoaf-thermhit-75m-onkruidbrander-occasion-4.jpg", alt: "HOAF ThermHIT 75M onkruidbrander — foto 4" },
+    { src: "assets/occasions/hoaf-thermhit-75m-onkruidbrander-occasion/hoaf-thermhit-75m-onkruidbrander-occasion-5.jpg", alt: "HOAF ThermHIT 75M onkruidbrander — foto 5" },
+    { src: "assets/occasions/hoaf-thermhit-75m-onkruidbrander-occasion/hoaf-thermhit-75m-onkruidbrander-occasion-6.jpg", alt: "HOAF ThermHIT 75M onkruidbrander — foto 6" },
+    { src: "assets/occasions/hoaf-thermhit-75m-onkruidbrander-occasion/hoaf-thermhit-75m-onkruidbrander-occasion-7.jpg", alt: "HOAF ThermHIT 75M onkruidbrander — foto 7" }
+  ],
+  "massey-ferguson-rb-3130f-xtra-pers": [
+    { src: "assets/occasions/massey-ferguson-rb-3130f-xtra-pers/massey-ferguson-rb3130f-xtra-pers-1.jpg", alt: "Massey Ferguson RB 3130F Xtra pers" },
+    { src: "assets/occasions/massey-ferguson-rb-3130f-xtra-pers/massey-ferguson-rb3130f-xtra-pers-2.jpg", alt: "Massey Ferguson RB 3130F Xtra pers — foto 2" },
+    { src: "assets/occasions/massey-ferguson-rb-3130f-xtra-pers/massey-ferguson-rb3130f-xtra-pers-3.jpg", alt: "Massey Ferguson RB 3130F Xtra pers — foto 3" },
+    { src: "assets/occasions/massey-ferguson-rb-3130f-xtra-pers/massey-ferguson-rb3130f-xtra-pers-4.jpg", alt: "Massey Ferguson RB 3130F Xtra pers — foto 4" },
+    { src: "assets/occasions/massey-ferguson-rb-3130f-xtra-pers/massey-ferguson-rb3130f-xtra-pers-5.jpg", alt: "Massey Ferguson RB 3130F Xtra pers — foto 5" },
+    { src: "assets/occasions/massey-ferguson-rb-3130f-xtra-pers/massey-ferguson-rb3130f-xtra-pers-6.jpg", alt: "Massey Ferguson RB 3130F Xtra pers — foto 6" },
+    { src: "assets/occasions/massey-ferguson-rb-3130f-xtra-pers/massey-ferguson-rb3130f-xtra-pers-7.jpg", alt: "Massey Ferguson RB 3130F Xtra pers — foto 7" },
+    { src: "assets/occasions/massey-ferguson-rb-3130f-xtra-pers/massey-ferguson-rb3130f-xtra-pers-8.jpg", alt: "Massey Ferguson RB 3130F Xtra pers — foto 8" },
+    { src: "assets/occasions/massey-ferguson-rb-3130f-xtra-pers/massey-ferguson-rb3130f-xtra-pers-9.jpg", alt: "Massey Ferguson RB 3130F Xtra pers — foto 9" },
+    { src: "assets/occasions/massey-ferguson-rb-3130f-xtra-pers/massey-ferguson-rb3130f-xtra-pers-10.jpg", alt: "Massey Ferguson RB 3130F Xtra pers — foto 10" }
+  ],
+  "herder-verlenggiek-cw05": [
+    { src: "assets/occasions/herder-verlenggiek-cw05/herder-verlenggiek-cw05-1.jpg", alt: "Herder Verlenggiek CW05" },
+    { src: "assets/occasions/herder-verlenggiek-cw05/herder-verlenggiek-cw05-2.jpg", alt: "Herder Verlenggiek CW05 — foto 2" },
+    { src: "assets/occasions/herder-verlenggiek-cw05/herder-verlenggiek-cw05-3.jpg", alt: "Herder Verlenggiek CW05 — foto 3" }
+  ],
+  "pentin-paja-velkop-wmt": [
+    { src: "assets/occasions/pentin-paja-velkop-wmt/pentin-paja-velkop-wmt-1.jpg", alt: "Pentin Paja Velkop WMT" },
+    { src: "assets/occasions/pentin-paja-velkop-wmt/pentin-paja-velkop-wmt-2.jpg", alt: "Pentin Paja Velkop WMT — foto 2" },
+    { src: "assets/occasions/pentin-paja-velkop-wmt/pentin-paja-velkop-wmt-3.jpg", alt: "Pentin Paja Velkop WMT — foto 3" },
+    { src: "assets/occasions/pentin-paja-velkop-wmt/pentin-paja-velkop-wmt-4.jpg", alt: "Pentin Paja Velkop WMT — foto 4" }
+  ],
+  "vicon-extra-328f-express-schijvenmaaier": [
+    { src: "assets/occasions/vicon-extra-328f-express-schijvenmaaier/vicon-extra-328f-express-1.jpg", alt: "Vicon Extra 328F Express schijvenmaaier" },
+    { src: "assets/occasions/vicon-extra-328f-express-schijvenmaaier/vicon-extra-328f-express-2.jpg", alt: "Vicon Extra 328F Express schijvenmaaier — foto 2" },
+    { src: "assets/occasions/vicon-extra-328f-express-schijvenmaaier/vicon-extra-328f-express-3.jpg", alt: "Vicon Extra 328F Express schijvenmaaier — foto 3" },
+    { src: "assets/occasions/vicon-extra-328f-express-schijvenmaaier/vicon-extra-328f-express-4.jpg", alt: "Vicon Extra 328F Express schijvenmaaier — foto 4" },
+    { src: "assets/occasions/vicon-extra-328f-express-schijvenmaaier/vicon-extra-328f-express-5.jpg", alt: "Vicon Extra 328F Express schijvenmaaier — foto 5" }
+  ],
+  "herder-kmv225-front-klepelmaaier": [
+    { src: "assets/occasions/herder-kmv225-front-klepelmaaier/herder-kmv225-front-klepelmaaier-1.jpg", alt: "Herder KMV225 front klepelmaaier" },
+    { src: "assets/occasions/herder-kmv225-front-klepelmaaier/herder-kmv225-front-klepelmaaier-2.jpg", alt: "Herder KMV225 front klepelmaaier — foto 2" },
+    { src: "assets/occasions/herder-kmv225-front-klepelmaaier/herder-kmv225-front-klepelmaaier-3.jpg", alt: "Herder KMV225 front klepelmaaier — foto 3" },
+    { src: "assets/occasions/herder-kmv225-front-klepelmaaier/herder-kmv225-front-klepelmaaier-4.jpg", alt: "Herder KMV225 front klepelmaaier — foto 4" }
+  ],
+  "votex-roadmaster-rm2102-klepelmaaier": [
+    { src: "assets/occasions/votex-roadmaster-rm2102-klepelmaaier/votex-roadmaster-rm2102-klepelmaaier-1.jpg", alt: "Votex Roadmaster RM2102 klepelmaaier" },
+    { src: "assets/occasions/votex-roadmaster-rm2102-klepelmaaier/votex-roadmaster-rm2102-klepelmaaier-2.jpg", alt: "Votex Roadmaster RM2102 klepelmaaier — foto 2" },
+    { src: "assets/occasions/votex-roadmaster-rm2102-klepelmaaier/votex-roadmaster-rm2102-klepelmaaier-3.jpg", alt: "Votex Roadmaster RM2102 klepelmaaier — foto 3" },
+    { src: "assets/occasions/votex-roadmaster-rm2102-klepelmaaier/votex-roadmaster-rm2102-klepelmaaier-4.jpg", alt: "Votex Roadmaster RM2102 klepelmaaier — foto 4" },
+    { src: "assets/occasions/votex-roadmaster-rm2102-klepelmaaier/votex-roadmaster-rm2102-klepelmaaier-5.jpg", alt: "Votex Roadmaster RM2102 klepelmaaier — foto 5" }
+  ],
+  "reform-m3d-met-bezem": [
+    { src: "assets/occasions/reform-m3d-met-bezem/reform-m3d-met-bezem-1.jpg", alt: "Reform M3D met bezem" },
+    { src: "assets/occasions/reform-m3d-met-bezem/reform-m3d-met-bezem-2.jpg", alt: "Reform M3D met bezem — foto 2" },
+    { src: "assets/occasions/reform-m3d-met-bezem/reform-m3d-met-bezem-3.jpg", alt: "Reform M3D met bezem — foto 3" },
+    { src: "assets/occasions/reform-m3d-met-bezem/reform-m3d-met-bezem-4.jpg", alt: "Reform M3D met bezem — foto 4" },
+    { src: "assets/occasions/reform-m3d-met-bezem/reform-m3d-met-bezem-5.jpg", alt: "Reform M3D met bezem — foto 5" }
+  ],
+  "massey-ferguson-6480-en-herder-mbk518ls-maaiarm": [
+    { src: "assets/occasions/massey-ferguson-6480-en-herder-mbk518ls-maaiarm/massey-ferguson-6480-herder-mbk518ls-1.jpg", alt: "Massey Ferguson 6480 + Herder MBK518LS maaiarm" },
+    { src: "assets/occasions/massey-ferguson-6480-en-herder-mbk518ls-maaiarm/massey-ferguson-6480-herder-mbk518ls-2.jpg", alt: "Massey Ferguson 6480 + Herder MBK518LS maaiarm — foto 2" },
+    { src: "assets/occasions/massey-ferguson-6480-en-herder-mbk518ls-maaiarm/massey-ferguson-6480-herder-mbk518ls-3.jpg", alt: "Massey Ferguson 6480 + Herder MBK518LS maaiarm — foto 3" },
+    { src: "assets/occasions/massey-ferguson-6480-en-herder-mbk518ls-maaiarm/massey-ferguson-6480-herder-mbk518ls-4.jpg", alt: "Massey Ferguson 6480 + Herder MBK518LS maaiarm — foto 4" },
+    { src: "assets/occasions/massey-ferguson-6480-en-herder-mbk518ls-maaiarm/massey-ferguson-6480-herder-mbk518ls-5.jpg", alt: "Massey Ferguson 6480 + Herder MBK518LS maaiarm — foto 5" },
+    { src: "assets/occasions/massey-ferguson-6480-en-herder-mbk518ls-maaiarm/massey-ferguson-6480-herder-mbk518ls-6.jpg", alt: "Massey Ferguson 6480 + Herder MBK518LS maaiarm — foto 6" },
+    { src: "assets/occasions/massey-ferguson-6480-en-herder-mbk518ls-maaiarm/massey-ferguson-6480-herder-mbk518ls-7.jpg", alt: "Massey Ferguson 6480 + Herder MBK518LS maaiarm — foto 7" },
+    { src: "assets/occasions/massey-ferguson-6480-en-herder-mbk518ls-maaiarm/massey-ferguson-6480-herder-mbk518ls-8.jpg", alt: "Massey Ferguson 6480 + Herder MBK518LS maaiarm — foto 8" },
+    { src: "assets/occasions/massey-ferguson-6480-en-herder-mbk518ls-maaiarm/massey-ferguson-6480-herder-mbk518ls-9.jpg", alt: "Massey Ferguson 6480 + Herder MBK518LS maaiarm — foto 9" },
+    { src: "assets/occasions/massey-ferguson-6480-en-herder-mbk518ls-maaiarm/massey-ferguson-6480-herder-mbk518ls-10.jpg", alt: "Massey Ferguson 6480 + Herder MBK518LS maaiarm — foto 10" },
+    { src: "assets/occasions/massey-ferguson-6480-en-herder-mbk518ls-maaiarm/massey-ferguson-6480-herder-mbk518ls-11.jpg", alt: "Massey Ferguson 6480 + Herder MBK518LS maaiarm — foto 11" },
+    { src: "assets/occasions/massey-ferguson-6480-en-herder-mbk518ls-maaiarm/massey-ferguson-6480-herder-mbk518ls-12.jpg", alt: "Massey Ferguson 6480 + Herder MBK518LS maaiarm — foto 12" },
+    { src: "assets/occasions/massey-ferguson-6480-en-herder-mbk518ls-maaiarm/massey-ferguson-6480-herder-mbk518ls-13.jpg", alt: "Massey Ferguson 6480 + Herder MBK518LS maaiarm — foto 13" },
+    { src: "assets/occasions/massey-ferguson-6480-en-herder-mbk518ls-maaiarm/massey-ferguson-6480-herder-mbk518ls-14.jpg", alt: "Massey Ferguson 6480 + Herder MBK518LS maaiarm — foto 14" },
+    { src: "assets/occasions/massey-ferguson-6480-en-herder-mbk518ls-maaiarm/massey-ferguson-6480-herder-mbk518ls-15.jpg", alt: "Massey Ferguson 6480 + Herder MBK518LS maaiarm — foto 15" },
+    { src: "assets/occasions/massey-ferguson-6480-en-herder-mbk518ls-maaiarm/massey-ferguson-6480-herder-mbk518ls-16.jpg", alt: "Massey Ferguson 6480 + Herder MBK518LS maaiarm — foto 16" },
+    { src: "assets/occasions/massey-ferguson-6480-en-herder-mbk518ls-maaiarm/massey-ferguson-6480-herder-mbk518ls-17.jpg", alt: "Massey Ferguson 6480 + Herder MBK518LS maaiarm — foto 17" },
+    { src: "assets/occasions/massey-ferguson-6480-en-herder-mbk518ls-maaiarm/massey-ferguson-6480-herder-mbk518ls-18.jpg", alt: "Massey Ferguson 6480 + Herder MBK518LS maaiarm — foto 18" }
+  ],
+  "lely-splendimo": [
+    { src: "assets/occasions/lely-splendimo/lely-splendimo-1.jpg", alt: "Lely Splendimo" },
+    { src: "assets/occasions/lely-splendimo/lely-splendimo-2.jpg", alt: "Lely Splendimo — foto 2" },
+    { src: "assets/occasions/lely-splendimo/lely-splendimo-3.jpg", alt: "Lely Splendimo — foto 3" },
+    { src: "assets/occasions/lely-splendimo/lely-splendimo-4.jpg", alt: "Lely Splendimo — foto 4" }
+  ],
+  "omarv-ter-190-maai-laad-combinatie": [
+    { src: "assets/occasions/omarv-ter-190-maai-laad-combinatie/omarv-ter-190-maai-laad-combinatie-1.jpg", alt: "Omarv TER 190 maai-laad combinatie" },
+    { src: "assets/occasions/omarv-ter-190-maai-laad-combinatie/omarv-ter-190-maai-laad-combinatie-2.jpg", alt: "Omarv TER 190 maai-laad combinatie — foto 2" },
+    { src: "assets/occasions/omarv-ter-190-maai-laad-combinatie/omarv-ter-190-maai-laad-combinatie-3.jpg", alt: "Omarv TER 190 maai-laad combinatie — foto 3" },
+    { src: "assets/occasions/omarv-ter-190-maai-laad-combinatie/omarv-ter-190-maai-laad-combinatie-4.jpg", alt: "Omarv TER 190 maai-laad combinatie — foto 4" },
+    { src: "assets/occasions/omarv-ter-190-maai-laad-combinatie/omarv-ter-190-maai-laad-combinatie-5.jpg", alt: "Omarv TER 190 maai-laad combinatie — foto 5" },
+    { src: "assets/occasions/omarv-ter-190-maai-laad-combinatie/omarv-ter-190-maai-laad-combinatie-6.jpg", alt: "Omarv TER 190 maai-laad combinatie — foto 6" },
+    { src: "assets/occasions/omarv-ter-190-maai-laad-combinatie/omarv-ter-190-maai-laad-combinatie-7.jpg", alt: "Omarv TER 190 maai-laad combinatie — foto 7" },
+    { src: "assets/occasions/omarv-ter-190-maai-laad-combinatie/omarv-ter-190-maai-laad-combinatie-8.jpg", alt: "Omarv TER 190 maai-laad combinatie — foto 8" },
+    { src: "assets/occasions/omarv-ter-190-maai-laad-combinatie/omarv-ter-190-maai-laad-combinatie-9.jpg", alt: "Omarv TER 190 maai-laad combinatie — foto 9" },
+    { src: "assets/occasions/omarv-ter-190-maai-laad-combinatie/omarv-ter-190-maai-laad-combinatie-10.jpg", alt: "Omarv TER 190 maai-laad combinatie — foto 10" },
+    { src: "assets/occasions/omarv-ter-190-maai-laad-combinatie/omarv-ter-190-maai-laad-combinatie-11.jpg", alt: "Omarv TER 190 maai-laad combinatie — foto 11" },
+    { src: "assets/occasions/omarv-ter-190-maai-laad-combinatie/omarv-ter-190-maai-laad-combinatie-12.jpg", alt: "Omarv TER 190 maai-laad combinatie — foto 12" }
+  ],
+  "votex-r-max-240-klepelmaaier": [
+    { src: "assets/occasions/votex-r-max-240-klepelmaaier/votex-r-max-240-klepelmaaier-1.jpg", alt: "Votex R-Max 240 klepelmaaier" },
+    { src: "assets/occasions/votex-r-max-240-klepelmaaier/votex-r-max-240-klepelmaaier-2.jpg", alt: "Votex R-Max 240 klepelmaaier — foto 2" },
+    { src: "assets/occasions/votex-r-max-240-klepelmaaier/votex-r-max-240-klepelmaaier-3.jpg", alt: "Votex R-Max 240 klepelmaaier — foto 3" },
+    { src: "assets/occasions/votex-r-max-240-klepelmaaier/votex-r-max-240-klepelmaaier-4.jpg", alt: "Votex R-Max 240 klepelmaaier — foto 4" },
+    { src: "assets/occasions/votex-r-max-240-klepelmaaier/votex-r-max-240-klepelmaaier-5.jpg", alt: "Votex R-Max 240 klepelmaaier — foto 5" }
+  ],
+  "votex-vt550-bladzuigwagen": [
+    { src: "assets/occasions/votex-vt550-bladzuigwagen/votex-vt550-bladzuigwagen-1.jpg", alt: "Votex VT550 bladzuigwagen" },
+    { src: "assets/occasions/votex-vt550-bladzuigwagen/votex-vt550-bladzuigwagen-2.jpg", alt: "Votex VT550 bladzuigwagen — foto 2" },
+    { src: "assets/occasions/votex-vt550-bladzuigwagen/votex-vt550-bladzuigwagen-3.jpg", alt: "Votex VT550 bladzuigwagen — foto 3" }
+  ],
+  "omarv-bari-240f-klepelmaaier": [
+    { src: "assets/occasions/omarv-bari-240f-klepelmaaier/omarv-bari-240f-klepelmaaier-1.jpg", alt: "Omarv Bari 240F klepelmaaier" },
+    { src: "assets/occasions/omarv-bari-240f-klepelmaaier/omarv-bari-240f-klepelmaaier-2.jpg", alt: "Omarv Bari 240F klepelmaaier — foto 2" },
+    { src: "assets/occasions/omarv-bari-240f-klepelmaaier/omarv-bari-240f-klepelmaaier-3.jpg", alt: "Omarv Bari 240F klepelmaaier — foto 3" }
+  ],
+  "kuhn-fb3130-pers": [
+    { src: "assets/occasions/kuhn-fb3130-pers/kuhn-fb3130-pers-1.jpg", alt: "Kuhn FB3130 pers" },
+    { src: "assets/occasions/kuhn-fb3130-pers/kuhn-fb3130-pers-2.jpg", alt: "Kuhn FB3130 pers — foto 2" },
+    { src: "assets/occasions/kuhn-fb3130-pers/kuhn-fb3130-pers-3.jpg", alt: "Kuhn FB3130 pers — foto 3" },
+    { src: "assets/occasions/kuhn-fb3130-pers/kuhn-fb3130-pers-4.jpg", alt: "Kuhn FB3130 pers — foto 4" }
+  ],
+  "votex-hydraulische-bladblazer-b10h": [
+    { src: "assets/occasions/votex-hydraulische-bladblazer-b10h/votex-bladblazer-b10h-1.jpg", alt: "Votex Hydraulische bladblazer B10H" },
+    { src: "assets/occasions/votex-hydraulische-bladblazer-b10h/votex-bladblazer-b10h-2.jpg", alt: "Votex Hydraulische bladblazer B10H — foto 2" },
+    { src: "assets/occasions/votex-hydraulische-bladblazer-b10h/votex-bladblazer-b10h-3.jpg", alt: "Votex Hydraulische bladblazer B10H — foto 3" },
+    { src: "assets/occasions/votex-hydraulische-bladblazer-b10h/votex-bladblazer-b10h-4.jpg", alt: "Votex Hydraulische bladblazer B10H — foto 4" }
+  ],
+  "fermex-sct-410h-stobbenfrees": [
+    { src: "assets/occasions/fermex-sct-410h-stobbenfrees/fermex-sct-410h-stobbenfrees-1.jpg", alt: "Fermex SCT-410H stobbenfrees" },
+    { src: "assets/occasions/fermex-sct-410h-stobbenfrees/fermex-sct-410h-stobbenfrees-2.jpg", alt: "Fermex SCT-410H stobbenfrees — foto 2" },
+    { src: "assets/occasions/fermex-sct-410h-stobbenfrees/fermex-sct-410h-stobbenfrees-3.jpg", alt: "Fermex SCT-410H stobbenfrees — foto 3" },
+    { src: "assets/occasions/fermex-sct-410h-stobbenfrees/fermex-sct-410h-stobbenfrees-4.jpg", alt: "Fermex SCT-410H stobbenfrees — foto 4" },
+    { src: "assets/occasions/fermex-sct-410h-stobbenfrees/fermex-sct-410h-stobbenfrees-5.jpg", alt: "Fermex SCT-410H stobbenfrees — foto 5" },
+    { src: "assets/occasions/fermex-sct-410h-stobbenfrees/fermex-sct-410h-stobbenfrees-6.jpg", alt: "Fermex SCT-410H stobbenfrees — foto 6" },
+    { src: "assets/occasions/fermex-sct-410h-stobbenfrees/fermex-sct-410h-stobbenfrees-7.jpg", alt: "Fermex SCT-410H stobbenfrees — foto 7" },
+    { src: "assets/occasions/fermex-sct-410h-stobbenfrees/fermex-sct-410h-stobbenfrees-8.jpg", alt: "Fermex SCT-410H stobbenfrees — foto 8" }
+  ],
+  "votex-b20-pto-bladblazer-a": [
+    { src: "assets/occasions/votex-b20-pto-bladblazer-a/votex-b20-pto-bladblazer-a-1.jpg", alt: "Votex B20 PTO bladblazer (A)" },
+    { src: "assets/occasions/votex-b20-pto-bladblazer-a/votex-b20-pto-bladblazer-a-2.jpg", alt: "Votex B20 PTO bladblazer (A) — foto 2" },
+    { src: "assets/occasions/votex-b20-pto-bladblazer-a/votex-b20-pto-bladblazer-a-3.jpg", alt: "Votex B20 PTO bladblazer (A) — foto 3" },
+    { src: "assets/occasions/votex-b20-pto-bladblazer-a/votex-b20-pto-bladblazer-a-4.jpg", alt: "Votex B20 PTO bladblazer (A) — foto 4" },
+    { src: "assets/occasions/votex-b20-pto-bladblazer-a/votex-b20-pto-bladblazer-a-5.jpg", alt: "Votex B20 PTO bladblazer (A) — foto 5" }
+  ],
+  "votex-b20-pto-bladblazer-d": [
+    { src: "assets/occasions/votex-b20-pto-bladblazer-d/votex-b20-pto-bladblazer-d-1.jpg", alt: "Votex B20 PTO bladblazer (D)" },
+    { src: "assets/occasions/votex-b20-pto-bladblazer-d/votex-b20-pto-bladblazer-d-2.jpg", alt: "Votex B20 PTO bladblazer (D) — foto 2" },
+    { src: "assets/occasions/votex-b20-pto-bladblazer-d/votex-b20-pto-bladblazer-d-3.jpg", alt: "Votex B20 PTO bladblazer (D) — foto 3" },
+    { src: "assets/occasions/votex-b20-pto-bladblazer-d/votex-b20-pto-bladblazer-d-4.jpg", alt: "Votex B20 PTO bladblazer (D) — foto 4" },
+    { src: "assets/occasions/votex-b20-pto-bladblazer-d/votex-b20-pto-bladblazer-d-5.jpg", alt: "Votex B20 PTO bladblazer (D) — foto 5" }
+  ],
+  "votex-landmaster-310-klepelmaaier": [
+    { src: "assets/occasions/votex-landmaster-310-klepelmaaier/votex-landmaster-310-klepelmaaier-1.jpg", alt: "Votex Landmaster 310 klepelmaaier" },
+    { src: "assets/occasions/votex-landmaster-310-klepelmaaier/votex-landmaster-310-klepelmaaier-2.jpg", alt: "Votex Landmaster 310 klepelmaaier — foto 2" },
+    { src: "assets/occasions/votex-landmaster-310-klepelmaaier/votex-landmaster-310-klepelmaaier-3.jpg", alt: "Votex Landmaster 310 klepelmaaier — foto 3" },
+    { src: "assets/occasions/votex-landmaster-310-klepelmaaier/votex-landmaster-310-klepelmaaier-4.jpg", alt: "Votex Landmaster 310 klepelmaaier — foto 4" },
+    { src: "assets/occasions/votex-landmaster-310-klepelmaaier/votex-landmaster-310-klepelmaaier-5.jpg", alt: "Votex Landmaster 310 klepelmaaier — foto 5" }
+  ],
+  "reform-m9e-motormaaier": [
+    { src: "assets/occasions/reform-m9e-motormaaier/reform-m9e-motormaaier-1.jpg", alt: "Reform M9e motormaaier" },
+    { src: "assets/occasions/reform-m9e-motormaaier/reform-m9e-motormaaier-2.jpg", alt: "Reform M9e motormaaier — foto 2" },
+    { src: "assets/occasions/reform-m9e-motormaaier/reform-m9e-motormaaier-3.jpg", alt: "Reform M9e motormaaier — foto 3" },
+    { src: "assets/occasions/reform-m9e-motormaaier/reform-m9e-motormaaier-4.jpg", alt: "Reform M9e motormaaier — foto 4" },
+    { src: "assets/occasions/reform-m9e-motormaaier/reform-m9e-motormaaier-5.jpg", alt: "Reform M9e motormaaier — foto 5" },
+    { src: "assets/occasions/reform-m9e-motormaaier/reform-m9e-motormaaier-6.jpg", alt: "Reform M9e motormaaier — foto 6" },
+    { src: "assets/occasions/reform-m9e-motormaaier/reform-m9e-motormaaier-7.jpg", alt: "Reform M9e motormaaier — foto 7" },
+    { src: "assets/occasions/reform-m9e-motormaaier/reform-m9e-motormaaier-8.jpg", alt: "Reform M9e motormaaier — foto 8" },
+    { src: "assets/occasions/reform-m9e-motormaaier/reform-m9e-motormaaier-9.jpg", alt: "Reform M9e motormaaier — foto 9" },
+    { src: "assets/occasions/reform-m9e-motormaaier/reform-m9e-motormaaier-10.jpg", alt: "Reform M9e motormaaier — foto 10" },
+    { src: "assets/occasions/reform-m9e-motormaaier/reform-m9e-motormaaier-11.jpg", alt: "Reform M9e motormaaier — foto 11" },
+    { src: "assets/occasions/reform-m9e-motormaaier/reform-m9e-motormaaier-12.jpg", alt: "Reform M9e motormaaier — foto 12" },
+    { src: "assets/occasions/reform-m9e-motormaaier/reform-m9e-motormaaier-13.jpg", alt: "Reform M9e motormaaier — foto 13" }
+  ],
+  "votex-roadmaster-rm2102-ra-klepelmaaier": [
+    { src: "assets/occasions/votex-roadmaster-rm2102-ra-klepelmaaier/votex-roadmaster-rm2102-ra-klepelmaaier-1.jpg", alt: "Votex Roadmaster RM2102 RA klepelmaaier" },
+    { src: "assets/occasions/votex-roadmaster-rm2102-ra-klepelmaaier/votex-roadmaster-rm2102-ra-klepelmaaier-2.jpg", alt: "Votex Roadmaster RM2102 RA klepelmaaier — foto 2" },
+    { src: "assets/occasions/votex-roadmaster-rm2102-ra-klepelmaaier/votex-roadmaster-rm2102-ra-klepelmaaier-3.jpg", alt: "Votex Roadmaster RM2102 RA klepelmaaier — foto 3" },
+    { src: "assets/occasions/votex-roadmaster-rm2102-ra-klepelmaaier/votex-roadmaster-rm2102-ra-klepelmaaier-4.jpg", alt: "Votex Roadmaster RM2102 RA klepelmaaier — foto 4" },
+    { src: "assets/occasions/votex-roadmaster-rm2102-ra-klepelmaaier/votex-roadmaster-rm2102-ra-klepelmaaier-5.jpg", alt: "Votex Roadmaster RM2102 RA klepelmaaier — foto 5" },
+    { src: "assets/occasions/votex-roadmaster-rm2102-ra-klepelmaaier/votex-roadmaster-rm2102-ra-klepelmaaier-6.jpg", alt: "Votex Roadmaster RM2102 RA klepelmaaier — foto 6" },
+    { src: "assets/occasions/votex-roadmaster-rm2102-ra-klepelmaaier/votex-roadmaster-rm2102-ra-klepelmaaier-7.jpg", alt: "Votex Roadmaster RM2102 RA klepelmaaier — foto 7" },
+    { src: "assets/occasions/votex-roadmaster-rm2102-ra-klepelmaaier/votex-roadmaster-rm2102-ra-klepelmaaier-8.jpg", alt: "Votex Roadmaster RM2102 RA klepelmaaier — foto 8" }
+  ],
+  "miedema-opvangwagen": [
+    { src: "assets/occasions/miedema-opvangwagen/miedema-opvangwagen-1.jpg", alt: "Miedema Opvangwagen" },
+    { src: "assets/occasions/miedema-opvangwagen/miedema-opvangwagen-2.jpg", alt: "Miedema Opvangwagen — foto 2" },
+    { src: "assets/occasions/miedema-opvangwagen/miedema-opvangwagen-3.jpg", alt: "Miedema Opvangwagen — foto 3" },
+    { src: "assets/occasions/miedema-opvangwagen/miedema-opvangwagen-4.jpg", alt: "Miedema Opvangwagen — foto 4" },
+    { src: "assets/occasions/miedema-opvangwagen/miedema-opvangwagen-5.jpg", alt: "Miedema Opvangwagen — foto 5" },
+    { src: "assets/occasions/miedema-opvangwagen/miedema-opvangwagen-6.jpg", alt: "Miedema Opvangwagen — foto 6" },
+    { src: "assets/occasions/miedema-opvangwagen/miedema-opvangwagen-7.jpg", alt: "Miedema Opvangwagen — foto 7" },
+    { src: "assets/occasions/miedema-opvangwagen/miedema-opvangwagen-8.jpg", alt: "Miedema Opvangwagen — foto 8" },
+    { src: "assets/occasions/miedema-opvangwagen/miedema-opvangwagen-9.jpg", alt: "Miedema Opvangwagen — foto 9" },
+    { src: "assets/occasions/miedema-opvangwagen/miedema-opvangwagen-10.jpg", alt: "Miedema Opvangwagen — foto 10" },
+    { src: "assets/occasions/miedema-opvangwagen/miedema-opvangwagen-11.jpg", alt: "Miedema Opvangwagen — foto 11" }
+  ],
+  "berstol-opvangwagen": [
+    { src: "assets/occasions/berstol-opvangwagen/berstol-opvangwagen-1.jpg", alt: "Berstol Opvangwagen" },
+    { src: "assets/occasions/berstol-opvangwagen/berstol-opvangwagen-2.jpg", alt: "Berstol Opvangwagen — foto 2" },
+    { src: "assets/occasions/berstol-opvangwagen/berstol-opvangwagen-3.jpg", alt: "Berstol Opvangwagen — foto 3" },
+    { src: "assets/occasions/berstol-opvangwagen/berstol-opvangwagen-4.jpg", alt: "Berstol Opvangwagen — foto 4" },
+    { src: "assets/occasions/berstol-opvangwagen/berstol-opvangwagen-5.jpg", alt: "Berstol Opvangwagen — foto 5" },
+    { src: "assets/occasions/berstol-opvangwagen/berstol-opvangwagen-6.jpg", alt: "Berstol Opvangwagen — foto 6" },
+    { src: "assets/occasions/berstol-opvangwagen/berstol-opvangwagen-7.jpg", alt: "Berstol Opvangwagen — foto 7" },
+    { src: "assets/occasions/berstol-opvangwagen/berstol-opvangwagen-8.jpg", alt: "Berstol Opvangwagen — foto 8" },
+    { src: "assets/occasions/berstol-opvangwagen/berstol-opvangwagen-9.jpg", alt: "Berstol Opvangwagen — foto 9" }
+  ],
+  "herder-hydrauliek-unit": [
+    { src: "assets/occasions/herder-hydrauliek-unit/herder-hydrauliek-unit-1.jpg", alt: "Herder Hydrauliek unit" },
+    { src: "assets/occasions/herder-hydrauliek-unit/herder-hydrauliek-unit-2.jpg", alt: "Herder Hydrauliek unit — foto 2" },
+    { src: "assets/occasions/herder-hydrauliek-unit/herder-hydrauliek-unit-3.jpg", alt: "Herder Hydrauliek unit — foto 3" },
+    { src: "assets/occasions/herder-hydrauliek-unit/herder-hydrauliek-unit-4.jpg", alt: "Herder Hydrauliek unit — foto 4" },
+    { src: "assets/occasions/herder-hydrauliek-unit/herder-hydrauliek-unit-5.jpg", alt: "Herder Hydrauliek unit — foto 5" },
+    { src: "assets/occasions/herder-hydrauliek-unit/herder-hydrauliek-unit-6.jpg", alt: "Herder Hydrauliek unit — foto 6" }
+  ],
+  "herder-giekenstel": [
+    { src: "assets/occasions/herder-giekenstel/herder-giekenstel-1.jpg", alt: "Herder Giekenstel" },
+    { src: "assets/occasions/herder-giekenstel/herder-giekenstel-2.jpg", alt: "Herder Giekenstel — foto 2" },
+    { src: "assets/occasions/herder-giekenstel/herder-giekenstel-3.jpg", alt: "Herder Giekenstel — foto 3" },
+    { src: "assets/occasions/herder-giekenstel/herder-giekenstel-4.jpg", alt: "Herder Giekenstel — foto 4" },
+    { src: "assets/occasions/herder-giekenstel/herder-giekenstel-5.jpg", alt: "Herder Giekenstel — foto 5" },
+    { src: "assets/occasions/herder-giekenstel/herder-giekenstel-6.jpg", alt: "Herder Giekenstel — foto 6" },
+    { src: "assets/occasions/herder-giekenstel/herder-giekenstel-7.jpg", alt: "Herder Giekenstel — foto 7" },
+    { src: "assets/occasions/herder-giekenstel/herder-giekenstel-8.jpg", alt: "Herder Giekenstel — foto 8" },
+    { src: "assets/occasions/herder-giekenstel/herder-giekenstel-9.jpg", alt: "Herder Giekenstel — foto 9" },
+    { src: "assets/occasions/herder-giekenstel/herder-giekenstel-10.jpg", alt: "Herder Giekenstel — foto 10" }
+  ],
+  "kersten-weedo-2-onkruidborstel": [
+    { src: "assets/occasions/kersten-weedo-2-onkruidborstel/kersten-weedo-2-onkruidborstel-1.jpg", alt: "Kersten Weedo 2 onkruidborstel" },
+    { src: "assets/occasions/kersten-weedo-2-onkruidborstel/kersten-weedo-2-onkruidborstel-2.jpg", alt: "Kersten Weedo 2 onkruidborstel — foto 2" },
+    { src: "assets/occasions/kersten-weedo-2-onkruidborstel/kersten-weedo-2-onkruidborstel-3.jpg", alt: "Kersten Weedo 2 onkruidborstel — foto 3" },
+    { src: "assets/occasions/kersten-weedo-2-onkruidborstel/kersten-weedo-2-onkruidborstel-4.jpg", alt: "Kersten Weedo 2 onkruidborstel — foto 4" },
+    { src: "assets/occasions/kersten-weedo-2-onkruidborstel/kersten-weedo-2-onkruidborstel-5.jpg", alt: "Kersten Weedo 2 onkruidborstel — foto 5" },
+    { src: "assets/occasions/kersten-weedo-2-onkruidborstel/kersten-weedo-2-onkruidborstel-6.jpg", alt: "Kersten Weedo 2 onkruidborstel — foto 6" },
+    { src: "assets/occasions/kersten-weedo-2-onkruidborstel/kersten-weedo-2-onkruidborstel-7.jpg", alt: "Kersten Weedo 2 onkruidborstel — foto 7" }
+  ],
   "as-motor-1040-yak-4wd-xl": [
     { src: "assets/machines/as-motor-1040-yak-4wd-xl/as-motor-1040-yak-4wd-xl-1.jpg", alt: "AS-Motor 1040 YAK 4WD XL" }
   ],
@@ -30,8 +512,14 @@ window.MACHINE_IMAGES = {
   "as-motor-940-sherpa-4wd-xl-loncin": [
     { src: "assets/machines/as-motor-940-sherpa-4wd-xl-loncin/as-motor-940-sherpa-4wd-xl-loncin-1.jpg", alt: "AS-Motor 940 Sherpa 4WD XL Loncin" }
   ],
+  // Was hier eerder per ongeluk gekoppeld aan een foto van de AS-Motor 940
+  // Sherpa 4WD (zelfde bestand als hieronder bij as-motor-940-sherpa-4wd,
+  // gecontroleerd via checksum) — dat is nu rechtgezet met de daadwerkelijke
+  // YAK-foto's.
   "as-motor-yak-1040-4wd": [
-    { src: "assets/machines/as-motor-yak-1040-4wd/as-motor-yak-1040-4wd-1.jpg", alt: "AS-Motor YAK 1040 4WD" }
+    { src: "assets/machines/as-motor-yak-1040-4wd/as-motor-yak-1040-4wd-product.jpg", alt: "AS-Motor YAK 1040 4WD" },
+    { src: "assets/machines/as-motor-yak-1040-4wd/as-motor-yak-1040-4wd-1.webp", alt: "AS-Motor YAK 1040 4WD — in actie" },
+    { src: "assets/machines/as-motor-yak-1040-4wd/as-motor-yak-1040-4wd-2.jpg", alt: "AS-Motor YAK 1040 4WD — in actie, foto 2" }
   ],
   "bb-umwelttechnik-achtervlinder-messenbalk": [
     { src: "assets/machines/bb-umwelttechnik-achtervlinder-messenbalk/bb-umwelttechnik-achtervlinder-messenbalk-1.jpg", alt: "BB-Umwelttechnik Achtervlinder messenbalk" },
@@ -1211,5 +1699,20 @@ window.MACHINE_IMAGES = {
     { src: "assets/machines/votex-roadmaster-07-klepelmaaier/votex-roadmaster-07-klepelmaaier-2.webp", alt: "Votex Roadmaster 07 klepelmaaier — foto 2" },
     { src: "assets/machines/votex-roadmaster-07-klepelmaaier/votex-roadmaster-07-klepelmaaier-3.webp", alt: "Votex Roadmaster 07 klepelmaaier — foto 3" },
     { src: "assets/machines/votex-roadmaster-07-klepelmaaier/votex-roadmaster-07-klepelmaaier-4.webp", alt: "Votex Roadmaster 07 klepelmaaier — foto 4" }
+  ],
+
+  // --- Verhuurmachines (aangeleverd 2026-09-16) ---
+  "as-motor-940-sherpa-4wd": [
+    { src: "assets/machines/as-motor-940-sherpa-4wd/as-motor-940-sherpa-4wd-1.jpg", alt: "AS-Motor 940 Sherpa 4WD" }
+  ],
+  "as-motor-1000-ovis-rc": [
+    { src: "assets/machines/as-motor-1000-ovis-rc/as-motor-1000-ovis-rc-1.jpg", alt: "AS-Motor 1000 OVIS RC" }
+  ],
+  "herder-stmk110-bosbouwmaaier": [
+    { src: "assets/machines/herder-stmk110-bosbouwmaaier/herder-stmk110-bosbouwmaaier-1.jpg", alt: "Herder STMK110 bosbouwmaaier" }
+  ],
+  "herder-fermex-sct-410h-stobbenfrees": [
+    { src: "assets/machines/herder-fermex-sct-410h-stobbenfrees/herder-fermex-sct-410h-stobbenfrees-2.jpg", alt: "Fermex SCW-410H stobbenfrees" },
+    { src: "assets/machines/herder-fermex-sct-410h-stobbenfrees/herder-fermex-sct-410h-stobbenfrees-1.jpg", alt: "Fermex SCW-410H stobbenfrees — detail freeskop" }
   ]
 };

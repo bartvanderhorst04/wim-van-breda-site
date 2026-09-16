@@ -101,6 +101,15 @@ class SpaFallbackHandler(http.server.SimpleHTTPRequestHandler):
         if safe_path is None:
             self.send_error(403, "Ongeldig of niet-toegestaan pad")
             return
+        # Browsers vragen deze paden automatisch op, ongeacht wat de pagina
+        # zelf aangeeft (bijv. ondanks een <link rel="icon"> tag). Het zijn
+        # nooit geldige SPA-routes, dus een echte 404 hier voorkomt dat elke
+        # pageload de volledige ~1MB HTML-pagina als "favicon" downloadt.
+        if not os.path.isfile(safe_path) and posixpath.basename(
+            self.path.split("?", 1)[0].split("#", 1)[0]
+        ) in ("favicon.ico", "apple-touch-icon.png", "apple-touch-icon-precomposed.png"):
+            self.send_error(404, "Niet gevonden")
+            return
         if os.path.isfile(safe_path):
             # Bestaat als echt bestand: normaal laten serveren (juiste
             # content-type, Content-Length, 304-afhandeling, enz.).

@@ -1,0 +1,481 @@
+<title>Migratieblauwdruk</title>
+<style>
+  :root{
+    --bg:#F4F5F7;
+    --surface:#FFFFFF;
+    --surface-2:#EBEDF0;
+    --ink:#1B2430;
+    --ink-muted:#5B6572;
+    --ink-faint:#8A93A0;
+    --line:#DCE0E5;
+    --line-soft:#E9ECEF;
+    --primary:#35506B;
+    --primary-ink:#FFFFFF;
+    --primary-soft:#E7ECF1;
+    --primary-soft-ink:#2C4459;
+    --amber:#A9601B;
+    --amber-soft:#F5E6D3;
+    --amber-ink:#7A4712;
+    --sage:#3F6E4E;
+    --sage-soft:#E1EDE4;
+    --sage-ink:#2E5439;
+    --mono-tint:#EEF1F4;
+    --shadow:0 1px 2px rgba(27,36,48,.06), 0 8px 24px -12px rgba(27,36,48,.12);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#12161C;
+      --surface:#1A2028;
+      --surface-2:#212832;
+      --ink:#E8EAEC;
+      --ink-muted:#9AA4B0;
+      --ink-faint:#6D7682;
+      --line:#2B323C;
+      --line-soft:#242B34;
+      --primary:#87ABC9;
+      --primary-ink:#0F1720;
+      --primary-soft:#20303F;
+      --primary-soft-ink:#A9C6DE;
+      --amber:#DDA268;
+      --amber-soft:#33261A;
+      --amber-ink:#EFC69A;
+      --sage:#8FC29E;
+      --sage-soft:#1D2C22;
+      --sage-ink:#AEDBB9;
+      --mono-tint:#1E252E;
+      --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px -12px rgba(0,0,0,.5);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#12161C;
+    --surface:#1A2028;
+    --surface-2:#212832;
+    --ink:#E8EAEC;
+    --ink-muted:#9AA4B0;
+    --ink-faint:#6D7682;
+    --line:#2B323C;
+    --line-soft:#242B34;
+    --primary:#87ABC9;
+    --primary-ink:#0F1720;
+    --primary-soft:#20303F;
+    --primary-soft-ink:#A9C6DE;
+    --amber:#DDA268;
+    --amber-soft:#33261A;
+    --amber-ink:#EFC69A;
+    --sage:#8FC29E;
+    --sage-soft:#1D2C22;
+    --sage-ink:#AEDBB9;
+    --mono-tint:#1E252E;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px -12px rgba(0,0,0,.5);
+  }
+
+  *{box-sizing:border-box}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'IBM Plex Serif',Georgia,'Times New Roman',serif;
+    line-height:1.6;
+    padding:0 20px;
+  }
+  h1,h2,h3,h4,.disp{font-family:'IBM Plex Sans','Helvetica Neue',Arial,sans-serif}
+  code,.mono,.field-key,.tag,.count,table.matrix td.num,table.matrix th{font-family:'IBM Plex Mono','SF Mono',Menlo,monospace}
+  h1,h2,h3{text-wrap:balance;font-weight:600;margin:0}
+  a{color:var(--primary)}
+  ::selection{background:var(--primary-soft);color:var(--primary-soft-ink)}
+
+  .shell{max-width:1180px;margin:0 auto;padding-block:44px 96px;display:grid;grid-template-columns:232px minmax(0,1fr);gap:56px;align-items:start}
+  @media (max-width:900px){.shell{grid-template-columns:1fr}}
+
+  /* ---------- side nav ---------- */
+  .rail{position:sticky;top:24px;display:flex;flex-direction:column;gap:2px}
+  @media (max-width:900px){
+    .rail{position:static;flex-direction:row;flex-wrap:nowrap;overflow-x:auto;gap:6px;padding-bottom:10px;margin-bottom:8px;border-bottom:1px solid var(--line)}
+  }
+  .rail-label{font:600 11px/1 'IBM Plex Mono',monospace;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-faint);margin:0 0 10px 10px}
+  @media (max-width:900px){.rail-label{display:none}}
+  .rail a{
+    font:500 13.5px/1.3 'IBM Plex Sans',sans-serif;color:var(--ink-muted);text-decoration:none;
+    padding:8px 10px;border-radius:6px;border-left:2px solid transparent;white-space:nowrap;
+  }
+  .rail a:hover{background:var(--surface-2);color:var(--ink)}
+  @media (max-width:900px){.rail a{border-left:0;border-bottom:2px solid transparent;background:var(--surface-2);border-radius:6px}}
+
+  main{min-width:0}
+
+  .kicker{font:600 11.5px/1 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--primary)}
+  h1.title{font-size:clamp(30px,4vw,42px);letter-spacing:-.02em;margin-top:10px}
+  .lede{font-size:17px;color:var(--ink-muted);max-width:66ch;margin-top:16px}
+  .lede b{color:var(--ink);font-weight:600}
+
+  .rules{margin-top:28px;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+  @media (max-width:700px){.rules{grid-template-columns:repeat(2,1fr)}}
+  .rule{background:var(--surface);padding:14px 16px}
+  .rule .k{font:600 10.5px/1 'IBM Plex Mono',monospace;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-faint)}
+  .rule .v{font:500 14px/1.35 'IBM Plex Sans',sans-serif;color:var(--ink);margin-top:6px}
+
+  /* ---------- summary matrix ---------- */
+  .matrix-wrap{margin-top:56px;overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--surface);box-shadow:var(--shadow)}
+  table.matrix{border-collapse:collapse;width:100%;min-width:780px;font-family:'IBM Plex Sans',sans-serif;font-size:13.5px}
+  table.matrix th{
+    text-align:left;font:600 10.5px/1 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--ink-faint);background:var(--surface-2);padding:11px 14px;border-bottom:1px solid var(--line);white-space:nowrap;position:sticky;top:0;
+  }
+  table.matrix td{padding:12px 14px;border-bottom:1px solid var(--line-soft);vertical-align:top}
+  table.matrix tr:last-child td{border-bottom:0}
+  table.matrix td.item{font:600 13.5px/1.3 'IBM Plex Sans',sans-serif;color:var(--ink);white-space:nowrap}
+  table.matrix td.num{color:var(--ink-muted);text-align:right;font-variant-numeric:tabular-nums}
+
+  .pill{display:inline-flex;align-items:center;gap:5px;font:600 11px/1 'IBM Plex Mono',monospace;letter-spacing:.03em;padding:4px 9px;border-radius:99px;white-space:nowrap}
+  .pill.low{background:var(--sage-soft);color:var(--sage-ink)}
+  .pill.mid{background:var(--amber-soft);color:var(--amber-ink)}
+  .pill.new{background:var(--primary-soft);color:var(--primary-soft-ink)}
+  .pill::before{content:'';width:6px;height:6px;border-radius:50%;background:currentColor}
+
+  /* ---------- content-type sheets ---------- */
+  section.sheet{margin-top:64px;scroll-margin-top:24px}
+  .sheet-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;border-bottom:2px solid var(--ink);padding-bottom:14px}
+  .sheet-head h2{font-size:24px;letter-spacing:-.01em}
+  .sheet-head .idx{font:500 13px/1 'IBM Plex Mono',monospace;color:var(--ink-faint);margin-right:10px}
+  .sheet-sub{color:var(--ink-muted);font-size:15px;margin-top:14px;max-width:70ch}
+
+  .grid6{margin-top:22px;display:grid;grid-template-columns:200px minmax(0,1fr);border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--surface);box-shadow:var(--shadow)}
+  @media (max-width:640px){.grid6{grid-template-columns:1fr}}
+  .row{display:contents}
+  .row .field-key{
+    padding:16px 16px;background:var(--surface-2);border-top:1px solid var(--line);
+    font:600 11px/1.3 'IBM Plex Mono',monospace;letter-spacing:.04em;color:var(--ink-muted);text-transform:uppercase;
+  }
+  .row:first-child .field-key{border-top:0}
+  @media (max-width:640px){.row:first-child .field-key{border-top:1px solid var(--line)}}
+  .row .field-val{padding:16px 18px;border-top:1px solid var(--line);font-size:14.5px;color:var(--ink)}
+  .row:first-child .field-val{border-top:0}
+  .field-val ul{margin:0;padding-left:18px}
+  .field-val li{margin:3px 0}
+  .field-val code, .tag{
+    background:var(--mono-tint);border:1px solid var(--line);border-radius:5px;padding:1.5px 6px;font:500 12.5px/1.5 'IBM Plex Mono',monospace;color:var(--ink);
+  }
+  .field-val .count{color:var(--ink-faint);font-size:12.5px}
+
+  /* ---------- roadmap ---------- */
+  #plan{margin-top:80px}
+  .phase{display:grid;grid-template-columns:56px minmax(0,1fr);gap:20px;position:relative}
+  .phase + .phase{margin-top:2px}
+  .phase-num{
+    font:700 16px/1 'IBM Plex Mono',monospace;color:var(--primary-ink);background:var(--primary);
+    width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    position:relative;z-index:1;
+  }
+  .phase-num.pilot{background:var(--amber);color:#231303}
+  .phase-line{position:absolute;left:17px;top:36px;bottom:-2px;width:2px;background:var(--line)}
+  .phase:last-child .phase-line{display:none}
+  .phase-body{padding-bottom:34px;border-bottom:1px solid var(--line-soft)}
+  .phase:last-child .phase-body{border-bottom:0}
+  .phase-title{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .phase-title h3{font-size:18px}
+  .phase-body p{margin:10px 0 0;color:var(--ink-muted);font-size:14.5px;max-width:72ch}
+  .phase-body .why{margin-top:10px;font-size:14px;color:var(--ink-muted);background:var(--surface-2);border-left:3px solid var(--primary);padding:10px 14px;border-radius:0 6px 6px 0}
+  .phase-body .why b{color:var(--ink)}
+  .steps{margin:12px 0 0;padding-left:20px;font-size:14.5px}
+  .steps li{margin:5px 0}
+  .steps code{background:var(--mono-tint);border:1px solid var(--line);border-radius:5px;padding:1px 5px;font:500 12.5px 'IBM Plex Mono',monospace}
+
+  footer.doc{margin-top:80px;padding-top:22px;border-top:1px solid var(--line);color:var(--ink-faint);font-size:13px;font-family:'IBM Plex Sans',sans-serif}
+</style>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+
+<div class="shell">
+  <nav class="rail" aria-label="Inhoudsopgave">
+    <div class="rail-label">Contenttypen</div>
+    <a href="#machines">Machines</a>
+    <a href="#occasions">Occasions</a>
+    <a href="#merken">Merken</a>
+    <a href="#machinetypes">Machinetypes</a>
+    <a href="#geleverd">Geleverde machines</a>
+    <a href="#verhuur">Verhuurmachines</a>
+    <a href="#nieuws">Actuele items / blogs</a>
+    <a href="#vacatures">Vacatures</a>
+    <a href="#magazines">Magazines</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contact">Contactgegevens</a>
+    <a href="#plan" style="margin-top:10px;border-top:1px solid var(--line);padding-top:14px">Migratieplan →</a>
+  </nav>
+
+  <main>
+    <div class="kicker">WordPress als databron — analyse vóór wijziging</div>
+    <h1 class="title">Migratieblauwdruk</h1>
+    <p class="lede">Inventarisatie van alle content op <b>wimvanbreda.nl</b> zoals die nu, per contenttype, hardcoded in <code>Wim van Breda.dc.html</code> staat — met wat er nodig is om WordPress uitsluitend als <b>databron</b> te laten dienen, terwijl bestaand ontwerp, layout en componenten intact blijven. De frontend blijft verantwoordelijk voor de presentatie; niets is in dit document al gewijzigd.</p>
+
+    <div class="rules">
+      <div class="rule"><div class="k">Scope</div><div class="v">Alleen lezen — geen code aangepast</div></div>
+      <div class="rule"><div class="k">Ontwerp</div><div class="v">Bestaande componenten blijven staan</div></div>
+      <div class="rule"><div class="k">WordPress</div><div class="v">Uitsluitend content, geen presentatie</div></div>
+      <div class="rule"><div class="k">Aanpak</div><div class="v">Eén contenttype tegelijk, startend met occasions</div></div>
+    </div>
+
+    <div class="matrix-wrap">
+      <table class="matrix">
+        <thead><tr>
+          <th>Contenttype</th><th>Items</th><th>Bron nu</th><th>WP-vorm</th><th>Frontend-impact</th>
+        </tr></thead>
+        <tbody>
+          <tr><td class="item">Machines</td><td class="num">266</td><td>Component.MACHINES</td><td>CPT <code>machine</code></td><td><span class="pill low">laag</span></td></tr>
+          <tr><td class="item">Occasions</td><td class="num">85</td><td>Component.OCCASIONS</td><td>CPT <code>occasion</code></td><td><span class="pill low">laag</span></td></tr>
+          <tr><td class="item">Merken</td><td class="num">20</td><td>Component.BRANDS(+_EXTRA)</td><td>taxonomy <code>merk</code></td><td><span class="pill low">laag</span></td></tr>
+          <tr><td class="item">Machinetypes</td><td class="num">–</td><td>afgeleid (getter)</td><td>taxonomy <code>machinetype</code></td><td><span class="pill low">minimaal</span></td></tr>
+          <tr><td class="item">Geleverde machines</td><td class="num">139</td><td>Component.DELIVERIES</td><td>CPT <code>levering</code></td><td><span class="pill low">laag</span></td></tr>
+          <tr><td class="item">Verhuurmachines</td><td class="num">3 + n</td><td>Component.RENTAL + machine-vlag</td><td>taxonomy <code>verhuurcategorie</code></td><td><span class="pill mid">laag–gemiddeld</span></td></tr>
+          <tr><td class="item">Actuele items / blogs</td><td class="num">33</td><td>Component.NEWS</td><td>native <code>post</code></td><td><span class="pill low">laag</span></td></tr>
+          <tr><td class="item">Vacatures</td><td class="num">4</td><td>Component.VACANCIES</td><td>CPT <code>vacature</code></td><td><span class="pill low">laag</span></td></tr>
+          <tr><td class="item">Magazines</td><td class="num">6</td><td>Component.MAGAZINES</td><td>CPT <code>magazine</code></td><td><span class="pill low">minimaal</span></td></tr>
+          <tr><td class="item">FAQ</td><td class="num">0</td><td><em>bestaat niet</em></td><td>CPT <code>faq</code></td><td><span class="pill new">n.v.t. — nieuw</span></td></tr>
+          <tr><td class="item">Contactgegevens</td><td class="num">4× / 9× / 5×</td><td>verspreide literals + arrays</td><td>ACF Options-pagina</td><td><span class="pill mid">gemiddeld</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ===================== MACHINES ===================== -->
+    <section class="sheet" id="machines">
+      <div class="sheet-head"><h2><span class="idx">01</span>Machines</h2></div>
+      <p class="sheet-sub">266 actieve records. De grootste dataset, maar ook de meest volwassen: het is de tweede keer dat deze data een WP-vorm krijgt.</p>
+      <div class="grid6">
+        <div class="row"><div class="field-key">1 · Bron nu</div><div class="field-val"><code>Component.MACHINES</code> — hardcoded array in <code>Wim van Breda.dc.html</code>. Volgens de bestaande brontekst-comment oorspronkelijk al eens geïmporteerd "uit de WordPress-export" (<code>Wim-van-Breda-machines-Claude-source.json</code>) en sindsdien statisch bevroren. Foto's staan apart in <code>machine-images.js</code> (~168 KB), gekoppeld op <code>slug</code>/<code>id</code> via <code>photosFor()</code>.</div></div>
+        <div class="row"><div class="field-key">2 · Hardcoded</div><div class="field-val">Alle veldwaarden: naam, merk, type, <code>kenmerken[]</code>, <code>specs[]</code> (k/v-paren), <code>tekst</code>, <code>toepassingen[]</code>, <code>pubStatus</code>, <code>rentalOnly</code>-vlag, én alle foto-bestandspaden.</div></div>
+        <div class="row"><div class="field-key">3 · Te behouden</div><div class="field-val"><ul><li>Overzichtpagina: filter-sidebar (merk/type) + kaartgrid + paginering</li><li>Detailpagina: hero, galerij, specificatietabel, lopende tekst, toepassingen, "Gerelateerde machines"</li><li>Gedeeld kaartcomponent <code>.wvb-feat-card</code></li></ul></div></div>
+        <div class="row"><div class="field-key">4 · WP-vorm</div><div class="field-val">CPT <code>machine</code>. ACF: <code>kenmerken</code> (repeater), <code>specs</code> (repeater k/v), <code>tekst</code> (WYSIWYG), <code>toepassingen</code> (repeater of taxonomy), <code>rentalOnly</code> (true/false). Taxonomieën: <code>merk</code>, <code>machinetype</code> (de bestaande code noemt dit zelf al <em>"MainMachineType"</em>). Status = native <code>post_status</code>. Galerij = native WP-gallery/ACF-gallery-veld i.p.v. <code>machine-images.js</code>.</div></div>
+        <div class="row"><div class="field-key">5 · API</div><div class="field-val"><code>GET /wp-json/wp/v2/machine?per_page=100&_embed</code> — ACF-velden meesturen via <code>register_rest_field</code> of ACF's ingebouwde REST-support. <code>_embed</code> haalt featured image + taxonomy-termen in dezelfde call op.</div></div>
+        <div class="row"><div class="field-key">6 · Frontend-impact</div><div class="field-val">Laag: slechts <span class="count">3 rechtstreekse verwijzingen</span> naar <code>Component.MACHINES</code> in de hele file, alle drie via de centrale getter <code>published()</code>. Er hoeft dus maar één functie te worden omgebouwd naar async data — niet tientallen losse plekken.</div></div>
+      </div>
+    </section>
+
+    <!-- ===================== OCCASIONS ===================== -->
+    <section class="sheet" id="occasions">
+      <div class="sheet-head"><h2><span class="idx">02</span>Occasions</h2></div>
+      <p class="sheet-sub">85 records, structureel bijna identiek aan machines — vandaar de aanbeveling om hier te <em>beginnen</em>: laag risico, gedeelde templates, en een dataset groot genoeg om de aanpak écht te bewijzen.</p>
+      <div class="grid6">
+        <div class="row"><div class="field-key">1 · Bron nu</div><div class="field-val"><code>Component.OCCASIONS</code> — hardcoded array, zelfde structuur als machines plus occasion-specifieke velden. Foto's via hetzelfde <code>machine-images.js</code>-mechanisme.</div></div>
+        <div class="row"><div class="field-key">2 · Hardcoded</div><div class="field-val">Alle veldwaarden, inclusief occasion-specifiek: <code>occStatus</code>, <code>bouwjaar</code>, <code>uren</code>/<code>urenNum</code>, <code>toegevoegd</code>-datum.</div></div>
+        <div class="row"><div class="field-key">3 · Te behouden</div><div class="field-val">Deelt <b>letterlijk dezelfde</b> overzicht-, detail- en kaartcomponenten als machines via de bestaande <code>isOccasion</code>-vlag in <code>deco()</code> — geen enkel nieuw component nodig.</div></div>
+        <div class="row"><div class="field-key">4 · WP-vorm</div><div class="field-val">Eigen CPT <code>occasion</code> (apart van <code>machine</code> — andere levenscyclus/voorraadstatus, en de bestaande SEO-documentatie behandelt beide al als aparte routetypen). Extra ACF: <code>bouwjaar</code>, <code>uren</code>, <code>toegevoegd</code> (datumveld), <code>occStatus</code> (select: beschikbaar/gereserveerd/verkocht). Zelfde taxonomieën <code>merk</code>/<code>machinetype</code> als machines.</div></div>
+        <div class="row"><div class="field-key">5 · API</div><div class="field-val"><code>GET /wp-json/wp/v2/occasion?per_page=100&_embed</code> — identieke aanpak als machines.</div></div>
+        <div class="row"><div class="field-key">6 · Frontend-impact</div><div class="field-val">Laag: <span class="count">4 rechtstreekse verwijzingen</span>, via <code>publishedOcc()</code>. Detail-/kaartlogica hoeft niet te wijzigen, alleen de databron áchter <code>publishedOcc()</code>.</div></div>
+      </div>
+    </section>
+
+    <!-- ===================== MERKEN ===================== -->
+    <section class="sheet" id="merken">
+      <div class="sheet-head"><h2><span class="idx">03</span>Merken</h2></div>
+      <div class="grid6">
+        <div class="row"><div class="field-key">1 · Bron nu</div><div class="field-val"><code>Component.BRANDS</code> (4) + <code>BRANDS_EXTRA</code> (16) = 20 merken, plus losse maps <code>BRAND_LOGOS</code> / <code>BRAND_DETAIL_MEDIA</code> (logo/hero/seo-afbeelding per merk-id) en <code>TOP_BRANDS</code> (6 uitgelichte merken op de homepage).</div></div>
+        <div class="row"><div class="field-key">2 · Hardcoded</div><div class="field-val">Merknaam, land, intro, lopende tekst, en alle logo-/hero-/seo-afbeeldingspaden.</div></div>
+        <div class="row"><div class="field-key">3 · Te behouden</div><div class="field-val">Merken-overzicht (zoekveld + kaartgrid — machinetype-filters zijn hier net verwijderd), merk-detailpagina (hero, logo, intro, tekst, machines van dit merk).</div></div>
+        <div class="row"><div class="field-key">4 · WP-vorm</div><div class="field-val">Taxonomie <code>merk</code>, gekoppeld aan de CPT's <code>machine</code>/<code>occasion</code> — géén los CPT, want een merk is in essentie een classificatie van machines. Term-velden (ACF for Taxonomies) voor <code>intro</code>, <code>tekst</code>, <code>land</code>, plus term-afbeeldingen (logo/hero/seo).</div></div>
+        <div class="row"><div class="field-key">5 · API</div><div class="field-val"><code>GET /wp-json/wp/v2/merk</code> (taxonomy-terms endpoint) voor het overzicht; <code>GET /wp-json/wp/v2/machine?merk=&lt;id&gt;</code> voor "machines van dit merk" op de detailpagina.</div></div>
+        <div class="row"><div class="field-key">6 · Frontend-impact</div><div class="field-val">Laag: <span class="count">10 verwijzingen</span>, geconcentreerd in de merk-gerelateerde secties van <code>renderVals()</code>.</div></div>
+      </div>
+    </section>
+
+    <!-- ===================== MACHINETYPES ===================== -->
+    <section class="sheet" id="machinetypes">
+      <div class="sheet-head"><h2><span class="idx">04</span>Machinetypes</h2></div>
+      <div class="grid6">
+        <div class="row"><div class="field-key">1 · Bron nu</div><div class="field-val">Géén hardcoded lijst. <code>Component.TYPES</code>/<code>MAINTYPES</code> zijn dynamisch afgeleid: <code>Array.from(new Set(published().map(m=>m.type)))</code>.</div></div>
+        <div class="row"><div class="field-key">2 · Hardcoded</div><div class="field-val">Niets — dit onderdeel is al toekomstbestendig geschreven. De bestaande code bevat zelfs al de comment <code>// Hoofdtypes voor de machinezoeker (CMS: MainMachineType)</code>.</div></div>
+        <div class="row"><div class="field-key">3 · Te behouden</div><div class="field-val">De volledige filter-sidebar (checkbox-facetten) op de machines-/occasions-overzichtpagina's. Machinetype heeft geen eigen pagina — het is uitsluitend een filterwaarde.</div></div>
+        <div class="row"><div class="field-key">4 · WP-vorm</div><div class="field-val">Taxonomie <code>machinetype</code>, gekoppeld aan <code>machine</code>/<code>occasion</code> — de naam die de bestaande code al zelf voorstelt.</div></div>
+        <div class="row"><div class="field-key">5 · API</div><div class="field-val">Komt automatisch mee via <code>_embed</code> op het machine/occasion-endpoint; voor de losse facetlijst met aantallen desgewenst <code>GET /wp-json/wp/v2/machinetype</code>.</div></div>
+        <div class="row"><div class="field-key">6 · Frontend-impact</div><div class="field-val">Minimaal: alleen de <code>TYPES</code>-getter hoeft van bron te wisselen. De rest van de filterlogica blijft ongewijzigd.</div></div>
+      </div>
+    </section>
+
+    <!-- ===================== GELEVERD ===================== -->
+    <section class="sheet" id="geleverd">
+      <div class="sheet-head"><h2><span class="idx">05</span>Geleverde machines</h2></div>
+      <div class="grid6">
+        <div class="row"><div class="field-key">1 · Bron nu</div><div class="field-val"><code>Component.DELIVERIES</code> — 139 records.</div></div>
+        <div class="row"><div class="field-key">2 · Hardcoded</div><div class="field-val">Alles — máár opvallend: <code>klant</code>, <code>locatie</code>, <code>deliveredAt</code>, <code>img</code> en <code>tekst</code> staan bij vrijwel elk record nog op <code>null</code>. Deze lijst wacht dus al op echte content, migratie hoeft niet te wachten op "eerst alles invullen".</div></div>
+        <div class="row"><div class="field-key">3 · Te behouden</div><div class="field-val">"Geleverd"-overzicht met jaar/maand-archiefnavigatie, nu gebaseerd op de hardcoded <code>ARCHIVE_YEARS</code>/<code>MONTHS</code>.</div></div>
+        <div class="row"><div class="field-key">4 · WP-vorm</div><div class="field-val">CPT <code>levering</code>. ACF: machine-omschrijving, <code>merk</code>-taxonomy, <code>categorie</code>-taxonomy, klant, locatie, <b>afleverdatum als echt datumveld</b> — dit vervangt de huidige handmatige <code>order</code>-index door een betekenisvolle, sorteerbare datum.</div></div>
+        <div class="row"><div class="field-key">5 · API</div><div class="field-val"><code>GET /wp-json/wp/v2/levering?orderby=date&order=desc</code>.</div></div>
+        <div class="row"><div class="field-key">6 · Frontend-impact</div><div class="field-val">Laag qua aantal verwijzingen (<span class="count">1</span>), maar de jaar/maand-archiefnavigatie moet — net als machinetypes — van "hardcoded jarenlijst" naar "afgeleid uit echte publicatiedatums" (kleine, geïsoleerde aanpassing).</div></div>
+      </div>
+    </section>
+
+    <!-- ===================== VERHUUR ===================== -->
+    <section class="sheet" id="verhuur">
+      <div class="sheet-head"><h2><span class="idx">06</span>Verhuurmachines</h2></div>
+      <p class="sheet-sub">Het enige contenttype dat uit twee met elkaar verweven bronnen bestaat.</p>
+      <div class="grid6">
+        <div class="row"><div class="field-key">1 · Bron nu</div><div class="field-val">(a) <code>Component.RENTAL</code>: 3 hardcoded verhuurcategorieën met voorwaardenteksten. (b) Individuele verhuurbare machines: gewóón machine-records binnen <code>Component.MACHINES</code> met een <code>rentalOnly:true</code>-vlag en/of een los <code>huur</code>-subobject dat huurspecifieke tekst/specs/prijs bevat.</div></div>
+        <div class="row"><div class="field-key">2 · Hardcoded</div><div class="field-val">Categorietitels, intro's en volledige voorwaardenteksten, plus het feit dat huur- en verkoopdata nu letterlijk in dezelfde array vermengd zitten.</div></div>
+        <div class="row"><div class="field-key">3 · Te behouden</div><div class="field-val">Verhuur-overzicht (categoriekaarten), categorie-detailpagina (machinelijst, hergebruikt de machinekaart), machine-detail met <code>rentalFrom</code>-context (toont huurtekst i.p.v. verkooptekst — bestaande, werkende logica in <code>deco()</code>).</div></div>
+        <div class="row"><div class="field-key">4 · WP-vorm</div><div class="field-val">Taxonomie <code>verhuurcategorie</code> (los van <code>machinetype</code>) met term-velden voor intro/voorwaarden. Op CPT <code>machine</code>: een ACF-groep "Verhuur" (checkbox <code>verhuurbaar</code> + eigen huur-tekst/specs/prijs-velden, gescheiden van de verkoopvelden).</div></div>
+        <div class="row"><div class="field-key">5 · API</div><div class="field-val"><code>GET /wp-json/wp/v2/verhuurcategorie</code> + <code>GET /wp-json/wp/v2/machine?verhuurcategorie=&lt;id&gt;</code>.</div></div>
+        <div class="row"><div class="field-key">6 · Frontend-impact</div><div class="field-val">Laag–gemiddeld: <span class="count">4 verwijzingen</span> naar <code>RENTAL</code>. De bestaande <code>rentalFrom</code>-doorschakellogica blijft functioneel identiek — alleen de herkomst van <code>m.huur</code> verandert.</div></div>
+      </div>
+    </section>
+
+    <!-- ===================== NIEUWS ===================== -->
+    <section class="sheet" id="nieuws">
+      <div class="sheet-head"><h2><span class="idx">07</span>Actuele items / blogs</h2></div>
+      <div class="grid6">
+        <div class="row"><div class="field-key">1 · Bron nu</div><div class="field-val"><code>Component.NEWS</code> — 33 artikelen. <code>body</code> is een array van losse paragraaf-strings (geen HTML); <code>publishedAt</code> en <code>date</code> zijn twee parallelle datumvelden (machine- resp. weergaveformaat).</div></div>
+        <div class="row"><div class="field-key">2 · Hardcoded</div><div class="field-val">Titel, intro, body-paragrafen, beide datumvelden, hoofdafbeelding + galerij.</div></div>
+        <div class="row"><div class="field-key">3 · Te behouden</div><div class="field-val">Nieuws-overzicht (paginering), artikel-detailpagina.</div></div>
+        <div class="row"><div class="field-key">4 · WP-vorm</div><div class="field-val">Native CPT <code>post</code> — WordPress' eigen berichten-functionaliteit, géén custom post type nodig. <code>body</code> wordt de standaard WYSIWYG-inhoud i.p.v. een paragraaf-array; <code>publishedAt</code> wordt het native <code>date</code>-veld (de losse weergavestring <code>date</code> vervalt, frontend formatteert zelf).</div></div>
+        <div class="row"><div class="field-key">5 · API</div><div class="field-val"><code>GET /wp-json/wp/v2/posts?per_page=20&_embed</code> — het meest standaard WP-endpoint van alle elf typen.</div></div>
+        <div class="row"><div class="field-key">6 · Frontend-impact</div><div class="field-val">Laag qua verwijzingen (<span class="count">3</span>), maar één reële contentwijziging: van "array van paragrafen mappen naar losse <code>&lt;p&gt;</code>-tags" naar "één WYSIWYG HTML-blok injecteren" in het detail-template.</div></div>
+      </div>
+    </section>
+
+    <!-- ===================== VACATURES ===================== -->
+    <section class="sheet" id="vacatures">
+      <div class="sheet-head"><h2><span class="idx">08</span>Vacatures</h2></div>
+      <div class="grid6">
+        <div class="row"><div class="field-key">1 · Bron nu</div><div class="field-val"><code>Component.VACANCIES</code> — 4 vacatures, met bestaande JobPosting-schema-koppeling.</div></div>
+        <div class="row"><div class="field-key">2 · Hardcoded</div><div class="field-val">Titel, afdeling, locatie, uren, cta-tekst, afbeelding, intro, volledige inhoud — én <code>datePosted</code>, nu per vacature handmatig van de live productiesite opgehaald in plaats van een echt publicatieveld.</div></div>
+        <div class="row"><div class="field-key">3 · Te behouden</div><div class="field-val">Werken-bij-overzicht (lijst), vacature-detailpagina inclusief bestaande JobPosting JSON-LD-logica.</div></div>
+        <div class="row"><div class="field-key">4 · WP-vorm</div><div class="field-val">CPT <code>vacature</code>. ACF: <code>afdeling</code>-taxonomy, locatie, uren, intro, inhoud. <code>datePosted</code> wordt automatisch het native <code>post_date</code> — lost precies het handmatige-onderhoud-punt op dat al in eerdere SEO-documentatie stond genoteerd.</div></div>
+        <div class="row"><div class="field-key">5 · API</div><div class="field-val"><code>GET /wp-json/wp/v2/vacature?_embed</code>.</div></div>
+        <div class="row"><div class="field-key">6 · Frontend-impact</div><div class="field-val">Laag, met <span class="count">6 verwijzingen</span> (iets hoger dan gemiddeld omdat het JobPosting-schema en het vooraf-invullen van het contactformulier — "Onderwerp: …" — er beide naar verwijzen). Logica blijft verder identiek.</div></div>
+      </div>
+    </section>
+
+    <!-- ===================== MAGAZINES ===================== -->
+    <section class="sheet" id="magazines">
+      <div class="sheet-head"><h2><span class="idx">09</span>Magazines</h2></div>
+      <div class="grid6">
+        <div class="row"><div class="field-key">1 · Bron nu</div><div class="field-val"><code>Component.MAGAZINES</code> — 6 edities.</div></div>
+        <div class="row"><div class="field-key">2 · Hardcoded</div><div class="field-val">Editie, jaar, samenvattingstekst, cover-afbeelding. Het <code>pdf</code>-veld is bij elke editie nu een lege string — ook dit onderdeel wacht al op echte bestanden.</div></div>
+        <div class="row"><div class="field-key">3 · Te behouden</div><div class="field-val">Magazines-overzicht (grid), magazine-detailpagina (cover + downloadknop).</div></div>
+        <div class="row"><div class="field-key">4 · WP-vorm</div><div class="field-val">CPT <code>magazine</code>. ACF: jaar, editie, samenvatting, cover-afbeelding, <code>pdf</code> als file-veld — WP's mediabibliotheek is hier een directe verbetering t.o.v. de huidige lege strings.</div></div>
+        <div class="row"><div class="field-key">5 · API</div><div class="field-val"><code>GET /wp-json/wp/v2/magazine?_embed</code>.</div></div>
+        <div class="row"><div class="field-key">6 · Frontend-impact</div><div class="field-val">Minimaal — <span class="count">4 verwijzingen</span>, kleinste en eenvoudigste dataset van de elf.</div></div>
+      </div>
+    </section>
+
+    <!-- ===================== FAQ ===================== -->
+    <section class="sheet" id="faq">
+      <div class="sheet-head"><h2><span class="idx">10</span>FAQ</h2></div>
+      <div class="grid6">
+        <div class="row"><div class="field-key">1 · Bron nu</div><div class="field-val">Bestaat niet. Geen FAQ-sectie, -data of -component aangetroffen op de huidige site.</div></div>
+        <div class="row"><div class="field-key">2 · Hardcoded</div><div class="field-val">N.v.t.</div></div>
+        <div class="row"><div class="field-key">3 · Te behouden</div><div class="field-val">Geen — dit zou nieuw werk zijn. Buiten de afspraak "niets herontwerpen": als een FAQ gewenst is, hoort dat als eigen, expliciet werkpakket gepland te worden, niet als migratie van bestaande content.</div></div>
+        <div class="row"><div class="field-key">4 · WP-vorm</div><div class="field-val">CPT <code>faq</code>. ACF: vraag, antwoord, <code>categorie</code>-taxonomy.</div></div>
+        <div class="row"><div class="field-key">5 · API</div><div class="field-val"><code>GET /wp-json/wp/v2/faq</code>.</div></div>
+        <div class="row"><div class="field-key">6 · Frontend-impact</div><div class="field-val">N.v.t. voor migratie — pas relevant zodra een FAQ-sectie daadwerkelijk wordt ontworpen en gebouwd. Dit is het enige contenttype in de lijst waarvoor niets hoeft te worden "omgeschakeld".</div></div>
+      </div>
+    </section>
+
+    <!-- ===================== CONTACT ===================== -->
+    <section class="sheet" id="contact">
+      <div class="sheet-head"><h2><span class="idx">11</span>Contactgegevens</h2></div>
+      <p class="sheet-sub">Het enige contenttype waarbij "hardcoded" niet alleen "in één array" betekent, maar ook "op meerdere plekken los van elkaar getypt".</p>
+      <div class="grid6">
+        <div class="row"><div class="field-key">1 · Bron nu</div><div class="field-val">Verspreid over meerdere plekken tegelijk, plus drie losse arrays: <code>Component.HOURS</code> (openingstijden), <code>Component.PEOPLE</code> (contactpersonen per afdeling — nu nog met placeholder-namen "Naam collega"), <code>Component.DEPTS</code>.</div></div>
+        <div class="row"><div class="field-key">2 · Hardcoded</div><div class="field-val">Letterlijk alles, én de herhaling zelf: het adres "Oudenhof 14, 4191 NW Geldermalsen" staat <span class="count">4×</span> los getypt (contactpagina, footer, 2× in JSON-LD-schema's), het telefoonnummer <span class="count">9×</span>, <code>info@wimvanbreda.nl</code> <span class="count">5×</span>.</div></div>
+        <div class="row"><div class="field-key">3 · Te behouden</div><div class="field-val">Contactpagina, footer, header-dropdown, Organization-/JobPosting-schema's — de templates blijven, maar elke literal string moet naar één gemeenschappelijke bron gaan wijzen.</div></div>
+        <div class="row"><div class="field-key">4 · WP-vorm</div><div class="field-val">Geen CPT — een <b>ACF Options-pagina</b> met velden voor adres, telefoonnummers per afdeling, e-mail, openingstijden (repeater) en contactpersonen (repeater, gekoppeld aan de <code>afdeling</code>-taxonomy).</div></div>
+        <div class="row"><div class="field-key">5 · API</div><div class="field-val"><code>GET /wp-json/acf/v3/options/contactgegevens</code> (of een eigen <code>register_rest_route</code>) — één enkele, sitebreed te cachen call.</div></div>
+        <div class="row"><div class="field-key">6 · Frontend-impact</div><div class="field-val">Gemiddeld — niet omdat de logica complex is, maar omdat het aantal <i>locaties</i> met dezelfde literal string het grootst is van alle elf typen: dit vraagt een grep-en-vervang-ronde door de hele file, niet het ombouwen van één centrale array-referentie.</div></div>
+      </div>
+    </section>
+
+    <!-- ===================== MIGRATIEPLAN ===================== -->
+    <section id="plan">
+      <div class="kicker">Uitvoering</div>
+      <h2 style="font-size:28px;margin-top:10px;letter-spacing:-.01em">Gefaseerd migratieplan</h2>
+      <p class="lede" style="margin-top:14px">Eén contenttype tegelijk omschakelen, in volgorde van oplopend risico en toenemende onderlinge afhankelijkheid — niet in de volgorde van het overzicht hierboven.</p>
+
+      <div style="margin-top:36px">
+        <div class="phase">
+          <div><div class="phase-num">0</div><div class="phase-line"></div></div>
+          <div class="phase-body">
+            <div class="phase-title"><h3>Fundament — eenmalig, vóór elk contenttype</h3></div>
+            <p>WordPress REST API bereikbaar maken (CORS voor het huidige domein), en één generieke datalaag aan de frontend toevoegen die bij het opstarten van de app data ophaalt — hetzelfde patroon dat nu al bestaat voor <code>.image-slots.state.json</code>, dus géén architectuurwijziging.</p>
+            <ul class="steps">
+              <li>Read-only REST-toegang controleren (geen applicatiewachtwoorden/JWT nodig zolang er alleen gelezen wordt)</li>
+              <li>Eén <code>wpFetch()</code>-hulpfunctie toevoegen, met dezelfde fetch-eenmaal-per-load-caching als het bestaande <code>image-slot.js</code>-patroon</li>
+              <li>Afspreken: blijft dit een client-side app die ná het laden data ophaalt (zoals nu) — dus geen server-side rendering, dat zou wél een architectuurwijziging zijn</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="phase">
+          <div><div class="phase-num pilot">1</div><div class="phase-line"></div></div>
+          <div class="phase-body">
+            <div class="phase-title"><h3>Occasions</h3><span class="pill amber-pill" style="background:var(--amber-soft);color:var(--amber-ink)">pilot</span></div>
+            <div class="why"><b>Waarom als eerste:</b> laagste risico — occasions deelt templates mét machines, maar machines leunt niet op occasions. Gaat er iets mis, blijft de rest van de site, inclusief Nieuwe machines, volledig functioneel. Met 85 items groot genoeg om de aanpak echt te bewijzen, klein genoeg om snel te draaien.</div>
+            <ul class="steps">
+              <li>CPT <code>occasion</code> + ACF-velden aanmaken in WordPress</li>
+              <li>85 occasions overzetten (eenmalig import-script, bestaande array als bron)</li>
+              <li><code>photosFor()</code> uitbreiden: eerst WP-featured/gallery-afbeeldingen proberen, met <code>machine-images.js</code> als fallback tijdens de overgang — zero-downtime</li>
+              <li><code>publishedOcc()</code> ombouwen van synchrone array-lookup naar async API-call, met een laadstatus (bestond nog niet)</li>
+              <li>Alle 4 bestaande verwijzingen + de gedeelde detail-/kaartcomponenten testen</li>
+              <li>Ná een stabiele week: de occasion-entries uit <code>machine-images.js</code> verwijderen</li>
+            </ul>
+            <div class="why" style="border-color:var(--sage)"><b>Rollback:</b> de statische array blijft ongebruikt in de broncode staan tot de WP-versie bewezen stabiel draait — bij problemen simpelweg de fetch uitzetten en de oude array terugzetten als bron.</div>
+          </div>
+        </div>
+
+        <div class="phase">
+          <div><div class="phase-num">2</div><div class="phase-line"></div></div>
+          <div class="phase-body">
+            <div class="phase-title"><h3>Merken</h3></div>
+            <p>Kleine, in zichzelf staande taxonomie. Occasions verwijst er al naar (via <code>b.name</code>-matching), dus dit bewijst meteen het taxonomy-patroon vóór machines aan de beurt is.</p>
+          </div>
+        </div>
+
+        <div class="phase">
+          <div><div class="phase-num">3</div><div class="phase-line"></div></div>
+          <div class="phase-body">
+            <div class="phase-title"><h3>Machinetypes</h3></div>
+            <p>Bijna gratis — de frontend leest dit al dynamisch uit de machinedata. Kan gelijktijdig met merken.</p>
+          </div>
+        </div>
+
+        <div class="phase">
+          <div><div class="phase-num">4</div><div class="phase-line"></div></div>
+          <div class="phase-body">
+            <div class="phase-title"><h3>Machines</h3></div>
+            <p>Zelfde aanpak als occasions (fase 1), nu al eenmaal beproefd. Grootste dataset (266), dus de langste importronde — technisch geen nieuw risico.</p>
+          </div>
+        </div>
+
+        <div class="phase">
+          <div><div class="phase-num">5</div><div class="phase-line"></div></div>
+          <div class="phase-body">
+            <div class="phase-title"><h3>Verhuurmachines</h3></div>
+            <p>Leunt op de gemigreerde machine-CPT (fase 4) voor de <code>rentalOnly</code>/huur-koppeling — vandaar pas hierna.</p>
+          </div>
+        </div>
+
+        <div class="phase">
+          <div><div class="phase-num">6</div><div class="phase-line"></div></div>
+          <div class="phase-body">
+            <div class="phase-title"><h3>Actuele items / blogs, vacatures, magazines, geleverde machines</h3></div>
+            <p>Vier kleine, onderling onafhankelijke contenttypen — kunnen na fase 4/5 parallel worden opgepakt. Nieuws gebruikt native WP-posts en is technisch het eenvoudigst van alle elf.</p>
+          </div>
+        </div>
+
+        <div class="phase">
+          <div><div class="phase-num">7</div><div class="phase-line"></div></div>
+          <div class="phase-body">
+            <div class="phase-title"><h3>Contactgegevens</h3></div>
+            <p>Bewust laat: technisch klein, maar raakt de méést verspreide plekken in de codebase tegelijk. Beter uit te voeren als het team al ervaring heeft met de nieuwe workflow.</p>
+          </div>
+        </div>
+
+        <div class="phase">
+          <div><div class="phase-num">—</div></div>
+          <div class="phase-body">
+            <div class="phase-title"><h3>FAQ</h3></div>
+            <p>Geen migratiefase — bestaat nu niet. Los, expliciet te plannen bouwtraject zodra gewenst, buiten dit schema.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="doc">Analyse van de huidige staat van <code>Wim van Breda.dc.html</code> en bijbehorende bestanden — geen wijzigingen doorgevoerd.</footer>
+  </main>
+</div>

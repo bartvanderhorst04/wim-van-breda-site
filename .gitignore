@@ -1,1 +1,6 @@
 .vercel
+
+# Lokale veiligheidskopieën gemaakt vóór bewerkingen (nooit meenemen in git)
+*.bak
+*.bak-*
+*.backup-*
