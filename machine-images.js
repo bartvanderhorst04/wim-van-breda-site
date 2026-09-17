@@ -1790,5 +1790,26 @@ window.MACHINE_IMAGES = {
   ],
   "messenslijpapparaten-voor-dubbelmesmaaibalk": [
     { src: "assets/machines/messenslijpapparaten-voor-dubbelmesmaaibalk/messenslijpapparaten-voor-dubbelmesmaaibalk-1.jpg", alt: "Messenslijpapparaten voor dubbelmesmaaibalk" }
+  ],
+
+  // --- Op expliciet verzoek gekoppeld (klant-koppeling overrulet eigen
+  //     inhoudelijke matching) — aangeleverd 2026-09-17 ---
+  "greentec-fr-klepelmaaier": [
+    { src: "assets/machines/greentec-fr-klepelmaaier/greentec-fr-klepelmaaier-1.jpg", alt: "GreenTec FR klepelmaaier" },
+    { src: "assets/machines/greentec-fr-klepelmaaier/greentec-fr-klepelmaaier-2.jpg", alt: "GreenTec FR klepelmaaier — foto 2" },
+    { src: "assets/machines/greentec-fr-klepelmaaier/greentec-fr-klepelmaaier-3.jpg", alt: "GreenTec FR klepelmaaier — foto 3" }
+  ],
+  "herder-leveringsprogramma": [
+    { src: "assets/machines/herder-leveringsprogramma/herder-leveringsprogramma-1.jpg", alt: "Herder Leveringsprogramma" }
+  ],
+  "omarv-venezia-l-professionele-maai-laad-combinatie": [
+    { src: "assets/machines/omarv-venezia-l-professionele-maai-laad-combinatie/omarv-venezia-l-professionele-maai-laad-combinatie-1.jpg", alt: "Omarv Venezia L professionele maai-laad combinatie" }
+  ],
+  "omarv-roero-hydro-klepelmaaier": [
+    { src: "assets/machines/omarv-roero-hydro-klepelmaaier/omarv-roero-hydro-klepelmaaier-1.jpg", alt: "Omarv Roero Hydro klepelmaaier" }
+  ],
+  "votex-jumbo-front-klepelmaaier": [
+    { src: "assets/machines/votex-jumbo-front-klepelmaaier/votex-jumbo-front-klepelmaaier-1.jpg", alt: "Votex Jumbo Front klepelmaaier" },
+    { src: "assets/machines/votex-jumbo-front-klepelmaaier/votex-jumbo-front-klepelmaaier-2.jpg", alt: "Votex Jumbo Front klepelmaaier — foto 2" }
   ]
 };
