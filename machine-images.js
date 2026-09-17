@@ -1777,5 +1777,18 @@ window.MACHINE_IMAGES = {
     { src: "assets/machines/vicon-extra-300-serie-frontmaaiers/vicon-extra-300-serie-frontmaaiers-2.jpg", alt: "Vicon Extra 300 Serie frontmaaiers — foto 2" },
     { src: "assets/machines/vicon-extra-300-serie-frontmaaiers/vicon-extra-300-serie-frontmaaiers-3.jpg", alt: "Vicon Extra 300 Serie frontmaaiers — foto 3" },
     { src: "assets/machines/vicon-extra-300-serie-frontmaaiers/vicon-extra-300-serie-frontmaaiers-4.jpg", alt: "Vicon Extra 300 Serie frontmaaiers — foto 4" }
+  ],
+
+  // --- Nog niet gekoppelde machinefoto's, aangeleverd 2026-09-17, gekoppeld na
+  //     controle op betrouwbare match (zie commitmelding voor twijfelgevallen) ---
+  "greentec-scorpion-430-s-maaiarm": [
+    { src: "assets/machines/greentec-scorpion-430-s-maaiarm/greentec-scorpion-430-s-maaiarm-1.jpg", alt: "GreenTec Scorpion 430 S maaiarm" },
+    { src: "assets/machines/greentec-scorpion-430-s-maaiarm/greentec-scorpion-430-s-maaiarm-2.jpg", alt: "GreenTec Scorpion 430 S maaiarm — foto 2" }
+  ],
+  "omarv-novello-klepelmaaier": [
+    { src: "assets/machines/omarv-novello-klepelmaaier/omarv-novello-klepelmaaier-1.jpg", alt: "Omarv Novello klepelmaaier" }
+  ],
+  "messenslijpapparaten-voor-dubbelmesmaaibalk": [
+    { src: "assets/machines/messenslijpapparaten-voor-dubbelmesmaaibalk/messenslijpapparaten-voor-dubbelmesmaaibalk-1.jpg", alt: "Messenslijpapparaten voor dubbelmesmaaibalk" }
   ]
 };
