@@ -1368,7 +1368,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
             <div><div style="font:600 24px/1 Archivo,sans-serif">{{ brandMachineCount }}</div><div style="font:400 13px/1.4 'Archivo',sans-serif;color:#8C867A;margin-top:7px">Machines bij ons</div></div>
           </div>
         </div>
-        <div style="aspect-ratio:4/3;background:#F4F2EE;position:relative;overflow:hidden">
+        <div style="aspect-ratio:{{ brandHeroRatio }};background:#F4F2EE;position:relative;overflow:hidden">
           <sc-if value="{{ brandHasHero }}" hint-placeholder-val="{{ false }}">{{ brandHeroEl }}</sc-if>
           <sc-if value="{{ brandHeroFromSlot }}" hint-placeholder-val="{{ true }}"><image-slot data-shot id="bh-hero-{{ brandSlotId }}" shape="rect" placeholder="Machine van dit merk"></image-slot></sc-if>
         </div>
@@ -1442,7 +1442,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
         <p style="font:400 16px/1.8 'Archivo',sans-serif;color:#57544D;margin:14px 0 0">{{ seoP2 }}</p>
       </div>
       <div>
-        <div style="aspect-ratio:4/3;background:#EFECE6;overflow:hidden">
+        <div style="aspect-ratio:{{ brandSeoRatio }};background:#EFECE6;overflow:hidden">
           <sc-if value="{{ brandHasSeoImg }}" hint-placeholder-val="{{ false }}">{{ brandSeoImgEl }}</sc-if>
           <sc-if value="{{ brandSeoImgFromSlot }}" hint-placeholder-val="{{ true }}"><image-slot data-shot id="bseo-{{ brandSlotId }}" shape="rect" placeholder="{{ brand.name }} machine in het werk"></image-slot></sc-if>
         </div>
@@ -3259,9 +3259,10 @@ class Component extends DCLogic {
       heroAlt: 'Massey Ferguson-tractor frontaal op de oprijlaan bij een schuur',
       seo: 'assets/images/merken/massey-ferguson/massey-ferguson-2.webp',
       seoAlt: 'Massey Ferguson-tractor met aanhanger langs een fietspad in de berm',
-      // Portretfoto in een liggend (4:3) vak: 'contain' zodat de hele tractor
-      // zichtbaar blijft in plaats van links/rechts afgesneden te worden.
-      seoFit: 'contain',
+      // Portretfoto (1067×1600): het beeldvak krijgt dezelfde beeldverhouding
+      // als de foto zelf, zodat 'cover' het vak vult zonder witruimte én
+      // zonder de tractor af te snijden.
+      seoRatio: '1067/1600',
       overP:[
         'Massey Ferguson is een wereldwijd toonaangevend merk dat kracht, betrouwbaarheid en veelzijdigheid combineert voor professioneel groen- en terreinonderhoud. De tractoren van Massey Ferguson vormen de ideale basis voor werkzaamheden zoals bermonderhoud, slootbeheer, maaien, klepelen, vegen en onderhoud van de openbare ruimte. Dankzij moderne technologie, efficiënte motoren en een hoog comfortniveau kunnen machinisten productief werken tijdens lange werkdagen.'
       ]
@@ -3282,8 +3283,9 @@ class Component extends DCLogic {
       logo: 'assets/brands/omarv.png',
       hero: 'assets/images/merken/omarv/omarv-3.jpg',
       heroAlt: 'Omarv Venezia erba 190 kipwagen in de werkplaats',
-      // Brede binnenfoto: 'contain' zodat de kipwagen niet links/rechts wordt afgesneden.
-      heroFit: 'contain',
+      // Brede binnenfoto (1200×800): beeldvak krijgt dezelfde verhouding,
+      // zodat 'cover' het vak vult zonder witruimte én zonder afsnijden.
+      heroRatio: '1200/800',
       seo: 'assets/images/merken/omarv/omarv-2.webp',
       seoAlt: 'Omarv Venezia erba 190 kipwagen achter een tractor op de weg',
       overP:[
@@ -3297,9 +3299,9 @@ class Component extends DCLogic {
       heroAlt: 'GreenTec RM 232 heggenslagmaaier tussen de bomen',
       seo: 'assets/images/merken/greentec/greentec-2.webp',
       seoAlt: 'GreenTec-maaiarm met draaikop tegen een blauwe lucht',
-      // Portretfoto in een liggend (4:3) vak: 'contain' zodat de hele arm
-      // zichtbaar blijft in plaats van boven/onder afgesneden te worden.
-      seoFit: 'contain',
+      // Portretfoto (1067×1600): beeldvak krijgt dezelfde verhouding, zodat
+      // 'cover' het vak vult zonder witruimte én zonder afsnijden.
+      seoRatio: '1067/1600',
       overP:[
         'GreenTec machines zijn ontwikkeld voor professioneel bermonderhoud, heggen snoeien, slootbeheer en groenonderhoud. Het Deense merk staat bekend om innovatieve oplossingen die zorgen voor veilig, efficiënt en nauwkeurig onderhoud van de openbare ruimte. GreenTec levert een breed assortiment maaiarmen, werktuigdragers en werktuigen voor gemeenten, aannemers en groenvoorzieners die zorgen voor een hoge productiviteit en een perfect eindresultaat.',
         'Met machines zoals heggenscharen, maaiarmen, klepelmaaiers en takkenzagen biedt GreenTec veelzijdige oplossingen voor het onderhouden van bermen, hagen, watergangen en groenstroken.'
@@ -3330,16 +3332,26 @@ class Component extends DCLogic {
     // bronbestand dat al op de merkenoverzichtspagina wordt gebruikt
     // (Component.BRAND_LOGOS). Hero/seo blijven ongewijzigd op hun
     // bestaande image-slot-plaatshouder.
-    'as-motor': { logo: 'assets/brands/as-motor.png', overP:[
+    'as-motor': { logo: 'assets/brands/as-motor.png',
+      hero: 'assets/images/merken/as-motor/as-motor-1.webp',
+      heroAlt: 'AS-Motor maaier aan het werk langs een spoordijk',
+      overP:[
       'AS-Motor is een Duitse fabrikant die sinds 1959 gespecialiseerd is in professionele maaimachines voor hoog gras, ruig terrein en steile hellingen. Het merk ontwikkelt robuuste oplossingen voor situaties waarin conventionele maaimachines tegen hun grenzen aanlopen. AS-Motor staat daarbij bekend om krachtige prestaties, betrouwbaarheid en machines die zijn ontworpen voor intensief professioneel gebruik.',
       'Het assortiment bestaat onder andere uit hooggrasmaaiers, allesmaaiers, zitmaaiers en radiografisch bestuurbare machines. Met bekende modellen uit de Allmäher- en Sherpa-series biedt AS-Motor oplossingen voor gemeenten, aannemers, groenprofessionals en terreinbeheerders. Naast machines met verbrandingsmotor investeert AS-Motor steeds verder in elektrische aandrijving en emissievrije maaitechniek voor professioneel groenbeheer.'
     ] },
-    'bb-umwelttechnik': { logo: 'assets/brands/bb-umwelttechnik.png', overP:[
+    'bb-umwelttechnik': { logo: 'assets/brands/bb-umwelttechnik.png',
+      hero: 'assets/images/merken/bb-umwelttechnik/bb-umwelttechnik-1.jpg',
+      heroAlt: 'BB Umwelttechnik front messenbalk gemonteerd op een Lindner-tractor',
+      // Bronfoto (1200×628, ca. 17:9): beeldvak krijgt dezelfde verhouding.
+      heroRatio: '1200/628',
+      overP:[
       'BB Umwelttechnik ontwikkelt en produceert innovatieve machines voor duurzaam graslandbeheer en ecologisch maaien. Vanuit het Duitse Roßhaupten bouwt het merk hoogwaardige maaibalken en harken die bekendstaan om hun lage energieverbruik, minimale bodemdruk en uitstekende maaikwaliteit. BB combineert efficiënte maaitechniek met respect voor bodem, biodiversiteit en natuur. Zowel agrariërs als groenprofessionals profiteren van een schone snede, lager brandstofverbruik en een machine die ontworpen is voor een lange levensduur.'
     ] },
     bretrac: { logo: 'assets/brands/bretrac.png',
       hero: 'assets/machines/bretrac-2-0-snelverkeer-maaivoertuig/bretrac-2-0-snelverkeer-maaivoertuig-1.jpg',
       heroAlt: 'BreTrac 2.0 snelverkeer-maaivoertuig langs de rijbaan',
+      seo: 'assets/images/merken/bretrac/bretrac-2.jpg',
+      seoAlt: 'BreTrac 2.0 snelverkeer-maaivoertuig met geopende opvangbak',
       overP:[
       'De BreTrac is een specialistische machine voor professioneel berm- en vegetatiebeheer, ontwikkeld voor werkzaamheden waarbij een groot bereik, stabiliteit en hoge capaciteit belangrijk zijn. Het voertuig combineert een zwaar vierassig onderstel met drie aangedreven en drie gestuurde assen, waardoor de machine ondanks zijn formaat wendbaar en stabiel inzetbaar is.',
       'De BreTrac beschikt over een ruime cabine met uitstekend zicht rondom en een Herder vierdelige maaiarm die over 270 graden kan draaien. Hierdoor kan zowel links als rechts van het voertuig worden gewerkt. Een afzonderlijke motor verzorgt de aandrijving van de maaiarm, maaier, afzuiging en het transportsysteem voor het maaisel. De complete maaiopbouw is bovendien op een demontabel subframe geplaatst, waardoor het onderstel buiten het maaiseizoen ook voor andere werkzaamheden kan worden ingezet. De BreTrac is daarmee ontwikkeld voor intensief en veelzijdig professioneel beheerwerk.'
@@ -3347,6 +3359,10 @@ class Component extends DCLogic {
     fermex: { logo: 'assets/brands/fermex.png',
       hero: 'assets/images/merken/fermex/fermex-1.jpg',
       heroAlt: 'Fermex stobbenfrees-kop in het groen',
+      seo: 'assets/images/merken/fermex/fermex-2.jpg',
+      seoAlt: 'Herder Fermex SCE-410H stobbenfrees',
+      // Bronfoto (1200×628): beeldvak krijgt dezelfde verhouding.
+      seoRatio: '1200/628',
       overP:[
       'Herder Fermex staat voor professionele stobbenfrezen die zijn ontwikkeld voor het efficiënt verwijderen van boomstronken en wortelresten. De machines combineren een krachtige hydraulische aandrijving met een robuuste constructie en zijn ontworpen voor intensief gebruik in boomverzorging, groenbeheer, bosbouw en aannemerij.',
       'Het huidige assortiment bestaat uit de Herder Fermex SCE-410H en SCE-550H. Deze hydraulisch aangedreven stobbenfrezen zijn geschikt voor verschillende graafmachines en werkzaamheden, waardoor voor zowel lichtere als zwaardere toepassingen een passende oplossing beschikbaar is. Herder Fermex richt zich daarmee op krachtig, nauwkeurig en betrouwbaar stobbenfrezen voor professioneel gebruik.'
@@ -3354,12 +3370,20 @@ class Component extends DCLogic {
     hoaf: { logo: 'assets/brands/hoaf.png',
       hero: 'assets/images/merken/hoaf/hoaf-1.jpg',
       heroAlt: 'HOAF WeedAir 100 onkruidbestrijder gemonteerd op een wiellader bij de kade',
+      seo: 'assets/images/merken/hoaf/hoaf-2.jpg',
+      seoAlt: 'HOAF ThermHIT 100M onkruidbestrijder op een quad bij Wim van Breda',
+      // Bronfoto (1024×576, 16:9): beeldvak krijgt dezelfde verhouding.
+      seoRatio: '1024/576',
       overP:[
       'HOAF is al meer dan 50 jaar specialist in niet-chemische onkruidbestrijding en thermische technologie. Het Nederlandse merk ontwikkelt en produceert machines voor duurzaam groenbeheer, openbare ruimte, landbouw en infrastructuur. Met oplossingen op basis van hete lucht, infraroodtechniek en thermische onkruidbestrijding biedt HOAF een effectief alternatief voor chemische bestrijdingsmiddelen. Alle machines worden in Nederland ontwikkeld en gebouwd, waarbij kwaliteit, betrouwbaarheid en gebruiksgemak centraal staan. Voor gemeenten, aannemers en terreinbeheerders die kiezen voor duurzaam en milieuvriendelijk onderhoud is HOAF een bewezen partner.'
     ] },
     husmann: { logo: 'assets/brands/husmann.png',
       hero: 'assets/images/merken/husmann/husmann-1.jpg',
       heroAlt: 'Husmann H7 houtversnipperaar met opbouwkipper',
+      seo: 'assets/images/merken/husmann/husmann-2.jpg',
+      seoAlt: 'Husmann H8 houtversnipperaar achter een Jan Veenhuis-wagen',
+      // Bronfoto (1920×1280, 3:2): beeldvak krijgt dezelfde verhouding.
+      seoRatio: '1920/1280',
       overP:[
       'Husmann ontwikkelt professionele houtversnipperaars voor het verwerken van takken, boomstammen en ander houtachtig materiaal. De machines zijn geschikt voor intensief gebruik in groenbeheer, boomverzorging, bosbouw en aannemerij. Het versnipperde materiaal kan onder andere worden gebruikt voor compostering, als bodembedekking in parken of als houtsnippers voor verwarmingssystemen.',
       'De Husmann houtversnipperaars zijn uitgerust met een messenschijf, hydraulische toevoer en twee afzonderlijk hydraulisch aangedreven invoerwalsen voor een betrouwbare en gelijkmatige materiaaltoevoer. Het assortiment omvat verschillende modellen en uitvoeringen, waaronder de H7 en H8, met zowel diesel- als PTO-aangedreven varianten. Daarmee biedt Husmann krachtige en praktische oplossingen voor professioneel versnipperwerk.'
@@ -3373,9 +3397,10 @@ class Component extends DCLogic {
       heroAlt: 'Kersten HyCut radiografische rupsmaaier in hoog gras',
       seo: 'assets/images/merken/kersten/kersten-2.jpg',
       seoAlt: 'Kersten HTG 4000 gietarm die water geeft aan een haag',
-      // Panoramische foto (2:1): 'contain' zodat de volledige gietarm
-      // zichtbaar blijft in plaats van links/rechts afgesneden te worden.
-      seoFit: 'contain',
+      // Panoramische foto (1024×512, 2:1): beeldvak krijgt dezelfde
+      // verhouding, zodat 'cover' het vak volledig vult zonder witruimte
+      // en zonder de gietarm af te snijden.
+      seoRatio: '1024/512',
       overP:[
       'Kersten Arealmaschinen is een Duitse fabrikant van professionele machines en aanbouwdelen voor het onderhoud van openbare ruimte, groenvoorziening en infrastructuur. Vanuit de productielocatie in Rees ontwikkelt en produceert Kersten hoogwaardige oplossingen voor maaien, vegen, onkruidbestrijding, bladverwijdering, winterdienst en beregening. Dankzij een productie die voor meer dan 90% in eigen huis plaatsvindt, staan Kersten-machines bekend om hun betrouwbaarheid, duurzaamheid en kwaliteit.'
     ] },
@@ -3391,9 +3416,10 @@ class Component extends DCLogic {
     martignani: { logo: 'assets/brands/martignani.png',
       hero: 'assets/images/merken/martignani/martignani-1.png',
       heroAlt: 'Martignani Phantom M612 2000 nevelspuit',
-      // Bijna vierkante studiofoto: 'contain' zodat de volledige nevelspuit
-      // (incl. de hoge trechter) zichtbaar blijft in het liggende 4:3-vak.
-      heroFit: 'contain',
+      // Bijna vierkante studiofoto (795×800): beeldvak krijgt dezelfde
+      // verhouding, zodat 'cover' het vak vult zonder witruimte en zonder
+      // de trechter/wielen af te snijden.
+      heroRatio: '795/800',
       overP:[
       'Martignani ontwikkelt al meer dan 60 jaar professionele nevelspuiten voor efficiënte en duurzame gewasbescherming. De Italiaanse fabrikant is gespecialiseerd in laagvolume-verneveling en elektrostatische spuittechniek, waarmee gewassen nauwkeurig kunnen worden behandeld met een zo efficiënt mogelijk gebruik van water en gewasbeschermingsmiddelen.',
       'Martignani introduceerde in 1958 de laagvolumetechniek met pneumatische vernevelaars en ontwikkelde later elektrostatische belading van microdruppels voor toepassing in de landbouw. De Martignani nevelspuiten combineren deze technieken om een gelijkmatige verdeling en goede bedekking van het gewas te realiseren. Daarmee biedt Martignani professionele oplossingen voor gebruikers die waarde hechten aan nauwkeurige gewasbescherming, efficiëntie en een lagere milieubelasting.'
@@ -3401,13 +3427,14 @@ class Component extends DCLogic {
     mowhawk: { logo: 'assets/brands/mowhawk.png',
       hero: 'assets/machines/mowhawk-slim-camerasysteem/mowhawk-slim-camerasysteem-2.jpg',
       heroAlt: 'MowHawk camerasysteem gemonteerd op een maaiarm',
-      // Staande (portret) brontfoto: 'contain' zodat deze niet wordt
-      // uitgerekt of hard afgesneden in het liggende 4:3-vak.
-      heroFit: 'contain',
+      // Staande (portret) bronfoto (768×1024, 3:4): beeldvak krijgt dezelfde
+      // verhouding, zodat 'cover' het vak vult zonder witruimte en zonder
+      // uitrekken/hard afsnijden.
+      heroRatio: '768/1024',
       seo: 'assets/machines/mowhawk-slim-camerasysteem/mowhawk-slim-camerasysteem-5.jpg',
       seoAlt: 'MowHawk camerasysteem op een maaiarm bij een tractor',
-      // Vierkante bronfoto: 'contain' om afsnijden boven/onder te voorkomen.
-      seoFit: 'contain',
+      // Vierkante bronfoto (1:1): beeldvak krijgt dezelfde verhouding.
+      seoRatio: '1/1',
       overP:[
       'MowHawk is een innovatief camerasysteem voor datagedreven bermbeheer, ontwikkeld als co-productie van Datacadabra en Wim van Breda. Het systeem combineert praktijkkennis van professioneel bermonderhoud met kunstmatige intelligentie om tijdens werkzaamheden automatisch informatie over de berm te verzamelen.',
       'Met behulp van computer vision (AI), camera’s en locatie- en oriëntatiesensoren verzamelt MowHawk gegevens die meer inzicht geven in de toestand en ontwikkeling van bermen. Datacadabra ontwikkelde de software en het eerste cameraprototype, terwijl Wim van Breda verantwoordelijk was voor de hardware, montage en domeinexpertise. MowHawk maakt het daarmee mogelijk om bermbeheer steeds meer te baseren op actuele data uit de praktijk.'
@@ -3426,9 +3453,10 @@ class Component extends DCLogic {
       heroAlt: 'Vicon Extra 300 Serie frontmaaier aan het werk in grasland',
       seo: 'assets/machines/vicon-extra-100-serie-achtermaaiers/vicon-extra-100-serie-achtermaaiers-1.jpg',
       seoAlt: 'Vicon Extra 100 Serie achtermaaier achter een tractor',
-      // Brede (16:9) bronfoto: 'contain' zodat tractor en maaier niet aan
-      // weerszijden worden afgesneden in het liggende 4:3-vak.
-      seoFit: 'contain',
+      // Brede bronfoto (1920×1080, 16:9): beeldvak krijgt dezelfde
+      // verhouding, zodat 'cover' het vak vult zonder witruimte en zonder
+      // tractor/maaier af te snijden.
+      seoRatio: '1920/1080',
       overP:[
       'Vicon levert professionele machines voor groenonderhoud, bermbeheer en ruwvoerwinning, waarbij betrouwbaarheid, capaciteit en gebruiksgemak centraal staan. Het merk ontwikkelt innovatieve oplossingen voor het maaien, schudden, harken en onderhouden van grote groene oppervlakken langs wegen, dijken, watergangen en natuurterreinen. Dankzij slimme techniek, een uitstekende bodemvolging en hoge werksnelheden zorgen Vicon-machines voor een efficiënt maaibeeld en optimale terreinverzorging. Voor gemeenten, waterschappen, groenvoorzieners en aannemers biedt Vicon een breed assortiment dat perfect aansluit op de eisen van modern berm- en groenbeheer.'
     ] },
@@ -4696,6 +4724,13 @@ class Component extends DCLogic {
     const brandHasLogo = !!brandMedia.logo && !(s.badImgs && s.badImgs[brandMedia.logo]);
     const brandHasHero = !!brandMedia.hero && !(s.badImgs && s.badImgs[brandMedia.hero]);
     const brandHasSeoImg = !!brandMedia.seo && !(s.badImgs && s.badImgs[brandMedia.seo]);
+    // Beeldvak volgt de eigen beeldverhouding van de aangeleverde foto
+    // (heroRatio/seoRatio, per merk optioneel) i.p.v. altijd het vaste 4:3
+    // dat hierboven/hieronder als fallback blijft gelden. Zo vult 'cover'
+    // het vak volledig zonder witruimte én zonder de foto af te snijden —
+    // in plaats van een 'contain'-oplossing met lege zijvlakken.
+    const brandHeroRatio = brandMedia.heroRatio || '4/3';
+    const brandSeoRatio = brandMedia.seoRatio || '4/3';
     const art = Component.NEWS.find(x=>x.id===s.param) || null;
     const deliveryRaw = page==='geleverditem' ? (Component.DELIVERIES.find(x=>x.id===s.param && (!x.pubStatus || x.pubStatus==='publish')) || null) : null;
     const MAG_PER = 6;
@@ -5349,12 +5384,13 @@ class Component extends DCLogic {
         style: {display:'block', width:'clamp(170px, 16vw, 240px)', height:'auto', maxHeight:'120px', objectFit:'contain', objectPosition:'left center'}
       }) : null,
       brandHasHero, brandHeroFromSlot: !brandHasHero,
+      brandHeroRatio, brandSeoRatio,
       brandHeroEl: brandHasHero ? this.photoEl({src:brandMedia.hero, alt:brandMedia.heroAlt}, brandMedia.heroAlt, {lazy:true, fit:brandMedia.heroFit||'cover', objectPosition:brandMedia.heroPos}) : null,
       brandHasSeoImg, brandSeoImgFromSlot: !brandHasSeoImg,
-      // fit valt terug op 'cover' (bestaand gedrag voor elk merk zonder eigen
-      // seoFit/heroFit) — alleen merken met een portretfoto in dit liggende
-      // vak krijgen hier 'contain', zodat het onderwerp nooit wordt afgesneden.
-      brandSeoImgEl: brandHasSeoImg ? this.photoEl({src:brandMedia.seo, alt:brandMedia.seoAlt}, brandMedia.seoAlt, {lazy:true, fit:brandMedia.seoFit||'cover'}) : null,
+      // fit valt terug op 'cover'; het beeldvak (brandSeoRatio hierboven)
+      // volgt zelf al de beeldverhouding van de foto, dus 'cover' vult het
+      // vak volledig zonder witruimte en zonder het onderwerp af te snijden.
+      brandSeoImgEl: brandHasSeoImg ? this.photoEl({src:brandMedia.seo, alt:brandMedia.seoAlt}, brandMedia.seoAlt, {lazy:true, fit:brandMedia.seoFit||'cover', objectPosition:brandMedia.seoPos}) : null,
       // Herder krijgt een eigen hero-indeling (verticale foto + groot logo);
       // alle andere merken behouden de bestaande, ongewijzigde hero-layout.
       isHerderHero: !!(brand && brand.id==='herder'),
