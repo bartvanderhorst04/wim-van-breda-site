@@ -162,9 +162,21 @@ a:active{color:#111214}
 @media (max-width:1080px){[data-featured]{grid-template-columns:1fr 1fr!important}}
 @media (max-width:1080px){[data-people]{grid-template-columns:1fr 1fr!important}[data-rentgrid]{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
 @media (max-width:680px){[data-rentgrid]{grid-template-columns:1fr!important}}
-@media (max-width:980px){[data-filterbar]{display:none!important}[data-filterbar][data-open]{display:block!important;background:#fff;border:1px solid #E2DED7;padding:8px 22px 22px;margin-bottom:8px}}
+@media (max-width:980px){[data-filterbar]{display:none!important}[data-filterbar][data-open]{display:block!important;background:#fff;border:1px solid #E2DED7;padding:8px 22px 22px;margin-bottom:8px;max-height:70vh!important;min-width:0!important}}
 @media (max-width:640px){[data-people]{grid-template-columns:1fr!important}[data-tabs]>button{padding:13px 18px!important;font-size:14px!important}}
 [data-facet]::-webkit-scrollbar{width:6px}[data-facet]::-webkit-scrollbar-thumb{background:#D9D5CD;border-radius:3px}[data-facet]::-webkit-scrollbar-track{background:transparent}
+/* Filtermenu (aside[data-filterbar], "Nieuwe machines"/"Occasions"): de aside
+   zelf is de echte scrollcontainer voor het hele filterpaneel (zoekveld +
+   machinetype- + merk-facetten samen), begrensd op de resterende viewport-
+   hoogte. Zonder eigen overflow/max-height had de aside geen scrollcontext
+   en ging elke wheel/trackpad/touch-scroll met de cursor erboven naar de
+   hoofdpagina — alleen de losse data-facet-lijstjes hadden al een eigen
+   (te kleine) scrollbar. overscroll-behavior op de aside zorgt dat scrollen,
+   eenmaal aan de rand van het hele filterpaneel, niet doorlekt naar de
+   paginascroll; een uitgescrolde facet-lijst chaint eerst netjes door naar
+   de aside eromheen (geen overscroll-behavior op de facets zelf), niet naar
+   de pagina. */
+[data-facet]{touch-action:pan-y;-webkit-overflow-scrolling:touch}
 @media (max-width:900px){[data-fcorner]{width:18px!important;height:18px!important;top:28px!important;left:30px!important}[data-fcorner]+[data-fcorner]{left:auto!important;right:30px!important}}
 @media (max-width:560px){[data-credit]{justify-content:center;width:100%}}
 @media (max-width:900px){[data-overhero]{height:min(78vh,700px)!important;min-height:560px!important}[data-overhero]>img{object-position:32% 52%!important}[data-overhero] [data-overtitle]{font-size:clamp(32px,8.5vw,44px)!important}[data-overhero]>div:last-child{padding:70px 24px 56px!important}}
@@ -719,7 +731,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
   </section>
 
   <section style="max-width:1360px;margin:0 auto;padding:48px 40px 100px;display:grid;grid-template-columns:262px 1fr;gap:52px;align-items:start" data-split="">
-    <aside data-side="" data-filterbar="" data-open="{{ drawerAttr }}" style="position:sticky;top:120px">
+    <aside data-side="" data-filterbar="" data-open="{{ drawerAttr }}" style="position:sticky;top:120px;max-height:calc(100vh - 152px);overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;overscroll-behavior-y:contain;touch-action:pan-y">
       <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding-bottom:16px;border-bottom:1px solid #E6E3DD">
         <span data-vistitle="" style="font:600 14px/1 'Archivo',sans-serif">Filters</span>
         <sc-if value="{{ hasChips }}" hint-placeholder-val="{{ false }}">
