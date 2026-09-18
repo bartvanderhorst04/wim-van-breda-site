@@ -69,6 +69,21 @@ h3.wvb-h3{font:600 17px/1.3 'Archivo',sans-serif;margin:28px 0 10px}
 .wvb-related__links{display:flex;flex-wrap:wrap;gap:6px 18px;font:500 15px/1.4 'Archivo',sans-serif}
 .wvb-related__links a{color:#111214;text-decoration:none;border-bottom:2px solid #FBAE00}
 
+/* ===== Machinekaartjes ("Relevante machines"): compact, geen grote banners ===== */
+.wvb-machines{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:18px 0 8px}
+@media (max-width:640px){.wvb-machines{grid-template-columns:1fr}}
+.wvb-mcard{border:1px solid #E6E3DD;padding:20px 22px;background:#fff}
+.wvb-mcard__brand{font:500 11px/1 'Archivo',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#8C867A}
+.wvb-mcard__name{font:600 18px/1.3 'Archivo',sans-serif;margin:8px 0 0;color:#111214}
+.wvb-mcard__desc{font:400 14px/1.6 'Archivo',sans-serif;color:#57544D;margin:8px 0 0}
+.wvb-mcard a.wvb-mcard__cta{display:inline-flex;align-items:center;gap:8px;margin-top:14px;font:600 13px/1 'Archivo',sans-serif;color:#111214;text-decoration:none;border-bottom:2px solid #FBAE00;padding-bottom:2px}
+
+/* ===== Machinedetailpagina (subset van Component.MACHINES, echte data) ===== */
+.wvb-mspecs{width:100%;border-collapse:collapse;margin:18px 0}
+.wvb-mspecs td{padding:10px 0;border-bottom:1px solid #F1EFEA;font:400 15px/1.5 'Archivo',sans-serif;vertical-align:top}
+.wvb-mspecs td:first-child{color:#8C867A;width:42%;padding-right:16px}
+.wvb-mspecs td:last-child{color:#111214;font-weight:500}
+
 /* ===== Footer (visueel identiek aan bestaande site) ===== */
 footer.wvb-f{position:relative;background:#FBAE00;color:#111214;margin-top:72px}
 .wvb-f__wrap{max-width:1420px;margin:0 auto;padding:72px 70px 40px}
@@ -114,20 +129,27 @@ footer.wvb-f{position:relative;background:#FBAE00;color:#111214;margin-top:72px}
 <div class="wrap"><nav class="wvb-crumb" aria-label="Kruimelpad"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/klepelmaaier/">Klepelmaaier</a><span aria-hidden="true">/</span><span aria-current="page">Ruw terrein</span></nav></div>
 <main class="wvb-main">
   <h1 class="wvb-h1">Klepelmaaier voor ruw terrein</h1>
-  <p class="wvb-intro">Op ruw, oneffen of steenachtig terrein is een klepelmaaier vaak duurzamer in gebruik dan een cirkelmaaier, omdat de klepelmessen bij een obstakel opzij kunnen wijken in plaats van vast te lopen of te breken.</p>
-  
-  <h2 class="wvb-h2">Waar dit type terrein voorkomt</h2><p>Denk aan taluds, ruwe bermen, natuurterreinen, dijken en braakliggende percelen — plekken waar de ondergrond niet vlak is en waar stenen, takken of opslag in het maaipad kunnen liggen.</p><h2 class="wvb-h2">Zwaardere uitvoeringen</h2><p>Voor intensief gebruik op ruw terrein bouwt <a class="wvb-link" href="/klepelmaaier/omarv/">Omarv</a> zwaardere klepelmaaiers met een steviger rotor en dikkere messen, geschikt voor grovere opslag dan een lichte grasmaaier aankan.</p>
-  
+  <p class="wvb-intro">Op ruw, oneffen of steenachtig terrein is een klepelmaaier vaak duurzamer in gebruik dan een cirkelmaaier, omdat de klepelmessen bij een obstakel opzij kunnen wijken in plaats van vast te lopen of te breken. Dat maakt de klepelmaaier tot de gangbare keuze voor terreinen waar de ondergrond niet vlak of voorspelbaar is.</p>
+  <div class="wvb-fact">Op ruw terrein — taluds, natuurterreinen, dijken, braakliggende percelen — is een robuuste klepelmaaier met een steviger rotor en dikkere messen nodig dan bij regulier grasonderhoud, omdat er vaker stenen, takken of houtachtige opslag in het maaipad liggen.</div>
+  <h2 class="wvb-h2">Waar dit type terrein voorkomt</h2><ul><li>Taluds langs dijken en waterwegen</li><li>Ruwe, onbewerkte bermen</li><li>Natuurterreinen</li><li>Braakliggende of verwaarloosde percelen</li></ul><h2 class="wvb-h2">Zwaardere uitvoeringen voor ruw terrein</h2><p>Voor intensief gebruik op ruw terrein bouwt <a class="wvb-link" href="/klepelmaaier/omarv/">Omarv</a> zwaardere klepelmaaiers met een steviger rotor en dikkere messen. Een voorbeeld is de <a class="wvb-link" href="/machine/omarv-torino-klepelmaaier/">Torino</a>, die begroeiing tot circa 6 cm diameter aankan en dankzij de uitworp boven de looprol minder snel blokkeert bij extreem hoog gras of natte omstandigheden.</p><h2 class="wvb-h2">Wanneer een klepelmaaier de juiste keuze is</h2><p>Een klepelmaaier is met name geschikt wanneer het terrein wisselend gras, onkruid en dunne houtopslag bevat, en wanneer obstakels zoals stenen of takken regelmatig voorkomen. Bij zwaardere, dikkere begroeiing of specifiek boomonderhoud is eerder een bosbouwmaaier of takkenschaar op zijn plaats.</p>
+  <h2 class="wvb-h2">Relevante machine voor ruw terrein</h2><div class="wvb-machines">
+    <div class="wvb-mcard">
+      <div class="wvb-mcard__brand">Omarv</div>
+      <div class="wvb-mcard__name">Torino klepelmaaier</div>
+      <div class="wvb-mcard__desc">Zware klepelmaaier voor tractoren van 70 tot 140 pk, met uitworp boven de looprol, leverbaar in 6 werkbreedtes van 160 tot 260 cm.</div>
+      <a class="wvb-mcard__cta" href="/machine/omarv-torino-klepelmaaier/">Bekijk machine →</a>
+    </div></div>
+  <h2 class="wvb-h2">Veelgestelde vragen</h2><div class="wvb-faq"><details><summary>Waarom is een klepelmaaier geschikt voor ruw terrein?</summary><p>Omdat de klepelmessen los scharnieren en bij een obstakel kunnen opzij wijken in plaats van vast te lopen of te breken, wat op oneffen of steenachtig terrein voorkomt.</p></details><details><summary>Welke begroeiing kan een klepelmaaier voor ruw terrein aan?</summary><p>Afhankelijk van het model: zwaardere uitvoeringen zoals de Omarv Torino verwerken begroeiing tot circa 6 cm diameter.</p></details></div>
   
 <div class="wvb-cta">
   <p>Advies nodig over de juiste machine voor uw situatie?</p>
-  <a href="/">Neem contact op</a>
+  <a href="/contact/">Neem contact op</a>
 </div>
 
   
 <div class="wvb-related">
   <div class="wvb-related__label">Meer over dit onderwerp</div>
-  <div class="wvb-related__links"><a href="/klepelmaaier/">Klepelmaaier</a> · <a href="/klepelmaaier/omarv/">Klepelmaaier omarv</a> · <a href="/">Ruwterreinmaaiers</a></div>
+  <div class="wvb-related__links"><a href="/klepelmaaier/">Klepelmaaier</a> · <a href="/klepelmaaier/omarv/">Klepelmaaier omarv</a> · <a href="/klepelmaaier/voor-tractor/">Klepelmaaier voor tractor</a></div>
 </div>
 
 </main>

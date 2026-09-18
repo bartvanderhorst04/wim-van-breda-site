@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Omarv klepelmaaiers | Wim van Breda</title>
-<meta name="description" content="Overzicht van de Omarv-klepelmaaiers die Wim van Breda levert, met een link naar het volledige modellenoverzicht.">
+<meta name="description" content="Omarv als merk: een Italiaans programma dat klepelmaaiers combineert met maai-laadcombinaties voor zwaar en specialistisch terreinonderhoud.">
 <link rel="canonical" href="https://www.wimvanbreda.nl/omarv/klepelmaaier/">
 <meta name="robots" content="index,follow">
 <meta property="og:site_name" content="Wim van Breda">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Omarv klepelmaaiers | Wim van Breda">
-<meta property="og:description" content="Overzicht van de Omarv-klepelmaaiers die Wim van Breda levert, met een link naar het volledige modellenoverzicht.">
+<meta property="og:description" content="Omarv als merk: een Italiaans programma dat klepelmaaiers combineert met maai-laadcombinaties voor zwaar en specialistisch terreinonderhoud.">
 <meta property="og:url" content="https://www.wimvanbreda.nl/omarv/klepelmaaier/">
 <link rel="icon" href="data:,">
 <link rel="preload" as="font" href="/assets/fonts/archivo-latin-var.woff2" type="font/woff2" crossorigin="crossorigin">
@@ -69,6 +69,21 @@ h3.wvb-h3{font:600 17px/1.3 'Archivo',sans-serif;margin:28px 0 10px}
 .wvb-related__links{display:flex;flex-wrap:wrap;gap:6px 18px;font:500 15px/1.4 'Archivo',sans-serif}
 .wvb-related__links a{color:#111214;text-decoration:none;border-bottom:2px solid #FBAE00}
 
+/* ===== Machinekaartjes ("Relevante machines"): compact, geen grote banners ===== */
+.wvb-machines{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:18px 0 8px}
+@media (max-width:640px){.wvb-machines{grid-template-columns:1fr}}
+.wvb-mcard{border:1px solid #E6E3DD;padding:20px 22px;background:#fff}
+.wvb-mcard__brand{font:500 11px/1 'Archivo',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#8C867A}
+.wvb-mcard__name{font:600 18px/1.3 'Archivo',sans-serif;margin:8px 0 0;color:#111214}
+.wvb-mcard__desc{font:400 14px/1.6 'Archivo',sans-serif;color:#57544D;margin:8px 0 0}
+.wvb-mcard a.wvb-mcard__cta{display:inline-flex;align-items:center;gap:8px;margin-top:14px;font:600 13px/1 'Archivo',sans-serif;color:#111214;text-decoration:none;border-bottom:2px solid #FBAE00;padding-bottom:2px}
+
+/* ===== Machinedetailpagina (subset van Component.MACHINES, echte data) ===== */
+.wvb-mspecs{width:100%;border-collapse:collapse;margin:18px 0}
+.wvb-mspecs td{padding:10px 0;border-bottom:1px solid #F1EFEA;font:400 15px/1.5 'Archivo',sans-serif;vertical-align:top}
+.wvb-mspecs td:first-child{color:#8C867A;width:42%;padding-right:16px}
+.wvb-mspecs td:last-child{color:#111214;font-weight:500}
+
 /* ===== Footer (visueel identiek aan bestaande site) ===== */
 footer.wvb-f{position:relative;background:#FBAE00;color:#111214;margin-top:72px}
 .wvb-f__wrap{max-width:1420px;margin:0 auto;padding:72px 70px 40px}
@@ -114,20 +129,33 @@ footer.wvb-f{position:relative;background:#FBAE00;color:#111214;margin-top:72px}
 <div class="wrap"><nav class="wvb-crumb" aria-label="Kruimelpad"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/omarv/klepelmaaier/">Omarv</a><span aria-hidden="true">/</span><span aria-current="page">Klepelmaaier</span></nav></div>
 <main class="wvb-main">
   <h1 class="wvb-h1">Omarv klepelmaaiers</h1>
-  <p class="wvb-intro">Omarv bouwt een breed programma klepelmaaiers, van compacte modellen voor tuin- en parkonderhoud tot zware uitvoeringen voor intensief professioneel gebruik.</p>
-  
-  <h2 class="wvb-h2">Meer over Omarv-klepelmaaiers</h2><p>Zie onze uitgebreide pagina over <a class="wvb-link" href="/klepelmaaier/omarv/">Omarv klepelmaaier</a>.</p>
+  <p class="wvb-intro">Omarv is een Italiaans merk dat zich onderscheidt door de breedte van het programma: van compacte klepelmaaiers voor regulier onderhoud tot zware uitvoeringen voor ruig terrein, boomgaarden en wijngaarden, en maai-laadcombinaties die maaien en opvangen combineren.</p>
+  <div class="wvb-fact">Omarv bouwt zowel losse klepelmaaiers, zoals de Torino voor tractoren van 70 tot 140 pk, als maai-laadcombinaties zoals de Venezia L die maaien, verkleinen en opvangen in één werkgang doen.</div>
+  <h2 class="wvb-h2">Wat Omarv als merk kenmerkt</h2><p>Omarv richt zich met name op professionals die zwaar terreinonderhoud combineren met specifieke toepassingen zoals boomgaard- of wijngaardonderhoud, waar andere merken zich vaker beperken tot regulier bermwerk.</p><h2 class="wvb-h2">Voorbeelden uit het programma</h2><p>De <a class="wvb-link" href="/machine/omarv-torino-klepelmaaier/">Torino</a> is een zware klepelmaaier met een verzwaarde rotoras en uitworp boven de looprol, leverbaar in 6 werkbreedtes van 160 tot 260 cm. De <a class="wvb-link" href="/machine/omarv-venezia-l-professionele-maai-laad-combinatie/">Venezia L</a> combineert maaien met opvangen in een bak van 10 m³, geschikt voor tractoren van 90 tot 120 pk.</p><h2 class="wvb-h2">Bekijk ook</h2><p>Voor de bredere uitleg over klepelmaaiers: <a class="wvb-link" href="/klepelmaaier/">klepelmaaier</a> en <a class="wvb-link" href="/klepelmaaier/omarv/">Omarv klepelmaaier (uitgebreid)</a>.</p>
+  <h2 class="wvb-h2">Omarv-machines bij Wim van Breda</h2><div class="wvb-machines">
+    <div class="wvb-mcard">
+      <div class="wvb-mcard__brand">Omarv</div>
+      <div class="wvb-mcard__name">Torino klepelmaaier</div>
+      <div class="wvb-mcard__desc">Zware klepelmaaier voor tractoren van 70 tot 140 pk, met uitworp boven de looprol, leverbaar in 6 werkbreedtes van 160 tot 260 cm.</div>
+      <a class="wvb-mcard__cta" href="/machine/omarv-torino-klepelmaaier/">Bekijk machine →</a>
+    </div>
+    <div class="wvb-mcard">
+      <div class="wvb-mcard__brand">Omarv</div>
+      <div class="wvb-mcard__name">Venezia L professionele maai-laad combinatie</div>
+      <div class="wvb-mcard__desc">De Venezia L is een professionele maai-laad combinatie met opvangbak van 10 m³, geschikt voor tractoren van 90 tot 120 pk.</div>
+      <a class="wvb-mcard__cta" href="/machine/omarv-venezia-l-professionele-maai-laad-combinatie/">Bekijk machine →</a>
+    </div></div>
   
   
 <div class="wvb-cta">
   <p>Advies nodig over de juiste machine voor uw situatie?</p>
-  <a href="/">Neem contact op</a>
+  <a href="/contact/">Neem contact op</a>
 </div>
 
   
 <div class="wvb-related">
   <div class="wvb-related__label">Meer over dit onderwerp</div>
-  <div class="wvb-related__links"><a href="/klepelmaaier/omarv/">Omarv klepelmaaier (detail)</a> · <a href="/klepelmaaier/">Klepelmaaier</a> · <a href="/klepelmaaier/ruw-terrein/">Klepelmaaier voor ruw terrein</a></div>
+  <div class="wvb-related__links"><a href="/klepelmaaier/omarv/">Omarv klepelmaaier (detail)</a> · <a href="/klepelmaaier/">Klepelmaaier</a> · <a href="/ecologisch-maaien/">Ecologisch maaien</a></div>
 </div>
 
 </main>

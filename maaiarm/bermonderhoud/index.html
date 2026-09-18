@@ -69,6 +69,21 @@ h3.wvb-h3{font:600 17px/1.3 'Archivo',sans-serif;margin:28px 0 10px}
 .wvb-related__links{display:flex;flex-wrap:wrap;gap:6px 18px;font:500 15px/1.4 'Archivo',sans-serif}
 .wvb-related__links a{color:#111214;text-decoration:none;border-bottom:2px solid #FBAE00}
 
+/* ===== Machinekaartjes ("Relevante machines"): compact, geen grote banners ===== */
+.wvb-machines{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:18px 0 8px}
+@media (max-width:640px){.wvb-machines{grid-template-columns:1fr}}
+.wvb-mcard{border:1px solid #E6E3DD;padding:20px 22px;background:#fff}
+.wvb-mcard__brand{font:500 11px/1 'Archivo',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#8C867A}
+.wvb-mcard__name{font:600 18px/1.3 'Archivo',sans-serif;margin:8px 0 0;color:#111214}
+.wvb-mcard__desc{font:400 14px/1.6 'Archivo',sans-serif;color:#57544D;margin:8px 0 0}
+.wvb-mcard a.wvb-mcard__cta{display:inline-flex;align-items:center;gap:8px;margin-top:14px;font:600 13px/1 'Archivo',sans-serif;color:#111214;text-decoration:none;border-bottom:2px solid #FBAE00;padding-bottom:2px}
+
+/* ===== Machinedetailpagina (subset van Component.MACHINES, echte data) ===== */
+.wvb-mspecs{width:100%;border-collapse:collapse;margin:18px 0}
+.wvb-mspecs td{padding:10px 0;border-bottom:1px solid #F1EFEA;font:400 15px/1.5 'Archivo',sans-serif;vertical-align:top}
+.wvb-mspecs td:first-child{color:#8C867A;width:42%;padding-right:16px}
+.wvb-mspecs td:last-child{color:#111214;font-weight:500}
+
 /* ===== Footer (visueel identiek aan bestaande site) ===== */
 footer.wvb-f{position:relative;background:#FBAE00;color:#111214;margin-top:72px}
 .wvb-f__wrap{max-width:1420px;margin:0 auto;padding:72px 70px 40px}
@@ -114,20 +129,33 @@ footer.wvb-f{position:relative;background:#FBAE00;color:#111214;margin-top:72px}
 <div class="wrap"><nav class="wvb-crumb" aria-label="Kruimelpad"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/maaiarm/">Maaiarm</a><span aria-hidden="true">/</span><span aria-current="page">Bermonderhoud</span></nav></div>
 <main class="wvb-main">
   <h1 class="wvb-h1">Maaiarm voor bermonderhoud</h1>
-  <p class="wvb-intro">In bermonderhoud is de maaiarm het werktuig bij uitstek zodra er hoogteverschil, een sloot of obstakels als verkeersborden en bomen in het maaitraject zitten.</p>
-  
-  <h2 class="wvb-h2">Waarom een maaiarm in de berm</h2><p>Anders dan een vaste maaier kan de arm zijwaarts uitschuiven, over een talud naar beneden werken en om obstakels heen sturen, zonder dat de bestuurder de tractor hoeft te verplaatsen. Met een klepelkop wordt gras en opslag verkleind achtergelaten; met een messenbalk ontstaat een net, kort gemaaide bermrand.</p><h2 class="wvb-h2">Merken voor bermwerk</h2><p>Zowel <a class="wvb-link" href="/maaiarm/herder/">Herder</a> als <a class="wvb-link" href="/maaiarm/greentec/">GreenTec</a> bouwen maaiarmen die specifiek voor intensief bermbeheer worden ingezet door loonbedrijven en gemeenten.</p>
-  
+  <p class="wvb-intro">Een maaiarm wordt bij professioneel bermonderhoud gebruikt om vegetatie langs wegen, sloten en taluds te maaien op plekken die met een vaste maaier moeilijk bereikbaar zijn. Afhankelijk van de uitvoering kan een maaiarm worden gecombineerd met verschillende werktuigen voor berm-, sloot- en vegetatieonderhoud, en dat maakt hem tot het meest gebruikte werktuig in professioneel bermbeheer.</p>
+  <div class="wvb-fact">In bermonderhoud is de maaiarm het werktuig bij uitstek zodra er hoogteverschil, een sloot of obstakels als verkeersborden en bomen in het maaitraject zitten. Anders dan een vaste maaier kan de arm zijwaarts uitschuiven, over een talud naar beneden werken en om obstakels heen sturen, zonder dat de bestuurder de tractor hoeft te verplaatsen.</div>
+  <h2 class="wvb-h2">Waarom een maaiarm bij bermonderhoud</h2><p>Met een klepelkop wordt gras en opslag verkleind achtergelaten; met een messenbalk ontstaat een net, kort gemaaide bermrand. Doordat de arm het bereik van de machine vergroot, hoeft de tractor niet van de rijbaan of berm af, wat het werk ook veiliger maakt voor de bestuurder en het overige verkeer.</p><h2 class="wvb-h2">Waar wordt een maaiarm voor bermonderhoud voor gebruikt</h2><ul><li>Wegbermen langs provinciale en gemeentelijke wegen</li><li>Taluds naast de rijbaan</li><li>Slootranden aan de bermzijde</li><li>Vegetatie rond verkeersborden, lichtmasten en vangrails</li><li>Middenbermen en rotondes</li></ul><h2 class="wvb-h2">Welke maaiarm past bij bermwerk</h2><p>Voor regulier bermonderhoud volstaat vaak een compactere maaiarm met een klepelkop; bij bredere bermen, diepere sloten of zwaardere opslag is een arm met groter bereik en een steviger werktuig praktischer. Zie <a class="wvb-link" href="/maaiarm/voor-tractor/">maaiarm voor tractor</a> voor de gewichtsklassen per tractor.</p><h2 class="wvb-h2">Herder en GreenTec voor bermwerk</h2><p>Zowel <a class="wvb-link" href="/maaiarm/herder/">Herder</a> als <a class="wvb-link" href="/maaiarm/greentec/">GreenTec</a> bouwen maaiarmen die specifiek voor intensief bermbeheer worden ingezet door loonbedrijven en gemeenten. De <a class="wvb-link" href="/machine/herder-grenadier-maaiarm/">Herder Grenadier</a> is daarvan een voorbeeld met een armlengte van 6,40 tot 8,80 meter en de mogelijkheid om te wisselen tussen klepelmaaier, maaikorf en andere werktuigen.</p><h2 class="wvb-h2">Service en onderhoud</h2><p>Bermonderhoud is vaak intensief, seizoensgebonden werk waarbij een machine niet lang mag stilstaan. Wim van Breda houdt onderdelen op voorraad en verzorgt onderhoud vanuit de eigen werkplaats in Geldermalsen.</p>
+  <h2 class="wvb-h2">Relevante machines voor bermonderhoud</h2><div class="wvb-machines">
+    <div class="wvb-mcard">
+      <div class="wvb-mcard__brand">Herder</div>
+      <div class="wvb-mcard__name">Grenadier maaiarm</div>
+      <div class="wvb-mcard__desc">Veelzijdige maaiarm voor zwaar bermbeheer, uitrusbaar met diverse aanbouwwerktuigen, armlengte 6,40 tot 8,80 meter.</div>
+      <a class="wvb-mcard__cta" href="/machine/herder-grenadier-maaiarm/">Bekijk machine →</a>
+    </div>
+    <div class="wvb-mcard">
+      <div class="wvb-mcard__brand">GreenTec</div>
+      <div class="wvb-mcard__name">Scorpion 430 S – Basisfront maaiarm</div>
+      <div class="wvb-mcard__desc">Professionele maaiarm voor gebieden met beperkte ruimte, ontworpen voor kleine tractoren vanaf 3.000 kg.</div>
+      <a class="wvb-mcard__cta" href="/machine/greentec-scorpion-430-s-basisfront-maaiarm/">Bekijk machine →</a>
+    </div></div>
+  <h2 class="wvb-h2">Veelgestelde vragen</h2><div class="wvb-faq"><details><summary>Wat is een maaiarm?</summary><p>Een maaiarm is een hydraulisch aangedreven, uitschuifbare arm op een tractor, met aan het uiteinde een verwisselbaar werktuig zoals een klepelkop of messenbalk.</p></details><details><summary>Waarvoor wordt een maaiarm bij bermonderhoud gebruikt?</summary><p>Om vegetatie langs wegen, sloten en taluds te maaien op plekken die met een vaste maaier moeilijk bereikbaar zijn, zoals hellingen, slootkanten en obstakels.</p></details><details><summary>Welke maaiarm is geschikt voor bermonderhoud?</summary><p>Dat hangt af van de breedte en het reliëf van de berm en het tractorgewicht; Wim van Breda adviseert op basis van uw specifieke traject.</p></details><details><summary>Kan een maaiarm aan verschillende tractoren worden gebruikt?</summary><p>Ja, mits het tractorgewicht en de hydraulische capaciteit passen bij de gekozen armklasse — zie <a class="wvb-link" href="/maaiarm/voor-tractor/">maaiarm voor tractor</a>.</p></details><details><summary>Welke werktuigen kunnen op een maaiarm voor bermwerk?</summary><p>Onder meer een klepelkop voor grasverkleining, een messenbalk voor een nette bermrand, en een takkenschaar voor opslag.</p></details><details><summary>Welke merken maaiarmen levert Wim van Breda voor bermonderhoud?</summary><p>Herder en GreenTec, beide met modellen die veel voor bermwerk worden ingezet.</p></details></div>
   
 <div class="wvb-cta">
   <p>Advies nodig over de juiste machine voor uw situatie?</p>
-  <a href="/">Neem contact op</a>
+  <a href="/contact/">Neem contact op</a>
 </div>
 
   
 <div class="wvb-related">
   <div class="wvb-related__label">Meer over dit onderwerp</div>
-  <div class="wvb-related__links"><a href="/bermonderhoud/">Bermonderhoud</a> · <a href="/bermonderhoud/maaiarm/">Bermonderhoud met maaiarm</a> · <a href="/klepelmaaier/bermonderhoud/">Klepelmaaier voor bermonderhoud</a> · <a href="/ecologisch-bermbeheer/">Ecologisch bermbeheer</a></div>
+  <div class="wvb-related__links"><a href="/maaiarm/">Maaiarm</a> · <a href="/bermonderhoud/">Bermonderhoud</a> · <a href="/bermonderhoud/maaiarm/">Maaiarm bij bermonderhoud (bermcluster)</a> · <a href="/klepelmaaier/bermonderhoud/">Klepelmaaier bij bermonderhoud</a> · <a href="/ecologisch-bermbeheer/">Ecologisch bermbeheer</a></div>
 </div>
 
 </main>

@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Maaikorf | Wim van Breda</title>
-<meta name="description" content="Maaikorf voor het opvangen van maaisel bij sloot- en watergangonderhoud. Merken als Herder, montage op maaiarm of tractor.">
+<title>Maaikorf voor sloot- en watergangonderhoud | Wim van Breda</title>
+<meta name="description" content="Maaikorf voor het opvangen van maaisel bij sloot- en watergangonderhoud. Herder maaikorf, montage op maaiarm.">
 <link rel="canonical" href="https://www.wimvanbreda.nl/maaikorf/">
 <meta name="robots" content="index,follow">
 <meta property="og:site_name" content="Wim van Breda">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Maaikorf | Wim van Breda">
-<meta property="og:description" content="Maaikorf voor het opvangen van maaisel bij sloot- en watergangonderhoud. Merken als Herder, montage op maaiarm of tractor.">
+<meta property="og:title" content="Maaikorf voor sloot- en watergangonderhoud | Wim van Breda">
+<meta property="og:description" content="Maaikorf voor het opvangen van maaisel bij sloot- en watergangonderhoud. Herder maaikorf, montage op maaiarm.">
 <meta property="og:url" content="https://www.wimvanbreda.nl/maaikorf/">
 <link rel="icon" href="data:,">
 <link rel="preload" as="font" href="/assets/fonts/archivo-latin-var.woff2" type="font/woff2" crossorigin="crossorigin">
@@ -69,6 +69,21 @@ h3.wvb-h3{font:600 17px/1.3 'Archivo',sans-serif;margin:28px 0 10px}
 .wvb-related__links{display:flex;flex-wrap:wrap;gap:6px 18px;font:500 15px/1.4 'Archivo',sans-serif}
 .wvb-related__links a{color:#111214;text-decoration:none;border-bottom:2px solid #FBAE00}
 
+/* ===== Machinekaartjes ("Relevante machines"): compact, geen grote banners ===== */
+.wvb-machines{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:18px 0 8px}
+@media (max-width:640px){.wvb-machines{grid-template-columns:1fr}}
+.wvb-mcard{border:1px solid #E6E3DD;padding:20px 22px;background:#fff}
+.wvb-mcard__brand{font:500 11px/1 'Archivo',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#8C867A}
+.wvb-mcard__name{font:600 18px/1.3 'Archivo',sans-serif;margin:8px 0 0;color:#111214}
+.wvb-mcard__desc{font:400 14px/1.6 'Archivo',sans-serif;color:#57544D;margin:8px 0 0}
+.wvb-mcard a.wvb-mcard__cta{display:inline-flex;align-items:center;gap:8px;margin-top:14px;font:600 13px/1 'Archivo',sans-serif;color:#111214;text-decoration:none;border-bottom:2px solid #FBAE00;padding-bottom:2px}
+
+/* ===== Machinedetailpagina (subset van Component.MACHINES, echte data) ===== */
+.wvb-mspecs{width:100%;border-collapse:collapse;margin:18px 0}
+.wvb-mspecs td{padding:10px 0;border-bottom:1px solid #F1EFEA;font:400 15px/1.5 'Archivo',sans-serif;vertical-align:top}
+.wvb-mspecs td:first-child{color:#8C867A;width:42%;padding-right:16px}
+.wvb-mspecs td:last-child{color:#111214;font-weight:500}
+
 /* ===== Footer (visueel identiek aan bestaande site) ===== */
 footer.wvb-f{position:relative;background:#FBAE00;color:#111214;margin-top:72px}
 .wvb-f__wrap{max-width:1420px;margin:0 auto;padding:72px 70px 40px}
@@ -114,20 +129,27 @@ footer.wvb-f{position:relative;background:#FBAE00;color:#111214;margin-top:72px}
 <div class="wrap"><nav class="wvb-crumb" aria-label="Kruimelpad"><a href="/">Home</a><span aria-hidden="true">/</span><span aria-current="page">Maaikorf</span></nav></div>
 <main class="wvb-main">
   <h1 class="wvb-h1">Maaikorf</h1>
-  <p class="wvb-intro">Een maaikorf is een rondsel- of trommelvormig aanbouwdeel dat maaisel tijdens het maaien direct opvangt, zodat het niet in het water of op de kant achterblijft.</p>
-  
-  <h2 class="wvb-h2">Waarom een maaikorf</h2><p>Bij sloten en watergangen mag maaisel vaak niet blijven liggen: het verstopt de waterafvoer en zorgt voor extra voedingsstoffen in het water. Een maaikorf vangt het materiaal tijdens het maaien op en voert het apart af, in één werkgang met het maaien zelf.</p><h2 class="wvb-h2">Montage</h2><p>De maaikorf wordt meestal gemonteerd aan het uiteinde van een <a class="wvb-link" href="/maaikorf/voor-maaiarm/">maaiarm</a>, zodat de bestuurder vanuit de cabine zowel de maaihoogte als de opvang kan regelen.</p><h2 class="wvb-h2">Merken</h2><p><a class="wvb-link" href="/maaikorf/herder/">Herder</a> is een van de merken die maaikorven levert als aanbouwdeel bij hun maaiarmen, veel gebruikt door waterschappen en aannemers in slootonderhoud.</p>
-  <h2 class="wvb-h2">Veelgestelde vragen</h2><div class="wvb-faq"><details><summary>Wat is het verschil tussen een maaikorf en een klepelkop?</summary><p>Een klepelkop verkleint maaisel en laat het liggen; een maaikorf maait en vangt het materiaal tegelijk op, zodat het apart afgevoerd kan worden — nodig zodra maaisel niet in het water of op de kant mag blijven.</p></details><details><summary>Past een maaikorf op elke maaiarm?</summary><p>De maaikorf moet qua bevestiging en gewicht passen bij de maaiarm en het hydraulische systeem van de tractor; vraag advies aan Wim van Breda over de juiste combinatie.</p></details></div>
+  <p class="wvb-intro">Een maaikorf is een aanbouwdeel dat maaisel tijdens het maaien direct opvangt, zodat het niet in het water of op de kant achterblijft. Wim van Breda levert de Herder maaikorf voor sloot- en watergangonderhoud, als aanbouwdeel op een maaiarm.</p>
+  <div class="wvb-fact">Een maaikorf maait en vangt vegetatie in één beweging op, in plaats van het materiaal te verkleinen en te laten liggen zoals een klepelkop doet. Dat is nodig zodra maaisel niet in het water of op de kant mag achterblijven, bijvoorbeeld bij sloten en watergangen die vrij moeten blijven voor de waterafvoer.</div>
+  <h2 class="wvb-h2">Waarom een maaikorf</h2><p>Bij sloten en watergangen mag maaisel vaak niet blijven liggen: het verstopt de waterafvoer en zorgt voor extra voedingsstoffen in het water, wat de waterkwaliteit kan schaden. Een maaikorf vangt het materiaal tijdens het maaien op en voert het apart af, in één werkgang met het maaien zelf.</p><h2 class="wvb-h2">Hoe een maaikorf werkt</h2><p>De maaikorf wordt gemonteerd aan het uiteinde van een <a class="wvb-link" href="/maaikorf/voor-maaiarm/">maaiarm</a>, zodat de bestuurder vanuit de cabine zowel de maaihoogte als de opvang kan regelen. De <a class="wvb-link" href="/machine/herder-maaikorf/">Herder maaikorf</a> is hiervan een voorbeeld: een korf met messen van gehard staal en een open ontwerp, waardoor overtollig water direct wegstroomt terwijl gemaaide vegetatie wordt opgevangen — geschikt voor maaien boven én onder water.</p><h2 class="wvb-h2">Waarvoor wordt een maaikorf gebruikt</h2><ul><li>Maaien van riet en grasbegroeiing in en langs het water</li><li>Onderhoud van sloten en watergangen</li><li>Oeverbeheer</li><li>Natuurvriendelijk slootonderhoud</li></ul><h2 class="wvb-h2">Merken</h2><p><a class="wvb-link" href="/maaikorf/herder/">Herder</a> is het merk dat Wim van Breda levert als aanbouwdeel bij de eigen maaiarmen, veel gebruikt door waterschappen en aannemers in slootonderhoud. De maaikorf is uitwisselbaar tussen verschillende Herder-machines en leverbaar in diverse werkbreedtes, geschikt voor machines van minigraafmachines tot 5 ton tot grotere midi- en graafmachines.</p><h2 class="wvb-h2">Service en onderhoud</h2><p>Wim van Breda levert de maaikorf inclusief montage op de maaiarm en houdt onderdelen op voorraad in de eigen werkplaats in Geldermalsen.</p>
+  <h2 class="wvb-h2">Maaikorf bij Wim van Breda</h2><div class="wvb-machines">
+    <div class="wvb-mcard">
+      <div class="wvb-mcard__brand">Herder</div>
+      <div class="wvb-mcard__name">Maaikorf</div>
+      <div class="wvb-mcard__desc">Professionele maaikorf voor efficiënt slootonderhoud, geschikt voor maaien boven én onder water.</div>
+      <a class="wvb-mcard__cta" href="/machine/herder-maaikorf/">Bekijk machine →</a>
+    </div></div>
+  <h2 class="wvb-h2">Veelgestelde vragen</h2><div class="wvb-faq"><details><summary>Wat is een maaikorf?</summary><p>Een maaikorf is een aanbouwdeel dat vegetatie maait en tegelijk opvangt, zodat het niet in het water of op de kant achterblijft.</p></details><details><summary>Wat is het verschil tussen een maaikorf en een klepelkop?</summary><p>Een klepelkop verkleint maaisel en laat het liggen; een maaikorf maait en vangt het materiaal tegelijk op, zodat het apart afgevoerd kan worden.</p></details><details><summary>Past een maaikorf op elke maaiarm?</summary><p>De maaikorf moet qua bevestiging en gewicht passen bij de maaiarm en het hydraulische systeem van de tractor; Wim van Breda adviseert over de juiste combinatie.</p></details><details><summary>Kan een maaikorf onder water maaien?</summary><p>De Herder maaikorf is geschikt voor maaien zowel boven als onder water, dankzij het open korfontwerp dat verstoppingen voorkomt.</p></details><details><summary>Welke machines kunnen een maaikorf gebruiken?</summary><p>De Herder maaikorf is geschikt voor minigraafmachines tot 5 ton, midi- en graafmachines en tractormachines.</p></details></div>
   
 <div class="wvb-cta">
   <p>Advies nodig over de juiste machine voor uw situatie?</p>
-  <a href="/">Neem contact op</a>
+  <a href="/contact/">Neem contact op</a>
 </div>
 
   
 <div class="wvb-related">
   <div class="wvb-related__label">Meer over dit onderwerp</div>
-  <div class="wvb-related__links"><a href="/maaikorf/kopen/">Maaikorf kopen</a> · <a href="/maaikorf/slootonderhoud/">Maaikorf voor slootonderhoud</a> · <a href="/maaikorf/voor-watergangen/">Maaikorf voor watergangen</a> · <a href="/maaiarm/">Maaiarm</a> · <a href="/slootonderhoud/">Slootonderhoud</a></div>
+  <div class="wvb-related__links"><a href="/maaikorf/kopen/">Maaikorf kopen</a> · <a href="/maaikorf/slootonderhoud/">Maaikorf bij slootonderhoud</a> · <a href="/maaikorf/voor-watergangen/">Maaikorf voor watergangen</a> · <a href="/maaiarm/">Maaiarm</a> · <a href="/slootonderhoud/">Slootonderhoud</a></div>
 </div>
 
 </main>

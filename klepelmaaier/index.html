@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Klepelmaaier kopen: professionele klepelmaaiers | Wim van Breda</title>
-<meta name="description" content="Professionele klepelmaaier voor berm, ruw terrein en dijkonderhoud. Merken als Omarv, Votex en GreenTec, advies en service uit Geldermalsen.">
+<meta name="description" content="Professionele klepelmaaier voor berm, ruw terrein en dijkonderhoud. Omarv, Votex en GreenTec, advies en service uit Geldermalsen.">
 <link rel="canonical" href="https://www.wimvanbreda.nl/klepelmaaier/">
 <meta name="robots" content="index,follow">
 <meta property="og:site_name" content="Wim van Breda">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Klepelmaaier kopen: professionele klepelmaaiers | Wim van Breda">
-<meta property="og:description" content="Professionele klepelmaaier voor berm, ruw terrein en dijkonderhoud. Merken als Omarv, Votex en GreenTec, advies en service uit Geldermalsen.">
+<meta property="og:description" content="Professionele klepelmaaier voor berm, ruw terrein en dijkonderhoud. Omarv, Votex en GreenTec, advies en service uit Geldermalsen.">
 <meta property="og:url" content="https://www.wimvanbreda.nl/klepelmaaier/">
 <link rel="icon" href="data:,">
 <link rel="preload" as="font" href="/assets/fonts/archivo-latin-var.woff2" type="font/woff2" crossorigin="crossorigin">
@@ -69,6 +69,21 @@ h3.wvb-h3{font:600 17px/1.3 'Archivo',sans-serif;margin:28px 0 10px}
 .wvb-related__links{display:flex;flex-wrap:wrap;gap:6px 18px;font:500 15px/1.4 'Archivo',sans-serif}
 .wvb-related__links a{color:#111214;text-decoration:none;border-bottom:2px solid #FBAE00}
 
+/* ===== Machinekaartjes ("Relevante machines"): compact, geen grote banners ===== */
+.wvb-machines{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:18px 0 8px}
+@media (max-width:640px){.wvb-machines{grid-template-columns:1fr}}
+.wvb-mcard{border:1px solid #E6E3DD;padding:20px 22px;background:#fff}
+.wvb-mcard__brand{font:500 11px/1 'Archivo',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#8C867A}
+.wvb-mcard__name{font:600 18px/1.3 'Archivo',sans-serif;margin:8px 0 0;color:#111214}
+.wvb-mcard__desc{font:400 14px/1.6 'Archivo',sans-serif;color:#57544D;margin:8px 0 0}
+.wvb-mcard a.wvb-mcard__cta{display:inline-flex;align-items:center;gap:8px;margin-top:14px;font:600 13px/1 'Archivo',sans-serif;color:#111214;text-decoration:none;border-bottom:2px solid #FBAE00;padding-bottom:2px}
+
+/* ===== Machinedetailpagina (subset van Component.MACHINES, echte data) ===== */
+.wvb-mspecs{width:100%;border-collapse:collapse;margin:18px 0}
+.wvb-mspecs td{padding:10px 0;border-bottom:1px solid #F1EFEA;font:400 15px/1.5 'Archivo',sans-serif;vertical-align:top}
+.wvb-mspecs td:first-child{color:#8C867A;width:42%;padding-right:16px}
+.wvb-mspecs td:last-child{color:#111214;font-weight:500}
+
 /* ===== Footer (visueel identiek aan bestaande site) ===== */
 footer.wvb-f{position:relative;background:#FBAE00;color:#111214;margin-top:72px}
 .wvb-f__wrap{max-width:1420px;margin:0 auto;padding:72px 70px 40px}
@@ -114,20 +129,33 @@ footer.wvb-f{position:relative;background:#FBAE00;color:#111214;margin-top:72px}
 <div class="wrap"><nav class="wvb-crumb" aria-label="Kruimelpad"><a href="/">Home</a><span aria-hidden="true">/</span><span aria-current="page">Klepelmaaier</span></nav></div>
 <main class="wvb-main">
   <h1 class="wvb-h1">Klepelmaaier</h1>
-  <p class="wvb-intro">Een klepelmaaier is een aftakas- of hydraulisch aangedreven maaier met los scharnierende klepelmessen op een draaiende rotor, die gras, onkruid en dunne opslag fijn verkleint achterlaat.</p>
-  
-  <h2 class="wvb-h2">Wat een klepelmaaier doet</h2><p>Doordat de messen los scharnieren, kunnen ze bij een obstakel (steen, paal) opzij wijken en verend terugklappen, wat een klepelmaaier robuuster maakt dan een klassieke cirkelmaaier in ruig, oneffen terrein. Het resultaat is fijn verkleind maaisel dat blijft liggen, zonder dat het hoeft te worden afgevoerd.</p><h2 class="wvb-h2">Uitvoeringen: front, achter en zijmaaier</h2><p>Klepelmaaiers zijn er als vaste of klapbare frontmaaier, als getrokken/opgebouwde achtermaaier, en als zijmaaier of maaiarm-aanbouwdeel voor bermen en taluds.</p><h2 class="wvb-h2">Merken die Wim van Breda levert</h2><p><a class="wvb-link" href="/klepelmaaier/omarv/">Omarv</a> (Italië) bouwt een breed programma klepelmaaiers van compact tot zwaar; <a class="wvb-link" href="/klepelmaaier/votex/">Votex</a> (Nederland) is het bekende merk achter vrijwel elke gemeentetractor; <a class="wvb-link" href="/klepelmaaier/greentec/">GreenTec</a> levert klepelkoppen als onderdeel van het modulaire maaiarmsysteem.</p>
-  <h2 class="wvb-h2">Veelgestelde vragen</h2><div class="wvb-faq"><details><summary>Wat is het verschil tussen een klepelmaaier en een cirkelmaaier?</summary><p>Een klepelmaaier verkleint gras en dunne opslag met los scharnierende klepels en is robuuster tegen obstakels; een cirkelmaaier maait met vaste messen en geeft doorgaans een strakkere snede in schoon gras, maar is gevoeliger voor stenen en obstakels.</p></details><details><summary>Is een klepelmaaier geschikt voor ruw terrein?</summary><p>Ja, dat is een van de sterke punten: dankzij de scharnierende messen kunnen klepelmaaiers goed overweg met oneffen, ruig of steenachtig terrein. Zie ook onze pagina over <a class="wvb-link" href="/klepelmaaier/ruw-terrein/">klepelmaaier voor ruw terrein</a>.</p></details></div>
+  <p class="wvb-intro">Een klepelmaaier is een aftakas- of hydraulisch aangedreven maaier met los scharnierende klepelmessen op een draaiende rotor, die gras, onkruid en dunne opslag fijn verkleind achterlaat. Wim van Breda levert klepelmaaiers van Omarv, Votex en GreenTec voor berm-, terrein- en dijkonderhoud, aan loonbedrijven, gemeenten, waterschappen en aannemers.</p>
+  <div class="wvb-fact">Een klepelmaaier verkleint gras, onkruid en dunne opslag met los scharnierende messen op een draaiende rotor. Omdat de messen bij een obstakel zoals een steen of paal opzij kunnen wijken en verend terugklappen, is een klepelmaaier robuuster in ruig, oneffen terrein dan een klassieke cirkelmaaier met vaste messen.</div>
+  <h2 class="wvb-h2">Waarvoor wordt een klepelmaaier gebruikt?</h2><ul><li>Bermen en middenbermen langs wegen</li><li>Ruig, oneffen of steenachtig terrein</li><li>Dijken en taluds</li><li>Terreinen met dunne houtopslag naast gras</li><li>Regulier en ecologisch bermbeheer</li></ul><h2 class="wvb-h2">Uitvoeringen: front, achter en zijmaaier</h2><p>Klepelmaaiers zijn er als vaste of klapbare frontmaaier, als getrokken of opgebouwde achtermaaier, en als zijmaaier of maaiarm-aanbouwdeel voor bermen en taluds. De keuze hangt af van het type werk: een frontmaaier geeft goed zicht op het werktuig, een zijmaaier of klepelarm is de gangbare keuze voor werk langs de kant van de weg.</p><h2 class="wvb-h2">Welke klepelmaaier past bij uw situatie?</h2><ul><li>Werkbreedte — afgestemd op het te maaien oppervlak en de beschikbare tractorbreedte</li><li>Aandrijving — aftakas voor grotere machines, hydraulisch voor compactere toepassingen</li><li>Terrein — vlak grasland vraagt iets anders dan ruig, steenachtig bermterrein</li><li>Type opslag — dun gras vraagt een lichtere uitvoering dan houtachtige begroeiing</li><li>Tractorvermogen — bepaalt welke werkbreedte en rotorzwaarte mogelijk zijn</li></ul><h2 class="wvb-h2">Omarv, Votex en GreenTec: de merken die Wim van Breda levert</h2><p><a class="wvb-link" href="/klepelmaaier/omarv/">Omarv</a> (Italië) bouwt een breed programma klepelmaaiers van compact tot zwaar, zoals de <a class="wvb-link" href="/machine/omarv-torino-klepelmaaier/">Torino</a> voor tractoren van 70 tot 140 pk met een uitworp boven de looprol. <a class="wvb-link" href="/klepelmaaier/votex/">Votex</a> (Nederland) is het bekende merk achter vrijwel elke gemeentetractor, met onder meer de <a class="wvb-link" href="/machine/votex-roadflex-klepelmaaier/">RoadFlex</a> die zowel als vlakmaaier als zijklepelmaaier werkt. <a class="wvb-link" href="/klepelmaaier/greentec/">GreenTec</a> levert klepelkoppen als onderdeel van het modulaire maaiarmsysteem.</p><h2 class="wvb-h2">Service en onderhoud</h2><p>Wim van Breda levert klepelmaaiers inclusief montage en houdt onderdelen op voorraad in de eigen werkplaats in Geldermalsen, zodat onderhoud en reparatie snel kunnen plaatsvinden.</p>
+  <h2 class="wvb-h2">Voorbeelden van klepelmaaiers bij Wim van Breda</h2><div class="wvb-machines">
+    <div class="wvb-mcard">
+      <div class="wvb-mcard__brand">Omarv</div>
+      <div class="wvb-mcard__name">Torino klepelmaaier</div>
+      <div class="wvb-mcard__desc">Zware klepelmaaier voor tractoren van 70 tot 140 pk, met uitworp boven de looprol, leverbaar in 6 werkbreedtes van 160 tot 260 cm.</div>
+      <a class="wvb-mcard__cta" href="/machine/omarv-torino-klepelmaaier/">Bekijk machine →</a>
+    </div>
+    <div class="wvb-mcard">
+      <div class="wvb-mcard__brand">Votex</div>
+      <div class="wvb-mcard__name">Roadflex klepelmaaier</div>
+      <div class="wvb-mcard__desc">Veelzijdige klepelmaaier met sideshift tot bijna 250 cm: zowel vlakmaaier direct achter de trekker als zijklepelmaaier.</div>
+      <a class="wvb-mcard__cta" href="/machine/votex-roadflex-klepelmaaier/">Bekijk machine →</a>
+    </div></div>
+  <h2 class="wvb-h2">Veelgestelde vragen</h2><div class="wvb-faq"><details><summary>Wat is een klepelmaaier?</summary><p>Een klepelmaaier is een maaier met los scharnierende klepelmessen op een draaiende rotor, die gras, onkruid en dunne opslag verkleint. De messen kunnen bij een obstakel opzij wijken, wat de machine robuust maakt in ruig terrein.</p></details><details><summary>Wat is het verschil tussen een klepelmaaier en een cirkelmaaier?</summary><p>Een klepelmaaier verkleint gras en dunne opslag met los scharnierende klepels en is robuuster tegen obstakels; een cirkelmaaier maait met vaste messen en geeft doorgaans een strakkere snede in schoon gras, maar is gevoeliger voor stenen en obstakels.</p></details><details><summary>Is een klepelmaaier geschikt voor ruw terrein?</summary><p>Ja, dat is een van de sterke punten: dankzij de scharnierende messen kunnen klepelmaaiers goed overweg met oneffen, ruig of steenachtig terrein. Zie ook <a class="wvb-link" href="/klepelmaaier/ruw-terrein/">klepelmaaier voor ruw terrein</a>.</p></details><details><summary>Welke tractor heb ik nodig voor een klepelmaaier?</summary><p>Dat hangt af van de werkbreedte: een bredere klepelmaaier vraagt meer aftakasvermogen. Zie <a class="wvb-link" href="/klepelmaaier/voor-tractor/">klepelmaaier voor tractor</a>.</p></details><details><summary>Welke merken klepelmaaiers levert Wim van Breda?</summary><p>Omarv, Votex en GreenTec, elk met een eigen programma en sterke punten.</p></details><details><summary>Waar kan ik advies krijgen over een klepelmaaier?</summary><p>Neem contact op met Wim van Breda in Geldermalsen voor advies op basis van uw tractor en terrein.</p></details></div>
   
 <div class="wvb-cta">
   <p>Advies nodig over de juiste machine voor uw situatie?</p>
-  <a href="/">Neem contact op</a>
+  <a href="/contact/">Neem contact op</a>
 </div>
 
   
 <div class="wvb-related">
   <div class="wvb-related__label">Meer over dit onderwerp</div>
-  <div class="wvb-related__links"><a href="/klepelmaaier/kopen/">Klepelmaaier kopen</a> · <a href="/klepelmaaier/voor-tractor/">Klepelmaaier voor tractor</a> · <a href="/klepelmaaier/bermonderhoud/">Klepelmaaier bermonderhoud</a> · <a href="/maaiarm/">Maaiarm</a> · <a href="/ecologisch-maaien/">Ecologisch maaien</a></div>
+  <div class="wvb-related__links"><a href="/klepelmaaier/kopen/">Klepelmaaier kopen</a> · <a href="/klepelmaaier/voor-tractor/">Klepelmaaier voor tractor</a> · <a href="/klepelmaaier/bermonderhoud/">Klepelmaaier bij bermonderhoud</a> · <a href="/maaiarm/">Maaiarm</a> · <a href="/ecologisch-maaien/">Ecologisch maaien</a></div>
 </div>
 
 </main>

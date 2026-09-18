@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Slootonderhoud | Wim van Breda</title>
+<title>Slootonderhoud: machines en advies | Wim van Breda</title>
 <meta name="description" content="Professioneel slootonderhoud: talud en waterlijn maaien en schonen, met maaiarm en maaikorf. Advies en machines uit Geldermalsen.">
 <link rel="canonical" href="https://www.wimvanbreda.nl/slootonderhoud/">
 <meta name="robots" content="index,follow">
 <meta property="og:site_name" content="Wim van Breda">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Slootonderhoud | Wim van Breda">
+<meta property="og:title" content="Slootonderhoud: machines en advies | Wim van Breda">
 <meta property="og:description" content="Professioneel slootonderhoud: talud en waterlijn maaien en schonen, met maaiarm en maaikorf. Advies en machines uit Geldermalsen.">
 <meta property="og:url" content="https://www.wimvanbreda.nl/slootonderhoud/">
 <link rel="icon" href="data:,">
@@ -69,6 +69,21 @@ h3.wvb-h3{font:600 17px/1.3 'Archivo',sans-serif;margin:28px 0 10px}
 .wvb-related__links{display:flex;flex-wrap:wrap;gap:6px 18px;font:500 15px/1.4 'Archivo',sans-serif}
 .wvb-related__links a{color:#111214;text-decoration:none;border-bottom:2px solid #FBAE00}
 
+/* ===== Machinekaartjes ("Relevante machines"): compact, geen grote banners ===== */
+.wvb-machines{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:18px 0 8px}
+@media (max-width:640px){.wvb-machines{grid-template-columns:1fr}}
+.wvb-mcard{border:1px solid #E6E3DD;padding:20px 22px;background:#fff}
+.wvb-mcard__brand{font:500 11px/1 'Archivo',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#8C867A}
+.wvb-mcard__name{font:600 18px/1.3 'Archivo',sans-serif;margin:8px 0 0;color:#111214}
+.wvb-mcard__desc{font:400 14px/1.6 'Archivo',sans-serif;color:#57544D;margin:8px 0 0}
+.wvb-mcard a.wvb-mcard__cta{display:inline-flex;align-items:center;gap:8px;margin-top:14px;font:600 13px/1 'Archivo',sans-serif;color:#111214;text-decoration:none;border-bottom:2px solid #FBAE00;padding-bottom:2px}
+
+/* ===== Machinedetailpagina (subset van Component.MACHINES, echte data) ===== */
+.wvb-mspecs{width:100%;border-collapse:collapse;margin:18px 0}
+.wvb-mspecs td{padding:10px 0;border-bottom:1px solid #F1EFEA;font:400 15px/1.5 'Archivo',sans-serif;vertical-align:top}
+.wvb-mspecs td:first-child{color:#8C867A;width:42%;padding-right:16px}
+.wvb-mspecs td:last-child{color:#111214;font-weight:500}
+
 /* ===== Footer (visueel identiek aan bestaande site) ===== */
 footer.wvb-f{position:relative;background:#FBAE00;color:#111214;margin-top:72px}
 .wvb-f__wrap{max-width:1420px;margin:0 auto;padding:72px 70px 40px}
@@ -114,20 +129,33 @@ footer.wvb-f{position:relative;background:#FBAE00;color:#111214;margin-top:72px}
 <div class="wrap"><nav class="wvb-crumb" aria-label="Kruimelpad"><a href="/">Home</a><span aria-hidden="true">/</span><span aria-current="page">Slootonderhoud</span></nav></div>
 <main class="wvb-main">
   <h1 class="wvb-h1">Slootonderhoud</h1>
-  <p class="wvb-intro">Slootonderhoud omvat het maaien van het talud en de waterlijn en het schonen van de sloot, met als doel een goede waterafvoer en een begaanbare oever te behouden.</p>
-  
-  <h2 class="wvb-h2">Talud en waterlijn</h2><p>Het talud wordt gemaaid om begroeiing kort te houden en de oever stabiel te laten; de waterlijn en soms de bodem van de sloot worden geschoond zodat water goed kan afstromen.</p><h2 class="wvb-h2">Machines voor slootonderhoud</h2><p>De meeste sloten worden onderhouden met een <a class="wvb-link" href="/slootonderhoud/maaiarm/">maaiarm</a> vanaf de kant, eventueel met een <a class="wvb-link" href="/slootonderhoud/maaikorf/">maaikorf</a> om het maaisel direct op te vangen in plaats van het in het water te laten.</p>
-  <h2 class="wvb-h2">Veelgestelde vragen</h2><div class="wvb-faq"><details><summary>Hoe vaak moet een sloot gemaaid worden?</summary><p>Dat hangt af van het beheerschema van het waterschap of de eigenaar en de groeisnelheid van de vegetatie; veel sloten worden één tot enkele keren per seizoen gemaaid.</p></details><details><summary>Moet maaisel uit de sloot verwijderd worden?</summary><p>Bij veel watergangen wel, om verstopping van de waterafvoer en overmatige voedingsstoffen in het water te voorkomen — daarvoor wordt een maaikorf gebruikt.</p></details></div>
+  <p class="wvb-intro">Slootonderhoud omvat het maaien van het talud en de waterlijn en het schonen van de sloot, met als doel een goede waterafvoer en een begaanbare, stabiele oever te behouden. Wim van Breda levert de maaiarmen en maaikorven waarmee waterschappen en aannemers dit werk uitvoeren.</p>
+  <div class="wvb-fact">Slootonderhoud bestaat uit het maaien van het talud om begroeiing kort te houden, het schonen van de waterlijn en soms de bodem zodat water goed kan afstromen, en waar nodig het afvoeren van maaisel met een maaikorf.</div>
+  <h2 class="wvb-h2">Talud en waterlijn</h2><p>Het talud wordt gemaaid om begroeiing kort te houden en de oever stabiel te laten; de waterlijn en soms de bodem van de sloot worden geschoond zodat water goed kan afstromen. Dit gebeurt doorgaans vanaf de kant, zonder de oever te betreden.</p><h2 class="wvb-h2">Machines voor slootonderhoud</h2><p>De meeste sloten worden onderhouden met een <a class="wvb-link" href="/slootonderhoud/maaiarm/">maaiarm</a> vanaf de kant, eventueel met een <a class="wvb-link" href="/slootonderhoud/maaikorf/">maaikorf</a> om het maaisel direct op te vangen in plaats van het in het water te laten. Zie ook de bredere pagina <a class="wvb-link" href="/slootonderhoud/machines/">machines voor slootonderhoud</a>.</p><h2 class="wvb-h2">Wanneer een maaikorf nodig is</h2><p>Bij watergangen waar maaisel niet in het water mag achterblijven — om verstopping van de waterafvoer of extra voedingsstoffen in het water te voorkomen — wordt in plaats van een klepelkop een maaikorf gemonteerd, zoals de <a class="wvb-link" href="/machine/herder-maaikorf/">Herder maaikorf</a>.</p><h2 class="wvb-h2">Wie voert slootonderhoud uit</h2><p>Slootonderhoud wordt vooral uitgevoerd door waterschappen zelf en door aannemers en loonbedrijven die in opdracht van waterschappen werken volgens een vast onderhoudsschema.</p>
+  <h2 class="wvb-h2">Relevante machines voor slootonderhoud</h2><div class="wvb-machines">
+    <div class="wvb-mcard">
+      <div class="wvb-mcard__brand">Herder</div>
+      <div class="wvb-mcard__name">Maaikorf</div>
+      <div class="wvb-mcard__desc">Professionele maaikorf voor efficiënt slootonderhoud, geschikt voor maaien boven én onder water.</div>
+      <a class="wvb-mcard__cta" href="/machine/herder-maaikorf/">Bekijk machine →</a>
+    </div>
+    <div class="wvb-mcard">
+      <div class="wvb-mcard__brand">Herder</div>
+      <div class="wvb-mcard__name">Grenadier maaiarm</div>
+      <div class="wvb-mcard__desc">Veelzijdige maaiarm voor zwaar bermbeheer, uitrusbaar met diverse aanbouwwerktuigen, armlengte 6,40 tot 8,80 meter.</div>
+      <a class="wvb-mcard__cta" href="/machine/herder-grenadier-maaiarm/">Bekijk machine →</a>
+    </div></div>
+  <h2 class="wvb-h2">Veelgestelde vragen</h2><div class="wvb-faq"><details><summary>Hoe vaak moet een sloot gemaaid worden?</summary><p>Dat hangt af van het beheerschema van het waterschap of de eigenaar en de groeisnelheid van de vegetatie; veel sloten worden één tot enkele keren per seizoen gemaaid.</p></details><details><summary>Moet maaisel uit de sloot verwijderd worden?</summary><p>Bij veel watergangen wel, om verstopping van de waterafvoer en overmatige voedingsstoffen in het water te voorkomen — daarvoor wordt een maaikorf gebruikt.</p></details><details><summary>Welke machine wordt gebruikt voor slootonderhoud?</summary><p>Meestal een maaiarm vanaf de kant, eventueel met een maaikorf aan het uiteinde in plaats van een klepelkop.</p></details></div>
   
 <div class="wvb-cta">
   <p>Advies nodig over de juiste machine voor uw situatie?</p>
-  <a href="/">Neem contact op</a>
+  <a href="/contact/">Neem contact op</a>
 </div>
 
   
 <div class="wvb-related">
   <div class="wvb-related__label">Meer over dit onderwerp</div>
-  <div class="wvb-related__links"><a href="/slootonderhoud/machines/">Machines voor slootonderhoud</a> · <a href="/slootonderhoud/maaiarm/">Maaiarm voor slootonderhoud</a> · <a href="/slootonderhoud/maaikorf/">Maaikorf voor slootonderhoud</a> · <a href="/bermonderhoud/">Bermonderhoud</a> · <a href="/taludmaaien/">Taludmaaien</a></div>
+  <div class="wvb-related__links"><a href="/slootonderhoud/machines/">Machines voor slootonderhoud</a> · <a href="/slootonderhoud/maaiarm/">Maaiarm bij slootonderhoud</a> · <a href="/slootonderhoud/maaikorf/">Maaikorf bij slootonderhoud</a> · <a href="/bermonderhoud/">Bermonderhoud</a> · <a href="/taludmaaien/">Taludmaaien</a></div>
 </div>
 
 </main>

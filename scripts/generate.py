@@ -6,7 +6,9 @@ Uitvoeren vanuit de scripts/-map: python3 generate.py
 import sys, os
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-from build_seo_pages import page_html, write_page, esc, header_html, footer_html, breadcrumb_html, FONT_FACE, BASE_CSS, DOMAIN
+from build_seo_pages import (page_html, write_page, esc, header_html, footer_html,
+    breadcrumb_html, FONT_FACE, BASE_CSS, DOMAIN, machine_page_html, contact_page_html)
+import machine_data
 
 import seo_content_1, seo_content_2, seo_content_3, seo_content_4, seo_content_5
 
@@ -44,7 +46,9 @@ GROUPS = [
 # byte-identieke HTML serveren). Een link naar een specifiek pad zou dus een
 # valse/kapotte route zijn; deze rij linkt daarom bewust naar "/", vanwaar de
 # bezoeker via het bestaande hoofdmenu bij elke sectie komt. Zie eindrapport.
-MAIN_SITE_LINKS = ["Nieuwe machines","Merken","Occasions","Verhuur","Service","Actueel / Nieuws","Over ons","Contact"]
+MAIN_SITE_LINKS = ["Nieuwe machines","Merken","Occasions","Verhuur","Service","Actueel / Nieuws","Over ons"]
+# "Contact" heeft nu wél een echte, eigen URL (zie contact_page_html) en
+# krijgt daarom een eigen link i.p.v. de generieke "/"-fallback hierboven.
 
 def build_sitemap_page():
     path = "/sitemap/"
@@ -58,7 +62,9 @@ def build_sitemap_page():
         return '<ul>' + "".join(f'<li><a class="wvb-link" href="/">{esc(l)}</a></li>' for l in labels) + '</ul>'
 
     sections_html = []
-    sections_html.append('<h2 class="wvb-h2">Belangrijke websitepagina’s</h2>' + main_link_list(MAIN_SITE_LINKS))
+    main_items_html = '<ul>' + "".join(f'<li><a class="wvb-link" href="/">{esc(l)}</a></li>' for l in MAIN_SITE_LINKS)
+    main_items_html += '<li><a class="wvb-link" href="/contact/">Contact</a></li></ul>'
+    sections_html.append('<h2 class="wvb-h2">Belangrijke websitepagina’s</h2>' + main_items_html)
     for label, paths in GROUPS:
         sections_html.append(f'<h2 class="wvb-h2">{esc(label)}</h2>' + link_list(paths))
     sections_html.append('<h2 class="wvb-h2">Overig</h2><ul><li><a class="wvb-link" href="/sitemap/">Sitemap</a> (deze pagina)</li></ul>')
@@ -114,7 +120,12 @@ def main():
         written.append(pg['path'])
     sm = build_sitemap_page()
     written.append(sm)
-    print(f"Geschreven: {len(written)} pagina's (incl. /sitemap/)")
+    write_page("/contact/", contact_page_html())
+    written.append("/contact/")
+    for slug, m in machine_data.MACHINES.items():
+        write_page(m['url'], machine_page_html(m))
+        written.append(m['url'])
+    print(f"Geschreven: {len(written)} pagina's (incl. /sitemap/, /contact/ en {len(machine_data.MACHINES)} machinepagina's)")
     for w in written:
         print(" ", w)
     return written

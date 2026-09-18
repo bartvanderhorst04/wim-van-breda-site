@@ -69,6 +69,21 @@ h3.wvb-h3{font:600 17px/1.3 'Archivo',sans-serif;margin:28px 0 10px}
 .wvb-related__links{display:flex;flex-wrap:wrap;gap:6px 18px;font:500 15px/1.4 'Archivo',sans-serif}
 .wvb-related__links a{color:#111214;text-decoration:none;border-bottom:2px solid #FBAE00}
 
+/* ===== Machinekaartjes ("Relevante machines"): compact, geen grote banners ===== */
+.wvb-machines{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:18px 0 8px}
+@media (max-width:640px){.wvb-machines{grid-template-columns:1fr}}
+.wvb-mcard{border:1px solid #E6E3DD;padding:20px 22px;background:#fff}
+.wvb-mcard__brand{font:500 11px/1 'Archivo',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#8C867A}
+.wvb-mcard__name{font:600 18px/1.3 'Archivo',sans-serif;margin:8px 0 0;color:#111214}
+.wvb-mcard__desc{font:400 14px/1.6 'Archivo',sans-serif;color:#57544D;margin:8px 0 0}
+.wvb-mcard a.wvb-mcard__cta{display:inline-flex;align-items:center;gap:8px;margin-top:14px;font:600 13px/1 'Archivo',sans-serif;color:#111214;text-decoration:none;border-bottom:2px solid #FBAE00;padding-bottom:2px}
+
+/* ===== Machinedetailpagina (subset van Component.MACHINES, echte data) ===== */
+.wvb-mspecs{width:100%;border-collapse:collapse;margin:18px 0}
+.wvb-mspecs td{padding:10px 0;border-bottom:1px solid #F1EFEA;font:400 15px/1.5 'Archivo',sans-serif;vertical-align:top}
+.wvb-mspecs td:first-child{color:#8C867A;width:42%;padding-right:16px}
+.wvb-mspecs td:last-child{color:#111214;font-weight:500}
+
 /* ===== Footer (visueel identiek aan bestaande site) ===== */
 footer.wvb-f{position:relative;background:#FBAE00;color:#111214;margin-top:72px}
 .wvb-f__wrap{max-width:1420px;margin:0 auto;padding:72px 70px 40px}
@@ -114,14 +129,21 @@ footer.wvb-f{position:relative;background:#FBAE00;color:#111214;margin-top:72px}
 <div class="wrap"><nav class="wvb-crumb" aria-label="Kruimelpad"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/ecologisch-maaien/">Ecologisch maaien</a><span aria-hidden="true">/</span><span aria-current="page">Machines</span></nav></div>
 <main class="wvb-main">
   <h1 class="wvb-h1">Machines voor ecologisch maaien</h1>
-  <p class="wvb-intro">Voor ecologisch maaien zijn geen aparte machines nodig: het gaat om dezelfde klepelmaaiers en maaiarmen die ook voor regulier bermbeheer worden ingezet, gecombineerd met een ecologisch maaischema.</p>
-  
-  <h2 class="wvb-h2">Klepelmaaier of maaiarm</h2><p>Een <a class="wvb-link" href="/klepelmaaier/">klepelmaaier</a> is geschikt voor open, gefaseerd te maaien vlakken; een <a class="wvb-link" href="/maaiarm/">maaiarm</a> wordt ingezet zodra er hoogteverschil, sloten of obstakels in het traject zitten.</p><h2 class="wvb-h2">Opvang van maaisel</h2><p>Waar maaisel afgevoerd moet worden om de bodem te verschralen, wordt vaak een maaikorf of opvangsysteem toegevoegd — zie <a class="wvb-link" href="/ecologisch-maaien/maaien-met-afvoer/">maaien met afvoer</a>.</p>
+  <p class="wvb-intro">Voor ecologisch maaien zijn geen aparte machines nodig: het gaat om dezelfde klepelmaaiers en maaiarmen die ook voor regulier bermbeheer worden ingezet, gecombineerd met een ecologisch maaischema en, waar nodig, opvang van maaisel.</p>
+  <div class="wvb-fact">De machinekeuze bij ecologisch maaien wordt niet bepaald door het ecologische doel zelf, maar door het terrein en de gewenste afvoer: een klepelmaaier voor open, gefaseerd te maaien vlakken, een maaiarm zodra er hoogteverschil of obstakels zijn, en een maai-laadcombinatie waar maaisel direct moet worden afgevoerd.</div>
+  <h2 class="wvb-h2">Klepelmaaier of maaiarm</h2><p>Een <a class="wvb-link" href="/klepelmaaier/">klepelmaaier</a> is geschikt voor open, gefaseerd te maaien vlakken zoals bermstroken en graslanden; een <a class="wvb-link" href="/maaiarm/">maaiarm</a> wordt ingezet zodra er hoogteverschil, sloten of obstakels in het traject zitten. Beide worden bij ecologisch maaien niet anders bediend dan bij regulier werk — het verschil zit in wanneer en hoeveel er gemaaid wordt.</p><h2 class="wvb-h2">Opvang van maaisel</h2><p>Waar maaisel afgevoerd moet worden om de bodem te verschralen, wordt vaak een maaikorf of een maai-laadcombinatie ingezet. Een voorbeeld is de <a class="wvb-link" href="/machine/omarv-venezia-l-professionele-maai-laad-combinatie/">Omarv Venezia L</a>, die maaien, verkleinen en opvangen in één werkgang combineert — zie ook <a class="wvb-link" href="/ecologisch-maaien/maaien-met-afvoer/">maaien met afvoer</a>.</p>
+  <h2 class="wvb-h2">Relevante machine voor maaien met afvoer</h2><div class="wvb-machines">
+    <div class="wvb-mcard">
+      <div class="wvb-mcard__brand">Omarv</div>
+      <div class="wvb-mcard__name">Venezia L professionele maai-laad combinatie</div>
+      <div class="wvb-mcard__desc">De Venezia L is een professionele maai-laad combinatie met opvangbak van 10 m³, geschikt voor tractoren van 90 tot 120 pk.</div>
+      <a class="wvb-mcard__cta" href="/machine/omarv-venezia-l-professionele-maai-laad-combinatie/">Bekijk machine →</a>
+    </div></div>
   
   
 <div class="wvb-cta">
   <p>Advies nodig over de juiste machine voor uw situatie?</p>
-  <a href="/">Neem contact op</a>
+  <a href="/contact/">Neem contact op</a>
 </div>
 
   

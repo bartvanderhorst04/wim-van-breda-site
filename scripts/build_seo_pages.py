@@ -95,6 +95,21 @@ h3.wvb-h3{font:600 17px/1.3 'Archivo',sans-serif;margin:28px 0 10px}
 .wvb-related__links{display:flex;flex-wrap:wrap;gap:6px 18px;font:500 15px/1.4 'Archivo',sans-serif}
 .wvb-related__links a{color:#111214;text-decoration:none;border-bottom:2px solid #FBAE00}
 
+/* ===== Machinekaartjes ("Relevante machines"): compact, geen grote banners ===== */
+.wvb-machines{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:18px 0 8px}
+@media (max-width:640px){.wvb-machines{grid-template-columns:1fr}}
+.wvb-mcard{border:1px solid #E6E3DD;padding:20px 22px;background:#fff}
+.wvb-mcard__brand{font:500 11px/1 'Archivo',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#8C867A}
+.wvb-mcard__name{font:600 18px/1.3 'Archivo',sans-serif;margin:8px 0 0;color:#111214}
+.wvb-mcard__desc{font:400 14px/1.6 'Archivo',sans-serif;color:#57544D;margin:8px 0 0}
+.wvb-mcard a.wvb-mcard__cta{display:inline-flex;align-items:center;gap:8px;margin-top:14px;font:600 13px/1 'Archivo',sans-serif;color:#111214;text-decoration:none;border-bottom:2px solid #FBAE00;padding-bottom:2px}
+
+/* ===== Machinedetailpagina (subset van Component.MACHINES, echte data) ===== */
+.wvb-mspecs{width:100%;border-collapse:collapse;margin:18px 0}
+.wvb-mspecs td{padding:10px 0;border-bottom:1px solid #F1EFEA;font:400 15px/1.5 'Archivo',sans-serif;vertical-align:top}
+.wvb-mspecs td:first-child{color:#8C867A;width:42%;padding-right:16px}
+.wvb-mspecs td:last-child{color:#111214;font-weight:500}
+
 /* ===== Footer (visueel identiek aan bestaande site) ===== */
 footer.wvb-f{position:relative;background:#FBAE00;color:#111214;margin-top:72px}
 .wvb-f__wrap{max-width:1420px;margin:0 auto;padding:72px 70px 40px}
@@ -226,6 +241,21 @@ def related_html(items):
 </div>
 """
 
+def machines_html(heading, machines):
+    """machines: list of dicts {name, brand, desc, url} — url = het echte
+    bestaande m.url-veld (bv. /machine/herder-grenadier-maaiarm/), waar nu
+    ook echt een statische paginakopie van dat machinerecord staat (zie
+    machine_page_html hieronder). Geen verzonnen machines, geen homepage-
+    fallback: de knop gaat altijd naar de specifieke machine."""
+    cards = "".join(f"""
+    <div class="wvb-mcard">
+      <div class="wvb-mcard__brand">{esc(m['brand'])}</div>
+      <div class="wvb-mcard__name">{esc(m['name'])}</div>
+      <div class="wvb-mcard__desc">{esc(m['desc'])}</div>
+      <a class="wvb-mcard__cta" href="{m['url']}">Bekijk machine →</a>
+    </div>""" for m in machines)
+    return f'<h2 class="wvb-h2">{esc(heading)}</h2><div class="wvb-machines">{cards}</div>'
+
 def faq_html(items):
     if not items:
         return ""
@@ -237,13 +267,16 @@ def faq_html(items):
 def page_html(page):
     """page: dict met keys title, description, path, h1, trail, intro,
     sections (list of html strings, al met h2/h3/p/ul erin), faq (opt),
-    related (opt list), fact (opt html snippet)."""
+    related (opt list), fact (opt html snippet), machines (opt: (heading,
+    [machine dicts])), cta (opt: (tekst, label, href) — anders DEFAULT_CTA
+    naar /contact/)."""
     canonical = DOMAIN + page['path']
     sections_html = "".join(page.get('sections', []))
+    machines = machines_html(*page['machines']) if page.get('machines') else ""
     faq = faq_html(page.get('faq', []))
     fact = f'<div class="wvb-fact">{page["fact"]}</div>' if page.get('fact') else ""
     related = related_html(page['related']) if page.get('related') else ""
-    cta = page.get('cta_html', DEFAULT_CTA)
+    cta = cta_html(*page['cta']) if page.get('cta') else DEFAULT_CTA
     return f"""<!doctype html>
 <html lang="nl">
 <head>
@@ -270,6 +303,7 @@ def page_html(page):
   <p class="wvb-intro">{page['intro']}</p>
   {fact}
   {sections_html}
+  {machines}
   {faq}
   {cta}
   {related}
@@ -279,12 +313,17 @@ def page_html(page):
 </html>
 """
 
-DEFAULT_CTA = """
+def cta_html(text, label, href):
+    return f"""
 <div class="wvb-cta">
-  <p>Advies nodig over de juiste machine voor uw situatie?</p>
-  <a href="/">Neem contact op</a>
+  <p>{esc(text)}</p>
+  <a href="{href}">{esc(label)}</a>
 </div>
 """
+
+# Standaard-CTA gaat naar de nu écht bestaande /contact/-pagina (zie
+# contact_page_html) — nooit meer naar "/" als contact bedoeld is.
+DEFAULT_CTA = cta_html("Advies nodig over de juiste machine voor uw situatie?", "Neem contact op", "/contact/")
 
 def h2(title, *body):
     return f'<h2 class="wvb-h2">{esc(title)}</h2>' + "".join(body)
@@ -300,6 +339,137 @@ def ul(items):
 
 def a(label, href):
     return f'<a class="wvb-link" href="{href}">{esc(label)}</a>'
+
+def machine_page_html(m):
+    """Bouwt een echte, statische machinedetailpagina op het bestaande
+    m['url']-pad (bv. /machine/herder-grenadier-maaiarm/), met UITSLUITEND
+    velden die al in Component.MACHINES staan (name, brand, type, kort,
+    kenmerken, specs, tekst, toepassingen) — niets verzonnen. Dit bestaat
+    zodat een "Bekijk machine"-knop vanaf een SEO-landingspagina een echte,
+    unieke bestemming heeft in plaats van (via de SPA-rewrite) op de
+    homepage te landen. Alleen gebouwd voor machines die daadwerkelijk
+    vanaf een SEO-pagina worden gelinkt — geen kopie van alle ~264 records."""
+    title = f"{m['name']} | {m['brand']} | Wim van Breda"
+    desc = m['kort'] if m.get('kort') else f"{m['name']} van {m['brand']} bij Wim van Breda. {m.get('type','')}."
+    desc = desc[:300]
+    trail = [("Home", "/"), ("Nieuwe machines", "/"), (m['name'], None)]
+    kenmerken_html = ul([esc(k) for k in m.get('kenmerken', [])]) if m.get('kenmerken') else ""
+    specs_html = ""
+    if m.get('specs'):
+        rows = "".join(f"<tr><td>{esc(s['k'])}</td><td>{esc(str(s['v']))}</td></tr>" for s in m['specs'])
+        specs_html = f'<table class="wvb-mspecs"><tbody>{rows}</tbody></table>'
+    toep_html = ul([esc(t) for t in m.get('toepassingen', [])]) if m.get('toepassingen') else ""
+    seo_links = related_html(m['seo_links']) if m.get('seo_links') else ""
+    canonical = DOMAIN + m['url']
+    return f"""<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{esc(title)}</title>
+<meta name="description" content="{esc(desc)}">
+<link rel="canonical" href="{canonical}">
+<meta name="robots" content="index,follow">
+<meta property="og:site_name" content="{SITE_NAME}">
+<meta property="og:type" content="product">
+<meta property="og:title" content="{esc(title)}">
+<meta property="og:description" content="{esc(desc)}">
+<meta property="og:url" content="{canonical}">
+<link rel="icon" href="data:,">
+<link rel="preload" as="font" href="/assets/fonts/archivo-latin-var.woff2" type="font/woff2" crossorigin="crossorigin">
+<style>{FONT_FACE}{BASE_CSS}</style>
+</head>
+<body>
+{header_html()}
+<div class="wrap">{breadcrumb_html(trail)}</div>
+<main class="wvb-main">
+  <div style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#8C867A;margin-top:22px">{esc(m['brand'])} · {esc(m.get('type',''))}</div>
+  <h1 class="wvb-h1" style="margin-top:10px">{esc(m['name'])}</h1>
+  <p class="wvb-intro">{esc(m.get('kort') or '')}</p>
+  {h2('Over deze machine', p(esc(m.get('tekst') or ''))) if m.get('tekst') else ''}
+  {h2('Kenmerken', kenmerken_html) if kenmerken_html else ''}
+  {h2('Specificaties', specs_html) if specs_html else ''}
+  {h2('Toepassingen', toep_html) if toep_html else ''}
+  {DEFAULT_CTA}
+  {seo_links}
+</main>
+{footer_html()}
+</body>
+</html>
+"""
+
+def contact_page_html():
+    """Echte, statische /contact/-pagina — dezelfde adres-/telefoon-/
+    WhatsApp-/openingstijdengegevens en hetzelfde formulier (velden +
+    action) als de bestaande contactpagina in de SPA (Wim van Breda.dc.html,
+    isContact-blok). action wijst — exact als in de SPA — naar de
+    formspreeEndpoint-prop, die in het project nog op de ontwikkelplaceholder
+    staat ('https://formspree.io/f/your-form-id'); dat is een al bestaande,
+    losstaande situatie (niet door deze taak veroorzaakt en hier niet
+    op te lossen zonder een echte Formspree-ID). Zodra die er is, hoeft
+    alleen deze ene constante te worden aangepast."""
+    FORM_ENDPOINT = "https://formspree.io/f/your-form-id"
+    trail = [("Home", "/"), ("Contact", None)]
+    return f"""<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact, openingstijden en route | Wim van Breda</title>
+<meta name="description" content="Bel, WhatsApp of bezoek Wim van Breda aan de Oudenhof 14 in Geldermalsen. Openingstijden, telefoonnummers per afdeling en contactformulier.">
+<link rel="canonical" href="{DOMAIN}/contact/">
+<meta name="robots" content="index,follow">
+<meta property="og:site_name" content="{SITE_NAME}">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Contact, openingstijden en route | Wim van Breda">
+<meta property="og:url" content="{DOMAIN}/contact/">
+<link rel="icon" href="data:,">
+<link rel="preload" as="font" href="/assets/fonts/archivo-latin-var.woff2" type="font/woff2" crossorigin="crossorigin">
+<style>{FONT_FACE}{BASE_CSS}
+.wvb-cform{{background:#fff;border:1px solid #EFECE6;padding:32px 28px;margin-top:32px}}
+.wvb-cform label{{display:flex;flex-direction:column;gap:8px;font:500 13px/1 'Archivo',sans-serif;margin-top:18px}}
+.wvb-cform input,.wvb-cform select,.wvb-cform textarea{{background:#fff;border:0;border-bottom:1px solid #D9D5CD;padding:12px 2px;font:400 15px/1.5 'Archivo',sans-serif}}
+.wvb-cform button{{margin-top:24px;display:inline-flex;align-items:center;gap:10px;background:#FBAE00;color:#111214;border:1px solid #111214;padding:16px 24px;font:600 15px/1 'Archivo',sans-serif;cursor:pointer}}
+.wvb-crow{{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid #F1EFEA;font:400 15px/1 'Archivo',sans-serif}}
+main.wvb-main{{max-width:960px}}
+</style>
+</head>
+<body>
+{header_html()}
+<div class="wrap">{breadcrumb_html(trail)}</div>
+<main class="wvb-main">
+  <h1 class="wvb-h1">Contact</h1>
+  <p class="wvb-intro">Bel, WhatsApp of loop binnen in Geldermalsen. U spreekt direct iemand die de machines kent.</p>
+
+  <h2 class="wvb-h2">Bezoekadres</h2>
+  <p>Oudenhof 14, 4191 NW Geldermalsen. <a class="wvb-link" href="https://maps.google.com/?q=Oudenhof+14+Geldermalsen">Route plannen →</a></p>
+
+  <h2 class="wvb-h2">Bel of WhatsApp ons</h2>
+  <div class="wvb-crow"><span>Algemeen</span><a class="wvb-link" href="tel:+31345585050">+31(0)345 58 50 50</a></div>
+  <div class="wvb-crow"><span>Sales</span><a class="wvb-link" href="tel:+31345585050">+31(0)345 58 50 50</a></div>
+  <div class="wvb-crow"><span>Service</span><a class="wvb-link" href="tel:+31345585050">+31(0)345 58 50 50</a></div>
+  <div class="wvb-crow"><span>Onderdelen</span><a class="wvb-link" href="tel:+31345585050">+31(0)345 58 50 50</a></div>
+  <p><a class="wvb-link" href="https://wa.me/31643070306">WhatsApp klantenservice: +31(0)6 43 07 03 06</a></p>
+
+  <h2 class="wvb-h2">Stuur ons een bericht</h2>
+  <p>Wij reageren op werkdagen binnen één werkdag.</p>
+  <form class="wvb-cform" action="{FORM_ENDPOINT}" method="POST">
+    <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+    <input type="hidden" name="pagina_url" value="{DOMAIN}/contact/">
+    <input type="hidden" name="_subject" value="Nieuwe aanvraag via wimvanbreda.nl/contact/">
+    <label>Naam<input name="naam" required="required"></label>
+    <label>Bedrijf<input name="bedrijf"></label>
+    <label>E-mailadres<input type="email" name="_replyto" required="required"></label>
+    <label>Telefoonnummer<input type="tel" name="telefoon"></label>
+    <label>Onderwerp<select name="onderwerp"><option>Nieuwe machine</option><option>Occasion</option><option>Verhuur</option><option>Service</option><option>Onderdelen</option><option>Anders</option></select></label>
+    <label>Bericht<textarea name="verzoek" rows="5"></textarea></label>
+    <button type="submit">Verstuur bericht →</button>
+  </form>
+</main>
+{footer_html()}
+</body>
+</html>
+"""
 
 def write_page(path, html_content):
     """path bv. '/maaiarm/kopen/' -> maaiarm/kopen/index.html"""

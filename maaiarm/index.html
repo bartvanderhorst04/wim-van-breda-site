@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Maaiarm kopen: professionele maaiarmen | Wim van Breda</title>
-<meta name="description" content="Professionele maaiarm voor berm-, sloot- en terreinonderhoud. Merken als Herder en GreenTec, advies op maat en service vanuit Geldermalsen.">
+<meta name="description" content="Professionele maaiarm voor berm-, sloot- en terreinonderhoud. Herder en GreenTec maaiarmen, advies op maat en service vanuit Geldermalsen.">
 <link rel="canonical" href="https://www.wimvanbreda.nl/maaiarm/">
 <meta name="robots" content="index,follow">
 <meta property="og:site_name" content="Wim van Breda">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Maaiarm kopen: professionele maaiarmen | Wim van Breda">
-<meta property="og:description" content="Professionele maaiarm voor berm-, sloot- en terreinonderhoud. Merken als Herder en GreenTec, advies op maat en service vanuit Geldermalsen.">
+<meta property="og:description" content="Professionele maaiarm voor berm-, sloot- en terreinonderhoud. Herder en GreenTec maaiarmen, advies op maat en service vanuit Geldermalsen.">
 <meta property="og:url" content="https://www.wimvanbreda.nl/maaiarm/">
 <link rel="icon" href="data:,">
 <link rel="preload" as="font" href="/assets/fonts/archivo-latin-var.woff2" type="font/woff2" crossorigin="crossorigin">
@@ -69,6 +69,21 @@ h3.wvb-h3{font:600 17px/1.3 'Archivo',sans-serif;margin:28px 0 10px}
 .wvb-related__links{display:flex;flex-wrap:wrap;gap:6px 18px;font:500 15px/1.4 'Archivo',sans-serif}
 .wvb-related__links a{color:#111214;text-decoration:none;border-bottom:2px solid #FBAE00}
 
+/* ===== Machinekaartjes ("Relevante machines"): compact, geen grote banners ===== */
+.wvb-machines{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:18px 0 8px}
+@media (max-width:640px){.wvb-machines{grid-template-columns:1fr}}
+.wvb-mcard{border:1px solid #E6E3DD;padding:20px 22px;background:#fff}
+.wvb-mcard__brand{font:500 11px/1 'Archivo',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#8C867A}
+.wvb-mcard__name{font:600 18px/1.3 'Archivo',sans-serif;margin:8px 0 0;color:#111214}
+.wvb-mcard__desc{font:400 14px/1.6 'Archivo',sans-serif;color:#57544D;margin:8px 0 0}
+.wvb-mcard a.wvb-mcard__cta{display:inline-flex;align-items:center;gap:8px;margin-top:14px;font:600 13px/1 'Archivo',sans-serif;color:#111214;text-decoration:none;border-bottom:2px solid #FBAE00;padding-bottom:2px}
+
+/* ===== Machinedetailpagina (subset van Component.MACHINES, echte data) ===== */
+.wvb-mspecs{width:100%;border-collapse:collapse;margin:18px 0}
+.wvb-mspecs td{padding:10px 0;border-bottom:1px solid #F1EFEA;font:400 15px/1.5 'Archivo',sans-serif;vertical-align:top}
+.wvb-mspecs td:first-child{color:#8C867A;width:42%;padding-right:16px}
+.wvb-mspecs td:last-child{color:#111214;font-weight:500}
+
 /* ===== Footer (visueel identiek aan bestaande site) ===== */
 footer.wvb-f{position:relative;background:#FBAE00;color:#111214;margin-top:72px}
 .wvb-f__wrap{max-width:1420px;margin:0 auto;padding:72px 70px 40px}
@@ -114,20 +129,39 @@ footer.wvb-f{position:relative;background:#FBAE00;color:#111214;margin-top:72px}
 <div class="wrap"><nav class="wvb-crumb" aria-label="Kruimelpad"><a href="/">Home</a><span aria-hidden="true">/</span><span aria-current="page">Maaiarm</span></nav></div>
 <main class="wvb-main">
   <h1 class="wvb-h1">Maaiarm</h1>
-  <p class="wvb-intro">Een maaiarm is een hydraulisch aangedreven, uitschuifbare arm die op een tractor of werktuigdrager wordt gemonteerd om bermen, taluds, sloten en hagen te maaien of te snoeien op plekken waar een gewone maaier niet bij kan.</p>
-  
-  <h2 class="wvb-h2">Wat is een maaiarm en waarvoor wordt hij gebruikt</h2><p>De arm wordt vanuit de cabine bediend en kan zijwaarts, omhoog en over hindernissen heen werken. Aan het uiteinde zit een verwisselbaar werktuig: een klepelkop voor gras en dun hout, een messenbalk voor nette bermranden, een takkenschaar voor snoeiwerk of een maaikorf voor maaisel dat uit het water moet blijven. Zo is één machine inzetbaar voor meerdere onderhoudstaken door het seizoen heen.</p><h2 class="wvb-h2">Welke maaiarmen Wim van Breda levert</h2><p>Wim van Breda levert maaiarmen van <a class="wvb-link" href="/herder/maaiarm/">Herder</a>, een Nederlands merk met ruim 75 jaar ervaring in berm- en dijkonderhoud, en van <a class="wvb-link" href="/greentec/maaiarm/">GreenTec</a>, bekend om het modulaire systeem waarbij één draagarm zonder gereedschap van werktuig wisselt. Beide merken bouwen machines in uiteenlopende armlengtes en gewichtsklassen, passend bij tractoren vanaf circa 3.000 kg tot zware uitvoeringen voor grootschalig beheer.</p><h2 class="wvb-h2">Voor wie</h2><p>Maaiarmen worden vooral ingezet door loonbedrijven, aannemers in groen- en grondverzet, waterschappen en gemeenten die bermen, sloten, dijken en taluds moeten onderhouden volgens een vast beheerschema.</p>
-  <h2 class="wvb-h2">Veelgestelde vragen</h2><div class="wvb-faq"><details><summary>Wat kost een maaiarm?</summary><p>De prijs hangt sterk af van armlengte, merk en het gewicht van de tractor waarop de arm gemonteerd wordt. Neem contact op voor een offerte op maat.</p></details><details><summary>Welke tractor heb ik nodig voor een maaiarm?</summary><p>Dat verschilt per model: compacte maaiarmen zijn al te combineren met tractoren vanaf circa 3.000 kg, zwaardere uitvoeringen vragen een tractor van 7.000 kg of meer. Zie ook onze pagina over <a class="wvb-link" href="/maaiarm/voor-tractor/">maaiarm voor tractor</a>.</p></details></div>
+  <p class="wvb-intro">Een maaiarm is een hydraulisch aangedreven, uitschuifbare arm die op een tractor of werktuigdrager wordt gemonteerd om bermen, taluds, sloten en hagen te maaien of te snoeien op plekken waar een gewone maaier niet bij kan. Wim van Breda levert maaiarmen van Herder en GreenTec aan loonbedrijven, aannemers, gemeenten en waterschappen, en verzorgt montage, onderdelen en service vanuit de eigen werkplaats in Geldermalsen.</p>
+  <div class="wvb-fact">Een maaiarm bestaat uit een hydraulische arm op een tractor of werktuigdrager, met aan het uiteinde een verwisselbaar werktuig — meestal een klepelkop, messenbalk, takkenschaar of maaikorf. De arm kan zijwaarts uitschuiven en over hoogteverschil werken, waardoor bermen, taluds en slootkanten vanaf de kant onderhouden kunnen worden zonder dat de bestuurder de tractor hoeft te verplaatsen.</div>
+  <h2 class="wvb-h2">Waarvoor wordt een maaiarm gebruikt?</h2><p>Een maaiarm wordt professioneel ingezet voor het maaien en snoeien van bermen, taluds, slootkanten, hagen en vegetatie rond obstakels zoals verkeersborden, vangrails en bomen. Doordat de arm vanuit de cabine wordt bediend en over hindernissen heen kan werken, blijft de tractor op de rijbaan of berm terwijl het werktuig het eigenlijke werk doet op plekken die anders lastig of onveilig te bereiken zouden zijn.</p><ul><li>Wegbermen en middenbermen</li><li>Taluds langs dijken, kanalen en spoorlijnen</li><li>Slootkanten en oevers</li><li>Vegetatie rond obstakels: borden, palen, bomen</li><li>Hagen en opgaande begroeiing langs perceelsranden</li></ul><h2 class="wvb-h2">Welke werktuigen kunnen op een maaiarm?</h2><p>Het uiteinde van een maaiarm is verwisselbaar, waardoor dezelfde arm voor meerdere taken bruikbaar is:</p><ul><li>Klepelkop — verkleint gras, onkruid en dunne opslag; het materiaal blijft liggen</li><li>Messenbalk — geeft een nette, korte snede voor bermranden</li><li>Takkenschaar — voor het knippen van dikkere takken en opslag</li><li>Maaikorf — maait en vangt maaisel tegelijk op, gebruikt bij sloten en watergangen</li></ul><h2 class="wvb-h2">Herder en GreenTec: de twee merken die Wim van Breda levert</h2><p>Wim van Breda levert maaiarmen van twee merken met een verschillende aanpak. <a class="wvb-link" href="/maaiarm/herder/">Herder</a> is een Nederlands merk met ruim 75 jaar ervaring in berm-, dijk- en slootonderhoud; de <a class="wvb-link" href="/machine/herder-grenadier-maaiarm/">Herder Grenadier</a> is daarvan een voorbeeld — een zware maaiarm met een armlengte van 6,40 tot 8,80 meter, uit te rusten met uiteenlopende werktuigen. <a class="wvb-link" href="/maaiarm/greentec/">GreenTec</a> is een Deens merk dat werkt met een modulair systeem: één draagarm waarop zonder gereedschap gewisseld kan worden tussen klepelkop en takkenschaar. GreenTec bouwt zowel compacte maaiarmen voor kleinere tractoren als zware uitvoeringen met een horizontaal bereik tot ruim 8 meter voor grootschalig beheer.</p><h2 class="wvb-h2">Welke maaiarm past bij uw situatie?</h2><p>De keuze voor een maaiarm hangt af van een aantal praktische factoren:</p><ul><li>Tractorgewicht en hydraulische capaciteit — bepaalt welke armklasse mogelijk is</li><li>Gewenst bereik — hoe ver de arm bij een talud of over water moet reiken</li><li>Type werk — regulier bermonderhoud, slootonderhoud of incidenteel snoeiwerk</li><li>Werktuig — welk aanbouwdeel het meest gebruikt gaat worden</li><li>Gebruiksintensiteit — dagelijkse inzet vraagt om een robuustere uitvoering dan incidenteel gebruik</li></ul><p>Wim van Breda adviseert op basis van deze factoren welk model en welke armklasse passen bij uw tractor en werkzaamheden. Zie ook onze pagina's over <a class="wvb-link" href="/maaiarm/kopen/">maaiarm kopen</a> en <a class="wvb-link" href="/maaiarm/voor-tractor/">maaiarm voor tractor</a>.</p><h2 class="wvb-h2">Service en onderhoud</h2><p>Wim van Breda levert maaiarmen inclusief montage op de tractor, en houdt onderdelen op voorraad in de eigen werkplaats in Geldermalsen. Onderhoud en reparatie kunnen in de werkplaats of, waar dat praktisch is, op locatie plaatsvinden, zodat een machine niet onnodig lang stilstaat.</p>
+  <h2 class="wvb-h2">Voorbeelden van maaiarmen bij Wim van Breda</h2><div class="wvb-machines">
+    <div class="wvb-mcard">
+      <div class="wvb-mcard__brand">Herder</div>
+      <div class="wvb-mcard__name">Grenadier maaiarm</div>
+      <div class="wvb-mcard__desc">Veelzijdige maaiarm voor zwaar bermbeheer, uitrusbaar met diverse aanbouwwerktuigen, armlengte 6,40 tot 8,80 meter.</div>
+      <a class="wvb-mcard__cta" href="/machine/herder-grenadier-maaiarm/">Bekijk machine →</a>
+    </div>
+    <div class="wvb-mcard">
+      <div class="wvb-mcard__brand">GreenTec</div>
+      <div class="wvb-mcard__name">Scorpion 430 S – Basisfront maaiarm</div>
+      <div class="wvb-mcard__desc">Professionele maaiarm voor gebieden met beperkte ruimte, ontworpen voor kleine tractoren vanaf 3.000 kg.</div>
+      <a class="wvb-mcard__cta" href="/machine/greentec-scorpion-430-s-basisfront-maaiarm/">Bekijk machine →</a>
+    </div>
+    <div class="wvb-mcard">
+      <div class="wvb-mcard__brand">GreenTec</div>
+      <div class="wvb-mcard__name">Scorpion 830 Plus maaiarm</div>
+      <div class="wvb-mcard__desc">Krachtige professionele maaiarm met 8,3 meter horizontaal bereik, voor intensief berm-, heg- en slootonderhoud.</div>
+      <a class="wvb-mcard__cta" href="/machine/greentec-scorpion-830-plus-maaiarm/">Bekijk machine →</a>
+    </div></div>
+  <h2 class="wvb-h2">Veelgestelde vragen</h2><div class="wvb-faq"><details><summary>Wat is een maaiarm?</summary><p>Een maaiarm is een hydraulisch aangedreven, uitschuifbare arm op een tractor of werktuigdrager, met aan het uiteinde een verwisselbaar werktuig zoals een klepelkop, messenbalk, takkenschaar of maaikorf. De arm maakt het mogelijk om bermen, taluds en sloten te maaien op plekken die met een gewone maaier moeilijk bereikbaar zijn.</p></details><details><summary>Waarvoor wordt een maaiarm gebruikt?</summary><p>Voor het maaien en snoeien van bermen, taluds, slootkanten, hagen en vegetatie rond obstakels — vooral in professioneel berm- en slootonderhoud door loonbedrijven, aannemers, gemeenten en waterschappen.</p></details><details><summary>Welke maaiarm is geschikt voor mijn tractor?</summary><p>Dat hangt vooral af van het gewicht en de hydraulische capaciteit van uw tractor. Compacte maaiarmen zijn al te combineren met tractoren vanaf circa 3.000 kg, zwaardere uitvoeringen vragen 7.000 kg of meer. Zie <a class="wvb-link" href="/maaiarm/voor-tractor/">maaiarm voor tractor</a> voor meer uitleg.</p></details><details><summary>Welke werktuigen kunnen op een maaiarm gemonteerd worden?</summary><p>Onder meer een klepelkop, messenbalk, takkenschaar en maaikorf, afhankelijk van merk en model. Bij GreenTec kan dit zonder gereedschap gewisseld worden.</p></details><details><summary>Welke merken maaiarmen levert Wim van Breda?</summary><p>Wim van Breda levert maaiarmen van Herder en GreenTec, beide met een breed programma van compacte tot zware uitvoeringen.</p></details><details><summary>Waar kan ik advies krijgen over een maaiarm?</summary><p>Neem contact op met Wim van Breda in Geldermalsen voor advies op basis van uw tractor, terrein en beheerwerk.</p></details></div>
   
 <div class="wvb-cta">
   <p>Advies nodig over de juiste machine voor uw situatie?</p>
-  <a href="/">Neem contact op</a>
+  <a href="/contact/">Neem contact op</a>
 </div>
 
   
 <div class="wvb-related">
   <div class="wvb-related__label">Meer over dit onderwerp</div>
-  <div class="wvb-related__links"><a href="/maaiarm/kopen/">Maaiarm kopen</a> · <a href="/maaiarm/voor-tractor/">Maaiarm voor tractor</a> · <a href="/bermonderhoud/">Bermonderhoud</a> · <a href="/slootonderhoud/">Slootonderhoud</a> · <a href="/klepelmaaier/">Klepelmaaier</a> · <a href="/maaikorf/">Maaikorf</a></div>
+  <div class="wvb-related__links"><a href="/maaiarm/kopen/">Maaiarm kopen</a> · <a href="/maaiarm/voor-tractor/">Maaiarm voor tractor</a> · <a href="/maaiarm/bermonderhoud/">Maaiarm bij bermonderhoud</a> · <a href="/maaiarm/slootonderhoud/">Maaiarm bij slootonderhoud</a> · <a href="/klepelmaaier/">Klepelmaaier</a> · <a href="/maaikorf/">Maaikorf</a> · <a href="/bermonderhoud/">Bermonderhoud</a></div>
 </div>
 
 </main>

@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ecologisch maaien | Wim van Breda</title>
-<meta name="description" content="Ecologisch maaien: machines en methode voor natuurvriendelijk beheer van bermen en groenstroken, met of zonder afvoer van maaisel.">
+<title>Ecologisch maaien: machines en advies | Wim van Breda</title>
+<meta name="description" content="Ecologisch maaien: gefaseerd maaien en aangepaste maaihoogte voor natuurvriendelijk beheer van bermen en groenstroken.">
 <link rel="canonical" href="https://www.wimvanbreda.nl/ecologisch-maaien/">
 <meta name="robots" content="index,follow">
 <meta property="og:site_name" content="Wim van Breda">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Ecologisch maaien | Wim van Breda">
-<meta property="og:description" content="Ecologisch maaien: machines en methode voor natuurvriendelijk beheer van bermen en groenstroken, met of zonder afvoer van maaisel.">
+<meta property="og:title" content="Ecologisch maaien: machines en advies | Wim van Breda">
+<meta property="og:description" content="Ecologisch maaien: gefaseerd maaien en aangepaste maaihoogte voor natuurvriendelijk beheer van bermen en groenstroken.">
 <meta property="og:url" content="https://www.wimvanbreda.nl/ecologisch-maaien/">
 <link rel="icon" href="data:,">
 <link rel="preload" as="font" href="/assets/fonts/archivo-latin-var.woff2" type="font/woff2" crossorigin="crossorigin">
@@ -69,6 +69,21 @@ h3.wvb-h3{font:600 17px/1.3 'Archivo',sans-serif;margin:28px 0 10px}
 .wvb-related__links{display:flex;flex-wrap:wrap;gap:6px 18px;font:500 15px/1.4 'Archivo',sans-serif}
 .wvb-related__links a{color:#111214;text-decoration:none;border-bottom:2px solid #FBAE00}
 
+/* ===== Machinekaartjes ("Relevante machines"): compact, geen grote banners ===== */
+.wvb-machines{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:18px 0 8px}
+@media (max-width:640px){.wvb-machines{grid-template-columns:1fr}}
+.wvb-mcard{border:1px solid #E6E3DD;padding:20px 22px;background:#fff}
+.wvb-mcard__brand{font:500 11px/1 'Archivo',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#8C867A}
+.wvb-mcard__name{font:600 18px/1.3 'Archivo',sans-serif;margin:8px 0 0;color:#111214}
+.wvb-mcard__desc{font:400 14px/1.6 'Archivo',sans-serif;color:#57544D;margin:8px 0 0}
+.wvb-mcard a.wvb-mcard__cta{display:inline-flex;align-items:center;gap:8px;margin-top:14px;font:600 13px/1 'Archivo',sans-serif;color:#111214;text-decoration:none;border-bottom:2px solid #FBAE00;padding-bottom:2px}
+
+/* ===== Machinedetailpagina (subset van Component.MACHINES, echte data) ===== */
+.wvb-mspecs{width:100%;border-collapse:collapse;margin:18px 0}
+.wvb-mspecs td{padding:10px 0;border-bottom:1px solid #F1EFEA;font:400 15px/1.5 'Archivo',sans-serif;vertical-align:top}
+.wvb-mspecs td:first-child{color:#8C867A;width:42%;padding-right:16px}
+.wvb-mspecs td:last-child{color:#111214;font-weight:500}
+
 /* ===== Footer (visueel identiek aan bestaande site) ===== */
 footer.wvb-f{position:relative;background:#FBAE00;color:#111214;margin-top:72px}
 .wvb-f__wrap{max-width:1420px;margin:0 auto;padding:72px 70px 40px}
@@ -114,14 +129,15 @@ footer.wvb-f{position:relative;background:#FBAE00;color:#111214;margin-top:72px}
 <div class="wrap"><nav class="wvb-crumb" aria-label="Kruimelpad"><a href="/">Home</a><span aria-hidden="true">/</span><span aria-current="page">Ecologisch maaien</span></nav></div>
 <main class="wvb-main">
   <h1 class="wvb-h1">Ecologisch maaien</h1>
-  <p class="wvb-intro">Ecologisch maaien is een maaimethode die rekening houdt met flora en fauna: gefaseerd maaien, aangepaste maaihoogte en het afvoeren van maaisel om de bodem te verschralen, in plaats van alles in één keer kort te maaien.</p>
+  <p class="wvb-intro">Ecologisch maaien is een maaimethode die rekening houdt met flora en fauna: gefaseerd maaien, een aangepaste maaihoogte en het afvoeren van maaisel om de bodem te verschralen, in plaats van een terrein in één keer volledig kort te maaien. Steeds meer gemeenten, waterschappen en terreinbeheerders passen deze werkwijze toe binnen hun groenbeleid.</p>
+  <div class="wvb-fact">Bij ecologisch maaien wordt niet het hele terrein in één beurt gemaaid: een deel van de vegetatie blijft steeds staan als schuil- en voedselplek voor insecten en kleine dieren, de maaihoogte ligt vaak hoger dan bij regulier maaiwerk, en maaisel wordt regelmatig afgevoerd om de bodem te verschralen.</div>
+  <h2 class="wvb-h2">Wat ecologisch maaien anders maakt dan regulier maaien</h2><p>Bij regulier maaiwerk ligt de nadruk op een strak, kort resultaat, vaak in één of enkele maaibeurten per seizoen. Bij ecologisch maaien is het doel juist het behoud en de versterking van biodiversiteit: door gefaseerd te maaien blijft er altijd een deel van de vegetatie staan, en door de maaihoogte te verhogen krijgen bloeiende planten en insecten meer kans.</p><h2 class="wvb-h2">Machines voor ecologisch maaien</h2><p>De machines die hiervoor gebruikt worden zijn dezelfde als bij regulier beheer — <a class="wvb-link" href="/klepelmaaier/">klepelmaaiers</a> en <a class="wvb-link" href="/maaiarm/">maaiarmen</a> — maar worden ingezet volgens een ecologisch maaischema en vaak in combinatie met opvang van maaisel. Zie onze pagina over <a class="wvb-link" href="/ecologisch-maaien/machines/">machines voor ecologisch maaien</a> voor de precieze uitleg per machinetype.</p><h2 class="wvb-h2">Ecologisch bermmaaien en maaien met afvoer</h2><p>Binnen ecologisch maaien zijn twee specifieke toepassingen te onderscheiden: <a class="wvb-link" href="/ecologisch-maaien/bermmaaien/">ecologisch bermmaaien</a>, gericht op de gefaseerde aanpak van wegbermen, en <a class="wvb-link" href="/ecologisch-maaien/maaien-met-afvoer/">maaien met afvoer</a>, waarbij het maaisel bewust wordt afgevoerd om de bodem te verschralen. Zie ook onze bredere pagina over <a class="wvb-link" href="/ecologisch-bermbeheer/">ecologisch bermbeheer</a> voor de samenhang tussen beleid en uitvoering.</p><h2 class="wvb-h2">Voor wie ecologisch maaien relevant is</h2><p>Gemeenten, waterschappen en terreinbeheerders die natuurvriendelijk bermbeheer voeren, vaak in het kader van biodiversiteitsbeleid, en de loonbedrijven en aannemers die dat beleid in de praktijk uitvoeren.</p>
   
-  <h2 class="wvb-h2">Wat ecologisch maaien anders maakt</h2><p>In plaats van een volledig terrein in één beurt kort te maaien, wordt vaak gefaseerd gewerkt: een deel van de vegetatie blijft steeds staan als schuil- en voedselplek voor insecten en kleine dieren. Ook de maaihoogte ligt doorgaans hoger dan bij regulier maaiwerk.</p><h2 class="wvb-h2">Machines voor ecologisch maaien</h2><p>De machines die hiervoor gebruikt worden zijn vergelijkbaar met regulier beheer — <a class="wvb-link" href="/klepelmaaier/">klepelmaaiers</a> en <a class="wvb-link" href="/maaiarm/">maaiarmen</a> — maar worden ingezet volgens een ecologisch maaischema en vaak in combinatie met opvang van maaisel. Zie onze pagina over <a class="wvb-link" href="/ecologisch-maaien/machines/">machines voor ecologisch maaien</a>.</p><h2 class="wvb-h2">Voor wie</h2><p>Gemeenten, waterschappen en terreinbeheerders die natuurvriendelijk bermbeheer voeren, vaak in het kader van biodiversiteitsbeleid.</p>
-  <h2 class="wvb-h2">Veelgestelde vragen</h2><div class="wvb-faq"><details><summary>Wat is het verschil tussen ecologisch maaien en gewoon maaien?</summary><p>Bij ecologisch maaien wordt gefaseerd gemaaid (niet alles tegelijk), ligt de maaihoogte vaak hoger en wordt maaisel regelmatig afgevoerd om de bodem te verschralen — met als doel meer ruimte voor flora en fauna.</p></details><details><summary>Is er speciale apparatuur nodig voor ecologisch maaien?</summary><p>Niet per se: dezelfde klepelmaaiers en maaiarmen die voor regulier bermbeheer worden gebruikt, zijn ook geschikt voor ecologisch maaien; het verschil zit vooral in de werkwijze en planning.</p></details></div>
+  <h2 class="wvb-h2">Veelgestelde vragen</h2><div class="wvb-faq"><details><summary>Wat is het verschil tussen ecologisch maaien en gewoon maaien?</summary><p>Bij ecologisch maaien wordt gefaseerd gemaaid (niet alles tegelijk), ligt de maaihoogte vaak hoger en wordt maaisel regelmatig afgevoerd om de bodem te verschralen — met als doel meer ruimte voor flora en fauna.</p></details><details><summary>Is er speciale apparatuur nodig voor ecologisch maaien?</summary><p>Niet per se: dezelfde klepelmaaiers en maaiarmen die voor regulier bermbeheer worden gebruikt, zijn ook geschikt voor ecologisch maaien; het verschil zit vooral in de werkwijze en planning.</p></details><details><summary>Wat is het verschil tussen ecologisch maaien en ecologisch bermbeheer?</summary><p>Ecologisch maaien beschrijft de maaimethode zelf; ecologisch bermbeheer is het bredere beleid en beheer van de berm als geheel, waar ecologisch maaien een onderdeel van is. Zie <a class="wvb-link" href="/ecologisch-bermbeheer/">ecologisch bermbeheer</a>.</p></details><details><summary>Wat is maaien met afvoer?</summary><p>Het bewust afvoeren van maaisel na het maaien, in plaats van het te laten liggen, om de bodem te verschralen en kruidenrijke vegetatie een kans te geven. Zie <a class="wvb-link" href="/ecologisch-maaien/maaien-met-afvoer/">maaien met afvoer</a>.</p></details></div>
   
 <div class="wvb-cta">
   <p>Advies nodig over de juiste machine voor uw situatie?</p>
-  <a href="/">Neem contact op</a>
+  <a href="/contact/">Neem contact op</a>
 </div>
 
   

@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Bermonderhoud | Wim van Breda</title>
+<title>Bermonderhoud: machines en advies | Wim van Breda</title>
 <meta name="description" content="Professioneel bermonderhoud: machines, methode en advies voor gemeenten, waterschappen en aannemers. Vanuit Geldermalsen.">
 <link rel="canonical" href="https://www.wimvanbreda.nl/bermonderhoud/">
 <meta name="robots" content="index,follow">
 <meta property="og:site_name" content="Wim van Breda">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Bermonderhoud | Wim van Breda">
+<meta property="og:title" content="Bermonderhoud: machines en advies | Wim van Breda">
 <meta property="og:description" content="Professioneel bermonderhoud: machines, methode en advies voor gemeenten, waterschappen en aannemers. Vanuit Geldermalsen.">
 <meta property="og:url" content="https://www.wimvanbreda.nl/bermonderhoud/">
 <link rel="icon" href="data:,">
@@ -69,6 +69,21 @@ h3.wvb-h3{font:600 17px/1.3 'Archivo',sans-serif;margin:28px 0 10px}
 .wvb-related__links{display:flex;flex-wrap:wrap;gap:6px 18px;font:500 15px/1.4 'Archivo',sans-serif}
 .wvb-related__links a{color:#111214;text-decoration:none;border-bottom:2px solid #FBAE00}
 
+/* ===== Machinekaartjes ("Relevante machines"): compact, geen grote banners ===== */
+.wvb-machines{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:18px 0 8px}
+@media (max-width:640px){.wvb-machines{grid-template-columns:1fr}}
+.wvb-mcard{border:1px solid #E6E3DD;padding:20px 22px;background:#fff}
+.wvb-mcard__brand{font:500 11px/1 'Archivo',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#8C867A}
+.wvb-mcard__name{font:600 18px/1.3 'Archivo',sans-serif;margin:8px 0 0;color:#111214}
+.wvb-mcard__desc{font:400 14px/1.6 'Archivo',sans-serif;color:#57544D;margin:8px 0 0}
+.wvb-mcard a.wvb-mcard__cta{display:inline-flex;align-items:center;gap:8px;margin-top:14px;font:600 13px/1 'Archivo',sans-serif;color:#111214;text-decoration:none;border-bottom:2px solid #FBAE00;padding-bottom:2px}
+
+/* ===== Machinedetailpagina (subset van Component.MACHINES, echte data) ===== */
+.wvb-mspecs{width:100%;border-collapse:collapse;margin:18px 0}
+.wvb-mspecs td{padding:10px 0;border-bottom:1px solid #F1EFEA;font:400 15px/1.5 'Archivo',sans-serif;vertical-align:top}
+.wvb-mspecs td:first-child{color:#8C867A;width:42%;padding-right:16px}
+.wvb-mspecs td:last-child{color:#111214;font-weight:500}
+
 /* ===== Footer (visueel identiek aan bestaande site) ===== */
 footer.wvb-f{position:relative;background:#FBAE00;color:#111214;margin-top:72px}
 .wvb-f__wrap{max-width:1420px;margin:0 auto;padding:72px 70px 40px}
@@ -114,20 +129,21 @@ footer.wvb-f{position:relative;background:#FBAE00;color:#111214;margin-top:72px}
 <div class="wrap"><nav class="wvb-crumb" aria-label="Kruimelpad"><a href="/">Home</a><span aria-hidden="true">/</span><span aria-current="page">Bermonderhoud</span></nav></div>
 <main class="wvb-main">
   <h1 class="wvb-h1">Bermonderhoud</h1>
-  <p class="wvb-intro">Bermonderhoud omvat het periodiek maaien, snoeien en schonen van de berm langs wegen, dijken en watergangen, met als doel verkeersveiligheid, doorstroming van water en (steeds vaker) biodiversiteit.</p>
+  <p class="wvb-intro">Bermonderhoud omvat het periodiek maaien, snoeien en schonen van de berm langs wegen, dijken en watergangen, met als doel verkeersveiligheid, doorstroming van water en, steeds vaker, biodiversiteit. Wim van Breda levert de maaiarmen, klepelmaaiers en werktuigdragers waarmee dit werk wordt uitgevoerd.</p>
+  <div class="wvb-fact">Bermonderhoud bestaat uit het maaien van gras en vegetatie, het verwijderen van opslag zoals jonge bomen en struiken, en het schoonhouden van bermsloten, meestal meerdere keren per seizoen volgens een vast beheerschema van de opdrachtgever.</div>
+  <h2 class="wvb-h2">Wat bermonderhoud inhoudt</h2><p>Naast maaien hoort hier ook het verwijderen van opslag, het schoonhouden van bermsloten en het snoeien van beplanting die het zicht op de weg belemmert bij. De werkzaamheden gebeuren doorgaans meerdere keren per seizoen, volgens een vast beheerschema van de opdrachtgever.</p><h2 class="wvb-h2">Machines voor bermonderhoud</h2><p>Voor rechte, goed bereikbare bermtrajecten wordt vaak een <a class="wvb-link" href="/bermonderhoud/klepelmaaier/">klepelmaaier</a> ingezet; bij hoogteverschil, sloten of obstakels is een <a class="wvb-link" href="/bermonderhoud/maaiarm/">maaiarm</a> met groter bereik praktischer. Zie ook de bredere pagina <a class="wvb-link" href="/bermonderhoud/machines/">machines voor bermonderhoud</a>.</p><h2 class="wvb-h2">Welke machine past bij welk bermtraject?</h2><ul><li>Rechte, vlakke berm zonder obstakels — klepelmaaier als zijmaaier</li><li>Berm met hoogteverschil, sloot of obstakels — maaiarm met klepelkop of messenbalk</li><li>Berm met vegetatie tot in de watergang — maaiarm met maaikorf</li><li>Kleinschalig of moeilijk bereikbaar werk — werktuigdrager</li></ul><h2 class="wvb-h2">Ecologisch bermbeheer</h2><p>Steeds meer gemeenten en waterschappen voeren een <a class="wvb-link" href="/bermonderhoud/ecologisch/">ecologisch maaibeleid</a> voor hun bermen, gericht op meer biodiversiteit naast de gebruikelijke verkeersveiligheid.</p><h2 class="wvb-h2">Wie voert bermonderhoud uit</h2><p>Bermonderhoud wordt uitgevoerd door loonbedrijven in opdracht van gemeenten en provincies, door de eigen buitendienst van gemeenten, en door waterschappen en hun aannemers waar bermen grenzen aan watergangen.</p>
   
-  <h2 class="wvb-h2">Wat bermonderhoud inhoudt</h2><p>Naast maaien hoort hier ook het verwijderen van opslag (jonge bomen en struiken), het schoonhouden van bermsloten en het snoeien van beplanting die het zicht op de weg belemmert bij. De werkzaamheden gebeuren doorgaans meerdere keren per seizoen, volgens een vast beheerschema van de opdrachtgever.</p><h2 class="wvb-h2">Machines voor bermonderhoud</h2><p>Voor rechte, goed bereikbare bermtrajecten wordt vaak een <a class="wvb-link" href="/bermonderhoud/klepelmaaier/">klepelmaaier</a> ingezet; bij hoogteverschil, sloten of obstakels is een <a class="wvb-link" href="/bermonderhoud/maaiarm/">maaiarm</a> met groter bereik praktischer.</p><h2 class="wvb-h2">Ecologisch bermbeheer</h2><p>Steeds meer gemeenten en waterschappen voeren een <a class="wvb-link" href="/bermonderhoud/ecologisch/">ecologisch maaibeleid</a> voor hun bermen, gericht op meer biodiversiteit.</p>
-  <h2 class="wvb-h2">Veelgestelde vragen</h2><div class="wvb-faq"><details><summary>Hoe vaak moet een berm gemaaid worden?</summary><p>Dat verschilt per beheerschema van de opdrachtgever en het type berm: verkeersveilige bermen worden vaak meerdere keren per seizoen gemaaid, ecologisch beheerde bermen doorgaans minder frequent en gefaseerd.</p></details><details><summary>Welke machine is geschikt voor bermonderhoud?</summary><p>Voor rechte, vlakke trajecten volstaat vaak een klepelmaaier; bij hoogteverschil, sloten of obstakels is een maaiarm met groter bereik de gangbare keuze.</p></details></div>
+  <h2 class="wvb-h2">Veelgestelde vragen</h2><div class="wvb-faq"><details><summary>Hoe vaak moet een berm gemaaid worden?</summary><p>Dat verschilt per beheerschema van de opdrachtgever en het type berm: verkeersveilige bermen worden vaak meerdere keren per seizoen gemaaid, ecologisch beheerde bermen doorgaans minder frequent en gefaseerd.</p></details><details><summary>Welke machine is geschikt voor bermonderhoud?</summary><p>Voor rechte, vlakke trajecten volstaat vaak een klepelmaaier; bij hoogteverschil, sloten of obstakels is een maaiarm met groter bereik de gangbare keuze.</p></details><details><summary>Wat is het verschil tussen bermonderhoud en ecologisch bermbeheer?</summary><p>Regulier bermonderhoud richt zich vooral op verkeersveiligheid en doorstroming; ecologisch bermbeheer voegt daar gefaseerd maaien en aandacht voor biodiversiteit aan toe. Zie <a class="wvb-link" href="/ecologisch-bermbeheer/">ecologisch bermbeheer</a>.</p></details><details><summary>Wie voert bermonderhoud uit?</summary><p>Vooral loonbedrijven in opdracht van gemeenten en provincies, de eigen buitendienst van gemeenten, en waterschappen met hun aannemers.</p></details></div>
   
 <div class="wvb-cta">
   <p>Advies nodig over de juiste machine voor uw situatie?</p>
-  <a href="/">Neem contact op</a>
+  <a href="/contact/">Neem contact op</a>
 </div>
 
   
 <div class="wvb-related">
   <div class="wvb-related__label">Meer over dit onderwerp</div>
-  <div class="wvb-related__links"><a href="/bermonderhoud/machines/">Machines voor bermonderhoud</a> · <a href="/bermonderhoud/maaiarm/">Maaiarm voor bermonderhoud</a> · <a href="/bermonderhoud/klepelmaaier/">Klepelmaaier voor bermonderhoud</a> · <a href="/bermonderhoud/ecologisch/">Ecologisch bermonderhoud</a> · <a href="/slootonderhoud/">Slootonderhoud</a> · <a href="/taludmaaien/">Taludmaaien</a></div>
+  <div class="wvb-related__links"><a href="/bermonderhoud/machines/">Machines voor bermonderhoud</a> · <a href="/bermonderhoud/maaiarm/">Maaiarm bij bermonderhoud</a> · <a href="/bermonderhoud/klepelmaaier/">Klepelmaaier bij bermonderhoud</a> · <a href="/bermonderhoud/ecologisch/">Ecologisch bermonderhoud</a> · <a href="/slootonderhoud/">Slootonderhoud</a> · <a href="/taludmaaien/">Taludmaaien</a></div>
 </div>
 
 </main>

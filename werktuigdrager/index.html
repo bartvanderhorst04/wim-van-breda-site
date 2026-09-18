@@ -69,6 +69,21 @@ h3.wvb-h3{font:600 17px/1.3 'Archivo',sans-serif;margin:28px 0 10px}
 .wvb-related__links{display:flex;flex-wrap:wrap;gap:6px 18px;font:500 15px/1.4 'Archivo',sans-serif}
 .wvb-related__links a{color:#111214;text-decoration:none;border-bottom:2px solid #FBAE00}
 
+/* ===== Machinekaartjes ("Relevante machines"): compact, geen grote banners ===== */
+.wvb-machines{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:18px 0 8px}
+@media (max-width:640px){.wvb-machines{grid-template-columns:1fr}}
+.wvb-mcard{border:1px solid #E6E3DD;padding:20px 22px;background:#fff}
+.wvb-mcard__brand{font:500 11px/1 'Archivo',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#8C867A}
+.wvb-mcard__name{font:600 18px/1.3 'Archivo',sans-serif;margin:8px 0 0;color:#111214}
+.wvb-mcard__desc{font:400 14px/1.6 'Archivo',sans-serif;color:#57544D;margin:8px 0 0}
+.wvb-mcard a.wvb-mcard__cta{display:inline-flex;align-items:center;gap:8px;margin-top:14px;font:600 13px/1 'Archivo',sans-serif;color:#111214;text-decoration:none;border-bottom:2px solid #FBAE00;padding-bottom:2px}
+
+/* ===== Machinedetailpagina (subset van Component.MACHINES, echte data) ===== */
+.wvb-mspecs{width:100%;border-collapse:collapse;margin:18px 0}
+.wvb-mspecs td{padding:10px 0;border-bottom:1px solid #F1EFEA;font:400 15px/1.5 'Archivo',sans-serif;vertical-align:top}
+.wvb-mspecs td:first-child{color:#8C867A;width:42%;padding-right:16px}
+.wvb-mspecs td:last-child{color:#111214;font-weight:500}
+
 /* ===== Footer (visueel identiek aan bestaande site) ===== */
 footer.wvb-f{position:relative;background:#FBAE00;color:#111214;margin-top:72px}
 .wvb-f__wrap{max-width:1420px;margin:0 auto;padding:72px 70px 40px}
@@ -114,20 +129,33 @@ footer.wvb-f{position:relative;background:#FBAE00;color:#111214;margin-top:72px}
 <div class="wrap"><nav class="wvb-crumb" aria-label="Kruimelpad"><a href="/">Home</a><span aria-hidden="true">/</span><span aria-current="page">Werktuigdrager</span></nav></div>
 <main class="wvb-main">
   <h1 class="wvb-h1">Werktuigdrager</h1>
-  <p class="wvb-intro">Een werktuigdrager is een compact, wendbaar voertuig dat speciaal is ontworpen om met verschillende aanbouwwerktuigen te werken, in plaats van een tractor met één vaste functie.</p>
-  
-  <h2 class="wvb-h2">Waarom een werktuigdrager</h2><p>Waar een gewone tractor vooral geschikt is voor trekkracht, is een werktuigdrager gebouwd rond het snel wisselen van werktuigen: maaikop, veegborstel, sneeuwschuif of laadschop, vaak zonder de bestuurdersplek te hoeven verlaten.</p><h2 class="wvb-h2">Elektrisch en op afstand bestuurd</h2><p>Een voorbeeld is de Raymo Torpedo werktuigdrager: een volledig elektrische, radiografisch bestuurbare werktuigdrager voor stil en emissievrij groen- en terreinonderhoud, ontwikkeld door het Nederlandse merk Raymo. Ook compacte werktuigdragers van LM Trac en Reform horen bij het programma van Wim van Breda.</p>
-  <h2 class="wvb-h2">Veelgestelde vragen</h2><div class="wvb-faq"><details><summary>Wat is het verschil tussen een werktuigdrager en een tractor?</summary><p>Een tractor is vooral gebouwd om trekkracht te leveren, een werktuigdrager is specifiek ontworpen om snel te wisselen tussen uiteenlopende aanbouwwerktuigen, vaak in een compacter en wendbaarder chassis.</p></details></div>
+  <p class="wvb-intro">Een werktuigdrager is een compact, wendbaar voertuig dat speciaal is ontworpen om met verschillende aanbouwwerktuigen te werken, in plaats van een tractor met één vaste functie. Wim van Breda levert onder meer elektrische en radiografisch bestuurbare werktuigdragers van Raymo en Herder.</p>
+  <div class="wvb-fact">Een werktuigdrager is gebouwd rond het snel wisselen van werktuigen — maaikop, veegborstel of ander aanbouwdeel — vaak zonder de bestuurdersplek te hoeven verlaten, en soms zelfs volledig op afstand bestuurd.</div>
+  <h2 class="wvb-h2">Waarom een werktuigdrager</h2><p>Waar een gewone tractor vooral geschikt is voor trekkracht, is een werktuigdrager specifiek gebouwd rond het snel wisselen van werktuigen. Dat maakt hem geschikt voor beheerders die met één compact platform meerdere taken willen uitvoeren, vaak op locaties waar een grote tractor lastig of onveilig is.</p><h2 class="wvb-h2">Elektrisch en radiografisch bestuurd</h2><p>Een voorbeeld is de <a class="wvb-link" href="/machine/raymo-torpedo-werktuigdrager/">Raymo Torpedo</a>: een volledig elektrische, radiografisch bestuurbare werktuigdrager voor stil en emissievrij groen- en terreinonderhoud, ontwikkeld door het Nederlandse merk Raymo. Dankzij het lage zwaartepunt en de bediening op afstand is deze machine bijzonder geschikt voor zonneparken, taluds, bermen en recreatieterreinen.</p><h2 class="wvb-h2">Rups-werktuigdragers voor steile hellingen</h2><p>Voor extreem steile of gevaarlijke locaties bouwt Herder de <a class="wvb-link" href="/machine/herder-cr10-werktuigdrager/">CR10</a>: een radiografisch bestuurbare rups-werktuigdrager die hellingen tot 55 graden aankan, met een keuze uit een 55 pk of 75 pk dieselmotor.</p><h2 class="wvb-h2">Voor wie een werktuigdrager relevant is</h2><p>Werktuigdragers worden ingezet door beheerders van zonneparken, waterschappen, gemeenten en aannemers die werken op taluds, bermen en terreinen waar veiligheid en bereikbaarheid een rol spelen.</p>
+  <h2 class="wvb-h2">Werktuigdragers bij Wim van Breda</h2><div class="wvb-machines">
+    <div class="wvb-mcard">
+      <div class="wvb-mcard__brand">Raymo</div>
+      <div class="wvb-mcard__name">Torpedo werktuigdrager</div>
+      <div class="wvb-mcard__desc">Volledig elektrische, radiografisch bestuurbare werktuigdrager voor stil en emissievrij groen- en terreinonderhoud.</div>
+      <a class="wvb-mcard__cta" href="/machine/raymo-torpedo-werktuigdrager/">Bekijk machine →</a>
+    </div>
+    <div class="wvb-mcard">
+      <div class="wvb-mcard__brand">Herder</div>
+      <div class="wvb-mcard__name">CR10 werktuigdrager</div>
+      <div class="wvb-mcard__desc">Radiografisch bestuurbare rups-werktuigdrager voor steile hellingen tot 55°, met 55 of 75 pk dieselmotor.</div>
+      <a class="wvb-mcard__cta" href="/machine/herder-cr10-werktuigdrager/">Bekijk machine →</a>
+    </div></div>
+  <h2 class="wvb-h2">Veelgestelde vragen</h2><div class="wvb-faq"><details><summary>Wat is het verschil tussen een werktuigdrager en een tractor?</summary><p>Een tractor is vooral gebouwd om trekkracht te leveren, een werktuigdrager is specifiek ontworpen om snel te wisselen tussen uiteenlopende aanbouwwerktuigen, vaak in een compacter en wendbaarder chassis.</p></details><details><summary>Is een werktuigdrager altijd op afstand bestuurd?</summary><p>Niet altijd, maar sommige modellen zoals de Raymo Torpedo en de Herder CR10 zijn wel volledig radiografisch bestuurbaar, wat op steile of gevaarlijke locaties de veiligheid vergroot.</p></details><details><summary>Welke merken werktuigdragers levert Wim van Breda?</summary><p>Onder meer Raymo (elektrisch, radiografisch bestuurbaar) en Herder (rups-werktuigdrager voor steile hellingen).</p></details></div>
   
 <div class="wvb-cta">
   <p>Advies nodig over de juiste machine voor uw situatie?</p>
-  <a href="/">Neem contact op</a>
+  <a href="/contact/">Neem contact op</a>
 </div>
 
   
 <div class="wvb-related">
   <div class="wvb-related__label">Meer over dit onderwerp</div>
-  <div class="wvb-related__links"><a href="/werktuigdrager/kopen/">Werktuigdrager kopen</a> · <a href="/werktuigdrager/professioneel/">Professionele werktuigdrager</a> · <a href="/werktuigdrager/bermonderhoud/">Werktuigdrager bermonderhoud</a> · <a href="/werktuigdrager/slootonderhoud/">Werktuigdrager slootonderhoud</a></div>
+  <div class="wvb-related__links"><a href="/werktuigdrager/kopen/">Werktuigdrager kopen</a> · <a href="/werktuigdrager/professioneel/">Professionele werktuigdrager</a> · <a href="/werktuigdrager/bermonderhoud/">Werktuigdrager bij bermonderhoud</a> · <a href="/werktuigdrager/slootonderhoud/">Werktuigdrager bij slootonderhoud</a></div>
 </div>
 
 </main>

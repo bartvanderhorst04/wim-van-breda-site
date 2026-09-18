@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Taludonderhoud machines | Wim van Breda</title>
-<meta name="description" content="Machines voor taludonderhoud: maaiarmen en op afstand bestuurde maaimachines voor hellingen en dijken.">
+<meta name="description" content="Machines voor taludonderhoud: maaiarmen en radiografisch bestuurbare werktuigdragers voor hellingen en dijken.">
 <link rel="canonical" href="https://www.wimvanbreda.nl/taludonderhoud-machines/">
 <meta name="robots" content="index,follow">
 <meta property="og:site_name" content="Wim van Breda">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Taludonderhoud machines | Wim van Breda">
-<meta property="og:description" content="Machines voor taludonderhoud: maaiarmen en op afstand bestuurde maaimachines voor hellingen en dijken.">
+<meta property="og:description" content="Machines voor taludonderhoud: maaiarmen en radiografisch bestuurbare werktuigdragers voor hellingen en dijken.">
 <meta property="og:url" content="https://www.wimvanbreda.nl/taludonderhoud-machines/">
 <link rel="icon" href="data:,">
 <link rel="preload" as="font" href="/assets/fonts/archivo-latin-var.woff2" type="font/woff2" crossorigin="crossorigin">
@@ -69,6 +69,21 @@ h3.wvb-h3{font:600 17px/1.3 'Archivo',sans-serif;margin:28px 0 10px}
 .wvb-related__links{display:flex;flex-wrap:wrap;gap:6px 18px;font:500 15px/1.4 'Archivo',sans-serif}
 .wvb-related__links a{color:#111214;text-decoration:none;border-bottom:2px solid #FBAE00}
 
+/* ===== Machinekaartjes ("Relevante machines"): compact, geen grote banners ===== */
+.wvb-machines{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:18px 0 8px}
+@media (max-width:640px){.wvb-machines{grid-template-columns:1fr}}
+.wvb-mcard{border:1px solid #E6E3DD;padding:20px 22px;background:#fff}
+.wvb-mcard__brand{font:500 11px/1 'Archivo',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#8C867A}
+.wvb-mcard__name{font:600 18px/1.3 'Archivo',sans-serif;margin:8px 0 0;color:#111214}
+.wvb-mcard__desc{font:400 14px/1.6 'Archivo',sans-serif;color:#57544D;margin:8px 0 0}
+.wvb-mcard a.wvb-mcard__cta{display:inline-flex;align-items:center;gap:8px;margin-top:14px;font:600 13px/1 'Archivo',sans-serif;color:#111214;text-decoration:none;border-bottom:2px solid #FBAE00;padding-bottom:2px}
+
+/* ===== Machinedetailpagina (subset van Component.MACHINES, echte data) ===== */
+.wvb-mspecs{width:100%;border-collapse:collapse;margin:18px 0}
+.wvb-mspecs td{padding:10px 0;border-bottom:1px solid #F1EFEA;font:400 15px/1.5 'Archivo',sans-serif;vertical-align:top}
+.wvb-mspecs td:first-child{color:#8C867A;width:42%;padding-right:16px}
+.wvb-mspecs td:last-child{color:#111214;font-weight:500}
+
 /* ===== Footer (visueel identiek aan bestaande site) ===== */
 footer.wvb-f{position:relative;background:#FBAE00;color:#111214;margin-top:72px}
 .wvb-f__wrap{max-width:1420px;margin:0 auto;padding:72px 70px 40px}
@@ -114,20 +129,27 @@ footer.wvb-f{position:relative;background:#FBAE00;color:#111214;margin-top:72px}
 <div class="wrap"><nav class="wvb-crumb" aria-label="Kruimelpad"><a href="/">Home</a><span aria-hidden="true">/</span><span aria-current="page">Taludonderhoud machines</span></nav></div>
 <main class="wvb-main">
   <h1 class="wvb-h1">Machines voor taludonderhoud</h1>
-  <p class="wvb-intro">Voor taludonderhoud levert Wim van Breda maaiarmen die vanaf de kant een helling af kunnen maaien, en op afstand bestuurbare maaimachines voor de steilste of minst toegankelijke taluds.</p>
-  
-  <h2 class="wvb-h2">Maaiarm vanaf de kant</h2><p><a class="wvb-link" href="/maaiarm/">Maaiarmen</a> zijn de gangbare oplossing voor de meeste taluds langs dijken, sloten en wegen.</p><h2 class="wvb-h2">Op afstand bestuurd voor steile taluds</h2><p>Voor taluds die te steil of te gevaarlijk zijn om vanaf de kant te bereiken, levert Wim van Breda radiografisch bestuurbare maaimachines van MowHawk.</p>
+  <p class="wvb-intro">Voor taludonderhoud levert Wim van Breda maaiarmen die vanaf de kant een helling af kunnen maaien, en radiografisch bestuurbare werktuigdragers voor de steilste of minst toegankelijke taluds.</p>
+  <div class="wvb-fact">De keuze tussen een maaiarm en een radiografisch bestuurbare werktuigdrager voor taludonderhoud hangt af van de steilheid van het talud: tot een bepaalde hellingshoek volstaat een arm vanaf de kant, bij extreme hellingen is een machine die zelf op het talud rijdt en op afstand wordt bestuurd veiliger.</div>
+  <h2 class="wvb-h2">Maaiarm vanaf de kant</h2><p><a class="wvb-link" href="/maaiarm/">Maaiarmen</a> zijn de gangbare oplossing voor de meeste taluds langs dijken, sloten en wegen, zonder dat de machine het talud zelf op hoeft.</p><h2 class="wvb-h2">Radiografisch bestuurd voor steile taluds</h2><p>Voor taluds die te steil of te gevaarlijk zijn om vanaf de kant te bereiken, levert Wim van Breda de <a class="wvb-link" href="/machine/herder-cr10-werktuigdrager/">Herder CR10</a>: een rups-werktuigdrager die hellingen tot 55 graden aankan en volledig op afstand wordt bestuurd, met een keuze uit een 55 pk of 75 pk dieselmotor.</p>
+  <h2 class="wvb-h2">Relevante machine voor taludonderhoud</h2><div class="wvb-machines">
+    <div class="wvb-mcard">
+      <div class="wvb-mcard__brand">Herder</div>
+      <div class="wvb-mcard__name">CR10 werktuigdrager</div>
+      <div class="wvb-mcard__desc">Radiografisch bestuurbare rups-werktuigdrager voor steile hellingen tot 55°, met 55 of 75 pk dieselmotor.</div>
+      <a class="wvb-mcard__cta" href="/machine/herder-cr10-werktuigdrager/">Bekijk machine →</a>
+    </div></div>
   
   
 <div class="wvb-cta">
   <p>Advies nodig over de juiste machine voor uw situatie?</p>
-  <a href="/">Neem contact op</a>
+  <a href="/contact/">Neem contact op</a>
 </div>
 
   
 <div class="wvb-related">
   <div class="wvb-related__label">Meer over dit onderwerp</div>
-  <div class="wvb-related__links"><a href="/taludmaaien/">Taludmaaien</a> · <a href="/maaiarm/">Maaiarm</a> · <a href="/bermonderhoud/">Bermonderhoud</a></div>
+  <div class="wvb-related__links"><a href="/taludmaaien/">Taludmaaien</a> · <a href="/maaiarm/">Maaiarm</a> · <a href="/bermonderhoud/">Bermonderhoud</a> · <a href="/werktuigdrager/">Werktuigdrager</a></div>
 </div>
 
 </main>

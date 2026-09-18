@@ -69,6 +69,21 @@ h3.wvb-h3{font:600 17px/1.3 'Archivo',sans-serif;margin:28px 0 10px}
 .wvb-related__links{display:flex;flex-wrap:wrap;gap:6px 18px;font:500 15px/1.4 'Archivo',sans-serif}
 .wvb-related__links a{color:#111214;text-decoration:none;border-bottom:2px solid #FBAE00}
 
+/* ===== Machinekaartjes ("Relevante machines"): compact, geen grote banners ===== */
+.wvb-machines{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:18px 0 8px}
+@media (max-width:640px){.wvb-machines{grid-template-columns:1fr}}
+.wvb-mcard{border:1px solid #E6E3DD;padding:20px 22px;background:#fff}
+.wvb-mcard__brand{font:500 11px/1 'Archivo',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#8C867A}
+.wvb-mcard__name{font:600 18px/1.3 'Archivo',sans-serif;margin:8px 0 0;color:#111214}
+.wvb-mcard__desc{font:400 14px/1.6 'Archivo',sans-serif;color:#57544D;margin:8px 0 0}
+.wvb-mcard a.wvb-mcard__cta{display:inline-flex;align-items:center;gap:8px;margin-top:14px;font:600 13px/1 'Archivo',sans-serif;color:#111214;text-decoration:none;border-bottom:2px solid #FBAE00;padding-bottom:2px}
+
+/* ===== Machinedetailpagina (subset van Component.MACHINES, echte data) ===== */
+.wvb-mspecs{width:100%;border-collapse:collapse;margin:18px 0}
+.wvb-mspecs td{padding:10px 0;border-bottom:1px solid #F1EFEA;font:400 15px/1.5 'Archivo',sans-serif;vertical-align:top}
+.wvb-mspecs td:first-child{color:#8C867A;width:42%;padding-right:16px}
+.wvb-mspecs td:last-child{color:#111214;font-weight:500}
+
 /* ===== Footer (visueel identiek aan bestaande site) ===== */
 footer.wvb-f{position:relative;background:#FBAE00;color:#111214;margin-top:72px}
 .wvb-f__wrap{max-width:1420px;margin:0 auto;padding:72px 70px 40px}
@@ -114,14 +129,27 @@ footer.wvb-f{position:relative;background:#FBAE00;color:#111214;margin-top:72px}
 <div class="wrap"><nav class="wvb-crumb" aria-label="Kruimelpad"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/slootonderhoud/">Slootonderhoud</a><span aria-hidden="true">/</span><span aria-current="page">Machines</span></nav></div>
 <main class="wvb-main">
   <h1 class="wvb-h1">Machines voor slootonderhoud</h1>
-  <p class="wvb-intro">Voor slootonderhoud is de combinatie van maaiarm en maaikorf de gangbare oplossing: de arm reikt vanaf de kant tot in de sloot, de korf vangt het maaisel op.</p>
-  
+  <p class="wvb-intro">Voor slootonderhoud is de combinatie van maaiarm en maaikorf de gangbare oplossing: de arm reikt vanaf de kant tot in de sloot, de korf vangt het maaisel op zodat het niet in het water achterblijft.</p>
+  <div class="wvb-fact">Bij slootonderhoud is de maaiarm het werktuig dat het bereik levert, en de maaikorf (in plaats van een klepelkop) het onderdeel dat zorgt voor opvang van het maaisel — samen vormen ze de gangbare combinatie voor watergangen.</div>
   <h2 class="wvb-h2">Zie ook</h2><p><a class="wvb-link" href="/maaiarm/">Maaiarm</a> en <a class="wvb-link" href="/maaikorf/">maaikorf</a> voor de volledige uitleg over merken en uitvoeringen.</p>
+  <h2 class="wvb-h2">Relevante machines</h2><div class="wvb-machines">
+    <div class="wvb-mcard">
+      <div class="wvb-mcard__brand">Herder</div>
+      <div class="wvb-mcard__name">Grenadier maaiarm</div>
+      <div class="wvb-mcard__desc">Veelzijdige maaiarm voor zwaar bermbeheer, uitrusbaar met diverse aanbouwwerktuigen, armlengte 6,40 tot 8,80 meter.</div>
+      <a class="wvb-mcard__cta" href="/machine/herder-grenadier-maaiarm/">Bekijk machine →</a>
+    </div>
+    <div class="wvb-mcard">
+      <div class="wvb-mcard__brand">Herder</div>
+      <div class="wvb-mcard__name">Maaikorf</div>
+      <div class="wvb-mcard__desc">Professionele maaikorf voor efficiënt slootonderhoud, geschikt voor maaien boven én onder water.</div>
+      <a class="wvb-mcard__cta" href="/machine/herder-maaikorf/">Bekijk machine →</a>
+    </div></div>
   
   
 <div class="wvb-cta">
   <p>Advies nodig over de juiste machine voor uw situatie?</p>
-  <a href="/">Neem contact op</a>
+  <a href="/contact/">Neem contact op</a>
 </div>
 
   

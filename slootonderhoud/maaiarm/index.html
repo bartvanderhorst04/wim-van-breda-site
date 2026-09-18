@@ -69,6 +69,21 @@ h3.wvb-h3{font:600 17px/1.3 'Archivo',sans-serif;margin:28px 0 10px}
 .wvb-related__links{display:flex;flex-wrap:wrap;gap:6px 18px;font:500 15px/1.4 'Archivo',sans-serif}
 .wvb-related__links a{color:#111214;text-decoration:none;border-bottom:2px solid #FBAE00}
 
+/* ===== Machinekaartjes ("Relevante machines"): compact, geen grote banners ===== */
+.wvb-machines{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:18px 0 8px}
+@media (max-width:640px){.wvb-machines{grid-template-columns:1fr}}
+.wvb-mcard{border:1px solid #E6E3DD;padding:20px 22px;background:#fff}
+.wvb-mcard__brand{font:500 11px/1 'Archivo',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#8C867A}
+.wvb-mcard__name{font:600 18px/1.3 'Archivo',sans-serif;margin:8px 0 0;color:#111214}
+.wvb-mcard__desc{font:400 14px/1.6 'Archivo',sans-serif;color:#57544D;margin:8px 0 0}
+.wvb-mcard a.wvb-mcard__cta{display:inline-flex;align-items:center;gap:8px;margin-top:14px;font:600 13px/1 'Archivo',sans-serif;color:#111214;text-decoration:none;border-bottom:2px solid #FBAE00;padding-bottom:2px}
+
+/* ===== Machinedetailpagina (subset van Component.MACHINES, echte data) ===== */
+.wvb-mspecs{width:100%;border-collapse:collapse;margin:18px 0}
+.wvb-mspecs td{padding:10px 0;border-bottom:1px solid #F1EFEA;font:400 15px/1.5 'Archivo',sans-serif;vertical-align:top}
+.wvb-mspecs td:first-child{color:#8C867A;width:42%;padding-right:16px}
+.wvb-mspecs td:last-child{color:#111214;font-weight:500}
+
 /* ===== Footer (visueel identiek aan bestaande site) ===== */
 footer.wvb-f{position:relative;background:#FBAE00;color:#111214;margin-top:72px}
 .wvb-f__wrap{max-width:1420px;margin:0 auto;padding:72px 70px 40px}
@@ -114,20 +129,27 @@ footer.wvb-f{position:relative;background:#FBAE00;color:#111214;margin-top:72px}
 <div class="wrap"><nav class="wvb-crumb" aria-label="Kruimelpad"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/slootonderhoud/">Slootonderhoud</a><span aria-hidden="true">/</span><span aria-current="page">Maaiarm</span></nav></div>
 <main class="wvb-main">
   <h1 class="wvb-h1">Maaiarm bij slootonderhoud</h1>
-  <p class="wvb-intro">De maaiarm maait het talud en de waterlijn van de sloot vanaf de kant, zodat de oever niet betreden hoeft te worden.</p>
-  
-  <h2 class="wvb-h2">Zie ook</h2><p>Voor merken en armlengtes: <a class="wvb-link" href="/maaiarm/">maaiarm</a> en <a class="wvb-link" href="/maaiarm/slootonderhoud/">maaiarm voor slootonderhoud</a>.</p>
+  <p class="wvb-intro">De maaiarm maait het talud en de waterlijn van de sloot vanaf de kant, zodat de oever niet betreden hoeft te worden. Dit is de gangbare werkwijze bij professioneel slootonderhoud door waterschappen en hun aannemers.</p>
+  <div class="wvb-fact">Een maaiarm bij slootonderhoud werkt uitsluitend vanaf de berm of oeverkant: de arm reikt naar het talud en de waterlijn, zodat de tractor niet in de sloot hoeft te rijden en de oever niet wordt belast.</div>
+  <h2 class="wvb-h2">Zie ook</h2><p>Voor merken en armlengtes: <a class="wvb-link" href="/maaiarm/">maaiarm</a> en <a class="wvb-link" href="/maaiarm/slootonderhoud/">maaiarm bij slootonderhoud</a>.</p>
+  <h2 class="wvb-h2">Relevante machine</h2><div class="wvb-machines">
+    <div class="wvb-mcard">
+      <div class="wvb-mcard__brand">Herder</div>
+      <div class="wvb-mcard__name">Grenadier maaiarm</div>
+      <div class="wvb-mcard__desc">Veelzijdige maaiarm voor zwaar bermbeheer, uitrusbaar met diverse aanbouwwerktuigen, armlengte 6,40 tot 8,80 meter.</div>
+      <a class="wvb-mcard__cta" href="/machine/herder-grenadier-maaiarm/">Bekijk machine →</a>
+    </div></div>
   
   
 <div class="wvb-cta">
   <p>Advies nodig over de juiste machine voor uw situatie?</p>
-  <a href="/">Neem contact op</a>
+  <a href="/contact/">Neem contact op</a>
 </div>
 
   
 <div class="wvb-related">
   <div class="wvb-related__label">Meer over dit onderwerp</div>
-  <div class="wvb-related__links"><a href="/slootonderhoud/">Slootonderhoud</a> · <a href="/maaiarm/">Maaiarm</a> · <a href="/maaiarm/slootonderhoud/">Maaiarm voor slootonderhoud (detail)</a></div>
+  <div class="wvb-related__links"><a href="/slootonderhoud/">Slootonderhoud</a> · <a href="/maaiarm/">Maaiarm</a> · <a href="/maaiarm/slootonderhoud/">Maaiarm bij slootonderhoud (detail)</a></div>
 </div>
 
 </main>

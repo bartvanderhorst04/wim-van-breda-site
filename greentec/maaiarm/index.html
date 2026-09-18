@@ -69,6 +69,21 @@ h3.wvb-h3{font:600 17px/1.3 'Archivo',sans-serif;margin:28px 0 10px}
 .wvb-related__links{display:flex;flex-wrap:wrap;gap:6px 18px;font:500 15px/1.4 'Archivo',sans-serif}
 .wvb-related__links a{color:#111214;text-decoration:none;border-bottom:2px solid #FBAE00}
 
+/* ===== Machinekaartjes ("Relevante machines"): compact, geen grote banners ===== */
+.wvb-machines{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:18px 0 8px}
+@media (max-width:640px){.wvb-machines{grid-template-columns:1fr}}
+.wvb-mcard{border:1px solid #E6E3DD;padding:20px 22px;background:#fff}
+.wvb-mcard__brand{font:500 11px/1 'Archivo',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#8C867A}
+.wvb-mcard__name{font:600 18px/1.3 'Archivo',sans-serif;margin:8px 0 0;color:#111214}
+.wvb-mcard__desc{font:400 14px/1.6 'Archivo',sans-serif;color:#57544D;margin:8px 0 0}
+.wvb-mcard a.wvb-mcard__cta{display:inline-flex;align-items:center;gap:8px;margin-top:14px;font:600 13px/1 'Archivo',sans-serif;color:#111214;text-decoration:none;border-bottom:2px solid #FBAE00;padding-bottom:2px}
+
+/* ===== Machinedetailpagina (subset van Component.MACHINES, echte data) ===== */
+.wvb-mspecs{width:100%;border-collapse:collapse;margin:18px 0}
+.wvb-mspecs td{padding:10px 0;border-bottom:1px solid #F1EFEA;font:400 15px/1.5 'Archivo',sans-serif;vertical-align:top}
+.wvb-mspecs td:first-child{color:#8C867A;width:42%;padding-right:16px}
+.wvb-mspecs td:last-child{color:#111214;font-weight:500}
+
 /* ===== Footer (visueel identiek aan bestaande site) ===== */
 footer.wvb-f{position:relative;background:#FBAE00;color:#111214;margin-top:72px}
 .wvb-f__wrap{max-width:1420px;margin:0 auto;padding:72px 70px 40px}
@@ -114,14 +129,27 @@ footer.wvb-f{position:relative;background:#FBAE00;color:#111214;margin-top:72px}
 <div class="wrap"><nav class="wvb-crumb" aria-label="Kruimelpad"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/greentec/maaiarm/">GreenTec</a><span aria-hidden="true">/</span><span aria-current="page">Maaiarm</span></nav></div>
 <main class="wvb-main">
   <h1 class="wvb-h1">GreenTec maaiarmen</h1>
-  <p class="wvb-intro">GreenTec bouwt maaiarmen volgens een modulair systeem: één draagarm waarop zonder gereedschap gewisseld kan worden tussen klepelkop, takkenschaar en andere werktuigen.</p>
-  
-  <h2 class="wvb-h2">Meer over GreenTec-maaiarmen</h2><p>Zie onze uitgebreide pagina over <a class="wvb-link" href="/maaiarm/greentec/">GreenTec maaiarm</a> voor de Scorpion-serie en andere modellen.</p>
+  <p class="wvb-intro">GreenTec is een Deens merk dat zich onderscheidt door een modulair maaiarmsysteem: één draagarm waarop zonder gereedschap gewisseld kan worden tussen klepelkop, takkenschaar en andere werktuigen — praktisch voor beheerders die met één machine meerdere taken willen uitvoeren.</p>
+  <div class="wvb-fact">Het kenmerk van GreenTec is de modulaire opbouw: dezelfde draagarm werkt met verschillende aanbouwdelen, van klepelkop tot takkenschaar, en de Scorpion-serie loopt van compacte modellen voor kleine tractoren tot zware uitvoeringen met een bereik van meer dan 8 meter.</div>
+  <h2 class="wvb-h2">Wat GreenTec als merk kenmerkt</h2><p>Waar andere merken vaak een vaste combinatie van arm en werktuig bouwen, is bij GreenTec de arm zelf het uitgangspunt: door het werktuig te wisselen kan dezelfde machine in het voorjaar maaien en in het najaar snoeien.</p><h2 class="wvb-h2">De Scorpion-serie</h2><p>De <a class="wvb-link" href="/machine/greentec-scorpion-430-s-basisfront-maaiarm/">Scorpion 430 S – Basisfront</a> is een compacte uitvoering voor tractoren vanaf 3.000 kg, geschikt voor gebieden met beperkte ruimte. De <a class="wvb-link" href="/machine/greentec-scorpion-830-plus-maaiarm/">Scorpion 830 Plus</a> is de zwaardere variant met 8,3 meter horizontaal bereik, voor tractoren vanaf 8.000 kg en intensief berm-, heg- en slootonderhoud.</p><h2 class="wvb-h2">Bekijk ook</h2><p>GreenTec levert ook klepelkoppen als onderdeel van dit systeem — zie <a class="wvb-link" href="/greentec/klepelmaaier/">GreenTec klepelmaaiers</a>. Voor de bredere uitleg over maaiarmen: <a class="wvb-link" href="/maaiarm/">maaiarm</a>.</p>
+  <h2 class="wvb-h2">GreenTec-maaiarmen bij Wim van Breda</h2><div class="wvb-machines">
+    <div class="wvb-mcard">
+      <div class="wvb-mcard__brand">GreenTec</div>
+      <div class="wvb-mcard__name">Scorpion 430 S – Basisfront maaiarm</div>
+      <div class="wvb-mcard__desc">Professionele maaiarm voor gebieden met beperkte ruimte, ontworpen voor kleine tractoren vanaf 3.000 kg.</div>
+      <a class="wvb-mcard__cta" href="/machine/greentec-scorpion-430-s-basisfront-maaiarm/">Bekijk machine →</a>
+    </div>
+    <div class="wvb-mcard">
+      <div class="wvb-mcard__brand">GreenTec</div>
+      <div class="wvb-mcard__name">Scorpion 830 Plus maaiarm</div>
+      <div class="wvb-mcard__desc">Krachtige professionele maaiarm met 8,3 meter horizontaal bereik, voor intensief berm-, heg- en slootonderhoud.</div>
+      <a class="wvb-mcard__cta" href="/machine/greentec-scorpion-830-plus-maaiarm/">Bekijk machine →</a>
+    </div></div>
   
   
 <div class="wvb-cta">
   <p>Advies nodig over de juiste machine voor uw situatie?</p>
-  <a href="/">Neem contact op</a>
+  <a href="/contact/">Neem contact op</a>
 </div>
 
   

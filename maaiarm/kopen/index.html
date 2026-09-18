@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Maaiarm kopen | Wim van Breda</title>
+<title>Maaiarm kopen voor professioneel gebruik | Wim van Breda</title>
 <meta name="description" content="Maaiarm kopen bij Wim van Breda: advies over merk, armlengte en werktuig, passend bij uw tractor en toepassing. Levering en service uit Geldermalsen.">
 <link rel="canonical" href="https://www.wimvanbreda.nl/maaiarm/kopen/">
 <meta name="robots" content="index,follow">
 <meta property="og:site_name" content="Wim van Breda">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Maaiarm kopen | Wim van Breda">
+<meta property="og:title" content="Maaiarm kopen voor professioneel gebruik | Wim van Breda">
 <meta property="og:description" content="Maaiarm kopen bij Wim van Breda: advies over merk, armlengte en werktuig, passend bij uw tractor en toepassing. Levering en service uit Geldermalsen.">
 <meta property="og:url" content="https://www.wimvanbreda.nl/maaiarm/kopen/">
 <link rel="icon" href="data:,">
@@ -69,6 +69,21 @@ h3.wvb-h3{font:600 17px/1.3 'Archivo',sans-serif;margin:28px 0 10px}
 .wvb-related__links{display:flex;flex-wrap:wrap;gap:6px 18px;font:500 15px/1.4 'Archivo',sans-serif}
 .wvb-related__links a{color:#111214;text-decoration:none;border-bottom:2px solid #FBAE00}
 
+/* ===== Machinekaartjes ("Relevante machines"): compact, geen grote banners ===== */
+.wvb-machines{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:18px 0 8px}
+@media (max-width:640px){.wvb-machines{grid-template-columns:1fr}}
+.wvb-mcard{border:1px solid #E6E3DD;padding:20px 22px;background:#fff}
+.wvb-mcard__brand{font:500 11px/1 'Archivo',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#8C867A}
+.wvb-mcard__name{font:600 18px/1.3 'Archivo',sans-serif;margin:8px 0 0;color:#111214}
+.wvb-mcard__desc{font:400 14px/1.6 'Archivo',sans-serif;color:#57544D;margin:8px 0 0}
+.wvb-mcard a.wvb-mcard__cta{display:inline-flex;align-items:center;gap:8px;margin-top:14px;font:600 13px/1 'Archivo',sans-serif;color:#111214;text-decoration:none;border-bottom:2px solid #FBAE00;padding-bottom:2px}
+
+/* ===== Machinedetailpagina (subset van Component.MACHINES, echte data) ===== */
+.wvb-mspecs{width:100%;border-collapse:collapse;margin:18px 0}
+.wvb-mspecs td{padding:10px 0;border-bottom:1px solid #F1EFEA;font:400 15px/1.5 'Archivo',sans-serif;vertical-align:top}
+.wvb-mspecs td:first-child{color:#8C867A;width:42%;padding-right:16px}
+.wvb-mspecs td:last-child{color:#111214;font-weight:500}
+
 /* ===== Footer (visueel identiek aan bestaande site) ===== */
 footer.wvb-f{position:relative;background:#FBAE00;color:#111214;margin-top:72px}
 .wvb-f__wrap{max-width:1420px;margin:0 auto;padding:72px 70px 40px}
@@ -114,20 +129,33 @@ footer.wvb-f{position:relative;background:#FBAE00;color:#111214;margin-top:72px}
 <div class="wrap"><nav class="wvb-crumb" aria-label="Kruimelpad"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/maaiarm/">Maaiarm</a><span aria-hidden="true">/</span><span aria-current="page">Maaiarm kopen</span></nav></div>
 <main class="wvb-main">
   <h1 class="wvb-h1">Maaiarm kopen</h1>
-  <p class="wvb-intro">Bij aanschaf van een maaiarm bepalen drie zaken samen welk model past: het gewicht en vermogen van uw tractor, de gewenste armlengte en reikwijdte, en het werktuig dat u vooral gaat gebruiken.</p>
-  
-  <h2 class="wvb-h2">Waar u op let bij aankoop</h2><ul><li>Tractorgewicht en hydraulische capaciteit — bepaalt welke armklasse mogelijk is.</li><li>Armlengte en horizontaal bereik — hoe ver moet de arm bij taluds of over water kunnen reiken.</li><li>Werktuig — klepelkop, messenbalk, takkenschaar of maaikorf, afhankelijk van het onderhoudstype.</li><li>Bediening — moderne armen zijn elektrohydraulisch en proportioneel te besturen vanuit de cabine.</li></ul><h2 class="wvb-h2">Advies en service</h2><p>Wim van Breda adviseert op basis van uw tractor en het beheerwerk dat u uitvoert, en levert <a class="wvb-link" href="/maaiarm/herder/">Herder</a>- en <a class="wvb-link" href="/maaiarm/greentec/">GreenTec</a>-maaiarmen inclusief montage, onderdelen en service vanuit de eigen werkplaats in Geldermalsen.</p>
-  
+  <p class="wvb-intro">Wie een maaiarm koopt voor professioneel bermen sloot- of taludonderhoud, maakt in feite drie keuzes tegelijk: welk merk en model, welke armlengte en welk werktuig aan het uiteinde. Wim van Breda helpt die keuze te maken op basis van uw tractor en het werk dat u uitvoert, en levert de arm inclusief montage, onderdelen en service.</p>
+  <div class="wvb-fact">Bij de aanschaf van een maaiarm zijn drie zaken bepalend: het gewicht en de hydraulische capaciteit van de tractor, de gewenste armlengte en het bereik, en het werktuig dat het meest gebruikt gaat worden. Deze drie factoren samen bepalen welk model daadwerkelijk past.</div>
+  <h2 class="wvb-h2">Waar u op let bij de aankoop van een maaiarm</h2><ul><li>Tractorgewicht en hydraulische capaciteit — bepaalt welke armklasse mogelijk is; zie <a class="wvb-link" href="/maaiarm/voor-tractor/">maaiarm voor tractor</a></li><li>Armlengte en horizontaal bereik — hoe ver de arm bij taluds of over water moet kunnen reiken</li><li>Werktuig — klepelkop, messenbalk, takkenschaar of maaikorf, afhankelijk van het onderhoudstype</li><li>Bediening — moderne armen zijn elektrohydraulisch en proportioneel vanuit de cabine te besturen</li><li>Onderhoudsgemak — toegankelijke servicepunten en beschikbaarheid van onderdelen</li></ul><h2 class="wvb-h2">Nieuw of gebruikt?</h2><p>Wim van Breda richt zich bij maaiarmen primair op de levering van nieuwe machines van Herder en GreenTec. Voor gebruikte machines, waaronder soms ook maaiarmen, verwijzen wij naar het occasion-aanbod op de website.</p><h2 class="wvb-h2">Welke merken kunt u kopen bij Wim van Breda?</h2><p><a class="wvb-link" href="/maaiarm/herder/">Herder</a> bouwt al ruim 75 jaar maaiarmen voor berm-, dijk- en slootonderhoud, met de <a class="wvb-link" href="/machine/herder-grenadier-maaiarm/">Grenadier</a> als voorbeeld van een zware uitvoering met een armlengte van 6,40 tot 8,80 meter. <a class="wvb-link" href="/maaiarm/greentec/">GreenTec</a> werkt met een modulair systeem waarbij dezelfde draagarm zonder gereedschap kan wisselen tussen klepelkop en takkenschaar, en bouwt zowel compacte als zware modellen.</p><h2 class="wvb-h2">Wat een aankoop bij Wim van Breda inhoudt</h2><p>Bij aankoop hoort montage op uw tractor, inrijden van de machine bij aflevering en uitleg aan de machinist over de bediening. Onderdelen worden op voorraad gehouden in de eigen werkplaats in Geldermalsen, zodat onderhoud en reparatie niet hoeven te wachten op een lange levertijd.</p>
+  <h2 class="wvb-h2">Voorbeelden van te koop staande maaiarmen</h2><div class="wvb-machines">
+    <div class="wvb-mcard">
+      <div class="wvb-mcard__brand">Herder</div>
+      <div class="wvb-mcard__name">Grenadier maaiarm</div>
+      <div class="wvb-mcard__desc">Veelzijdige maaiarm voor zwaar bermbeheer, uitrusbaar met diverse aanbouwwerktuigen, armlengte 6,40 tot 8,80 meter.</div>
+      <a class="wvb-mcard__cta" href="/machine/herder-grenadier-maaiarm/">Bekijk machine →</a>
+    </div>
+    <div class="wvb-mcard">
+      <div class="wvb-mcard__brand">GreenTec</div>
+      <div class="wvb-mcard__name">Scorpion 430 S – Basisfront maaiarm</div>
+      <div class="wvb-mcard__desc">Professionele maaiarm voor gebieden met beperkte ruimte, ontworpen voor kleine tractoren vanaf 3.000 kg.</div>
+      <a class="wvb-mcard__cta" href="/machine/greentec-scorpion-430-s-basisfront-maaiarm/">Bekijk machine →</a>
+    </div></div>
+  <h2 class="wvb-h2">Veelgestelde vragen</h2><div class="wvb-faq"><details><summary>Wat kost een maaiarm?</summary><p>De prijs hangt sterk af van armlengte, merk en het gewicht van de tractor waarop de arm gemonteerd wordt. Neem contact op voor een offerte op basis van uw specifieke situatie.</p></details><details><summary>Kan ik een maaiarm op mijn bestaande tractor monteren?</summary><p>In veel gevallen wel, mits de tractor voldoende gewicht en hydraulische capaciteit heeft voor de gekozen armklasse. Wim van Breda beoordeelt dit per situatie.</p></details><details><summary>Levert Wim van Breda ook gebruikte maaiarmen?</summary><p>Het accent bij maaiarmen ligt op nieuwe machines van Herder en GreenTec; voor gebruikt materieel verwijzen wij naar het occasion-aanbod.</p></details><details><summary>Wat is het verschil tussen een Herder- en een GreenTec-maaiarm?</summary><p>Beide merken bouwen een breed programma. Herder is Nederlands en heeft een lange ervaring in berm- en dijkonderhoud; GreenTec is Deens en werkt met een modulair systeem waarbij het werktuig zonder gereedschap gewisseld kan worden.</p></details></div>
   
 <div class="wvb-cta">
   <p>Advies nodig over de juiste machine voor uw situatie?</p>
-  <a href="/">Neem contact op</a>
+  <a href="/contact/">Neem contact op</a>
 </div>
 
   
 <div class="wvb-related">
   <div class="wvb-related__label">Meer over dit onderwerp</div>
-  <div class="wvb-related__links"><a href="/maaiarm/">Maaiarm</a> · <a href="/maaiarm/voor-tractor/">Maaiarm voor tractor</a> · <a href="/maaiarm/bermonderhoud/">Maaiarm bermonderhoud</a> · <a href="/maaiarm/slootonderhoud/">Maaiarm slootonderhoud</a></div>
+  <div class="wvb-related__links"><a href="/maaiarm/">Maaiarm</a> · <a href="/maaiarm/voor-tractor/">Maaiarm voor tractor</a> · <a href="/maaiarm/bermonderhoud/">Maaiarm bij bermonderhoud</a> · <a href="/maaiarm/slootonderhoud/">Maaiarm bij slootonderhoud</a></div>
 </div>
 
 </main>

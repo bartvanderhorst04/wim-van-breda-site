@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Tuin- en parkmachines | Wim van Breda</title>
-<meta name="description" content="Professionele tuin- en parkmachines voor gemeenten en aannemers: maaimachines en handgereedschap voor terreinonderhoud.">
+<meta name="description" content="Professionele tuin- en parkmachines voor gemeenten en aannemers: maaimachines, veegtechniek en handgereedschap.">
 <link rel="canonical" href="https://www.wimvanbreda.nl/tuin-en-parkmachines/">
 <meta name="robots" content="index,follow">
 <meta property="og:site_name" content="Wim van Breda">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Tuin- en parkmachines | Wim van Breda">
-<meta property="og:description" content="Professionele tuin- en parkmachines voor gemeenten en aannemers: maaimachines en handgereedschap voor terreinonderhoud.">
+<meta property="og:description" content="Professionele tuin- en parkmachines voor gemeenten en aannemers: maaimachines, veegtechniek en handgereedschap.">
 <meta property="og:url" content="https://www.wimvanbreda.nl/tuin-en-parkmachines/">
 <link rel="icon" href="data:,">
 <link rel="preload" as="font" href="/assets/fonts/archivo-latin-var.woff2" type="font/woff2" crossorigin="crossorigin">
@@ -69,6 +69,21 @@ h3.wvb-h3{font:600 17px/1.3 'Archivo',sans-serif;margin:28px 0 10px}
 .wvb-related__links{display:flex;flex-wrap:wrap;gap:6px 18px;font:500 15px/1.4 'Archivo',sans-serif}
 .wvb-related__links a{color:#111214;text-decoration:none;border-bottom:2px solid #FBAE00}
 
+/* ===== Machinekaartjes ("Relevante machines"): compact, geen grote banners ===== */
+.wvb-machines{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:18px 0 8px}
+@media (max-width:640px){.wvb-machines{grid-template-columns:1fr}}
+.wvb-mcard{border:1px solid #E6E3DD;padding:20px 22px;background:#fff}
+.wvb-mcard__brand{font:500 11px/1 'Archivo',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#8C867A}
+.wvb-mcard__name{font:600 18px/1.3 'Archivo',sans-serif;margin:8px 0 0;color:#111214}
+.wvb-mcard__desc{font:400 14px/1.6 'Archivo',sans-serif;color:#57544D;margin:8px 0 0}
+.wvb-mcard a.wvb-mcard__cta{display:inline-flex;align-items:center;gap:8px;margin-top:14px;font:600 13px/1 'Archivo',sans-serif;color:#111214;text-decoration:none;border-bottom:2px solid #FBAE00;padding-bottom:2px}
+
+/* ===== Machinedetailpagina (subset van Component.MACHINES, echte data) ===== */
+.wvb-mspecs{width:100%;border-collapse:collapse;margin:18px 0}
+.wvb-mspecs td{padding:10px 0;border-bottom:1px solid #F1EFEA;font:400 15px/1.5 'Archivo',sans-serif;vertical-align:top}
+.wvb-mspecs td:first-child{color:#8C867A;width:42%;padding-right:16px}
+.wvb-mspecs td:last-child{color:#111214;font-weight:500}
+
 /* ===== Footer (visueel identiek aan bestaande site) ===== */
 footer.wvb-f{position:relative;background:#FBAE00;color:#111214;margin-top:72px}
 .wvb-f__wrap{max-width:1420px;margin:0 auto;padding:72px 70px 40px}
@@ -114,14 +129,15 @@ footer.wvb-f{position:relative;background:#FBAE00;color:#111214;margin-top:72px}
 <div class="wrap"><nav class="wvb-crumb" aria-label="Kruimelpad"><a href="/">Home</a><span aria-hidden="true">/</span><span aria-current="page">Tuin- en parkmachines</span></nav></div>
 <main class="wvb-main">
   <h1 class="wvb-h1">Tuin- en parkmachines</h1>
-  <p class="wvb-intro">Tuin- en parkmachines zijn de machines en het handgereedschap waarmee openbaar groen, parken en terreinen onderhouden worden: van maaimachines tot kettingzagen en bosmaaiers.</p>
+  <p class="wvb-intro">Tuin- en parkmachines zijn de machines en het handgereedschap waarmee openbaar groen, parken en terreinen onderhouden worden: van maaimachines voor hoog of moeilijk begaanbaar gras tot veegmachines voor verharding en professioneel handgereedschap. Wim van Breda levert dit programma aan gemeenten, hoveniers en aannemers.</p>
+  <div class="wvb-fact">Onder tuin- en parkmachines vallen bij Wim van Breda onder meer maaimachines voor ruw en steil terrein, veegmachines voor verharding en parkeerterreinen, en handgereedschap zoals kettingzagen, bosmaaiers en heggenscharen.</div>
+  <h2 class="wvb-h2">Wat onder tuin- en parkmachines valt</h2><ul><li>Maaimachines voor gazons en hoog of moeilijk begaanbaar gras</li><li>Veegmachines voor verharding, parkeerterreinen en bedrijfslocaties</li><li>Handgereedschap: kettingzagen, bosmaaiers, heggenscharen</li><li>Onkruidbestrijdingstechniek voor verharding</li></ul><h2 class="wvb-h2">Merken binnen tuin- en parkmachines</h2><p>Wim van Breda levert onder meer AS-Motor, een Duits merk gespecialiseerd in hoogovermaaiers en maaimachines voor ruw en steil terrein zoals hellingen en taluds; Kersten, met veegmachines en werktuigen voor terreinbeheer op verharding en bedrijfslocaties; en Stihl, de standaard in professioneel handgereedschap zoals kettingzagen, bosmaaiers, heggenscharen en accutechniek.</p><h2 class="wvb-h2">Professioneel versus consumentengebruik</h2><p>Het accent bij Wim van Breda ligt op professionele tuin- en parkmachines: gebouwd voor dagelijks, intensief gebruik door meerdere medewerkers, in plaats van incidenteel particulier gebruik. Zie ook <a class="wvb-link" href="/tuin-en-parkmachines/professioneel/">professionele tuin- en parkmachines</a>.</p><h2 class="wvb-h2">Voor wie</h2><p>Vooral <a class="wvb-link" href="/tuin-en-parkmachines/gemeenten/">gemeenten</a>, hoveniers en <a class="wvb-link" href="/tuin-en-parkmachines/aannemers/">aannemers</a> die openbaar groen, parken en bedrijfsterreinen onderhouden.</p><h2 class="wvb-h2">Service en onderhoud</h2><p>Wim van Breda levert tuin- en parkmachines inclusief onderhoud en onderdelen vanuit de eigen werkplaats in Geldermalsen.</p>
   
-  <h2 class="wvb-h2">Wat hieronder valt</h2><p>Denk aan cirkelmaaiers en veegmachines voor gazons en verharding, en professioneel handgereedschap zoals kettingzagen, bosmaaiers en heggenscharen voor kleiner onderhoudswerk.</p><h2 class="wvb-h2">Merken</h2><p>Wim van Breda levert onder meer AS-Motor (maaimachines voor hoog gras en steil terrein), Kersten (veegmachines) en Stihl (handgereedschap en accutechniek) voor tuin- en parkonderhoud.</p><h2 class="wvb-h2">Voor wie</h2><p>Vooral gemeenten, hoveniers en aannemers die openbaar groen, parken en bedrijfsterreinen onderhouden.</p>
-  <h2 class="wvb-h2">Veelgestelde vragen</h2><div class="wvb-faq"><details><summary>Wat zijn tuin- en parkmachines precies?</summary><p>De verzamelnaam voor machines en gereedschap voor onderhoud van openbaar groen en terreinen: van maai- en veegmachines tot handgereedschap zoals kettingzagen en bosmaaiers.</p></details></div>
+  <h2 class="wvb-h2">Veelgestelde vragen</h2><div class="wvb-faq"><details><summary>Wat zijn tuin- en parkmachines precies?</summary><p>De verzamelnaam voor machines en gereedschap voor onderhoud van openbaar groen en terreinen: van maai- en veegmachines tot handgereedschap zoals kettingzagen en bosmaaiers.</p></details><details><summary>Welke merken tuin- en parkmachines levert Wim van Breda?</summary><p>Onder meer AS-Motor (maaimachines voor ruw en steil terrein), Kersten (veegmachines) en Stihl (handgereedschap).</p></details><details><summary>Zijn tuin- en parkmachines geschikt voor professioneel gebruik?</summary><p>Ja, het aanbod van Wim van Breda richt zich primair op professionele machines voor dagelijks, intensief gebruik door gemeenten en aannemers.</p></details></div>
   
 <div class="wvb-cta">
   <p>Advies nodig over de juiste machine voor uw situatie?</p>
-  <a href="/">Neem contact op</a>
+  <a href="/contact/">Neem contact op</a>
 </div>
 
   

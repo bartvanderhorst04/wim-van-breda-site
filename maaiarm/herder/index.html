@@ -69,6 +69,21 @@ h3.wvb-h3{font:600 17px/1.3 'Archivo',sans-serif;margin:28px 0 10px}
 .wvb-related__links{display:flex;flex-wrap:wrap;gap:6px 18px;font:500 15px/1.4 'Archivo',sans-serif}
 .wvb-related__links a{color:#111214;text-decoration:none;border-bottom:2px solid #FBAE00}
 
+/* ===== Machinekaartjes ("Relevante machines"): compact, geen grote banners ===== */
+.wvb-machines{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:18px 0 8px}
+@media (max-width:640px){.wvb-machines{grid-template-columns:1fr}}
+.wvb-mcard{border:1px solid #E6E3DD;padding:20px 22px;background:#fff}
+.wvb-mcard__brand{font:500 11px/1 'Archivo',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#8C867A}
+.wvb-mcard__name{font:600 18px/1.3 'Archivo',sans-serif;margin:8px 0 0;color:#111214}
+.wvb-mcard__desc{font:400 14px/1.6 'Archivo',sans-serif;color:#57544D;margin:8px 0 0}
+.wvb-mcard a.wvb-mcard__cta{display:inline-flex;align-items:center;gap:8px;margin-top:14px;font:600 13px/1 'Archivo',sans-serif;color:#111214;text-decoration:none;border-bottom:2px solid #FBAE00;padding-bottom:2px}
+
+/* ===== Machinedetailpagina (subset van Component.MACHINES, echte data) ===== */
+.wvb-mspecs{width:100%;border-collapse:collapse;margin:18px 0}
+.wvb-mspecs td{padding:10px 0;border-bottom:1px solid #F1EFEA;font:400 15px/1.5 'Archivo',sans-serif;vertical-align:top}
+.wvb-mspecs td:first-child{color:#8C867A;width:42%;padding-right:16px}
+.wvb-mspecs td:last-child{color:#111214;font-weight:500}
+
 /* ===== Footer (visueel identiek aan bestaande site) ===== */
 footer.wvb-f{position:relative;background:#FBAE00;color:#111214;margin-top:72px}
 .wvb-f__wrap{max-width:1420px;margin:0 auto;padding:72px 70px 40px}
@@ -114,20 +129,33 @@ footer.wvb-f{position:relative;background:#FBAE00;color:#111214;margin-top:72px}
 <div class="wrap"><nav class="wvb-crumb" aria-label="Kruimelpad"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/maaiarm/">Maaiarm</a><span aria-hidden="true">/</span><span aria-current="page">Herder</span></nav></div>
 <main class="wvb-main">
   <h1 class="wvb-h1">Herder maaiarm</h1>
-  <p class="wvb-intro">Herder is een Nederlands merk dat al ruim 75 jaar maaiarmen, maaikorven en dijkenmaaiers bouwt voor waterschappen, gemeenten en aannemers.</p>
-  
-  <h2 class="wvb-h2">Herder-maaiarmen bij Wim van Breda</h2><p>Een voorbeeld uit het programma is de <a class="wvb-link" href="/">Herder Grenadier maaiarm</a>, een veelzijdige arm voor zwaar bermbeheer die met diverse aanbouwwerktuigen uitgerust kan worden en een armlengte heeft van 6,40 tot 8,80 meter. Herder bouwt zowel deze zwaardere modellen als compactere uitvoeringen voor kleinere tractoren.</p><h2 class="wvb-h2">Ook maaikorven van Herder</h2><p>Naast maaiarmen levert Herder ook <a class="wvb-link" href="/maaikorf/herder/">maaikorven</a>, vaak gecombineerd ingezet bij sloot- en watergangonderhoud.</p>
+  <p class="wvb-intro">Herder is een Nederlands merk dat al ruim 75 jaar maaiarmen, maaikorven en dijkenmaaiers bouwt voor waterschappen, gemeenten en aannemers. Wim van Breda levert het Herder-programma inclusief montage, onderdelen en service.</p>
+  <div class="wvb-fact">Herder ontwikkelt sinds de oprichting door de gebroeders Den Herder machines voor berm-, sloot- en vegetatieonderhoud. De Herder Grenadier maaiarm is daarvan een voorbeeld: een zware, veelzijdige arm met een armlengte van 6,40 tot 8,80 meter, uit te rusten met uiteenlopende aanbouwwerktuigen.</div>
+  <h2 class="wvb-h2">Het Herder-programma bij Wim van Breda</h2><p>Herder bouwt zowel zware maaiarmen voor intensief bermbeheer als compactere uitvoeringen voor kleinere tractoren. De <a class="wvb-link" href="/machine/herder-grenadier-maaiarm/">Grenadier</a> is het bekendste model in het zwaardere segment: een flexibele maaiarm die zijdelings op de tractor wordt gemonteerd en die verschillende posities kan innemen om moeilijk bereikbare plekken zoals diepe sloten, steile taluds en obstakels als vangrails en bomen te bereiken. De arm is uit te rusten met onder meer een klepelmaaier, maaikorf, schijvenmaaier, bosbouwmaaier, stobbenfrees en onkruidborstel, en is ook leverbaar met afzuiging.</p><h2 class="wvb-h2">Ook maaikorven van Herder</h2><p>Naast maaiarmen levert Herder ook <a class="wvb-link" href="/maaikorf/herder/">maaikorven</a>, zoals de <a class="wvb-link" href="/machine/herder-maaikorf/">Herder maaikorf</a> — een korf met messen van gehard staal en een open ontwerp dat verstoppingen voorkomt, geschikt voor maaien boven én onder water. Deze wordt vaak gecombineerd ingezet met een maaiarm bij sloot- en watergangonderhoud.</p><h2 class="wvb-h2">Voor wie Herder relevant is</h2><p>Herder-machines worden bij Wim van Breda vooral geleverd aan waterschappen, gemeenten en aannemers die structureel bermen, dijken en watergangen onderhouden.</p>
+  <h2 class="wvb-h2">Herder-machines bij Wim van Breda</h2><div class="wvb-machines">
+    <div class="wvb-mcard">
+      <div class="wvb-mcard__brand">Herder</div>
+      <div class="wvb-mcard__name">Grenadier maaiarm</div>
+      <div class="wvb-mcard__desc">Veelzijdige maaiarm voor zwaar bermbeheer, uitrusbaar met diverse aanbouwwerktuigen, armlengte 6,40 tot 8,80 meter.</div>
+      <a class="wvb-mcard__cta" href="/machine/herder-grenadier-maaiarm/">Bekijk machine →</a>
+    </div>
+    <div class="wvb-mcard">
+      <div class="wvb-mcard__brand">Herder</div>
+      <div class="wvb-mcard__name">Maaikorf</div>
+      <div class="wvb-mcard__desc">Professionele maaikorf voor efficiënt slootonderhoud, geschikt voor maaien boven én onder water.</div>
+      <a class="wvb-mcard__cta" href="/machine/herder-maaikorf/">Bekijk machine →</a>
+    </div></div>
   
   
 <div class="wvb-cta">
   <p>Advies nodig over de juiste machine voor uw situatie?</p>
-  <a href="/">Neem contact op</a>
+  <a href="/contact/">Neem contact op</a>
 </div>
 
   
 <div class="wvb-related">
   <div class="wvb-related__label">Meer over dit onderwerp</div>
-  <div class="wvb-related__links"><a href="/maaiarm/">Maaiarm</a> · <a href="/maaikorf/herder/">Herder maaikorf</a> · <a href="/maaiarm/bermonderhoud/">Maaiarm voor bermonderhoud</a></div>
+  <div class="wvb-related__links"><a href="/maaiarm/">Maaiarm</a> · <a href="/maaikorf/herder/">Herder maaikorf</a> · <a href="/maaiarm/bermonderhoud/">Maaiarm bij bermonderhoud</a> · <a href="/herder/maaiarm/">Herder (merkpagina)</a></div>
 </div>
 
 </main>

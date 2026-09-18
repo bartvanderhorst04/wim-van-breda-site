@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Herder maaiarmen | Wim van Breda</title>
-<meta name="description" content="Overzicht van de Herder-maaiarmen die Wim van Breda levert, met een link naar het volledige modellenoverzicht.">
+<meta name="description" content="Herder als merk: 75 jaar ervaring in maaiarmen voor Nederlandse waterschappen, gemeenten en aannemers, met de Grenadier als voorbeeld.">
 <link rel="canonical" href="https://www.wimvanbreda.nl/herder/maaiarm/">
 <meta name="robots" content="index,follow">
 <meta property="og:site_name" content="Wim van Breda">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Herder maaiarmen | Wim van Breda">
-<meta property="og:description" content="Overzicht van de Herder-maaiarmen die Wim van Breda levert, met een link naar het volledige modellenoverzicht.">
+<meta property="og:description" content="Herder als merk: 75 jaar ervaring in maaiarmen voor Nederlandse waterschappen, gemeenten en aannemers, met de Grenadier als voorbeeld.">
 <meta property="og:url" content="https://www.wimvanbreda.nl/herder/maaiarm/">
 <link rel="icon" href="data:,">
 <link rel="preload" as="font" href="/assets/fonts/archivo-latin-var.woff2" type="font/woff2" crossorigin="crossorigin">
@@ -69,6 +69,21 @@ h3.wvb-h3{font:600 17px/1.3 'Archivo',sans-serif;margin:28px 0 10px}
 .wvb-related__links{display:flex;flex-wrap:wrap;gap:6px 18px;font:500 15px/1.4 'Archivo',sans-serif}
 .wvb-related__links a{color:#111214;text-decoration:none;border-bottom:2px solid #FBAE00}
 
+/* ===== Machinekaartjes ("Relevante machines"): compact, geen grote banners ===== */
+.wvb-machines{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:18px 0 8px}
+@media (max-width:640px){.wvb-machines{grid-template-columns:1fr}}
+.wvb-mcard{border:1px solid #E6E3DD;padding:20px 22px;background:#fff}
+.wvb-mcard__brand{font:500 11px/1 'Archivo',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#8C867A}
+.wvb-mcard__name{font:600 18px/1.3 'Archivo',sans-serif;margin:8px 0 0;color:#111214}
+.wvb-mcard__desc{font:400 14px/1.6 'Archivo',sans-serif;color:#57544D;margin:8px 0 0}
+.wvb-mcard a.wvb-mcard__cta{display:inline-flex;align-items:center;gap:8px;margin-top:14px;font:600 13px/1 'Archivo',sans-serif;color:#111214;text-decoration:none;border-bottom:2px solid #FBAE00;padding-bottom:2px}
+
+/* ===== Machinedetailpagina (subset van Component.MACHINES, echte data) ===== */
+.wvb-mspecs{width:100%;border-collapse:collapse;margin:18px 0}
+.wvb-mspecs td{padding:10px 0;border-bottom:1px solid #F1EFEA;font:400 15px/1.5 'Archivo',sans-serif;vertical-align:top}
+.wvb-mspecs td:first-child{color:#8C867A;width:42%;padding-right:16px}
+.wvb-mspecs td:last-child{color:#111214;font-weight:500}
+
 /* ===== Footer (visueel identiek aan bestaande site) ===== */
 footer.wvb-f{position:relative;background:#FBAE00;color:#111214;margin-top:72px}
 .wvb-f__wrap{max-width:1420px;margin:0 auto;padding:72px 70px 40px}
@@ -114,14 +129,21 @@ footer.wvb-f{position:relative;background:#FBAE00;color:#111214;margin-top:72px}
 <div class="wrap"><nav class="wvb-crumb" aria-label="Kruimelpad"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/herder/maaiarm/">Herder</a><span aria-hidden="true">/</span><span aria-current="page">Maaiarm</span></nav></div>
 <main class="wvb-main">
   <h1 class="wvb-h1">Herder maaiarmen</h1>
-  <p class="wvb-intro">Herder bouwt al ruim 75 jaar maaiarmen voor berm-, dijk- en slootonderhoud, met modellen van compact tot zwaar, zoals de Herder Grenadier maaiarm met een armlengte van 6,40 tot 8,80 meter.</p>
-  
-  <h2 class="wvb-h2">Meer over Herder-maaiarmen</h2><p>Zie onze uitgebreide pagina over <a class="wvb-link" href="/maaiarm/herder/">Herder maaiarm</a> voor modellen, armlengtes en toepassingen.</p>
+  <p class="wvb-intro">Herder is een Nederlands merk, opgericht door de gebroeders Den Herder, dat al ruim 75 jaar machines bouwt voor berm-, dijk- en slootonderhoud. Binnen dat programma vormen maaiarmen een van de kernproducten, met de Grenadier als voorbeeld van een zware, veelzijdige uitvoering.</p>
+  <div class="wvb-fact">Herder bouwt maaiarmen die specifiek zijn ontwikkeld voor Nederlandse omstandigheden: intensief bermbeheer, dijkonderhoud en slootkanten, met een armlengte tot 8,80 meter en de mogelijkheid om te wisselen tussen uiteenlopende aanbouwwerktuigen.</div>
+  <h2 class="wvb-h2">Wat Herder als merk kenmerkt</h2><p>Waar sommige fabrikanten zich richten op één specifiek marktsegment, bouwt Herder een breed programma dat is afgestemd op de praktijk van Nederlandse waterschappen, gemeenten en aannemers: van compacte maaiarmen tot de zware <a class="wvb-link" href="/machine/herder-grenadier-maaiarm/">Grenadier</a> met een armlengte van 6,40 tot 8,80 meter.</p><h2 class="wvb-h2">De Grenadier in detail</h2><p>De Grenadier is uit te rusten met onder meer een klepelmaaier, maaikorf, schijvenmaaier, bosbouwmaaier, stobbenfrees, ecologische maaier en onkruidborstel, en wordt zijdelings op de tractor gemonteerd. De flexibele arm kan verschillende posities innemen om moeilijk bereikbare plekken zoals diepe sloten, steile taluds en obstakels als vangrails en bomen te bereiken.</p><h2 class="wvb-h2">Bekijk ook</h2><p>Herder levert naast maaiarmen ook <a class="wvb-link" href="/herder/maaikorf/">maaikorven</a>, vaak in combinatie ingezet bij sloot- en watergangonderhoud. Voor de bredere uitleg over maaiarmen in het algemeen: <a class="wvb-link" href="/maaiarm/">maaiarm</a> en <a class="wvb-link" href="/maaiarm/herder/">Herder maaiarm (uitgebreid)</a>.</p>
+  <h2 class="wvb-h2">Herder-maaiarmen bij Wim van Breda</h2><div class="wvb-machines">
+    <div class="wvb-mcard">
+      <div class="wvb-mcard__brand">Herder</div>
+      <div class="wvb-mcard__name">Grenadier maaiarm</div>
+      <div class="wvb-mcard__desc">Veelzijdige maaiarm voor zwaar bermbeheer, uitrusbaar met diverse aanbouwwerktuigen, armlengte 6,40 tot 8,80 meter.</div>
+      <a class="wvb-mcard__cta" href="/machine/herder-grenadier-maaiarm/">Bekijk machine →</a>
+    </div></div>
   
   
 <div class="wvb-cta">
   <p>Advies nodig over de juiste machine voor uw situatie?</p>
-  <a href="/">Neem contact op</a>
+  <a href="/contact/">Neem contact op</a>
 </div>
 
   
