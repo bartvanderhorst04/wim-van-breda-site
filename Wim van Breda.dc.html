@@ -4722,15 +4722,30 @@ class Component extends DCLogic {
     // per merk-id; alleen gevuld voor merken met echt aangeleverde bestanden.
     const brandMedia = brand ? (Component.BRAND_DETAIL_MEDIA[brand.id] || {}) : {};
     const brandHasLogo = !!brandMedia.logo && !(s.badImgs && s.badImgs[brandMedia.logo]);
-    const brandHasHero = !!brandMedia.hero && !(s.badImgs && s.badImgs[brandMedia.hero]);
-    const brandHasSeoImg = !!brandMedia.seo && !(s.badImgs && s.badImgs[brandMedia.seo]);
+    // Nooit een leeg hero- of seo-vak: een merk met maar één aangeleverde
+    // foto krijgt die foto in BEIDE vakken (hero én "over dit merk"), i.p.v.
+    // een leeg vlak in het vak waarvoor geen eigen foto is aangeleverd.
+    // Alt-tekst/fit/ratio volgen mee met de daadwerkelijk getoonde bron.
+    const brandHeroIsSeoFallback = !brandMedia.hero && !!brandMedia.seo;
+    const brandSeoIsHeroFallback = !brandMedia.seo && !!brandMedia.hero;
+    const brandHeroSrc = brandMedia.hero || brandMedia.seo;
+    const brandSeoSrc = brandMedia.seo || brandMedia.hero;
+    const brandHasHero = !!brandHeroSrc && !(s.badImgs && s.badImgs[brandHeroSrc]);
+    const brandHasSeoImg = !!brandSeoSrc && !(s.badImgs && s.badImgs[brandSeoSrc]);
+    const brandHeroAltUsed = brandHeroIsSeoFallback ? brandMedia.seoAlt : brandMedia.heroAlt;
+    const brandSeoAltUsed = brandSeoIsHeroFallback ? brandMedia.heroAlt : brandMedia.seoAlt;
+    const brandHeroFitUsed = brandHeroIsSeoFallback ? brandMedia.seoFit : brandMedia.heroFit;
+    const brandSeoFitUsed = brandSeoIsHeroFallback ? brandMedia.heroFit : brandMedia.seoFit;
+    const brandHeroPosUsed = brandHeroIsSeoFallback ? brandMedia.seoPos : brandMedia.heroPos;
+    const brandSeoPosUsed = brandSeoIsHeroFallback ? brandMedia.heroPos : brandMedia.seoPos;
     // Beeldvak volgt de eigen beeldverhouding van de aangeleverde foto
     // (heroRatio/seoRatio, per merk optioneel) i.p.v. altijd het vaste 4:3
     // dat hierboven/hieronder als fallback blijft gelden. Zo vult 'cover'
     // het vak volledig zonder witruimte én zonder de foto af te snijden —
-    // in plaats van een 'contain'-oplossing met lege zijvlakken.
-    const brandHeroRatio = brandMedia.heroRatio || '4/3';
-    const brandSeoRatio = brandMedia.seoRatio || '4/3';
+    // in plaats van een 'contain'-oplossing met lege zijvlakken. Bij een
+    // hergebruikte foto (fallback) geldt de ratio/fit van de bron-foto.
+    const brandHeroRatio = (brandHeroIsSeoFallback ? brandMedia.seoRatio : brandMedia.heroRatio) || '4/3';
+    const brandSeoRatio = (brandSeoIsHeroFallback ? brandMedia.heroRatio : brandMedia.seoRatio) || '4/3';
     const art = Component.NEWS.find(x=>x.id===s.param) || null;
     const deliveryRaw = page==='geleverditem' ? (Component.DELIVERIES.find(x=>x.id===s.param && (!x.pubStatus || x.pubStatus==='publish')) || null) : null;
     const MAG_PER = 6;
@@ -5385,12 +5400,12 @@ class Component extends DCLogic {
       }) : null,
       brandHasHero, brandHeroFromSlot: !brandHasHero,
       brandHeroRatio, brandSeoRatio,
-      brandHeroEl: brandHasHero ? this.photoEl({src:brandMedia.hero, alt:brandMedia.heroAlt}, brandMedia.heroAlt, {lazy:true, fit:brandMedia.heroFit||'cover', objectPosition:brandMedia.heroPos}) : null,
+      brandHeroEl: brandHasHero ? this.photoEl({src:brandHeroSrc, alt:brandHeroAltUsed}, brandHeroAltUsed, {lazy:true, fit:brandHeroFitUsed||'cover', objectPosition:brandHeroPosUsed}) : null,
       brandHasSeoImg, brandSeoImgFromSlot: !brandHasSeoImg,
       // fit valt terug op 'cover'; het beeldvak (brandSeoRatio hierboven)
       // volgt zelf al de beeldverhouding van de foto, dus 'cover' vult het
       // vak volledig zonder witruimte en zonder het onderwerp af te snijden.
-      brandSeoImgEl: brandHasSeoImg ? this.photoEl({src:brandMedia.seo, alt:brandMedia.seoAlt}, brandMedia.seoAlt, {lazy:true, fit:brandMedia.seoFit||'cover', objectPosition:brandMedia.seoPos}) : null,
+      brandSeoImgEl: brandHasSeoImg ? this.photoEl({src:brandSeoSrc, alt:brandSeoAltUsed}, brandSeoAltUsed, {lazy:true, fit:brandSeoFitUsed||'cover', objectPosition:brandSeoPosUsed}) : null,
       // Herder krijgt een eigen hero-indeling (verticale foto + groot logo);
       // alle andere merken behouden de bestaande, ongewijzigde hero-layout.
       isHerderHero: !!(brand && brand.id==='herder'),
