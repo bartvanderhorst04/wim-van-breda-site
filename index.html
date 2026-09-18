@@ -224,6 +224,15 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
 .brand-hero__logo{display:flex;align-items:center;justify-content:flex-start;margin-bottom:24px}
 @media (max-width:900px){.brand-hero{grid-template-columns:minmax(0,1fr) minmax(250px,0.7fr);gap:32px}}
 @media (max-width:700px){.brand-hero{grid-template-columns:1fr}.brand-hero__media{width:100%;max-width:420px;justify-self:center;margin-top:40px}}
+/* Portret Dick van Breda ("Over ons"): op desktop staat de foto in een
+   vaste 380px-kolom naast het citaat. Zodra [data-split] hieronder
+   (max-width:980px) naar één kolom klapt, zou de foto anders de volle
+   mobiele contentbreedte (edge-to-edge) innemen — bij een staande 3:4-foto
+   wordt dat een schermvullend blok. Deze regel begrenst het hele blok
+   (foto + naam + functie) tot een compact, gecentreerd formaat, met
+   behoud van de 3:4-beeldverhouding (die staat al op de foto-wrapper
+   zelf) en zonder de desktop-layout aan te raken. */
+@media (max-width:980px){[data-dickphoto]{width:100%;max-width:240px;margin:0 auto}}
 
 /* Homepage "Machines uit ons aanbod": drie identieke, even hoge kaarten. Het
    afbeeldingsvak krijgt een vaste aspect-ratio (geen vaste pixelwaarde nodig)
@@ -1893,7 +1902,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
 
   <section style="background:rgba(247,245,241,.62);border-top:1px solid #EFECE6;border-bottom:1px solid #EFECE6">
     <div style="max-width:1420px;margin:0 auto;padding:96px 70px;display:grid;grid-template-columns:380px 1fr;gap:72px;align-items:start" data-split="">
-      <div data-rv="" style="opacity:0;transform:translateY(16px);transition:opacity .8s cubic-bezier(.2,.7,.3,1),transform .8s cubic-bezier(.2,.7,.3,1)">
+      <div data-rv="" data-dickphoto="" style="opacity:0;transform:translateY(16px);transition:opacity .8s cubic-bezier(.2,.7,.3,1),transform .8s cubic-bezier(.2,.7,.3,1)">
         <div style="aspect-ratio:3/4;background:#EDEAE4;position:relative;overflow:hidden"><image-slot data-shot id="over-dick" shape="rect" placeholder="Portret Dick van Breda" src="/dick-van-breda-mthd76nm-lzdy-opt.jpg"></image-slot></div>
         <div style="font:600 17px/1.4 'Archivo',sans-serif;margin-top:18px">Dick van Breda</div>
         <div style="font:400 14px/1.4 'Archivo',sans-serif;color:#7C7770;margin-top:5px">Directeur</div>
