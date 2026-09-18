@@ -110,6 +110,13 @@ class SpaFallbackHandler(http.server.SimpleHTTPRequestHandler):
         ) in ("favicon.ico", "apple-touch-icon.png", "apple-touch-icon-precomposed.png"):
             self.send_error(404, "Niet gevonden")
             return
+        # Een map met een eigen index.html erin (bv. de nieuwe statische
+        # SEO-landingspagina's onder /maaiarm/, /klepelmaaier/, /sitemap/,
+        # enz.) moet net als op Vercel als een echt bestand tellen — anders
+        # valt elk mapverzoek hieronder alsnog terug op de SPA-shell, terwijl
+        # Vercel in productie wél gewoon <map>/index.html serveert.
+        if os.path.isdir(safe_path) and os.path.isfile(os.path.join(safe_path, "index.html")):
+            safe_path = os.path.join(safe_path, "index.html")
         if os.path.isfile(safe_path):
             # Bestaat als echt bestand: normaal laten serveren (juiste
             # content-type, Content-Length, 304-afhandeling, enz.).
