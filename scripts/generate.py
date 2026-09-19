@@ -40,15 +40,16 @@ GROUPS = [
     ("Regio's", ["/regio/geldermalsen/","/regio/betuwe/","/regio/rivierenland/","/regio/zaltbommel/"]),
 ]
 
-# "Belangrijke websitepagina's": bestaan vandaag alleen als interne SPA-state,
-# zonder eigen URL (Component.nav() doet uitsluitend setState, geen
-# history.pushState — geverifieerd dat /merken/herder/ en / vandaag
-# byte-identieke HTML serveren). Een link naar een specifiek pad zou dus een
-# valse/kapotte route zijn; deze rij linkt daarom bewust naar "/", vanwaar de
-# bezoeker via het bestaande hoofdmenu bij elke sectie komt. Zie eindrapport.
-MAIN_SITE_LINKS = ["Nieuwe machines","Merken","Occasions","Verhuur","Service","Actueel / Nieuws","Over ons"]
-# "Contact" heeft nu wél een echte, eigen URL (zie contact_page_html) en
-# krijgt daarom een eigen link i.p.v. de generieke "/"-fallback hierboven.
+# "Belangrijke websitepagina's": hebben inmiddels (Fase 1 crawlability-fix)
+# allemaal een eigen, echte statische URL via build_catalog_pages.py — zie
+# eindrapport. Eerder linkten deze bewust naar "/" omdat er nog geen eigen
+# route bestond; dat is niet langer het geval.
+MAIN_SITE_LINKS = [
+    ("Nieuwe machines","/machines/"), ("Merken","/merken/"), ("Occasions","/occasions/"),
+    ("Verhuur","/verhuur/"), ("Service","/service/"), ("Actueel / Nieuws","/nieuws/"),
+    ("Over ons","/over-ons/"), ("Werken bij","/werken-bij/"), ("Geleverd","/geleverd/"),
+    ("Magazines","/magazines/"),
+]
 
 def build_sitemap_page():
     path = "/sitemap/"
@@ -62,7 +63,7 @@ def build_sitemap_page():
         return '<ul>' + "".join(f'<li><a class="wvb-link" href="/">{esc(l)}</a></li>' for l in labels) + '</ul>'
 
     sections_html = []
-    main_items_html = '<ul>' + "".join(f'<li><a class="wvb-link" href="/">{esc(l)}</a></li>' for l in MAIN_SITE_LINKS)
+    main_items_html = '<ul>' + "".join(f'<li><a class="wvb-link" href="{href}">{esc(l)}</a></li>' for l, href in MAIN_SITE_LINKS)
     main_items_html += '<li><a class="wvb-link" href="/contact/">Contact</a></li></ul>'
     sections_html.append('<h2 class="wvb-h2">Belangrijke websitepagina’s</h2>' + main_items_html)
     for label, paths in GROUPS:

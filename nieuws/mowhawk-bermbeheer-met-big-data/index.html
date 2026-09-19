@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bermbeheer met big data | Wim van Breda</title>
+<meta name="description" content="Bermonderhoud, en zeker de ecologische aanpak, vormt een grote kostenpost. Traditionele maaimethoden veroorzaken achteruitgang van de biodiversiteit en de…">
+<link rel="canonical" href="https://www.wimvanbreda.nl/nieuws/mowhawk-bermbeheer-met-big-data/">
+<meta name="robots" content="index,follow">
+<meta property="og:site_name" content="Wim van Breda">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Bermbeheer met big data | Wim van Breda">
+<meta property="og:description" content="Bermonderhoud, en zeker de ecologische aanpak, vormt een grote kostenpost. Traditionele maaimethoden veroorzaken achteruitgang van de biodiversiteit en de…">
+<meta property="og:url" content="https://www.wimvanbreda.nl/nieuws/mowhawk-bermbeheer-met-big-data/">
+<link rel="icon" href="data:,">
+<link rel="preload" as="font" href="/assets/fonts/archivo-latin-var.woff2" type="font/woff2" crossorigin="crossorigin">
+<style>
+@font-face{font-family:'Archivo';font-style:normal;font-weight:100 900;font-display:swap;
+  src:url('/assets/fonts/archivo-latin-var.woff2') format('woff2-variations'),url('/assets/fonts/archivo-latin-var.woff2') format('woff2');
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#FCFCFB;color:#111214;font:400 17px/1.7 'Archivo',sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+img{max-width:100%;display:block}
+.wrap{max-width:1360px;margin:0 auto;padding:0 40px}
+@media (max-width:720px){.wrap{padding:0 20px}}
+
+/* ===== Header (statisch, zelfde huisstijl als bestaande site) ===== */
+header.wvb-h{position:sticky;top:0;z-index:800;background:#FBAE00;border-bottom:1px solid #C00020;box-shadow:0 18px 40px -32px rgba(17,18,20,.34)}
+.wvb-h__bar{max-width:1360px;margin:0 auto;padding:0 40px;height:84px;display:flex;align-items:center;justify-content:space-between;gap:40px}
+@media (max-width:720px){.wvb-h__bar{padding:0 20px;height:72px}}
+.wvb-h__logo img{height:52px;width:auto;object-fit:contain}
+.wvb-h__nav{display:flex;align-items:center;gap:6px}
+.wvb-h__nav a{background:none;border:0;padding:10px 16px;font:500 16px/1 'Archivo',sans-serif;color:#000;text-decoration:none;white-space:nowrap}
+.wvb-h__web{display:inline-flex;align-items:center;gap:10px;background:transparent;border:1px solid #000;padding:12px 18px;font:600 14px/1 'Archivo',sans-serif;color:#000;text-decoration:none;margin-left:6px}
+@media (max-width:980px){.wvb-h__nav{display:none}}
+
+/* ===== Breadcrumb ===== */
+.wvb-crumb{font:400 13px/1 'Archivo',sans-serif;color:#8C867A;display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:28px 0 0}
+.wvb-crumb a{color:#8C867A;text-decoration:none}
+.wvb-crumb a:hover{color:#111214;text-decoration:underline}
+.wvb-crumb span[aria-current]{color:#111214}
+
+/* ===== Content ===== */
+main.wvb-main{max-width:840px;margin:0 auto;padding:0 40px 96px}
+@media (max-width:720px){main.wvb-main{padding:0 20px 72px}}
+h1.wvb-h1{font:600 clamp(30px,4.6vw,46px)/1.08 'Archivo',sans-serif;letter-spacing:-.026em;margin:22px 0 0}
+p.wvb-intro{font:400 18px/1.7 'Archivo',sans-serif;color:#3d3b37;margin:22px 0 0}
+h2.wvb-h2{font:600 24px/1.25 'Archivo',sans-serif;letter-spacing:-.01em;margin:52px 0 14px}
+h3.wvb-h3{font:600 17px/1.3 'Archivo',sans-serif;margin:28px 0 10px}
+.wvb-main p{color:#3d3b37;margin:14px 0}
+.wvb-main ul{color:#3d3b37;margin:14px 0;padding-left:22px}
+.wvb-main li{margin:6px 0}
+.wvb-main a.wvb-link{color:#111214;text-decoration:underline;text-decoration-color:#FBAE00;text-decoration-thickness:2px;text-underline-offset:3px;font-weight:500}
+.wvb-fact{background:#F7F5F1;border-left:3px solid #FBAE00;padding:18px 22px;margin:28px 0;font:400 16px/1.6 'Archivo',sans-serif;color:#3d3b37}
+.wvb-faq details{border-bottom:1px solid #EFECE6;padding:16px 0}
+.wvb-faq summary{cursor:pointer;font:600 16px/1.4 'Archivo',sans-serif;color:#111214;list-style:none}
+.wvb-faq summary::-webkit-details-marker{display:none}
+.wvb-faq summary:before{content:'+ ';color:#C00020;font-weight:700}
+.wvb-faq details[open] summary:before{content:'– '}
+.wvb-faq p{margin:10px 0 0}
+.wvb-cta{margin:44px 0 0;padding:28px 30px;background:#111214;color:#fff}
+.wvb-cta p{color:rgba(255,255,255,.78);margin:0 0 16px}
+.wvb-cta a{display:inline-flex;align-items:center;gap:10px;background:#FBAE00;color:#111214;border:0;padding:15px 22px;font:600 15px/1 'Archivo',sans-serif;text-decoration:none}
+.wvb-related{margin:48px 0 0;padding-top:24px;border-top:1px solid #EFECE6}
+.wvb-related__label{font:500 11px/1 'Archivo',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#8C867A;margin:0 0 12px}
+.wvb-related__links{display:flex;flex-wrap:wrap;gap:6px 18px;font:500 15px/1.4 'Archivo',sans-serif}
+.wvb-related__links a{color:#111214;text-decoration:none;border-bottom:2px solid #FBAE00}
+
+/* ===== Machinekaartjes ("Relevante machines"): compact, geen grote banners ===== */
+.wvb-machines{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:18px 0 8px}
+@media (max-width:640px){.wvb-machines{grid-template-columns:1fr}}
+.wvb-mcard{border:1px solid #E6E3DD;padding:20px 22px;background:#fff}
+.wvb-mcard__brand{font:500 11px/1 'Archivo',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#8C867A}
+.wvb-mcard__name{font:600 18px/1.3 'Archivo',sans-serif;margin:8px 0 0;color:#111214}
+.wvb-mcard__desc{font:400 14px/1.6 'Archivo',sans-serif;color:#57544D;margin:8px 0 0}
+.wvb-mcard a.wvb-mcard__cta{display:inline-flex;align-items:center;gap:8px;margin-top:14px;font:600 13px/1 'Archivo',sans-serif;color:#111214;text-decoration:none;border-bottom:2px solid #FBAE00;padding-bottom:2px}
+
+/* ===== Machinedetailpagina (subset van Component.MACHINES, echte data) ===== */
+.wvb-mspecs{width:100%;border-collapse:collapse;margin:18px 0}
+.wvb-mspecs td{padding:10px 0;border-bottom:1px solid #F1EFEA;font:400 15px/1.5 'Archivo',sans-serif;vertical-align:top}
+.wvb-mspecs td:first-child{color:#8C867A;width:42%;padding-right:16px}
+.wvb-mspecs td:last-child{color:#111214;font-weight:500}
+
+/* ===== Footer (visueel identiek aan bestaande site) ===== */
+footer.wvb-f{position:relative;background:#FBAE00;color:#111214;margin-top:72px}
+.wvb-f__wrap{max-width:1420px;margin:0 auto;padding:72px 70px 40px}
+@media (max-width:720px){.wvb-f__wrap{padding:52px 20px 32px}}
+.wvb-f h2{font:600 clamp(24px,3vw,38px)/1.1 'Archivo',sans-serif;letter-spacing:-.026em;margin:0 0 48px;max-width:22ch}
+.wvb-f__cols{display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:40px}
+@media (max-width:900px){.wvb-f__cols{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.wvb-f__cols{grid-template-columns:1fr}}
+.wvb-f img.wvb-f__logo{height:56px;width:auto}
+.wvb-f__addr{font:400 15px/1.8 'Archivo',sans-serif;color:rgba(17,18,20,.72);margin-top:22px}
+.wvb-f__tel{display:flex;flex-direction:column;gap:10px;margin-top:20px}
+.wvb-f__tel a{color:#111214;font:500 15px/1 'Archivo',sans-serif;text-decoration:none;width:max-content;border-bottom:2px solid rgba(17,18,20,.35);padding-bottom:4px}
+.wvb-f__title{font:500 11px/1 'Archivo',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:rgba(17,18,20,.62)}
+.wvb-f__links{display:flex;flex-direction:column;gap:2px;margin-top:16px}
+.wvb-f__links a{padding:8px 0;color:#111214;font:400 15px/1.5 'Archivo',sans-serif;text-decoration:none}
+.wvb-f__rule{height:1px;background:rgba(17,18,20,.26);margin-top:56px}
+.wvb-f__bottom{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center;padding-top:24px;font:400 13px/1 'Archivo',sans-serif;color:rgba(17,18,20,.75)}
+.wvb-f__legal{display:flex;gap:22px;flex-wrap:wrap}
+.wvb-f__legal a{color:rgba(17,18,20,.75);text-decoration:none;font:400 13px/1 'Archivo',sans-serif}
+.wvb-f__credit{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.wvb-f__credit a{display:inline-flex;align-items:center;justify-content:center;height:33px;width:142px;padding:0 14px;background:#0B0C0C;border-radius:999px;overflow:hidden}
+.wvb-f__credit img{height:100%;width:100%;object-fit:contain}
+
+.wvb-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:18px 0 8px}
+@media (max-width:640px){.wvb-grid{grid-template-columns:1fr}}
+.wvb-card{border:1px solid #E6E3DD;padding:20px 22px;background:#fff}
+.wvb-card__eyebrow{font:500 11px/1 'Archivo',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#8C867A}
+.wvb-card__name{font:600 18px/1.3 'Archivo',sans-serif;margin:8px 0 0;color:#111214}
+.wvb-card__desc{font:400 14px/1.6 'Archivo',sans-serif;color:#57544D;margin:8px 0 0}
+.wvb-card a.wvb-card__cta{display:inline-flex;align-items:center;gap:8px;margin-top:14px;font:600 13px/1 'Archivo',sans-serif;color:#111214;text-decoration:none;border-bottom:2px solid #FBAE00;padding-bottom:2px}
+.wvb-type-group{margin-top:44px}
+main.wvb-main{max-width:1040px}
+
+</style>
+</head>
+<body>
+
+<header class="wvb-h">
+  <div class="wvb-h__bar">
+    <a href="/" class="wvb-h__logo" aria-label="Wim van Breda — home">
+      <img src="/assets/wvb-logo.svg" alt="Wim van Breda — Bewuste vooruitgang">
+    </a>
+    <nav class="wvb-h__nav">
+      <a href="/machines/">Aanbod</a>
+      <a href="/occasions/">Occasions</a>
+      <a href="/service/">Service</a>
+      <a href="/over-ons/">Over ons</a>
+      <a href="/contact/">Contact</a>
+      <a href="https://webshop.wimvanbreda.nl/" target="_blank" rel="noopener noreferrer" class="wvb-h__web">Webshop →</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap"><nav class="wvb-crumb" aria-label="Kruimelpad"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/nieuws/">Nieuws</a><span aria-hidden="true">/</span><span aria-current="page">Bermbeheer met big data</span></nav></div>
+<main class="wvb-main">
+  <h1 class="wvb-h1">Bermbeheer met big data</h1>
+  <div style="font:400 13px/1 'Archivo',sans-serif;color:#8C867A;margin-top:14px">31 januari 2024</div><p class="wvb-intro">Bermonderhoud, en zeker de ecologische aanpak, vormt een grote kostenpost. Traditionele maaimethoden veroorzaken achteruitgang van de biodiversiteit en de insectenpopulaties.</p><p>Een ander knelpunt is dat het maaisel zwerfvuil en invasieve exoten bevat, wat de verwerking prijzig maakt. Het is lastig om hierin inzicht te krijgen.</p><p>Tot voor kort waren er amper technische faciliteiten om ecologisch bermbeheer te ondersteunen. De Mowhawk, ontwikkeld door Datacadabra, gaat hierin verandering brengen. Renee Roeleveld is businessdeveloper bij dit jonge start-upbedrijf, gevestigd op het terrein van de Universiteit Twente. Ze vertelt met een glimlach en gepaste trots dat de provincie Overijssel de komende drie jaar in de regio Salland bermen gaat maaien met twee maaimachines die zijn uitgerust met Mowhawks. Overijssel gaf ruim een jaar geleden zelf de aanzet tot de ontwikkeling van dit nieuwe systeem.</p><p>Extra haviksoog</p><p>Roeleveld noemt de vinding – een slimme videocamera – een extra haviksoog. Dat ‘oog’ is gemonteerd op de giek en kijkt met de chauffeur mee bij het maaien van bijvoorbeeld bermen. Roeleveld legt uit: ‘Het maakt niet uit of het om een klepel- of een cirkelmaaier gaat. De camera ziet de maairichting en stuurt daarop automatisch de rotor van de camera aan. Zo draait de camera in de juiste richting. De camera detecteert en herkent planten die je liever niet in bermen wilt aantreffen, zoals Japanse duizendknoop of reuzenberenklauw. Dat zijn zogenoemde invasieve exoten, die van nature niet in Nederland voorkomen en schadelijk zijn voor de natuur.’</p><p>Sensor bij maaiunit</p><p>Dicht bij de maaiunit is een sensor gemonteerd. Deze legt via gps nauwkeurig vast waar de opnamen zijn gemaakt van bijvoorbeeld invasieven of zwerfvuil als blikjes. Daarnaast is het systeem in staat de massa van het maaisel te bepalen. Roeleveld: ‘Een boordcomputer deelt de verzamelde gegevens met de opdrachtgever. Dat gebeurt in de cloud. Vanwege de haarscherpe video-opnamen praten we hier natuurlijk over gigantisch grote databestanden; datawetenschappers spelen een rol bij de interpretatie.’</p><p>‘De camera detecteert en herkent planten die je liever niet in bermen wilt aantreffen’</p><p>Stevige camera</p><p>Wel vertelt Roeleveld dat ze, meerijdend op de tractor, geschrokken is van de ruwheid waarmee het maaien van bermen gepaard gaat. ‘Heel anders dan het weidemaaien bij mijn vader’, glimlacht de boerendochter uit het Twentse Beuningen. ‘De industriële camera, gemonteerd op de giek, hebben we dus zeer stevig moeten uitvoeren. Ondanks de beweeglijkheid van de giek maakt de videocamera haarscherpe video-opnamen van de berm, met behulp van beeldstabilisatie. Uiteraard hebben we dat de gebruikte software, vision-technologie, moeten aanleren. We kunnen daarin nog verdergaan door ons systeem te leren weidevogelnesten en jakobskruiskruid te identificeren bij het maaien van weides. Daarover krijgen we veel vragen.’</p><p>Identificeren van straatmeubilair</p><p>Ook het identificeren van de status van straatmeubilair of verkeersborden behoort tot de mogelijkheden, vertelt Roeleveld. ‘Bij het maaien van bermen kom je er toch periodiek langs. Je kunt de Mowhawk dus integreren in een bestaande werkmethode van opdrachtgevers. Daarom overwegen we om deze technologie geschikt te maken voor bijvoorbeeld veegwagens. Uiteraard gebeurt dit allemaal met de nieuwste, innovatieve technieken op het gebied van dataverwerking en kunstmatige intelligentie. Daarin zijn we als start-up Datacadabra gespecialiseerd: gebruikmaken van de nieuwste cameratechnieken, algoritmen maken voor beeldherkenning en het ‘trainen’ van de ontwikkelde systemen. We staan daarbij open voor samenwerking met andere partijen.’</p><p>Drie doelen</p><p>Tot dusverre dient de innovatie al drie doelen. Door de invasieven te detecteren die in het maaisel terechtkomen, kan de bermbeheerder besluiten de vracht niet te gebruiken als ruwvoer voor dieren. Genoemde bijkruiden kunnen namelijk – zelfs in droog hooi – schadelijk zijn voor herkauwers en paarden. Zo kan ook een vracht waarin zwerfvuil terechtgekomen is, een andere bestemming krijgen dan vergisting of fermentatie. In zo’n geval kun je bijvoorbeeld kiezen voor de duurdere manier van composteren van het maaisel. Het systeem is dus ook een middel om de kosten en ongewenste verspreiding van zaden te verminderen.</p><p>Database met historie</p><p>Misschien nog belangrijker is de aanleg van een database van historische gegevens. Daarbij kun je denken aan verschraling of een sinusmaaibeleid van bermen of andere ecologisch beheerde grasvelden waarin bijkruiden staan, zoals Roeleveld ongewenste kruiden noemt. ‘In de derde plaats kunnen we ook de effecten van beheermaatregelen bepalen, dankzij de enorme hoeveelheid verzamelde gegevens. Zo is bijvoorbeeld te zien of beheermaatregelen tegen invasieven het gewenste effect hebben en in welke bermen je het meeste zwerfvuil aantreft. De camera stuurt de beelden realtime door naar de bermbeheerder: gemeente, provincie of waterschap. Aan hen is het om hiermee iets te doen. Er is hiervoor ruimte in de GIS-applicaties waarmee ze werken.’</p><p>Natuurinclusief bermbeheer</p><p>‘De Mowhawk maakt zogenoemd natuurinclusief bermbeheer mogelijk’, vervolgt Roeleveld. ‘En dat is zeer complex. Als de mens dit zelf niet meer kan overzien, kunnen moderne technologieën hierbij helpen. Om natuurinclusief bermbeheer te bereiken, moet je niet de hele berm platmaaien en het maaisel afvoeren, maar ook stukken laten groeien. Daarin kunnen dan insecten schuilen. Dat is belangrijk, want insecten zijn eigenlijk de motor van de natuur. De Mowhawk zien we als een uitstekende tool bij het verschralen van bermen, zodat de oorspronkelijke vegetatie terugkomt. Zand, zwerfvuil, het gewicht en aanwezige invasieve exoten bepalen de kwaliteit van het maaisel. Met de Mowhawk hebben de chauffeur en de opdrachtgever direct inzicht in de kwaliteit van het maaisel. Aan de hand hiervan kunnen ze bepalen wat de meest geschikte wijze van circulaire verwerking van het maaisel is. Je kunt het vergisten en er groene energie mee opwekken of gebruiken als bodemverbeteraar of voor bio-producten.’</p><p>Mowhawk-pilot</p><p>Jelle Bijlsma BV uit het Friese Giekerk beproefde tijdens het afgelopen maaiseizoen het Mowhawk-prototype. Douwe Visser is projectleider groen bij deze aannemer. Hij begeleidde de pilot en klinkt enthousiast over het resultaat. Hij vertelt: ‘Datacadabra had qua kunstmatige intelligentie het meeste voorwerk al gedaan. Wij konden de sensor, de slimme camera en de computer zo installeren op onze machine. Ook kwam er een beeldscherm in de tractorcabine.’</p><p>Beter zicht op grashoogte</p><p>Ook geeft het systeem volgens Visser beter zicht op de grashoogte. ‘En we weten nu zeker dat we schoon maaisel in de bak krijgen. Voor zwerfvuil willen we nog weleens stoppen en afstappen; ook daarvoor biedt de Mowhawk meerwaarde. Er mag geen troep inzitten, zeker als je het maaisel tot bokashi wilt verwerken.’</p><p>Nieuwe manier van maaien</p><p>Visser vindt het systeem een belangrijke opmaat tot de nieuwe manier van bermmaaien, die volgens hem zijn weg zal vinden in nieuwe maaibestekken: ‘Zoals het sinusmaaien van bermen. Als vastligt waar je eerder gemaaid hebt, kun je daar met je materieel rekening mee houden. Nu moet dat nog handmatig. Ik kan me voorstellen dat ook dit te automatiseren is, zodat je de maaiunit daarop kunt sturen. Dan kun je ook automatisch om plekken heen maaien waar invasieve exoten groeien.’</p><p>Vervolgstappen</p><p>Wim van Breda mechanisatie heeft in 2021 de verdere ontwikkeling en de productie van het frame van de Mowhawk op zich genomen. Dat gebeurt in samenwerking met bedenker van het systeem, Datacadabra. De onderneming uit Geldermalsen is hiermee het aanspreekpunt voor iedereen die geïnteresseerd is in de Mowhawk.</p><p>Wim van Breda (junior) vertegenwoordigt de derde generatie binnen het bedrijf. Hij vertelt: ‘De eerste systemen om aan een maaiarm te bevestigen, leveren we binnenkort uit. Het gaat om een universeel product, dat we op alle maaitoepassingen kunnen installeren. En dat is een lastig gegeven met al die bewegende delen. Mowhawk omvat een slimme camera die door een rotor volledig geautomatiseerd de bewegingen van de klepelbak volgt. Een computer registreert en verstuurt de data naar de cloud, zodat je deze op ieder gewenst tijdstip kunt inzien.</p><p>Wim van Breda jr. gaat de innovatie samen met de klantenkring verder uitbouwen. Het verzamelen van data voor de algoritmes vormt hierin een onderdeel om ook andere zaken te detecteren, want ‘voorlopig detecteert de Mowhawk drie zaken: de Japanse duizendknoop, de Reuzenberenklauw en zwerfvuil’, voegt Van Breda toe: ‘Voor aannemers is dit laatste ook zeer interessant. Ze kunnen hierdoor bermmaaisel beter classificeren voor afvoer of voor veevoeding. We zijn ook samen met Abracadabra vergevorderd met de ontwikkeling voor front- en zijmaaiers.’</p><p>Contact</p><p>Heeft u vragen over de Mowhawk? Dan kunt u ons uiteraard vrijblijvend contacteren. Uiteraard zijn we ook op andere platformen beschikbaar.</p>
+<div class="wvb-cta">
+  <p>Advies nodig over de juiste machine voor uw situatie?</p>
+  <a href="/contact/">Neem contact op</a>
+</div>
+
+</main>
+
+<footer class="wvb-f">
+  <div class="wvb-f__wrap">
+    <h2>Rust, vakmanschap en machines die blijven draaien.</h2>
+    <div class="wvb-f__cols">
+      <div>
+        <img class="wvb-f__logo" src="/assets/wvb-logo.svg" alt="Wim van Breda">
+        <div class="wvb-f__addr">Oudenhof 14<br>4191 NW Geldermalsen</div>
+        <div class="wvb-f__tel">
+          <a href="tel:+31345585050">+31(0)345 58 50 50</a>
+          <a href="https://wa.me/31643070306">WhatsApp +31(0)6 43 07 03 06</a>
+        </div>
+      </div>
+      <div>
+        <div class="wvb-f__title">Aanbod</div>
+        <div class="wvb-f__links">
+          <a href="/machines/">Nieuwe machines</a>
+          <a href="/occasions/">Occasions</a>
+          <a href="/verhuur/">Verhuur</a>
+          <a href="/merken/">Merken</a>
+        </div>
+      </div>
+      <div>
+        <div class="wvb-f__title">Over ons</div>
+        <div class="wvb-f__links">
+          <a href="/over-ons/">Over ons</a>
+          <a href="/nieuws/">Nieuws</a>
+          <a href="/werken-bij/">Werken bij</a>
+          <a href="/geleverd/">Geleverd</a>
+        </div>
+      </div>
+      <div>
+        <div class="wvb-f__title">Service &amp; contact</div>
+        <div class="wvb-f__links">
+          <a href="/service/">Service aanvragen</a>
+          <a href="/contact/">Contact</a>
+          <a href="/sitemap/">Sitemap</a>
+        </div>
+      </div>
+    </div>
+    <div class="wvb-f__rule"></div>
+    <div class="wvb-f__bottom">
+      <div>Wim van Breda B.V. · Bewuste Vooruitgang</div>
+      <div class="wvb-f__legal">
+        <a href="/">Privacy</a>
+        <a href="/">Voorwaarden</a>
+        <a href="/sitemap/">Sitemap</a>
+        <a href="https://nl.linkedin.com/company/wim-van-breda-bv" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://www.facebook.com/wimvanbredabv/?locale=nl_NL" target="_blank" rel="noopener noreferrer">Facebook</a>
+        <a href="https://www.instagram.com/wimvanbredabv/" target="_blank" rel="noopener noreferrer">Instagram</a>
+      </div>
+      <div class="wvb-f__credit">
+        <span style="font:400 12px/1 'Archivo',sans-serif;color:rgba(17,18,20,.75)">Website gerealiseerd door:</span>
+        <a href="https://aichecked.nl/" target="_blank" rel="noopener noreferrer" aria-label="AIChecked.nl">
+          <img src="/assets/aichecked-opt.png" alt="AIChecked.nl" width="300" height="100" loading="lazy" decoding="async">
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

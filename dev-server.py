@@ -1,27 +1,30 @@
 #!/usr/bin/env python3
-"""Lokale ontwikkelserver voor "Wim van Breda" — statische bestanden + SPA-fallback.
+"""Lokale ontwikkelserver voor "Wim van Breda" — statische bestanden + echte 404.
 
 Waarom dit bestand bestaat
 --------------------------
-De website is één client-side gerouteerde pagina ("Wim van Breda.dc.html").
-De eerder toegevoegde browserrouter (Component.resolveRoute in dat bestand)
-leest de URL pas NADAT de pagina is geladen. Een kale statische server
-(zoals `python -m http.server`) probeert een pad als `/occasions/` eerst
-als echte map/bestand te openen; omdat die map niet bestaat, geeft de
-server zelf al een 404 terug voordat de browser ooit de HTML — en dus de
-router — te zien krijgt.
+De website bestaat uit echte, vooraf-gerenderde statische bestanden per URL
+(elke map heeft zijn eigen index.html — zie scripts/build_seo_pages.py en
+scripts/build_catalog_pages.py) plus, uitsluitend voor "/" zelf, de
+client-side gerouteerde SPA-shell ("Wim van Breda.dc.html").
+
+Vóór de Fase 1 crawlability-fix (zie eindrapport) vielen alle URL's zonder
+eigen bestand terug op diezelfde SPA-shell met HTTP 200 — ook voor URL's die
+helemaal niet bestaan. Dat gaf false-200's / soft-404's voor elke ongeldige
+URL. Nu elke geldige route een eigen bestand heeft, betekent "geen bestand
+gevonden" ook echt "deze pagina bestaat niet": de server geeft dan een
+eigen 404.html terug met een echte HTTP 404-status, precies zoals Vercel dat
+in productie doet zodra er geen rewrite meer naar index.html is (zie
+vercel.json).
 
 Wat deze server doet
 ---------------------
 - Een aanvraag die overeenkomt met een écht bestand (afbeeldingen, .js,
-  .json, alles in /assets/, /uploads/, enz.) wordt gewoon normaal
-  geserveerd, met het juiste content-type.
-- Een aanvraag die met GEEN enkel bestand overeenkomt (dus elke "virtuele"
-  route zoals /occasions/, /merken/herder/, /machine/<slug>/, …, en ook /
-  zelf) krijgt de inhoud van "Wim van Breda.dc.html" terug — met
-  HTTP-status 200, zónder redirect. De browser-URL in de adresbalk
-  verandert dus niet: de client-side router leest die URL bij het laden
-  en toont de juiste pagina.
+  .json, alles in /assets/, /uploads/, enz.) of een map met een eigen
+  index.html erin, wordt gewoon normaal geserveerd, met het juiste
+  content-type.
+- Een aanvraag die met GEEN enkel bestand overeenkomt krijgt de inhoud van
+  404.html terug — met een echte HTTP-status 404 (geen 200, geen redirect).
 - Er wordt nooit buiten deze projectmap gelezen (geen directory traversal),
   ook niet via "../", URL-encodering of symlinks.
 
@@ -43,7 +46,7 @@ import urllib.parse
 
 PORT = 8791
 ROOT = os.path.dirname(os.path.abspath(__file__))
-SPA_FILE = os.path.join(ROOT, "Wim van Breda.dc.html")
+NOT_FOUND_FILE = os.path.join(ROOT, "404.html")
 
 # mimetypes-tabel op sommige systemen/Python-versies onvolledig voor deze
 # extensies — expliciet aanvullen zodat content-types altijd klopt.
@@ -54,9 +57,11 @@ mimetypes.add_type("image/svg+xml", ".svg")
 
 
 class SpaFallbackHandler(http.server.SimpleHTTPRequestHandler):
-    """Serveert echte bestanden normaal; valt voor al het overige terug op
-    Wim van Breda.dc.html (SPA-fallback), met bescherming tegen directory
-    traversal."""
+    """Serveert echte bestanden (en mappen met een eigen index.html) normaal;
+    geeft voor al het overige een echte HTTP 404 (404.html) terug, met
+    bescherming tegen directory traversal. Klasse-naam ongewijzigd gelaten
+    om de wijziging minimaal te houden — het gedrag is niet meer 'SPA
+    fallback' maar 'static files + real 404', zie moduledocstring."""
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, directory=ROOT, **kwargs)
@@ -78,17 +83,17 @@ class SpaFallbackHandler(http.server.SimpleHTTPRequestHandler):
             return None
         return resolved
 
-    def _serve_spa(self, head_only):
-        if not os.path.isfile(SPA_FILE):
-            self.send_error(404, "Wim van Breda.dc.html niet gevonden in " + ROOT)
+    def _serve_not_found(self, head_only):
+        if not os.path.isfile(NOT_FOUND_FILE):
+            self.send_error(404, "Niet gevonden (en 404.html ontbreekt in " + ROOT + ")")
             return
         try:
-            with open(SPA_FILE, "rb") as f:
+            with open(NOT_FOUND_FILE, "rb") as f:
                 body = f.read()
         except OSError as exc:
-            self.send_error(500, "Kan Wim van Breda.dc.html niet lezen: " + str(exc))
+            self.send_error(500, "Kan 404.html niet lezen: " + str(exc))
             return
-        self.send_response(200)
+        self.send_response(404)
         self.send_header("Content-Type", "text/html; charset=utf-8")
         self.send_header("Content-Length", str(len(body)))
         self.send_header("Cache-Control", "no-cache")
@@ -125,9 +130,10 @@ class SpaFallbackHandler(http.server.SimpleHTTPRequestHandler):
             else:
                 super().do_GET()
             return
-        # Geen overeenkomend bestand: SPA-fallback. Géén redirect — de
-        # browser-URL blijft precies wat de gebruiker heeft geopend.
-        self._serve_spa(head_only)
+        # Geen overeenkomend bestand: echte 404. Géén redirect — de
+        # browser-URL blijft precies wat de gebruiker heeft geopend, maar de
+        # HTTP-status klopt nu wel (zie eindrapport, "echte 404" C4-fix).
+        self._serve_not_found(head_only)
 
     def do_GET(self):
         self._handle(head_only=False)
@@ -140,8 +146,10 @@ class SpaFallbackHandler(http.server.SimpleHTTPRequestHandler):
 
 
 def main():
-    if not os.path.isfile(SPA_FILE):
-        sys.exit('Kan "Wim van Breda.dc.html" niet vinden in ' + ROOT)
+    if not os.path.isfile(os.path.join(ROOT, "index.html")):
+        sys.exit('Kan "index.html" niet vinden in ' + ROOT)
+    if not os.path.isfile(NOT_FOUND_FILE):
+        sys.exit('Kan "404.html" niet vinden in ' + ROOT)
 
     handler = lambda *a, **kw: SpaFallbackHandler(*a, **kw)
     try:
@@ -154,7 +162,7 @@ def main():
             "probeer het opnieuw.".format(port=PORT, err=exc)
         )
 
-    print("Wim van Breda — lokale server met SPA-fallback")
+    print("Wim van Breda — lokale server (statische bestanden + echte 404)")
     print("  http://localhost:%d/" % PORT)
     print("  Servermap: %s" % ROOT)
     print("  Stoppen met Ctrl+C.")

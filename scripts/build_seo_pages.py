@@ -142,11 +142,11 @@ def header_html():
       <img src="/assets/wvb-logo.svg" alt="Wim van Breda — Bewuste vooruitgang">
     </a>
     <nav class="wvb-h__nav">
-      <a href="/">Aanbod</a>
-      <a href="/">Occasions</a>
-      <a href="/">Service</a>
-      <a href="/">Over ons</a>
-      <a href="/">Contact</a>
+      <a href="/machines/">Aanbod</a>
+      <a href="/occasions/">Occasions</a>
+      <a href="/service/">Service</a>
+      <a href="/over-ons/">Over ons</a>
+      <a href="/contact/">Contact</a>
       <a href="https://webshop.wimvanbreda.nl/" target="_blank" rel="noopener noreferrer" class="wvb-h__web">Webshop →</a>
     </nav>
   </div>
@@ -170,26 +170,26 @@ def footer_html():
       <div>
         <div class="wvb-f__title">Aanbod</div>
         <div class="wvb-f__links">
-          <a href="/">Nieuwe machines</a>
-          <a href="/">Occasions</a>
-          <a href="/">Verhuur</a>
-          <a href="/">Merken</a>
+          <a href="/machines/">Nieuwe machines</a>
+          <a href="/occasions/">Occasions</a>
+          <a href="/verhuur/">Verhuur</a>
+          <a href="/merken/">Merken</a>
         </div>
       </div>
       <div>
         <div class="wvb-f__title">Over ons</div>
         <div class="wvb-f__links">
-          <a href="/">Over ons</a>
-          <a href="/">Nieuws</a>
-          <a href="/">Werken bij</a>
-          <a href="/">Geleverd</a>
+          <a href="/over-ons/">Over ons</a>
+          <a href="/nieuws/">Nieuws</a>
+          <a href="/werken-bij/">Werken bij</a>
+          <a href="/geleverd/">Geleverd</a>
         </div>
       </div>
       <div>
         <div class="wvb-f__title">Service &amp; contact</div>
         <div class="wvb-f__links">
-          <a href="/">Service aanvragen</a>
-          <a href="/">Contact</a>
+          <a href="/service/">Service aanvragen</a>
+          <a href="/contact/">Contact</a>
           <a href="/sitemap/">Sitemap</a>
         </div>
       </div>
@@ -352,7 +352,7 @@ def machine_page_html(m):
     title = f"{m['name']} | {m['brand']} | Wim van Breda"
     desc = m['kort'] if m.get('kort') else f"{m['name']} van {m['brand']} bij Wim van Breda. {m.get('type','')}."
     desc = desc[:300]
-    trail = [("Home", "/"), ("Nieuwe machines", "/"), (m['name'], None)]
+    trail = [("Home", "/"), ("Nieuwe machines", "/machines/"), (m['name'], None)]
     kenmerken_html = ul([esc(k) for k in m.get('kenmerken', [])]) if m.get('kenmerken') else ""
     specs_html = ""
     if m.get('specs'):
