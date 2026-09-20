@@ -30,7 +30,7 @@
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://unpkg.com" crossorigin="crossorigin">
 <link rel="preload" as="font" href="/assets/fonts/archivo-latin-var.woff2" type="font/woff2" crossorigin="crossorigin">
-<link rel="preload" as="image" href="/assets/hero-home-opt.webp" fetchpriority="high" type="image/webp">
+<link rel="preload" as="image" href="/assets/hero-home-opt.webp" imagesrcset="/assets/hero-home-mobile.webp 750w, /assets/hero-home-opt.webp 1920w" imagesizes="100vw" fetchpriority="high" type="image/webp">
 <script src="/image-slot.js" defer="defer"></script>
 <script src="https://unpkg.com/lenis@1.3.26/dist/lenis.min.js" defer="defer"></script>
 <script src="/motion.js" defer="defer"></script>
@@ -504,7 +504,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
   <section style="position:relative;margin-top:0;height:min(86vh,880px);min-height:820px;overflow:hidden;background:#0E0F11">
     <div style="position:absolute;inset:0;overflow:hidden">
       <picture>
-        <source srcset="/assets/hero-home-opt.webp" type="image/webp">
+        <source srcset="/assets/hero-home-mobile.webp 750w, /assets/hero-home-opt.webp 1920w" sizes="100vw" type="image/webp">
         <img src="/assets/hero-home.jpg" alt="Machine van Wim van Breda aan het werk in de berm" width="1920" height="1258" fetchpriority="high" decoding="async" style="width:100%;height:100%;object-fit:cover;object-position:58% 55%;animation:wvbZoom 14s cubic-bezier(.2,.6,.3,1) forwards">
       </picture>
     </div>
@@ -1624,7 +1624,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
 
   <section style="border-bottom:1px solid #EFECE6">
     <div style="max-width:1360px;margin:0 auto;padding:88px 40px;display:grid;grid-template-columns:1.05fr 1fr;gap:72px;align-items:center" data-split="">
-      <div data-mask-reveal="" style="aspect-ratio:16/11;background:#EDEAE4;overflow:hidden"><image-slot data-shot id="sv-loc" shape="rect" placeholder="Servicebus of transport op locatie" src="/assets/images/service/sv-loc.webp"></image-slot></div>
+      <div data-mask-reveal="" style="aspect-ratio:16/11;background:#EDEAE4;overflow:hidden"><image-slot data-shot id="sv-loc" shape="rect" placeholder="Servicebus of transport op locatie" src="/assets/images/service/sv-loc.webp" loading="lazy"></image-slot></div>
       <div>
         <div style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#8C867A">Service op locatie</div>
         <h2 style="font:600 clamp(24px,2.7vw,36px)/1.12 Archivo,sans-serif;letter-spacing:-.024em;margin:18px 0 0">We verzorgen vervangend materieel</h2>
@@ -1642,7 +1642,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
         <p style="font:400 17px/1.8 'Archivo',sans-serif;color:#43413C;margin:22px 0 0;max-width:52ch">Heeft u een nieuwe machine besteld? Dan hoeft u deze niet zelf op te halen. Wij brengen de machine naar u toe, overal in Nederland. Als het nodig is, nemen we uw oude machine direct mee terug.</p>
         <button onClick="{{ goMachines }}" onMouseEnter="{{ btnIn }}" onMouseLeave="{{ btnOut }}" style="display:inline-flex;align-items:center;gap:10px;margin-top:30px;background:#FBAE00;color:#111214;border:1px solid #000;padding:15px 22px;font:600 15px/1 'Archivo',sans-serif;cursor:pointer;transition:all .2s">Bekijk ons aanbod <span data-arrow="" style="transition:transform .24s cubic-bezier(.2,.7,.3,1)">→</span></button>
       </div>
-      <div data-mask-reveal="" style="aspect-ratio:16/11;background:#EDEAE4;overflow:hidden"><image-slot data-shot id="sv-transport" shape="rect" placeholder="Aflevering van een nieuwe machine" src="/assets/images/service/sv-transport.webp"></image-slot></div>
+      <div data-mask-reveal="" style="aspect-ratio:16/11;background:#EDEAE4;overflow:hidden"><image-slot data-shot id="sv-transport" shape="rect" placeholder="Aflevering van een nieuwe machine" src="/assets/images/service/sv-transport.webp" loading="lazy"></image-slot></div>
     </div>
   </section>
 
@@ -1653,7 +1653,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
         <h2 style="font:600 clamp(22px,2.3vw,30px)/1.15 Archivo,sans-serif;letter-spacing:-.02em;margin:16px 0 0">Haal meer uit uw machine</h2>
         <p style="font:400 16px/1.8 'Archivo',sans-serif;color:#43413C;margin:18px 0 0;max-width:60ch">Om het beste uit uw materieel te halen, verzorgen we regelmatig trainingen, zowel bij ons in Geldermalsen als op locatie. Wie zijn machine goed kent, werkt plezieriger, efficiënter en betrouwbaarder. Zo haalt u het maximale uit uw machine tegen zo laag mogelijke kosten.</p>
       </div>
-      <div style="aspect-ratio:4/3;background:#EDEAE4;overflow:hidden"><image-slot data-shot id="sv-training" shape="rect" placeholder="Instructie of bediening in de praktijk" src="/assets/images/service/sv-training.webp"></image-slot></div>
+      <div style="aspect-ratio:4/3;background:#EDEAE4;overflow:hidden"><image-slot data-shot id="sv-training" shape="rect" placeholder="Instructie of bediening in de praktijk" src="/assets/images/service/sv-training.webp" loading="lazy"></image-slot></div>
     </div>
   </section>
 
@@ -1696,17 +1696,17 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
       <p style="font:400 17px/1.8 'Archivo',sans-serif;color:#43413C;margin:20px 0 0;max-width:70ch">Bij Wim van Breda hebben we meerdere werkplaatsen. Iedere werkplaats is ingericht voor een ander soort werkzaamheden, zodat we machines gericht kunnen onderhouden en repareren.</p>
       <div data-svshops="" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;margin-top:48px">
         <div>
-          <div style="aspect-ratio:4/3;background:#EDEAE4;overflow:hidden;border:1px solid #E6E3DD"><image-slot data-shot id="sv-w1" shape="rect" placeholder="Werkplaats tractoren en werktuigen" src="/assets/images/service/sv-w1.webp"></image-slot></div>
+          <div style="aspect-ratio:4/3;background:#EDEAE4;overflow:hidden;border:1px solid #E6E3DD"><image-slot data-shot id="sv-w1" shape="rect" placeholder="Werkplaats tractoren en werktuigen" src="/assets/images/service/sv-w1.webp" loading="lazy"></image-slot></div>
           <div style="display:flex;align-items:baseline;gap:14px;margin-top:22px"><span style="font:500 13px/1 'Archivo',sans-serif;color:#FBAE00">01</span><h3 style="font:600 20px/1.25 Archivo,sans-serif;margin:0">Tractoren &amp; werktuigen</h3></div>
           <p style="font:400 15px/1.7 'Archivo',sans-serif;color:#57544D;margin:12px 0 0">Onze werkplaats voor tractoren, werktuigen en grotere machines.</p>
         </div>
         <div>
-          <div style="aspect-ratio:4/3;background:#EDEAE4;overflow:hidden;border:1px solid #E6E3DD"><image-slot data-shot id="sv-w2" shape="rect" placeholder="Werkplaats tuin- en parkmachines" src="/assets/images/service/sv-w2.webp"></image-slot></div>
+          <div style="aspect-ratio:4/3;background:#EDEAE4;overflow:hidden;border:1px solid #E6E3DD"><image-slot data-shot id="sv-w2" shape="rect" placeholder="Werkplaats tuin- en parkmachines" src="/assets/images/service/sv-w2.webp" loading="lazy"></image-slot></div>
           <div style="display:flex;align-items:baseline;gap:14px;margin-top:22px"><span style="font:500 13px/1 'Archivo',sans-serif;color:#FBAE00">02</span><h3 style="font:600 20px/1.25 Archivo,sans-serif;margin:0">Tuin- &amp; parkmachines</h3></div>
           <p style="font:400 15px/1.7 'Archivo',sans-serif;color:#57544D;margin:12px 0 0">Een aparte werkplaats voor onderhoud en reparatie van tuin- en parkmachines.</p>
         </div>
         <div>
-          <div style="aspect-ratio:4/3;background:#EDEAE4;overflow:hidden;border:1px solid #E6E3DD"><image-slot data-shot id="sv-w3" shape="rect" placeholder="Servicebus of monteur op locatie" src="/assets/images/service/sv-w3.webp"></image-slot></div>
+          <div style="aspect-ratio:4/3;background:#EDEAE4;overflow:hidden;border:1px solid #E6E3DD"><image-slot data-shot id="sv-w3" shape="rect" placeholder="Servicebus of monteur op locatie" src="/assets/images/service/sv-w3.webp" loading="lazy"></image-slot></div>
           <div style="display:flex;align-items:baseline;gap:14px;margin-top:22px"><span style="font:500 13px/1 'Archivo',sans-serif;color:#FBAE00">03</span><h3 style="font:600 20px/1.25 Archivo,sans-serif;margin:0">Service op locatie</h3></div>
           <p style="font:400 15px/1.7 'Archivo',sans-serif;color:#57544D;margin:12px 0 0">Onze compleet ingerichte servicebussen functioneren als mobiele werkplaatsen waarmee onze monteurs naar klanten rijden.</p>
         </div>
@@ -1927,7 +1927,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
   <section style="background:rgba(247,245,241,.62);border-top:1px solid #EFECE6;border-bottom:1px solid #EFECE6">
     <div style="max-width:1420px;margin:0 auto;padding:96px 70px;display:grid;grid-template-columns:380px 1fr;gap:72px;align-items:start" data-split="">
       <div data-rv="" data-dickphoto="" style="opacity:0;transform:translateY(16px);transition:opacity .8s cubic-bezier(.2,.7,.3,1),transform .8s cubic-bezier(.2,.7,.3,1)">
-        <div style="aspect-ratio:3/4;background:#EDEAE4;position:relative;overflow:hidden"><image-slot data-shot id="over-dick" shape="rect" placeholder="Portret Dick van Breda" src="/dick-van-breda-mthd76nm-lzdy-opt.jpg"></image-slot></div>
+        <div style="aspect-ratio:3/4;background:#EDEAE4;position:relative;overflow:hidden"><image-slot data-shot id="over-dick" shape="rect" placeholder="Portret Dick van Breda" src="/dick-van-breda-mthd76nm-lzdy-opt.jpg" loading="lazy"></image-slot></div>
         <div style="font:600 17px/1.4 'Archivo',sans-serif;margin-top:18px">Dick van Breda</div>
         <div style="font:400 14px/1.4 'Archivo',sans-serif;color:#7C7770;margin-top:5px">Directeur</div>
       </div>
@@ -1948,8 +1948,8 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
         <p style="font:400 17px/1.8 'Archivo',sans-serif;color:#43413C;margin:22px 0 0;max-width:52ch">In principe kunt u alle technische informatie die u nodig heeft op deze website vinden. Datzelfde geldt voor de duizenden onderdelen in onze webshop. Toch vinden relaties het prettig om samen met onze mensen de mogelijkheden te bekijken en te bespreken. Ook willen ze advies over functies en toepassingsmogelijkheden van verschillende machines. En dat begrijpen wij maar al te goed. Het gaat immers om grote machines die soms voor specifieke toepassingen worden ingezet.</p>
         <p style="font:400 17px/1.8 'Archivo',sans-serif;color:#43413C;margin:20px 0 0;max-width:52ch">Als betrouwbare partner zetten we ons vanaf het eerste contact 100% voor u in. Of u nu belt, mailt of onze werkplaats binnenloopt, onze specialisten helpen u graag. Het liefst bekijken we elke situatie van dichtbij. Met de voeten in de berm, zogezegd. Door bij u langs te gaan en de situatie ter plekke te bekijken, voorzien we u van het beste advies.</p>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:34px">
-          <div style="aspect-ratio:4/3;background:#EDEAE4;position:relative;overflow:hidden"><image-slot data-shot id="over-cult-1" shape="rect" placeholder="Collega's werkplaats" src="/assets/images/over-ons/over-cult-1.webp"></image-slot></div>
-          <div style="aspect-ratio:4/3;background:#EDEAE4;position:relative;overflow:hidden"><image-slot data-shot id="over-cult-2" shape="rect" placeholder="Magazijn / parts" src="/assets/images/over-ons/over-cult-2.webp"></image-slot></div>
+          <div style="aspect-ratio:4/3;background:#EDEAE4;position:relative;overflow:hidden"><image-slot data-shot id="over-cult-1" shape="rect" placeholder="Collega's werkplaats" src="/assets/images/over-ons/over-cult-1.webp" loading="lazy"></image-slot></div>
+          <div style="aspect-ratio:4/3;background:#EDEAE4;position:relative;overflow:hidden"><image-slot data-shot id="over-cult-2" shape="rect" placeholder="Magazijn / parts" src="/assets/images/over-ons/over-cult-2.webp" loading="lazy"></image-slot></div>
         </div>
       </div>
     </div>

@@ -438,7 +438,7 @@
 
   class ImageSlot extends HTMLElement {
     static get observedAttributes() {
-      return ['shape', 'radius', 'mask', 'fit', 'placeholder', 'src', 'id', 'credit', 'credit-href'];
+      return ['shape', 'radius', 'mask', 'fit', 'placeholder', 'src', 'id', 'credit', 'credit-href', 'loading'];
     }
 
     /** Duplicate-slide hook (called by deck-stage, see its
@@ -1122,6 +1122,19 @@
         !credit && !this._userUrl && srcAttr && isUnsplashHost(srcAttr)
       );
       this.toggleAttribute('data-attribution-error', attrError);
+      // PageSpeed: below-the-fold instances can opt in to native lazy
+      // loading via <image-slot loading="lazy">. Defaults to the browser's
+      // own "eager" behavior (unset attribute) exactly as before, so every
+      // existing usage — including any that IS the LCP candidate on its
+      // own page — is completely unaffected unless a caller explicitly
+      // marks it lazy. Applied on every render (not just src changes):
+      // the 'loading' attribute has its own attributeChangedCallback entry
+      // and can be set/changed independently of 'src'.
+      if (this.getAttribute('loading') === 'lazy') {
+        this._img.loading = 'lazy';
+      } else {
+        this._img.removeAttribute('loading');
+      }
       if (url && !attrError) {
         const prev = this._img.getAttribute('src');
         if (prev !== url) {
