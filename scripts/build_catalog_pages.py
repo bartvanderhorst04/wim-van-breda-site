@@ -204,7 +204,7 @@ def build_occasions_hub():
         cards = [card(o.get("brand") or "", o["name"], o.get("kort") or (o.get("bouwjaar") and f"Bouwjaar {o['bouwjaar']}") or "", o["url"]) for o in items]
         sections.append(f'<div class="wvb-type-group">{h2(f"{t} ({len(items)})")}{grid(cards)}</div>')
     title = "Occasions: gebruikte machines | Wim van Breda"
-    desc = "Gebruikte machines voor groen- en terreinbeheer, technisch nagekeken in onze eigen werkplaats. Filter op merk en type."
+    desc = "Gebruikte machines, technisch nagekeken in onze eigen werkplaats. Filter op merk en type."
     body = f'<p class="wvb-intro">{esc(desc)}</p>' + "".join(sections) + DEFAULT_CTA
     trail = [("Home", "/"), ("Occasions", None)]
     write_page("/occasions/", shell("/occasions/", title, desc, "Occasions: gebruikte machines", trail, body))
