@@ -2054,7 +2054,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
   <section>
     <div data-newsteaser="" data-newsgrid="" style="max-width:1420px;margin:0 auto;padding:64px 70px 0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px">
       <sc-for list="{{ news }}" as="n" hint-placeholder-count="6">
-        <article onClick="{{ n.open }}" onMouseEnter="{{ hoverIn }}" onMouseLeave="{{ hoverOut }}" style="background:#fff;border:1px solid #E2DED7;display:flex;flex-direction:column;overflow:hidden;cursor:pointer;transition:transform .28s cubic-bezier(.2,.7,.3,1),box-shadow .28s,border-color .28s">
+        <article onClick="{{ n.open }}" onMouseEnter="{{ hoverIn }}" onMouseLeave="{{ hoverOut }}" style="background:#ffffff;border:1px solid #E2DED7;display:flex;flex-direction:column;overflow:hidden;cursor:pointer;transition:transform .28s cubic-bezier(.2,.7,.3,1),box-shadow .28s,border-color .28s">
           <!-- Nieuwskaart-afbeelding: object-fit:contain (zie photoEl, fit:'contain'
                hieronder) zodat de volledige bronfoto — personen, machines,
                beursstands, tekst op de foto — altijd zichtbaar blijft, nooit
@@ -2062,8 +2062,12 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
                voor alle kaarten gelijk; de kleine binnenmarge geeft de foto rustig
                ademruimte zonder hem klein te laten ogen. Geen data-zoom hier: de
                afbeelding zelf zoomt niet mee bij hover (alleen de kaart licht op),
-               zodat hij ook tijdens hover volledig herkenbaar blijft. -->
-          <div style="height:210px;overflow:hidden;background:#EDEAE4;padding:10px;box-sizing:border-box">
+               zodat hij ook tijdens hover volledig herkenbaar blijft.
+               Achtergrond hier bewust wit (#ffffff, niet het gebruikelijke
+               beige #EDEAE4-letterbox-token) zodat de hele kaart — inclusief
+               het vak rondom de foto — één wit geheel vormt; de foto zelf
+               (fit, grootte, croppinggedrag) verandert hierdoor niet. -->
+          <div style="height:210px;overflow:hidden;background:#ffffff;padding:10px;box-sizing:border-box">
             <sc-if value="{{ n.hasImg }}" hint-placeholder-val="{{ false }}"><div style="width:100%;height:100%">{{ n.imgEl }}</div></sc-if>
             <sc-if value="{{ n.noImg }}" hint-placeholder-val="{{ true }}"><div style="width:100%;height:100%"><image-slot data-shot key="{{ n.id }}" id="news-{{ n.id }}" shape="rect" placeholder="{{ n.title }}"></image-slot></div></sc-if>
           </div>
