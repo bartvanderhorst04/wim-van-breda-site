@@ -461,7 +461,7 @@ main.wvb-main{{max-width:960px}}
     <label>Bedrijf<input name="bedrijf"></label>
     <label>E-mailadres<input type="email" name="_replyto" required="required"></label>
     <label>Telefoonnummer<input type="tel" name="telefoon"></label>
-    <label>Onderwerp<select name="onderwerp"><option>Nieuwe machine</option><option>Occasion</option><option>Verhuur</option><option>Service</option><option>Onderdelen</option><option>Anders</option></select></label>
+    <label>Onderwerp<select name="onderwerp"><option>Nieuwe machine</option><option>Occasion</option><option>Verhuur</option><option>Service</option><option>Onderdelen</option><option>Werken bij</option><option selected="selected">Anders</option></select></label>
     <label>Bericht<textarea name="verzoek" rows="5"></textarea></label>
     <button type="submit">Verstuur bericht →</button>
   </form>

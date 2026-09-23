@@ -1676,7 +1676,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
         <div style="border-top:2px solid #FBAE00;padding-top:26px">
           <h3 style="font:600 20px/1.25 Archivo,sans-serif;margin:0">We houden ons magazijn gevuld</h3>
           <p style="font:400 16px/1.8 'Archivo',sans-serif;color:#57544D;margin:14px 0 0">Wachten op onderdelen wil niemand, zeker niet als het gaat om service- of slijtdelen. Daarom liggen in ons magazijn duizenden onderdelen klaar. Van olie en filters tot messen, klepels en andere courante onderdelen.</p>
-          <button onClick="{{ goService }}" onMouseEnter="{{ btnIn }}" onMouseLeave="{{ btnOut }}" style="display:inline-flex;align-items:center;gap:10px;margin-top:26px;background:#FBAE00;color:#111214;border:1px solid #000;padding:15px 22px;font:600 15px/1 'Archivo',sans-serif;cursor:pointer;transition:all .2s">Onderdeel nodig? <span data-arrow="" style="transition:transform .24s cubic-bezier(.2,.7,.3,1)">→</span></button>
+          <button onClick="{{ goOnderdelen }}" onMouseEnter="{{ btnIn }}" onMouseLeave="{{ btnOut }}" style="display:inline-flex;align-items:center;gap:10px;margin-top:26px;background:#FBAE00;color:#111214;border:1px solid #000;padding:15px 22px;font:600 15px/1 'Archivo',sans-serif;cursor:pointer;transition:all .2s">Onderdeel nodig? <span data-arrow="" style="transition:transform .24s cubic-bezier(.2,.7,.3,1)">→</span></button>
         </div>
       </div>
     </div>
@@ -1789,9 +1789,14 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
         <label style="display:flex;flex-direction:column;gap:9px"><span style="font:500 13px/1 'Archivo',sans-serif">E-mailadres</span><input type="email" name="_replyto" required="required" onMouseEnter="{{ fieldIn }}" onMouseLeave="{{ fieldOut }}" style="background:#fff;border:0;border-bottom:1px solid #D9D5CD;padding:13px 2px;font:400 15px/1 'Archivo',sans-serif;transition:border-color .2s"></label>
         <label style="display:flex;flex-direction:column;gap:9px"><span style="font:500 13px/1 'Archivo',sans-serif">Telefoonnummer</span><input type="tel" name="telefoon" onMouseEnter="{{ fieldIn }}" onMouseLeave="{{ fieldOut }}" style="background:#fff;border:0;border-bottom:1px solid #D9D5CD;padding:13px 2px;font:400 15px/1 'Archivo',sans-serif;transition:border-color .2s"></label>
       </div>
+      <!-- Onderwerp: gecontroleerd veld (value + onChange), NIET een kale
+           <select> — anders behoudt de browser bij hergebruik van dit DOM-
+           element de laatst gekozen waarde uit een vorige sessie/pagina
+           i.p.v. de waarde die bij de huidige binnenkomst-context hoort (zie
+           onderwerpVal/setOnderwerp + Component.ONDERWERP_BY_CTX in nav()). -->
       <label style="display:flex;flex-direction:column;gap:9px;margin-top:22px"><span style="font:500 13px/1 'Archivo',sans-serif">Onderwerp</span>
-        <select name="onderwerp" style="appearance:none;background:#fff;border:0;border-bottom:1px solid #D9D5CD;padding:13px 2px;font:400 15px/1 'Archivo',sans-serif;cursor:pointer">
-          <option>Nieuwe machine</option><option>Occasion</option><option>Verhuur</option><option>Service</option><option>Onderdelen</option><option>Anders</option>
+        <select name="onderwerp" value="{{ onderwerpVal }}" onChange="{{ setOnderwerp }}" style="appearance:none;background:#fff;border:0;border-bottom:1px solid #D9D5CD;padding:13px 2px;font:400 15px/1 'Archivo',sans-serif;cursor:pointer">
+          <option>Nieuwe machine</option><option>Occasion</option><option>Verhuur</option><option>Service</option><option>Onderdelen</option><option>Werken bij</option><option>Anders</option>
         </select>
       </label>
       <label style="display:flex;flex-direction:column;gap:9px;margin-top:22px"><span style="font:500 13px/1 'Archivo',sans-serif">Bericht</span><textarea name="verzoek" rows="5" style="background:#fff;border:0;border-bottom:1px solid #D9D5CD;padding:13px 2px;font:400 15px/1.6 'Archivo',sans-serif;resize:vertical"></textarea></label>
@@ -2659,7 +2664,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
         <div data-foottitle="" style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:rgba(17,18,20,.62)">Service &amp; contact</div>
         <div style="display:flex;flex-direction:column;gap:2px;margin-top:18px">
           <button onClick="{{ goService }}" onMouseEnter="{{ ftIn }}" onMouseLeave="{{ ftOut }}" style="text-align:left;background:none;border:0;padding:8px 0;cursor:pointer;color:#111214;font:400 15px/1.5 'Archivo',sans-serif;transition:color .2s">Service aanvragen</button>
-          <button onClick="{{ goContact }}" onMouseEnter="{{ ftIn }}" onMouseLeave="{{ ftOut }}" style="text-align:left;background:none;border:0;padding:8px 0;cursor:pointer;color:#111214;font:400 15px/1.5 'Archivo',sans-serif;transition:color .2s">Contact</button>
+          <button onClick="{{ goContactPage }}" onMouseEnter="{{ ftIn }}" onMouseLeave="{{ ftOut }}" style="text-align:left;background:none;border:0;padding:8px 0;cursor:pointer;color:#111214;font:400 15px/1.5 'Archivo',sans-serif;transition:color .2s">Contact</button>
           <a href="https://webshop.wimvanbreda.nl/" target="_blank" rel="noopener noreferrer" onMouseEnter="{{ ftIn }}" onMouseLeave="{{ ftOut }}" style="padding:8px 0;color:#111214;font:400 15px/1.5 'Archivo',sans-serif;transition:color .2s">Webshop</a>
         </div>
       </div>
@@ -3855,6 +3860,18 @@ class Component extends DCLogic {
     this.nav('contact', null, {ctx:{title, type, url}});
   }
 
+  // Centrale koppeling: contactcontext (ctx.type, sitebreed meegegeven door
+  // elke CTA die naar het contactformulier verwijst via contactWith/goContact)
+  // -> automatische waarde van het "Onderwerp"-veld. Eén plek voor alle
+  // herkomstpagina's (nieuwe machine, occasion, verhuur, service, onderdelen,
+  // werken bij); een onbekend of ontbrekend type valt terug op de algemene
+  // standaardwaarde 'Anders' (zie nav()). Nieuwe herkomsttypes hier
+  // toevoegen i.p.v. een losse uitzondering per pagina te maken.
+  static ONDERWERP_BY_CTX = {
+    machine:'Nieuwe machine', occasion:'Occasion', verhuur:'Verhuur',
+    service:'Service', onderdelen:'Onderdelen', werkenbij:'Werken bij'
+  };
+
   // Jaren met volledige maandnavigatie (archief); overige jaren tonen alleen maanden met leveringen
   static ARCHIVE_YEARS = [2025, 2024];
 
@@ -3879,7 +3896,15 @@ class Component extends DCLogic {
   }
 
   nav(page,param,extra){
-    const st = Object.assign({page,param:param||null,menu:null,mob:false,q:'',ftype:[],fbrand:[],sort:'nieuwste',fstatus:[],hrMin:'',hrMax:'',sortOpen:false,drawer:false,gallery:0,lightbox:false,rentalFrom:null,ctx:null,applySent:false,applyBusy:false,applyError:null,bpage:1,lpage:1},extra||{});
+    // Onderwerp-veld van het contactformulier: bij ELKE navigatie (niet
+    // alleen naar de contactpagina) opnieuw bepaald uit de eventuele ctx die
+    // DEZE navigatie meekrijgt — nooit overgenomen uit een vorige pagina of
+    // eerder bezoek. Geen (herkenbare) context -> algemene standaardwaarde
+    // 'Anders'. Zie Component.ONDERWERP_BY_CTX en het onderwerp-veld op de
+    // contactpagina (onderwerpVal/setOnderwerp).
+    const ctxType = extra && extra.ctx ? extra.ctx.type : null;
+    const onderwerp = Component.ONDERWERP_BY_CTX[ctxType] || 'Anders';
+    const st = Object.assign({page,param:param||null,menu:null,mob:false,q:'',ftype:[],fbrand:[],sort:'nieuwste',fstatus:[],hrMin:'',hrMax:'',sortOpen:false,drawer:false,gallery:0,lightbox:false,rentalFrom:null,ctx:null,onderwerp,applySent:false,applyBusy:false,applyError:null,bpage:1,lpage:1},extra||{});
     if (this.reduced()){ this.setState(st); window.scrollTo(0,0); return; }
     this.setState({transit:true,menu:null,mob:false});
     clearTimeout(this._t1); clearTimeout(this._t2);
@@ -5205,6 +5230,11 @@ class Component extends DCLogic {
       goOccasions: ()=>this.nav('occasions'),
       goVerhuur: ()=>this.nav('verhuur'),
       goMerken: ()=>this.nav('merken'),
+      // Centrale contact-dispatcher: ÉÉN plek die voor ieder paginatype de
+      // juiste ctx (titel/type/url) meegeeft aan het contactformulier, i.p.v.
+      // losse uitzonderingen per pagina. Iedere generieke "Neem contact op"-
+      // knop sitebreed (desktop én mobiel) roept dezelfde goContact aan; het
+      // paginatype (huidige this.state.page) bepaalt automatisch het Onderwerp.
       goContact: ()=>{
         const m = this.meta();
         if (page==='detail' && detailRaw){
@@ -5215,19 +5245,40 @@ class Component extends DCLogic {
           this.contactWith('Merk: '+brand.name, 'merk', m ? m.u : '/');
         } else if (page==='verhuur' && rentalCat){
           this.contactWith('Verhuur: '+rentalCat.name, 'verhuur', m ? m.u : '/');
+        } else if (page==='verhuur'){
+          this.contactWith('Verhuur', 'verhuur', m ? m.u : '/verhuur/');
+        } else if (page==='occasions'){
+          this.contactWith('Occasions', 'occasion', m ? m.u : '/occasions/');
+        } else if (page==='machines'){
+          this.contactWith('Nieuwe machines', 'machine', m ? m.u : '/machines/');
+        } else if (page==='service'){
+          this.contactWith('Service & reparatie', 'service', m ? m.u : '/service/');
+        } else if (page==='vacature' && vacancy){
+          this.contactWith(vacancy.titel, 'werkenbij', m ? m.u : '/werken-bij/');
+        } else if (page==='werken'){
+          this.contactWith('Werken bij', 'werkenbij', m ? m.u : '/werken-bij/');
         } else {
           this.nav('contact');
         }
       },
       goService: ()=>this.contactWith('Service & reparatie','service','/service/'),
+      // Aparte, specifiekere context dan goService voor de "Onderdeel nodig?"-
+      // CTA op de servicepagina: die vraag gaat over onderdelen, niet over
+      // een servicebeurt/reparatie, en verdient dus zijn eigen Onderwerp.
+      goOnderdelen: ()=>this.contactWith('Onderdelen','onderdelen','/service/'),
       ctxActive: !!s.ctx,
       ctxTitle: s.ctx ? s.ctx.title : '',
       ctxType: s.ctx ? s.ctx.type : '',
-      ctxTypeLabel: s.ctx ? ({machine:'Machine',occasion:'Occasion',verhuur:'Verhuur',service:'Service',merk:'Merk'}[s.ctx.type] || 'Aanvraag') : '',
+      ctxTypeLabel: s.ctx ? ({machine:'Machine',occasion:'Occasion',verhuur:'Verhuur',service:'Service',onderdelen:'Onderdelen',werkenbij:'Werken bij',merk:'Merk'}[s.ctx.type] || 'Aanvraag') : '',
       ctxUrl: s.ctx ? s.ctx.url : 'https://www.wimvanbreda.nl/contact/',
       ctxSubject: s.ctx
-        ? 'Nieuwe aanvraag – ' + ({machine:'Machine',occasion:'Occasion',verhuur:'Verhuur',service:'Service',merk:'Merk'}[s.ctx.type] || 'Aanvraag') + ' – ' + s.ctx.title
+        ? 'Nieuwe aanvraag – ' + ({machine:'Machine',occasion:'Occasion',verhuur:'Verhuur',service:'Service',onderdelen:'Onderdelen',werkenbij:'Werken bij',merk:'Merk'}[s.ctx.type] || 'Aanvraag') + ' – ' + s.ctx.title
         : 'Nieuwe aanvraag – Algemeen contact',
+      // Onderwerp-veld: gecontroleerd (zie select in de template), initieel
+      // gevuld vanuit de ctx van DEZE navigatie (Component.ONDERWERP_BY_CTX,
+      // berekend in nav()); de bezoeker mag dit zelf nog wijzigen daarna.
+      onderwerpVal: s.onderwerp || 'Anders',
+      setOnderwerp: (e)=>this.setState({onderwerp: e.target.value}),
       // Routering: service/werkplaats → werkplaats@, vacatures → johandeleeuw@ (applyEndpoint),
       // al het overige → wimvanbreda@. Elk Formspree-form heeft één vaste ontvanger.
       formAction: (s.ctx && s.ctx.type==='service')
