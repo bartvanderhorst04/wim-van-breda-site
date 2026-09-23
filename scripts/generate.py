@@ -35,8 +35,15 @@ GROUPS = [
                                 "/tuin-en-parkmachines/terreinonderhoud/"]),
     ("Werktuigdragers", ["/werktuigdrager/","/werktuigdrager/kopen/","/werktuigdrager/professioneel/",
                           "/werktuigdrager/bermonderhoud/","/werktuigdrager/slootonderhoud/"]),
-    ("Merken", ["/herder/maaiarm/","/herder/maaikorf/","/greentec/maaiarm/","/greentec/klepelmaaier/",
-                "/omarv/klepelmaaier/","/votex/klepelmaaier/"]),
+    # Wijst naar de bestaande, officiële merkpagina's (/merken/<merk>/, uit de
+    # Fase 1-crawlability-fix / build_catalog_pages.py) — dezelfde pagina's
+    # die ook via Header/Footer "Merken" bereikbaar zijn. Wees eerder hier
+    # verwezen naar /herder/maaiarm/, /greentec/klepelmaaier/ e.d.: die
+    # product-specifieke pagina's bestaan nog gewoon (niet verwijderd) en
+    # staan al, met hun eigen titel, onder Maaiarm/Klepelmaaier/Maaikorf
+    # hieronder — een aparte "Merken"-kop hoort naar de échte merkpagina's
+    # te linken, niet naar dezelfde onderwerpen nogmaals onder een andere URL.
+    ("Merken", ["/merken/herder/","/merken/greentec/","/merken/omarv/","/merken/votex/"]),
     ("Regio's", ["/regio/geldermalsen/","/regio/betuwe/","/regio/rivierenland/","/regio/zaltbommel/"]),
 ]
 
@@ -109,6 +116,14 @@ _LABELS = {}
 def _register_labels():
     for p in ALL_PAGES:
         _LABELS[p['path']] = p['h1']
+    # De 4 echte merkpagina's uit build_catalog_pages.py leven buiten
+    # ALL_PAGES (ander build-script) — hun H1 hier expliciet overnemen zodat
+    # de "Merken"-sectie hierboven een kloppend, leesbaar label toont i.p.v.
+    # het kale pad.
+    _LABELS['/merken/herder/'] = 'Herder machines'
+    _LABELS['/merken/greentec/'] = 'GreenTec machines'
+    _LABELS['/merken/omarv/'] = 'Omarv machines'
+    _LABELS['/merken/votex/'] = 'Votex machines'
 _register_labels()
 
 def _page_h1(path):
