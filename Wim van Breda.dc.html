@@ -907,10 +907,10 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
 
   <sc-if value="{{ detail.showGeneric }}" hint-placeholder-val="{{ true }}">
   <section style="max-width:1520px;margin:0 auto;padding:44px 70px 96px;display:grid;grid-template-columns:minmax(0,1.95fr) minmax(0,1fr);gap:64px;align-items:start" data-split="">
-    <div>
+    <div style="min-width:0">
       <sc-if value="{{ galHasPhotos }}" hint-placeholder-val="{{ true }}">
       <div data-carousel style="position:relative">
-        <div data-lenis-prevent-touch onPointerDown="{{ galDown }}" onPointerMove="{{ galMove }}" onPointerUp="{{ galUp }}" onPointerCancel="{{ galUp }}" style="position:relative;overflow:hidden;width:100%;touch-action:pan-y;cursor:{{ galGrab }};background:transparent">
+        <div data-lenis-prevent-touch onPointerDown="{{ galDown }}" onPointerMove="{{ galMove }}" onPointerUp="{{ galUp }}" onPointerCancel="{{ galUp }}" style="position:relative;overflow:hidden;width:100%;touch-action:pan-y;cursor:{{ galGrab }};background:transparent;contain:layout paint">
           <div style="display:flex;align-items:center;transform:translate3d({{ galShiftFull }},0,0);transition:{{ galEase }}">
             <sc-for list="{{ slides }}" as="sl" hint-placeholder-count="1">
               <div style="flex:0 0 {{ galSlideWFull }};display:flex;align-items:center;justify-content:center;position:relative;background:transparent">
@@ -1024,7 +1024,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
       </sc-if>
     </div>
 
-    <div data-side="" style="position:sticky;top:130px">
+    <div data-side="" style="position:sticky;top:130px;min-width:0">
       <button onClick="{{ goDetailBrand }}" onMouseEnter="{{ linkIn }}" onMouseLeave="{{ crumbOut }}" style="background:none;border:0;padding:0;cursor:pointer;font:500 11px/1 'Archivo',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#8C867A;transition:color .2s">{{ detail.brand }}</button>
       <h1 style="font:600 clamp(28px,3.4vw,44px)/1.06 Archivo,sans-serif;letter-spacing:-.03em;margin:14px 0 0">{{ detail.name }}</h1>
       <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:18px">
@@ -1088,10 +1088,10 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
   <sc-if value="{{ detail.isOcc }}" hint-placeholder-val="{{ false }}">
   <section style="max-width:1520px;margin:0 auto;padding:44px 70px 96px" data-split="">
     <div style="display:grid;grid-template-columns:minmax(0,1.95fr) minmax(0,1fr);gap:64px;align-items:start">
-      <div>
+      <div style="min-width:0">
         <sc-if value="{{ galHasPhotos }}" hint-placeholder-val="{{ true }}">
         <div data-carousel style="position:relative">
-          <div data-lenis-prevent-touch onPointerDown="{{ galDown }}" onPointerMove="{{ galMove }}" onPointerUp="{{ galUp }}" onPointerCancel="{{ galUp }}" style="position:relative;overflow:hidden;width:100%;touch-action:pan-y;cursor:{{ galGrab }};background:transparent">
+          <div data-lenis-prevent-touch onPointerDown="{{ galDown }}" onPointerMove="{{ galMove }}" onPointerUp="{{ galUp }}" onPointerCancel="{{ galUp }}" style="position:relative;overflow:hidden;width:100%;touch-action:pan-y;cursor:{{ galGrab }};background:transparent;contain:layout paint">
             <div style="display:flex;align-items:center;transform:translate3d({{ galShiftFull }},0,0);transition:{{ galEase }}">
               <sc-for list="{{ slides }}" as="sl" hint-placeholder-count="1">
                 <div style="flex:0 0 {{ galSlideWFull }};display:flex;align-items:center;justify-content:center;position:relative;background:transparent">
@@ -1128,7 +1128,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
         </sc-if>
       </div>
 
-      <div data-side="" style="position:sticky;top:130px">
+      <div data-side="" style="position:sticky;top:130px;min-width:0">
         <button onClick="{{ goDetailBrand }}" onMouseEnter="{{ linkIn }}" onMouseLeave="{{ crumbOut }}" style="background:none;border:0;padding:0;cursor:pointer;font:500 11px/1 'Archivo',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#8C867A;transition:color .2s">{{ detail.brand }}</button>
         <h1 style="font:600 clamp(28px,3.4vw,44px)/1.06 Archivo,sans-serif;letter-spacing:-.03em;margin:14px 0 0">{{ detail.name }}</h1>
         <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:18px">
