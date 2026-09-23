@@ -218,6 +218,13 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
 .wvb-card__spacer{flex:1 1 auto;min-height:12px}
 .wvb-card__footer{flex:0 0 auto;margin-top:16px;padding-top:14px;border-top:1px solid #E7E3DC;display:flex;align-items:center;justify-content:space-between;text-align:left}
 @media (max-width:760px){[data-mgrid]{grid-template-columns:1fr}}
+/* Resultatenbalk boven [data-mgrid] (aantal + Filters-knop + Sorteer op):
+   op zeer smalle telefoons (<421px) past "Filters" + "Sorteer op" + de
+   sorteer-dropdown (min-width:230px) niet meer naast elkaar, waardoor de
+   rij breder werd dan de viewport en de hele resultatengrid meeblies
+   (grid-item min-width:auto). Gedeeld door Machines- én Occasions-overzicht
+   (zelfde template) — hier één keer gefixt i.p.v. los per pagina. */
+@media (max-width:420px){[data-sortbar]{flex-wrap:wrap;row-gap:10px;justify-content:flex-end}[data-sortlbl]{display:none}}
 
 /* Machinegrid op de merkdetailpagina's (/merken/<id>/): zelfde .wvb-card,
    drie kolommen op desktop, twee op tablet, één op mobiel. */
@@ -777,9 +784,9 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
     <div>
       <div style="display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;padding-bottom:20px;border-bottom:1px solid #E6E3DD">
         <div style="font:400 14px/1 'Archivo',sans-serif;color:#57544D"><strong style="font-weight:600;color:#111214">{{ resultCount }}</strong> {{ resultNoun }}</div>
-        <div style="display:flex;align-items:center;gap:12px">
+        <div data-sortbar="" style="display:flex;align-items:center;gap:12px">
           <button data-mob="" onClick="{{ toggleDrawer }}" style="display:none;align-items:center;gap:9px;background:transparent;border:1px solid #000;padding:11px 16px;font:600 13px/1 'Archivo',sans-serif;cursor:pointer">{{ drawerLabel }} <span style="color:#C00020">{{ chipCountLabel }}</span></button>
-          <span style="font:400 13px/1 'Archivo',sans-serif;color:#8C867A;white-space:nowrap">Sorteer op</span>
+          <span data-sortlbl="" style="font:400 13px/1 'Archivo',sans-serif;color:#8C867A;white-space:nowrap">Sorteer op</span>
           <div onMouseLeave="{{ closeSort }}" style="position:relative">
             <button onClick="{{ toggleSort }}" onMouseEnter="{{ sortHoverIn }}" onMouseLeave="{{ sortHoverOut }}" style="display:inline-flex;align-items:center;gap:14px;min-width:230px;justify-content:space-between;background:#fff;border:1px solid #000;padding:12px 15px;font:500 13px/1 'Archivo',sans-serif;color:#000;cursor:pointer;transition:background .2s,border-color .2s">
               {{ sortLabel }}
@@ -1086,8 +1093,8 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
        specificaties, dan de brede contentafbeelding, dan overige echte occasiontekst.
        Uitsluitend voor occasions; gewone machines/verhuur gebruiken de sectie hierboven. -->
   <sc-if value="{{ detail.isOcc }}" hint-placeholder-val="{{ false }}">
-  <section style="max-width:1520px;margin:0 auto;padding:44px 70px 96px" data-split="">
-    <div style="display:grid;grid-template-columns:minmax(0,1.95fr) minmax(0,1fr);gap:64px;align-items:start">
+  <section style="max-width:1520px;margin:0 auto;padding:44px 70px 96px">
+    <div style="display:grid;grid-template-columns:minmax(0,1.95fr) minmax(0,1fr);gap:64px;align-items:start" data-split="">
       <div style="min-width:0">
         <sc-if value="{{ galHasPhotos }}" hint-placeholder-val="{{ true }}">
         <div data-carousel style="position:relative">
