@@ -164,6 +164,7 @@ a:active{color:#111214}
 @media (max-width:680px){[data-rentgrid]{grid-template-columns:1fr!important}}
 @media (max-width:980px){[data-filterbar]{display:none!important}[data-filterbar][data-open]{display:block!important;background:#fff;border:1px solid #E2DED7;padding:8px 22px 22px;margin-bottom:8px;max-height:70vh!important;min-width:0!important}}
 @media (max-width:640px){[data-people]{grid-template-columns:1fr!important}[data-tabs]>button{padding:13px 18px!important;font-size:14px!important}}
+@media (max-width:640px){[data-sitemapcols]{columns:1!important}}
 [data-facet]::-webkit-scrollbar{width:6px}[data-facet]::-webkit-scrollbar-thumb{background:#D9D5CD;border-radius:3px}[data-facet]::-webkit-scrollbar-track{background:transparent}
 /* Filtermenu (aside[data-filterbar], "Nieuwe machines"/"Occasions"): de aside
    zelf is de echte scrollcontainer voor het hele filterpaneel (zoekveld +
@@ -2149,6 +2150,41 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
 </div>
 </sc-if>
 
+<!-- Sitemap: gebruikt dezelfde globale header/footer als iedere andere
+     pagina (die zitten buiten deze sc-if, éénmalig bovenaan/onderaan de
+     hele render) — geen aparte sitemap-header/footer. Inhoud (groepen +
+     links) komt uit Component.SITEMAP_GROUPS, zie eindrapport voor de
+     eerdere linkfix-taak die deze data leverde. -->
+<sc-if value="{{ isSitemap }}" hint-placeholder-val="{{ false }}">
+<div>
+  <section style="border-bottom:1px solid #EFECE6">
+    <div style="max-width:1420px;margin:0 auto;padding:56px 70px 64px">
+      <nav style="display:flex;align-items:center;gap:10px;font:400 13px/1 'Archivo',sans-serif;color:#8C867A;flex-wrap:wrap">
+        <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#8C867A;font:inherit">Home</button><span>/</span>
+        <span style="color:#111214">Sitemap</span>
+      </nav>
+      <div style="max-width:60ch;margin-top:38px">
+        <h1 style="font:600 clamp(32px,4vw,54px)/1.05 Archivo,sans-serif;letter-spacing:-.03em;margin:24px 0 0">Sitemap</h1>
+        <p style="font:400 17px/1.75 'Archivo',sans-serif;color:#43413C;margin:20px 0 0">Overzicht van de website van Wim van Breda: bestaande hoofdpagina's en de nieuwe inhoudelijke pagina's per onderwerp.</p>
+        <p style="font:400 15px/1.7 'Archivo',sans-serif;color:#8C867A;margin:14px 0 0">De pagina's onder "Belangrijke websitepagina's" zijn onderdeel van de hoofdwebsite en bereikbaar via het menu op de homepage.</p>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div style="max-width:1420px;margin:0 auto;padding:64px 70px 100px">
+      <sc-for list="{{ sitemapGroups }}" as="g" hint-placeholder-count="12">
+        <h2 style="font:600 24px/1.2 Archivo,sans-serif;letter-spacing:-.02em;margin:52px 0 14px">{{ g.label }}</h2>
+        <ul data-sitemapcols="" style="list-style:none;padding:0;margin:8px 0 0;columns:2;column-gap:32px">
+          <sc-for list="{{ g.links }}" as="l" hint-placeholder-count="6">
+            <li style="break-inside:avoid;margin:0;padding:7px 0;border-bottom:1px solid #F1EFEA"><a href="{{ l.href }}" style="color:#111214;text-decoration:underline;text-decoration-color:#FBAE00;text-decoration-thickness:2px;text-underline-offset:3px;font-weight:500">{{ l.label }}</a>{{ l.suffix }}</li>
+          </sc-for>
+        </ul>
+      </sc-for>
+    </div>
+  </section>
+</div>
+</sc-if>
+
 <sc-if value="{{ isWerken }}" hint-placeholder-val="{{ false }}">
 <div>
   <section style="position:relative;overflow:hidden;border-bottom:1px solid #EFECE6">
@@ -2677,7 +2713,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
       <div style="display:flex;gap:26px;flex-wrap:wrap">
         <a href="#privacy" onMouseEnter="{{ ftIn }}" onMouseLeave="{{ ftOut }}" style="color:rgba(17,18,20,.75);font:400 13px/1 'Archivo',sans-serif;transition:color .2s">Privacy</a>
         <a href="#voorwaarden" onMouseEnter="{{ ftIn }}" onMouseLeave="{{ ftOut }}" style="color:rgba(17,18,20,.75);font:400 13px/1 'Archivo',sans-serif;transition:color .2s">Voorwaarden</a>
-        <a href="/sitemap/" onMouseEnter="{{ ftIn }}" onMouseLeave="{{ ftOut }}" style="color:rgba(17,18,20,.75);font:400 13px/1 'Archivo',sans-serif;transition:color .2s">Sitemap</a>
+        <button onClick="{{ goSitemap }}" onMouseEnter="{{ ftIn }}" onMouseLeave="{{ ftOut }}" style="background:none;border:0;padding:0;cursor:pointer;color:rgba(17,18,20,.75);font:400 13px/1 'Archivo',sans-serif;transition:color .2s">Sitemap</button>
         <a href="https://nl.linkedin.com/company/wim-van-breda-bv" target="_blank" rel="noopener noreferrer" onMouseEnter="{{ ftIn }}" onMouseLeave="{{ ftOut }}" style="color:rgba(17,18,20,.75);font:400 13px/1 'Archivo',sans-serif;transition:color .2s">LinkedIn</a>
         <a href="https://www.facebook.com/wimvanbredabv/?locale=nl_NL" target="_blank" rel="noopener noreferrer" onMouseEnter="{{ ftIn }}" onMouseLeave="{{ ftOut }}" style="color:rgba(17,18,20,.75);font:400 13px/1 'Archivo',sans-serif;transition:color .2s">Facebook</a>
         <a href="https://www.instagram.com/wimvanbredabv/" target="_blank" rel="noopener noreferrer" onMouseEnter="{{ ftIn }}" onMouseLeave="{{ ftOut }}" style="color:rgba(17,18,20,.75);font:400 13px/1 'Archivo',sans-serif;transition:color .2s">Instagram</a>
@@ -3793,8 +3829,117 @@ class Component extends DCLogic {
     {d:'Donderdag',t:'07:30 – 17:30'},{d:'Vrijdag',t:'07:30 – 17:00'},{d:'Zaterdag',t:'08:00 – 12:00'},{d:'Zondag',t:'Gesloten'}
   ];
 
+  // Inhoud van de /sitemap/-pagina — 1-op-1 overgenomen uit de eerder
+  // gecorrigeerde statische sitemap (zie eindrapport sitemap-linkfix):
+  // dezelfde groepen, labels en (al eerder op juistheid gecontroleerde)
+  // URL's. Alleen de layout errondom verandert in deze taak, niet deze
+  // inhoud.
+  static SITEMAP_GROUPS = [
+    {label:"Belangrijke websitepagina's", links:[
+      {label:'Nieuwe machines', href:'/machines/', suffix:''},
+      {label:'Merken', href:'/merken/', suffix:''},
+      {label:'Occasions', href:'/occasions/', suffix:''},
+      {label:'Verhuur', href:'/verhuur/', suffix:''},
+      {label:'Service', href:'/service/', suffix:''},
+      {label:'Actueel / Nieuws', href:'/nieuws/', suffix:''},
+      {label:'Over ons', href:'/over-ons/', suffix:''},
+      {label:'Werken bij', href:'/werken-bij/', suffix:''},
+      {label:'Geleverd', href:'/geleverd/', suffix:''},
+      {label:'Magazines', href:'/magazines/', suffix:''},
+      {label:'Contact', href:'/contact/', suffix:''}
+    ]},
+    {label:'Maaiarm', links:[
+      {label:'Maaiarm', href:'/maaiarm/', suffix:''},
+      {label:'Maaiarm kopen', href:'/maaiarm/kopen/', suffix:''},
+      {label:'Maaiarm voor tractor', href:'/maaiarm/voor-tractor/', suffix:''},
+      {label:'Maaiarm voor bermonderhoud', href:'/maaiarm/bermonderhoud/', suffix:''},
+      {label:'Maaiarm voor slootonderhoud', href:'/maaiarm/slootonderhoud/', suffix:''},
+      {label:'Herder maaiarm', href:'/maaiarm/herder/', suffix:''},
+      {label:'GreenTec maaiarm', href:'/maaiarm/greentec/', suffix:''}
+    ]},
+    {label:'Klepelmaaier', links:[
+      {label:'Klepelmaaier', href:'/klepelmaaier/', suffix:''},
+      {label:'Klepelmaaier kopen', href:'/klepelmaaier/kopen/', suffix:''},
+      {label:'Klepelmaaier voor tractor', href:'/klepelmaaier/voor-tractor/', suffix:''},
+      {label:'Klepelmaaier voor bermonderhoud', href:'/klepelmaaier/bermonderhoud/', suffix:''},
+      {label:'Klepelmaaier voor ruw terrein', href:'/klepelmaaier/ruw-terrein/', suffix:''},
+      {label:'Omarv klepelmaaier', href:'/klepelmaaier/omarv/', suffix:''},
+      {label:'Votex klepelmaaier', href:'/klepelmaaier/votex/', suffix:''},
+      {label:'GreenTec klepelmaaier', href:'/klepelmaaier/greentec/', suffix:''}
+    ]},
+    {label:'Maaikorf', links:[
+      {label:'Maaikorf', href:'/maaikorf/', suffix:''},
+      {label:'Maaikorf kopen', href:'/maaikorf/kopen/', suffix:''},
+      {label:'Maaikorf voor slootonderhoud', href:'/maaikorf/slootonderhoud/', suffix:''},
+      {label:'Maaikorf voor maaiarm', href:'/maaikorf/voor-maaiarm/', suffix:''},
+      {label:'Maaikorf voor watergangen', href:'/maaikorf/voor-watergangen/', suffix:''},
+      {label:'Maaikorf voor tractor', href:'/maaikorf/voor-tractor/', suffix:''},
+      {label:'Herder maaikorf', href:'/maaikorf/herder/', suffix:''}
+    ]},
+    {label:'Ecologisch maaien', links:[
+      {label:'Ecologisch maaien', href:'/ecologisch-maaien/', suffix:''},
+      {label:'Machines voor ecologisch maaien', href:'/ecologisch-maaien/machines/', suffix:''},
+      {label:'Ecologisch bermmaaien', href:'/ecologisch-maaien/bermmaaien/', suffix:''},
+      {label:'Maaien met afvoer', href:'/ecologisch-maaien/maaien-met-afvoer/', suffix:''},
+      {label:'Ecologisch bermbeheer', href:'/ecologisch-bermbeheer/', suffix:''}
+    ]},
+    {label:'Bermonderhoud', links:[
+      {label:'Bermonderhoud', href:'/bermonderhoud/', suffix:''},
+      {label:'Machines voor bermonderhoud', href:'/bermonderhoud/machines/', suffix:''},
+      {label:'Maaiarm bij bermonderhoud', href:'/bermonderhoud/maaiarm/', suffix:''},
+      {label:'Klepelmaaier bij bermonderhoud', href:'/bermonderhoud/klepelmaaier/', suffix:''},
+      {label:'Ecologisch bermonderhoud', href:'/bermonderhoud/ecologisch/', suffix:''}
+    ]},
+    {label:'Slootonderhoud', links:[
+      {label:'Slootonderhoud', href:'/slootonderhoud/', suffix:''},
+      {label:'Machines voor slootonderhoud', href:'/slootonderhoud/machines/', suffix:''},
+      {label:'Maaiarm bij slootonderhoud', href:'/slootonderhoud/maaiarm/', suffix:''},
+      {label:'Maaikorf bij slootonderhoud', href:'/slootonderhoud/maaikorf/', suffix:''},
+      {label:'Taludmaaien', href:'/taludmaaien/', suffix:''},
+      {label:'Machines voor taludonderhoud', href:'/taludonderhoud-machines/', suffix:''}
+    ]},
+    {label:'Tuin- en parkmachines', links:[
+      {label:'Tuin- en parkmachines', href:'/tuin-en-parkmachines/', suffix:''},
+      {label:'Tuin- en parkmachines kopen', href:'/tuin-en-parkmachines/kopen/', suffix:''},
+      {label:'Professionele tuin- en parkmachines', href:'/tuin-en-parkmachines/professioneel/', suffix:''},
+      {label:'Machines voor gemeenten', href:'/tuin-en-parkmachines/gemeenten/', suffix:''},
+      {label:'Machines voor aannemers', href:'/tuin-en-parkmachines/aannemers/', suffix:''},
+      {label:'Machines voor terreinonderhoud', href:'/tuin-en-parkmachines/terreinonderhoud/', suffix:''}
+    ]},
+    {label:'Werktuigdragers', links:[
+      {label:'Werktuigdrager', href:'/werktuigdrager/', suffix:''},
+      {label:'Werktuigdrager kopen', href:'/werktuigdrager/kopen/', suffix:''},
+      {label:'Professionele werktuigdrager', href:'/werktuigdrager/professioneel/', suffix:''},
+      {label:'Werktuigdrager bij bermonderhoud', href:'/werktuigdrager/bermonderhoud/', suffix:''},
+      {label:'Werktuigdrager bij slootonderhoud', href:'/werktuigdrager/slootonderhoud/', suffix:''}
+    ]},
+    {label:'Merken', links:[
+      {label:'Herder machines', href:'/merken/herder/', suffix:''},
+      {label:'GreenTec machines', href:'/merken/greentec/', suffix:''},
+      {label:'Omarv machines', href:'/merken/omarv/', suffix:''},
+      {label:'Votex machines', href:'/merken/votex/', suffix:''}
+    ]},
+    {label:"Regio's", links:[
+      {label:'Wim van Breda in Geldermalsen', href:'/regio/geldermalsen/', suffix:''},
+      {label:'Wim van Breda in de Betuwe', href:'/regio/betuwe/', suffix:''},
+      {label:'Wim van Breda in Rivierenland', href:'/regio/rivierenland/', suffix:''},
+      {label:'Wim van Breda in Zaltbommel', href:'/regio/zaltbommel/', suffix:''}
+    ]},
+    {label:'Overig', links:[
+      {label:'Sitemap', href:'/sitemap/', suffix:' (deze pagina)'}
+    ]}
+  ];
+
   state = {
-    page:'home', param:null, transit:false, menu:null, mob:false,
+    // page: bij een normale binnenkomst via de SPA ('/') altijd 'home',
+    // net als voorheen. Uitzondering: /sitemap/ is een ECHT, apart statisch
+    // bestand (nodig voor crawlability, zie build-scripts) dat inmiddels
+    // een letterlijke kopie van deze SPA is (zelfde bundel, zelfde header/
+    // footer-component) — alleen bij het opstarten VANAF die exacte URL
+    // moet de paginastatus meteen op 'sitemap' staan i.p.v. 'home', anders
+    // ziet de bezoeker eerst kort de homepage. Dit raakt geen andere route:
+    // elke andere URL blijft gewoon op 'home' starten, exact als voorheen.
+    page:(typeof location!=='undefined' && /^\/sitemap\/?$/.test(location.pathname)) ? 'sitemap' : 'home', param:null, transit:false, menu:null, mob:false,
     q:'', ftype:[], fbrand:[], sort:'nieuwste', fstatus:[], hrMin:'', hrMax:'', sortOpen:false, drawer:false,
     homeType:'', homeBrand:'',
     qStep:1, qTopic:'', qMsg:'', qName:'', qContact:'', qBusy:false, qError:null,
@@ -4183,6 +4328,7 @@ class Component extends DCLogic {
       case 'magazines': return {t:'Wim van Breda Magazine | Wim van Breda',d:'Onze magazines met machinenieuws, klantverhalen uit de praktijk en achtergronden over het werk in weg, berm en sloot.',u:'/magazines/'};
       case 'over': return {t:'Over ons: bewuste vooruitgang sinds 1957 | Wim van Breda',d:'Wim van Breda is een familiebedrijf met 45 collega\u2019s, eigen werkplaats en ruim zestig jaar historie. Lees ons verhaal en bekijk de tijdlijn vanaf 1957.',u:'/over-ons/'};
       case 'contact': return {t:'Contact, openingstijden en route | Wim van Breda',d:'Bel, WhatsApp of bezoek Wim van Breda aan de Oudenhof 14 in Geldermalsen. Openingstijden, telefoonnummers per afdeling en contactformulier.',u:'/contact/'};
+      case 'sitemap': return {t:'Sitemap | Wim van Breda',d:'Overzicht van alle pagina\'s van de website van Wim van Breda, gegroepeerd per onderwerp.',u:'/sitemap/'};
       case 'seo': return {t:'SEO-beheer per pagina | Wim van Breda',d:'Ontwerpvoorstel voor het SEO-blok in het CMS: meta title, meta description, URL, canonical, social image en indexeerinstelling per pagina.',u:'/cms/seo/'};
       default: return {t:'Machines voor berm, sloot, tuin en park | Wim van Breda',d:'Wim van Breda levert, onderhoudt en verhuurt professionele machines voor groen-, berm- en terreinbeheer. Nieuw, occasion en verhuur uit Geldermalsen.',u:'/'};
     }
@@ -5022,6 +5168,9 @@ class Component extends DCLogic {
       creditIn: (e)=>{ const el=e.currentTarget; el.style.transform='translateY(-1px)'; el.style.boxShadow='0 0 0 1px rgba(45,224,158,.55)'; },
       creditOut: (e)=>{ const el=e.currentTarget; el.style.transform=''; el.style.boxShadow=''; },
       goContactPage: ()=>this.nav('contact', null, {ctx:null}),
+      goSitemap: ()=>this.nav('sitemap'),
+      isSitemap: page==='sitemap',
+      sitemapGroups: Component.SITEMAP_GROUPS,
       isSeo: page==='seo',
       isOver: page==='over',
       isNieuws: page==='nieuws',
