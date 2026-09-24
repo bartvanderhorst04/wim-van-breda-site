@@ -2,6 +2,19 @@
 <html lang="nl">
 <head>
 <meta charset="utf-8">
+<!-- Verplicht sinds elke statische catalogus-/hubpagina (/machine/<slug>/,
+     /merken/<slug>/, /verhuur/<slug>/, /sitemap/, enz.) een letterlijke
+     kopie van deze zelfde SPA-bundel is: alle foto-URL's in de brondata
+     (machine-images.js, m.img/m.gallery e.d.) zijn bewust relatief
+     ("assets/..."), zonder voorloopslash. Zonder <base> zou de browser die
+     relatieve paden oplossen t.o.v. de map van de HUIDIGE pagina (bv.
+     "/machine/herder-maaikorf/assets/..." i.p.v. "/assets/...") en dus
+     stelselmatig 404's geven zodra dezelfde bundel niet op "/" zelf
+     staat — precies het "andere website"-gevoel dat hierdoor werd gemeld.
+     <base href="/"> dwingt alle relatieve resource-verwijzingen (ook via
+     JS toegekende src's) altijd tegen de sitewortel op te lossen, ongeacht
+     vanaf welk pad de bundel daadwerkelijk geserveerd wordt. -->
+<base href="/">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Zonder dit tag herkent iOS Safari telefoonnummers, adressen, e-mailadressen
      en datums in gewone platte tekst automatisch en geeft ze zijn eigen
@@ -3901,7 +3914,7 @@ class Component extends DCLogic {
       {label:'Maaikorf voor maaiarm', href:'/maaikorf/voor-maaiarm/', suffix:''},
       {label:'Maaikorf voor watergangen', href:'/maaikorf/voor-watergangen/', suffix:''},
       {label:'Maaikorf voor tractor', href:'/maaikorf/voor-tractor/', suffix:''},
-      {label:'Herder maaikorf', href:'/maaikorf/herder/', suffix:''}
+      {label:'Herder maaikorf', href:'/machine/herder-maaikorf/', suffix:''}
     ]},
     {label:'Ecologisch maaien', links:[
       {label:'Ecologisch maaien', href:'/ecologisch-maaien/', suffix:''},
@@ -3957,16 +3970,66 @@ class Component extends DCLogic {
     ]}
   ];
 
+  // Centrale, canonieke route-resolver: vertaalt een ECHT statisch pad
+  // (elk pad dat meta() ook als canonical URL "u" teruggeeft voor het
+  // bijbehorende {page,param}) naar die {page,param}-state. Ieder van deze
+  // routes is inmiddels letterlijk dezelfde SPA-bundel als index.html (zie
+  // build_catalog_pages.py/generate.py) — bij het opstarten VANAF zo'n URL
+  // moet de paginastatus dus meteen kloppen, anders ziet de bezoeker eerst
+  // kort de homepage. Onbekend pad (o.a. de losstaande SEO-landingspagina's
+  // als /maaiarm/kopen/, die geen eigen SPA-paginastatus hebben) -> null,
+  // valt terug op de normale standaardwaarde 'home' — exact als voorheen.
+  // Dit is de ENE centrale plek voor pad->paginastatus; sitemap, breadcrumbs
+  // en gerelateerde-links gebruiken dezelfde onderliggende records/velden
+  // (m.url, b.id, enz.) zodat er geen tweede, afwijkende routelogica kan
+  // ontstaan.
+  static resolveInitialPage(pathname){
+    const path = String(pathname||'/').replace(/\/+$/,'') || '/';
+    if (path === '/') return {page:'home'};
+    const FIXED = {'/machines':'machines','/occasions':'occasions','/merken':'merken','/service':'service',
+      '/over-ons':'over','/contact':'contact','/sitemap':'sitemap','/geleverd':'geleverd',
+      '/werken-bij':'werken','/magazines':'magazines','/nieuws':'nieuws','/verhuur':'verhuur'};
+    if (FIXED[path]) return {page:FIXED[path]};
+    let m;
+    if ((m = path.match(/^\/merken\/([^/]+)$/))){
+      const b = Component.BRANDS.find(x=>x.id===m[1]); if (b) return {page:'merk', param:b.id};
+    }
+    if ((m = path.match(/^\/machine\/([^/]+)$/))){
+      const rec = Component.MACHINES.find(x=>x.url==='/machine/'+m[1]+'/'); if (rec) return {page:'detail', param:rec.id};
+    }
+    if ((m = path.match(/^\/occasion\/([^/]+)$/))){
+      const rec = Component.OCCASIONS.find(x=>x.url==='/occasion/'+m[1]+'/'); if (rec) return {page:'detail', param:rec.id};
+    }
+    if ((m = path.match(/^\/verhuur\/([^/]+)$/))){
+      const slugMap = {maaimachines:'maaimachines', aanbouwwerktuigen:'aanbouwwerktuigen-maaiarmen-kranen', bosbouw:'bosbouw'};
+      const rc = Component.RENTAL.find(r => (slugMap[r.id]||r.id) === m[1]);
+      if (rc) return {page:'verhuur', param:rc.id};
+    }
+    if ((m = path.match(/^\/werken-bij\/([^/]+)$/))){
+      const v = Component.VACANCIES.find(x=>x.id===m[1]); if (v) return {page:'vacature', param:v.id};
+    }
+    if ((m = path.match(/^\/magazines\/([^/]+)$/))){
+      const mg = Component.MAGAZINES.find(x=>x.slug===m[1]); if (mg) return {page:'magazine', param:mg.id};
+    }
+    if ((m = path.match(/^\/nieuws\/([^/]+)$/))){
+      const a = Component.NEWS.find(x=>x.slug===m[1]); if (a) return {page:'nieuwsitem', param:a.id};
+    }
+    return null;
+  }
+
+  // Eenmalig bij het laden van de pagina bepaald (niet per instantie, er is
+  // toch maar één app-instantie) — voorkomt dat resolveInitialPage() twee
+  // keer met net andere uitkomsten zou kunnen worden aangeroepen.
+  static INITIAL_ROUTE = (typeof location!=='undefined' && Component.resolveInitialPage(location.pathname)) || {page:'home'};
+
   state = {
-    // page: bij een normale binnenkomst via de SPA ('/') altijd 'home',
-    // net als voorheen. Uitzondering: /sitemap/ is een ECHT, apart statisch
-    // bestand (nodig voor crawlability, zie build-scripts) dat inmiddels
-    // een letterlijke kopie van deze SPA is (zelfde bundel, zelfde header/
-    // footer-component) — alleen bij het opstarten VANAF die exacte URL
-    // moet de paginastatus meteen op 'sitemap' staan i.p.v. 'home', anders
-    // ziet de bezoeker eerst kort de homepage. Dit raakt geen andere route:
-    // elke andere URL blijft gewoon op 'home' starten, exact als voorheen.
-    page:(typeof location!=='undefined' && /^\/sitemap\/?$/.test(location.pathname)) ? 'sitemap' : 'home', param:null, transit:false, menu:null, mob:false,
+    // page/param: bij een normale binnenkomst via de SPA ('/') altijd
+    // 'home', net als voorheen — elke andere URL die resolveInitialPage()
+    // niet herkent blijft ook gewoon op 'home' starten. Alleen bij het
+    // opstarten vanaf een echte, herkende statische URL (zie hierboven)
+    // start de paginastatus meteen correct.
+    page:Component.INITIAL_ROUTE.page, param:Component.INITIAL_ROUTE.param||null,
+    transit:false, menu:null, mob:false,
     q:'', ftype:[], fbrand:[], sort:'nieuwste', fstatus:[], hrMin:'', hrMax:'', sortOpen:false, drawer:false,
     homeType:'', homeBrand:'',
     qStep:1, qTopic:'', qMsg:'', qName:'', qContact:'', qBusy:false, qError:null,
@@ -4086,6 +4149,15 @@ class Component extends DCLogic {
 
   componentDidMount(){
     Component.assertUniqueIds();
+    // Fotografie (machine-images.js) laadt als los defer-script en kan iets
+    // later klaar zijn dan de allereerste render — vooral zichtbaar sinds
+    // een directe URL (bv. /machine/<slug>/) meteen op de juiste
+    // paginastatus kan opstarten (zie resolveInitialPage()/INITIAL_ROUTE):
+    // zonder deze hook zou de galerij dan soms leeg staan totdat toevallig
+    // iets anders een re-render veroorzaakt. Veilige no-op als de data er
+    // bij het aanroepen al was (dan is er simpelweg niets meer te laden).
+    const imgScript = document.querySelector('script[src*="machine-images.js"]');
+    if (imgScript) imgScript.addEventListener('load', () => this.forceUpdate(), {once:true});
     this._onKey = (e)=>{
       if (this.state.lightbox){
         if (e.key === 'Escape'){ e.preventDefault(); this.setState({lightbox:false}); }

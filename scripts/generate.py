@@ -1,52 +1,56 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""Bouwt alle nieuwe SEO-landingspagina's + /sitemap/ als statische bestanden.
-Uitvoeren vanuit de scripts/-map: python3 generate.py
+"""Bouwt alle unieke SEO-landingspagina's + /sitemap/ + /contact/ als
+statische bestanden. Uitvoeren vanuit de scripts/-map: python3 generate.py
+
+/sitemap/ en /contact/ hebben allebei een echte, bestaande paginastatus in
+de SPA zelf ('sitemap'/'contact') — zie Component.resolveInitialPage() in
+"Wim van Breda.dc.html" — en worden daarom, net als alle paden uit
+generate_catalog.py, gepubliceerd als een LETTERLIJKE kopie van de SPA-
+bundel (write_spa_copy hieronder), niet als eigen hand-opgemaakte HTML.
+Zo hergebruiken ze automatisch de echte, interactieve globale header/
+footer en het echte template, en blijven ze vanzelf in sync met de SPA
+(zie eindrapport "Herstel de volledige HTML-sitemap structureel").
+
+De 59 pagina's in ALL_PAGES (seo_content_1..5.py, bijv. /maaiarm/kopen/,
+/klepelmaaier/voor-tractor/) zijn bewust WEL eigen, hand-geschreven
+inhoudelijke pagina's zonder overeenkomstige SPA-paginastatus of
+productcatalogus-duplicaat — die blijven op de bestaande manier (kale
+statische HTML via build_seo_pages.header_html()/footer_html()) gebouwd.
+
+Eerder bouwde dit bestand ook nog losstaand 9 losse /machine/<slug>/-
+pagina's (machine_data.py/machine_page_html) — die 9 slugs zitten allemaal
+al, met dezelfde brondata, in de veel completere 252-machine-lijst van
+build_catalog_pages.py/generate_catalog.py (die ze nu bovendien als
+SPA-kopie publiceert). Dat dupliceerde-schrijven is verwijderd: twee
+scripts die naar hetzelfde pad schrijven zonder van elkaars extra content
+te weten, was de oorzaak van een eerder gevonden, apart bijvangst-bugje
+(zie eindrapport "Geleverde machines" — filter/galerij-taak).
 """
 import sys, os
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-from build_seo_pages import (page_html, write_page, ROOT, machine_page_html, contact_page_html)
-import machine_data
+from build_seo_pages import page_html, write_page, ROOT
 
 import seo_content_1, seo_content_2, seo_content_3, seo_content_4, seo_content_5
 
 ALL_PAGES = (seo_content_1.PAGES + seo_content_2.PAGES + seo_content_3.PAGES
              + seo_content_4.PAGES + seo_content_5.PAGES)
 
-# /sitemap/ was tot voor kort een losse, statisch hand-opgemaakte pagina
-# (met zijn eigen "look-alike" header/footer i.p.v. de echte globale
-# componenten van de site — precies het probleem dat later expliciet is
-# gemeld en hersteld, zie eindrapport "Herstel header/footer sitemap").
-# De inhoud (groepen + links, ooit hier gedefinieerd als GROUPS/
-# MAIN_SITE_LINKS) leeft nu, 1-op-1 overgenomen, in de SPA zelf als
-# Component.SITEMAP_GROUPS ("Wim van Breda.dc.html") — dat is voortaan de
-# enige bron van waarheid voor de sitemap-inhoud. write_sitemap_shell()
-# hieronder publiceert /sitemap/ simpelweg als een letterlijke kopie van
-# de SPA-bundel zelf (zelfde bestand als index.html): de SPA herkent bij
-# het opstarten window.location.pathname === '/sitemap/' en rendert dan
-# automatisch zijn 'sitemap'-paginastatus, met exact dezelfde globale
-# header/footer als iedere andere pagina. Toekomstige header/footer- of
-# sitemap-inhoudswijzigingen in de SPA werken hierdoor vanzelf door.
-def write_sitemap_shell():
+def write_spa_copy(path):
     src_path = os.path.join(ROOT, "Wim van Breda.dc.html")
     with open(src_path, encoding="utf-8") as f:
         spa_html = f.read()
-    return write_page("/sitemap/", spa_html)
+    return write_page(path, spa_html)
 
 def main():
     written = []
     for pg in ALL_PAGES:
-        rel = write_page(pg['path'], page_html(pg))
+        write_page(pg['path'], page_html(pg))
         written.append(pg['path'])
-    sm = write_sitemap_shell()
-    written.append(sm)
-    write_page("/contact/", contact_page_html())
-    written.append("/contact/")
-    for slug, m in machine_data.MACHINES.items():
-        write_page(m['url'], machine_page_html(m))
-        written.append(m['url'])
-    print(f"Geschreven: {len(written)} pagina's (incl. /sitemap/, /contact/ en {len(machine_data.MACHINES)} machinepagina's)")
+    written.append(write_spa_copy("/sitemap/"))
+    written.append(write_spa_copy("/contact/"))
+    print(f"Geschreven: {len(written)} pagina's (incl. /sitemap/ en /contact/ als SPA-kopie)")
     for w in written:
         print(" ", w)
     return written
