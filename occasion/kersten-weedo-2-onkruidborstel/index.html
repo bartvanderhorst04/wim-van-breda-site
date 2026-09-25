@@ -371,7 +371,17 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
 @media (max-width:980px){[data-svshops]{grid-template-columns:1fr!important}}
 @media (max-width:700px){[data-usp]{gap:8px 20px!important}[data-usp]>span{font-size:14px!important}}
 @media (max-width:620px){[data-routes]{grid-template-columns:1fr!important}[data-featured]{grid-template-columns:1fr!important}}
-@media (max-width:980px){[data-desk]{display:none!important}[data-mob]{display:inline-flex!important}[data-split]{grid-template-columns:1fr!important}[data-side]{position:static!important;width:100%!important}}
+/* [data-split] valt hier terug op één kolom ("1fr") i.p.v. de op desktop
+   gebruikte "minmax(0,1fr)". Een kale "1fr"-track krijgt een impliciete
+   minimumbreedte gelijk aan de intrinsieke (max-content) breedte van zijn
+   inhoud — bij een sectie met brede, niet-krimpende content (bv. het
+   sollicitatieformulier) laat de track zich daardoor breder duwen dan de
+   viewport, met een uitstekend wit vlak/formulier tot gevolg. minmax(0,1fr)
+   herstelt hier exact dezelfde expliciete minimum-breedte-van-0 die de
+   desktop-declaratie al gebruikt, zodat de kolom altijd binnen de viewport
+   blijft; visueel identiek aan "1fr" in elk geval waar de inhoud toch al
+   past (dus alle bestaande [data-split]-secties op tablet/desktop). */
+@media (max-width:980px){[data-desk]{display:none!important}[data-mob]{display:inline-flex!important}[data-split]{grid-template-columns:minmax(0,1fr)!important}[data-side]{position:static!important;width:100%!important}}
 @media (min-width:981px){[data-mob]{display:none!important}}
 /* Homepage-koppen "Techniek die blijft draaien" / "Kunnen wij u ergens mee
    helpen?": op desktop/laptop (>980px, dezelfde grens als de rest van de
@@ -2372,7 +2382,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
                 <sc-for list="{{ b.items }}" as="i" hint-placeholder-count="4">
                   <div style="display:flex;gap:16px;padding:15px 0;border-bottom:1px solid #F1EFEA">
                     <span style="width:6px;height:6px;background:#FBAE00;margin-top:9px;flex:0 0 6px"></span>
-                    <span style="font:400 16px/1.7 'Archivo',sans-serif;color:#33312D">{{ i }}</span>
+                    <span style="font:400 16px/1.7 'Archivo',sans-serif;color:#33312D;min-width:0">{{ i }}</span>
                   </div>
                 </sc-for>
               </div>
