@@ -233,6 +233,19 @@ image-slot[data-shot]::part(ring){display:none}
 image-slot[data-shot]:hover::part(empty){opacity:1}
 image-slot[data-logo]:hover::part(empty){opacity:1}
 @media (max-width:1180px){[data-hdrinner]{padding:0 24px!important;gap:20px!important}[data-hdrinner] nav[data-desk]{gap:0!important}}
+/* Zeer smalle telefoons (<=480px): het logo (vast 60px hoog, dus ~216px
+   breed) en de "Menu"-knop (tekst + hamburgericoon) pasten samen niet meer
+   binnen de viewport zodra [data-desk] hierboven al is verborgen — dit
+   veroorzaakte een horizontale paginaverbreding (scrollWidth > clientWidth)
+   op IEDERE pagina, niet uitsluitend op machinedetailpagina's; die kwamen
+   als eerste in beeld omdat daar getest werd. Logo en knop krimpen hier
+   bewust verder dan de bestaande 1180px-stap hierboven; vanaf 481px en op
+   desktop/tablet blijft alles exact ongewijzigd. */
+@media (max-width:480px){
+  [data-hdrinner]{padding:0 16px!important;gap:10px!important}
+  [data-hdrlogo]{height:38px!important}
+  [data-mob]{padding:10px 14px!important;gap:8px!important}
+}
 @media (max-width:1240px){[data-delivgrid]{grid-template-columns:repeat(3,minmax(0,1fr))!important}}
 @media (max-width:1000px){[data-delivgrid]{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
 /* Kaartcorrectie: .wvb-card (machines/occasions/merkdetail) deelt nu
@@ -396,7 +409,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
     <span aria-hidden="true" ref="{{ shapeRef }}" style="position:absolute;inset:0;background:#FBAE00;border-bottom:1px solid #C00020;box-shadow:0 18px 40px -32px rgba(17,18,20,.34);transition:box-shadow .34s"></span>
     <div data-hdrinner="" style="position:relative;height:100%;max-width:1360px;margin:0 auto;padding:0 40px;display:flex;align-items:center;justify-content:space-between;gap:40px">
     <a href="#home" onClick="{{ goHome }}" aria-label="Wim van Breda — home" style="position:relative;display:flex;align-items:center;flex:0 0 auto">
-      <img ref="{{ logoRef }}" src="/assets/wvb-logo.svg" alt="Wim van Breda — Bewuste vooruitgang" style="height:60px;width:auto;object-fit:contain;display:block;transition:height .28s cubic-bezier(.2,.7,.3,1)">
+      <img data-hdrlogo="" ref="{{ logoRef }}" src="/assets/wvb-logo.svg" alt="Wim van Breda — Bewuste vooruitgang" style="height:60px;width:auto;object-fit:contain;display:block;transition:height .28s cubic-bezier(.2,.7,.3,1)">
     </a>
 
     <nav data-desk="" style="position:relative;align-self:stretch;display:flex;align-items:center;gap:6px">
@@ -955,8 +968,8 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
     <nav style="display:flex;align-items:center;gap:10px;font:400 13px/1 'Archivo',sans-serif;color:#8C867A;flex-wrap:wrap">
       <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#8C867A;font:inherit">Home</button><span>/</span>
       <button onClick="{{ backToList }}" onMouseEnter="{{ linkIn }}" onMouseLeave="{{ crumbOut }}" style="background:none;border:0;padding:0;cursor:pointer;color:#8C867A;font:inherit">{{ detailParent }}</button><span>/</span>
-      <sc-if value="{{ detail.hasType }}" hint-placeholder-val="{{ true }}"><button onClick="{{ goDetailType }}" onMouseEnter="{{ linkIn }}" onMouseLeave="{{ crumbOut }}" style="background:none;border:0;padding:0;cursor:pointer;color:#8C867A;font:inherit">{{ detail.type }}</button></sc-if><sc-if value="{{ detail.hasType }}" hint-placeholder-val="{{ true }}"><span>/</span></sc-if>
-      <span style="color:#111214">{{ detail.name }}</span>
+      <sc-if value="{{ detail.hasType }}" hint-placeholder-val="{{ true }}"><button onClick="{{ goDetailType }}" onMouseEnter="{{ linkIn }}" onMouseLeave="{{ crumbOut }}" style="background:none;border:0;padding:0;cursor:pointer;color:#8C867A;font:inherit;min-width:0;overflow-wrap:anywhere;text-align:left">{{ detail.type }}</button></sc-if><sc-if value="{{ detail.hasType }}" hint-placeholder-val="{{ true }}"><span>/</span></sc-if>
+      <span style="color:#111214;min-width:0;overflow-wrap:anywhere">{{ detail.name }}</span>
     </nav>
   </section>
 
@@ -1003,7 +1016,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
 
       <sc-if value="{{ detail.showAbout }}" hint-placeholder-val="{{ true }}">
       <div style="margin-top:84px">
-        <h2 style="font:600 clamp(24px,2.5vw,32px)/1.16 Archivo,sans-serif;letter-spacing:-.022em;margin:0">Over de {{ detail.name }}</h2>
+        <h2 style="font:600 clamp(24px,2.5vw,32px)/1.16 Archivo,sans-serif;letter-spacing:-.022em;margin:0;overflow-wrap:anywhere">Over de {{ detail.name }}</h2>
         <sc-if value="{{ detail.hasTekst }}" hint-placeholder-val="{{ true }}"><p style="font:400 17px/1.85 'Archivo',sans-serif;color:#43413C;margin:20px 0 0;max-width:66ch">{{ detail.tekst }}</p></sc-if>
         <sc-if value="{{ detail.showGeneric }}" hint-placeholder-val="{{ true }}"><p style="font:400 17px/1.85 'Archivo',sans-serif;color:#43413C;margin:18px 0 0;max-width:66ch">Wij leveren de machine afgestemd op uw trekker of drager, rijden hem in bij aflevering en zorgen dat uw machinist weet hoe hij het maximale eruit haalt.</p></sc-if>
         <!-- Subtiele SEO-tekstlink, alleen aanwezig bij een record met een
@@ -1022,7 +1035,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
 
       <sc-if value="{{ detail.showGeneric }}" hint-placeholder-val="{{ true }}">
       <div style="margin-top:64px">
-        <h2 style="font:600 clamp(22px,2.2vw,28px)/1.18 Archivo,sans-serif;letter-spacing:-.02em;margin:0">Professioneel werk met de {{ detail.name }}</h2>
+        <h2 style="font:600 clamp(22px,2.2vw,28px)/1.18 Archivo,sans-serif;letter-spacing:-.02em;margin:0;overflow-wrap:anywhere">Professioneel werk met de {{ detail.name }}</h2>
         <p style="font:400 17px/1.85 'Archivo',sans-serif;color:#43413C;margin:18px 0 0;max-width:66ch">In de praktijk wordt deze machine ingezet door beheerders die niet kunnen stilvallen: gemeenten met vaste maairondes, aannemers met onderhoudscontracten en loonbedrijven die per dag afrekenen. De machine is daarop gebouwd — voorspelbaar in het werk, eenvoudig in het dagelijks onderhoud en met onderdelen die wij op voorraad houden.</p>
       </div>
 
@@ -1061,8 +1074,8 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
           <tbody>
             <sc-for list="{{ detail.specs }}" as="s" hint-placeholder-count="5">
               <tr style="border-bottom:1px solid #F1EFEA">
-                <th scope="row" style="width:38%;text-align:left;padding:16px 20px 16px 0;font:400 14px/1.5 'Archivo',sans-serif;color:#8C867A">{{ s.k }}</th>
-                <td style="padding:16px 0;font:500 15px/1.5 'Archivo',sans-serif;color:#111214">{{ s.v }}</td>
+                <th scope="row" style="width:38%;text-align:left;padding:16px 20px 16px 0;font:400 14px/1.5 'Archivo',sans-serif;color:#8C867A;overflow-wrap:anywhere">{{ s.k }}</th>
+                <td style="padding:16px 0;font:500 15px/1.5 'Archivo',sans-serif;color:#111214;overflow-wrap:anywhere">{{ s.v }}</td>
               </tr>
             </sc-for>
           </tbody>
@@ -1081,9 +1094,9 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
 
     <div data-side="" style="position:sticky;top:130px;min-width:0">
       <button onClick="{{ goDetailBrand }}" onMouseEnter="{{ linkIn }}" onMouseLeave="{{ crumbOut }}" style="background:none;border:0;padding:0;cursor:pointer;font:500 11px/1 'Archivo',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#8C867A;transition:color .2s">{{ detail.brand }}</button>
-      <h1 style="font:600 clamp(28px,3.4vw,44px)/1.06 Archivo,sans-serif;letter-spacing:-.03em;margin:14px 0 0">{{ detail.name }}</h1>
+      <h1 style="font:600 clamp(28px,3.4vw,44px)/1.06 Archivo,sans-serif;letter-spacing:-.03em;margin:14px 0 0;overflow-wrap:anywhere">{{ detail.name }}</h1>
       <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:18px">
-        <sc-if value="{{ detail.hasType }}" hint-placeholder-val="{{ true }}"><button onClick="{{ goDetailType }}" onMouseEnter="{{ chipIn }}" onMouseLeave="{{ chipOut }}" style="font:400 12px/1 'Archivo',sans-serif;background:rgba(247,245,241,.62);border:1px solid transparent;padding:8px 11px;cursor:pointer;color:#111214;transition:border-color .2s,background .2s">{{ detail.type }}</button></sc-if>
+        <sc-if value="{{ detail.hasType }}" hint-placeholder-val="{{ true }}"><button onClick="{{ goDetailType }}" onMouseEnter="{{ chipIn }}" onMouseLeave="{{ chipOut }}" style="font:400 12px/1 'Archivo',sans-serif;background:rgba(247,245,241,.62);border:1px solid transparent;padding:8px 11px;cursor:pointer;color:#111214;transition:border-color .2s,background .2s;min-width:0;overflow-wrap:anywhere;text-align:left">{{ detail.type }}</button></sc-if>
         <span style="font:400 12px/1 'Archivo',sans-serif;background:rgba(247,245,241,.62);padding:8px 11px">{{ detail.badge }}</span>
       </div>
       <sc-if value="{{ detail.hasKort }}" hint-placeholder-val="{{ true }}"><p style="font:400 16px/1.75 'Archivo',sans-serif;color:#57544D;margin:22px 0 0">{{ detail.kort }}</p></sc-if>
@@ -1185,9 +1198,9 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
 
       <div data-side="" style="position:sticky;top:130px;min-width:0">
         <button onClick="{{ goDetailBrand }}" onMouseEnter="{{ linkIn }}" onMouseLeave="{{ crumbOut }}" style="background:none;border:0;padding:0;cursor:pointer;font:500 11px/1 'Archivo',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#8C867A;transition:color .2s">{{ detail.brand }}</button>
-        <h1 style="font:600 clamp(28px,3.4vw,44px)/1.06 Archivo,sans-serif;letter-spacing:-.03em;margin:14px 0 0">{{ detail.name }}</h1>
+        <h1 style="font:600 clamp(28px,3.4vw,44px)/1.06 Archivo,sans-serif;letter-spacing:-.03em;margin:14px 0 0;overflow-wrap:anywhere">{{ detail.name }}</h1>
         <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:18px">
-          <sc-if value="{{ detail.hasType }}" hint-placeholder-val="{{ true }}"><button onClick="{{ goDetailType }}" onMouseEnter="{{ chipIn }}" onMouseLeave="{{ chipOut }}" style="font:400 12px/1 'Archivo',sans-serif;background:rgba(247,245,241,.62);border:1px solid transparent;padding:8px 11px;cursor:pointer;color:#111214;transition:border-color .2s,background .2s">{{ detail.type }}</button></sc-if>
+          <sc-if value="{{ detail.hasType }}" hint-placeholder-val="{{ true }}"><button onClick="{{ goDetailType }}" onMouseEnter="{{ chipIn }}" onMouseLeave="{{ chipOut }}" style="font:400 12px/1 'Archivo',sans-serif;background:rgba(247,245,241,.62);border:1px solid transparent;padding:8px 11px;cursor:pointer;color:#111214;transition:border-color .2s,background .2s;min-width:0;overflow-wrap:anywhere;text-align:left">{{ detail.type }}</button></sc-if>
           <span style="font:400 12px/1 'Archivo',sans-serif;background:rgba(247,245,241,.62);padding:8px 11px">{{ detail.badge }}</span>
         </div>
         <sc-if value="{{ detail.hasKort }}" hint-placeholder-val="{{ true }}"><p style="font:400 16px/1.75 'Archivo',sans-serif;color:#57544D;margin:22px 0 0">{{ detail.kort }}</p></sc-if>
@@ -1243,8 +1256,8 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
           <tbody>
             <sc-for list="{{ detail.specs }}" as="s" hint-placeholder-count="5">
               <tr style="border-bottom:1px solid #F1EFEA">
-                <th scope="row" style="width:38%;text-align:left;padding:16px 20px 16px 0;font:400 14px/1.5 'Archivo',sans-serif;color:#8C867A">{{ s.k }}</th>
-                <td style="padding:16px 0;font:500 15px/1.5 'Archivo',sans-serif;color:#111214">{{ s.v }}</td>
+                <th scope="row" style="width:38%;text-align:left;padding:16px 20px 16px 0;font:400 14px/1.5 'Archivo',sans-serif;color:#8C867A;overflow-wrap:anywhere">{{ s.k }}</th>
+                <td style="padding:16px 0;font:500 15px/1.5 'Archivo',sans-serif;color:#111214;overflow-wrap:anywhere">{{ s.v }}</td>
               </tr>
             </sc-for>
           </tbody>
@@ -1258,7 +1271,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
 
       <sc-if value="{{ detail.hasTekst }}" hint-placeholder-val="{{ true }}">
       <div style="margin-top:56px">
-        <h2 style="font:600 clamp(24px,2.5vw,32px)/1.16 Archivo,sans-serif;letter-spacing:-.022em;margin:0 0 20px">Over de {{ detail.name }}</h2>
+        <h2 style="font:600 clamp(24px,2.5vw,32px)/1.16 Archivo,sans-serif;letter-spacing:-.022em;margin:0 0 20px;overflow-wrap:anywhere">Over de {{ detail.name }}</h2>
         <p style="font:400 17px/1.85 'Archivo',sans-serif;color:#43413C;margin:0;max-width:66ch">{{ detail.tekst }}</p>
       </div>
       </sc-if>
