@@ -31,6 +31,22 @@
      onnodige download. Een echt vierkant merk-icoon (los van het brede
      wvb-logo.svg wordmark) is een ontwerpkeuze voor een aparte stap. -->
 <link rel="icon" href="data:,">
+<!-- support.js laadt React/ReactDOM 18.3.1 standaard van unpkg.com (zie
+     REACT_URL/REACT_DOM_URL in support.js — gegenereerde runtime-code,
+     hier niet aan te passen). Dat is een extra, ongecontroleerde
+     third-party round-trip (DNS/TLS/CDN-latency) vóór de site zelf iets
+     kan renderen, en dus een reële FCP/LCP-kost op zowel mobiel als
+     desktop. support.js's eigen cdnScriptFor()-mechanisme leest hiervoor
+     al bewust een override uit window.__resources (zleutel = exacte
+     CDN-URL, waarde = alternatieve src) — bedoeld voor precies dit
+     scenario. Hieronder wijzen we beide bestanden naar lokale kopieën
+     (zelfde exacte pinned versie or18.3.1, sha384-geverifieerd identiek
+     aan wat unpkg zou serveren — zie assets/vendor/), zodat React via
+     hetzelfde (Vercel-)domein binnenkomt i.p.v. via unpkg.com. Geen
+     functionele wijziging: zelfde bestandsinhoud, alleen een andere bron.
+     Moet vóór support.js zelf staan (dat leest __resources bij het
+     opstarten). -->
+<script>window.__resources={"https://unpkg.com/react@18.3.1/umd/react.production.min.js":"/assets/vendor/react-18.3.1.production.min.js","https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js":"/assets/vendor/react-dom-18.3.1.production.min.js"};</script>
 <script src="/support.js" defer="defer"></script>
 </head>
 <body>
@@ -41,11 +57,13 @@
 <link rel="canonical" href="https://www.wimvanbreda.nl/">
 <meta property="og:site_name" content="Wim van Breda">
 <meta property="og:type" content="website">
-<link rel="preconnect" href="https://unpkg.com" crossorigin="crossorigin">
+<!-- unpkg.com wordt niet meer gebruikt voor React/ReactDOM (zie __resources
+     hierboven) en niet meer voor Lenis (nu lokaal, zie hieronder) — de
+     preconnect-hint hieronder is dus komen te vervallen. -->
 <link rel="preload" as="font" href="/assets/fonts/archivo-latin-var.woff2" type="font/woff2" crossorigin="crossorigin">
 <link rel="preload" as="image" href="/assets/hero-home-opt.webp" imagesrcset="/assets/hero-home-mobile.webp 750w, /assets/hero-home-opt.webp 1920w" imagesizes="100vw" fetchpriority="high" type="image/webp">
 <script src="/image-slot.js" defer="defer"></script>
-<script src="https://unpkg.com/lenis@1.3.26/dist/lenis.min.js" defer="defer"></script>
+<script src="/assets/vendor/lenis-1.3.26.min.js" defer="defer"></script>
 <script src="/motion.js" defer="defer"></script>
 <style>
 /* ===== Sitebrede typografie ============================================
@@ -219,7 +237,7 @@ a:active{color:#111214}
 @media (max-width:620px){.wvb-article>h2{margin-top:40px}.wvb-article>h3{margin-top:28px}}
 /* Inhoudsopgave — alleen getoond bij >=3 echte H2-secties (articleShowToc). */
 .wvb-toc{background:#F7F5F1;border:1px solid #E4E0D8;padding:24px 26px;margin:0 0 44px}
-.wvb-toc__label{font:500 11px/1 'Archivo',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#8C867A;margin:0 0 14px}
+.wvb-toc__label{font:500 11px/1 'Archivo',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#7C766A;margin:0 0 14px}
 .wvb-toc ol{margin:0;padding:0;list-style:none;counter-reset:toc}
 .wvb-toc li{counter-increment:toc;margin:0 0 9px;padding-left:26px;position:relative;font:500 15px/1.4 'Archivo',sans-serif}
 .wvb-toc li:last-child{margin-bottom:0}
@@ -264,7 +282,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
    het vak volledig met object-fit:cover, rand tot rand. */
 .wvb-card__img--occ{padding:0}
 .wvb-card__body{min-height:0;flex:1 1 auto;display:flex;flex-direction:column;padding:20px 20px 22px;box-sizing:border-box}
-.wvb-card__brand{flex:0 0 auto;font:500 10px/14px 'Archivo',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#8C867A}
+.wvb-card__brand{flex:0 0 auto;font:500 10px/14px 'Archivo',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#7C766A}
 .wvb-card__title{flex:0 0 auto;font:600 16px/1.3 Archivo,sans-serif;margin:8px 0 0;overflow:hidden;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2}
 .wvb-card__cat{flex:0 0 auto;font:400 13px/1.5 'Archivo',sans-serif;color:#969189;margin-top:10px;overflow:hidden;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:1}
 .wvb-card__meta{flex:0 0 auto;margin-top:12px;display:flex;align-items:center;justify-content:center;gap:9px;text-align:left}
@@ -316,9 +334,9 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
 .wvb-feat-card__img{width:100%;aspect-ratio:3/2;flex:0 0 auto;overflow:hidden;box-sizing:border-box;background:#f3f3f1;display:flex;align-items:center;justify-content:center;position:relative}
 .wvb-feat-card__img img,.wvb-feat-card__img image-slot{display:block;width:100%;height:100%}
 .wvb-feat-card__body{min-height:0;flex:1 1 auto;display:flex;flex-direction:column;padding:24px 24px 26px;box-sizing:border-box}
-.wvb-feat-card__brand{flex:0 0 auto;min-height:14px;line-height:14px;font:500 11px/14px 'Archivo',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#8C867A}
+.wvb-feat-card__brand{flex:0 0 auto;min-height:14px;line-height:14px;font:500 11px/14px 'Archivo',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#7C766A}
 .wvb-feat-card__title{flex:0 0 auto;font:600 19px/1.25 Archivo,sans-serif;margin:10px 0 0;min-height:calc(1.25em*2);max-height:calc(1.25em*2);overflow:hidden;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2}
-.wvb-feat-card__cat{flex:0 0 auto;min-height:20px;line-height:20px;margin-top:8px;overflow:hidden;font:400 14px/1.5 'Archivo',sans-serif;color:#7C7770}
+.wvb-feat-card__cat{flex:0 0 auto;min-height:20px;line-height:20px;margin-top:8px;overflow:hidden;font:400 14px/1.5 'Archivo',sans-serif;color:#7B766F}
 .wvb-feat-card__spacer{flex:1 1 auto;min-height:0}
 .wvb-feat-card__footer{flex:0 0 auto;margin-top:22px;padding-top:18px;border-top:1px solid #F1EFEA;display:flex;align-items:center;justify-content:space-between}
 /* Nieuwe-machinesoverzicht (/aanbod/): hergebruikt de .wvb-feat-card van de
@@ -419,7 +437,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
     <span aria-hidden="true" ref="{{ shapeRef }}" style="position:absolute;inset:0;background:#FBAE00;border-bottom:1px solid #C00020;box-shadow:0 18px 40px -32px rgba(17,18,20,.34);transition:box-shadow .34s"></span>
     <div data-hdrinner="" style="position:relative;height:100%;max-width:1360px;margin:0 auto;padding:0 40px;display:flex;align-items:center;justify-content:space-between;gap:40px">
     <a href="#home" onClick="{{ goHome }}" aria-label="Wim van Breda — home" style="position:relative;display:flex;align-items:center;flex:0 0 auto">
-      <img data-hdrlogo="" ref="{{ logoRef }}" src="/assets/wvb-logo.svg" alt="Wim van Breda — Bewuste vooruitgang" style="height:60px;width:auto;object-fit:contain;display:block;transition:height .28s cubic-bezier(.2,.7,.3,1)">
+      <img data-hdrlogo="" ref="{{ logoRef }}" src="/assets/wvb-logo.svg" alt="Wim van Breda — Bewuste vooruitgang" width="299" height="83" style="height:60px;width:auto;object-fit:contain;display:block;transition:height .28s cubic-bezier(.2,.7,.3,1)">
     </a>
 
     <nav data-desk="" style="position:relative;align-self:stretch;display:flex;align-items:center;gap:6px">
@@ -625,28 +643,28 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
       <button data-active="{{ tabNact }}" onClick="{{ goMachines }}" onMouseEnter="{{ hoverIn }}" onMouseLeave="{{ hoverOut }}" data-rv="" style="opacity:0;transform:translateY(16px);transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .28s cubic-bezier(.2,.7,.3,1),box-shadow .28s,border-color .28s;text-align:left;background:#fff;border:1px solid #E6E3DD;border-radius:2px;padding:0;cursor:pointer;overflow:hidden;display:flex;flex-direction:column">
         <div style="height:210px;overflow:hidden;background:#F4F2EE"><div data-zoom="" style="width:100%;height:100%;transition:transform .5s cubic-bezier(.2,.7,.3,1)"><img src="/assets/images/aanbod/nieuwe-machines.webp" alt="Nieuwe machines van Wim van Breda" loading="lazy" decoding="async" width="1200" height="800" style="display:block;width:100%;height:100%;object-fit:cover;object-position:center"></div></div>
         <div style="padding:28px 26px 30px">
-          <h3 style="font:600 21px/1.2 Archivo,sans-serif;margin:0">Nieuwe machines</h3>
+          <h2 style="font:600 21px/1.2 Archivo,sans-serif;margin:0">Nieuwe machines</h2>
           <span style="display:inline-flex;align-items:center;gap:10px;font:600 14px/1 'Archivo',sans-serif;margin-top:16px">Bekijk aanbod <span data-arrow="" style="color:#FBAE00;transition:transform .24s cubic-bezier(.2,.7,.3,1)">→</span></span>
         </div>
       </button>
       <button data-active="{{ tabMact }}" onClick="{{ goMerken }}" onMouseEnter="{{ hoverIn }}" onMouseLeave="{{ hoverOut }}" data-rv="" style="opacity:0;transform:translateY(16px);transition:opacity .7s cubic-bezier(.2,.7,.3,1) 90ms,transform .28s cubic-bezier(.2,.7,.3,1),box-shadow .28s,border-color .28s;text-align:left;background:#fff;border:1px solid #E6E3DD;border-radius:2px;padding:0;cursor:pointer;overflow:hidden;display:flex;flex-direction:column">
         <div style="height:210px;overflow:hidden;background:#F4F2EE"><div data-zoom="" style="width:100%;height:100%;transition:transform .5s cubic-bezier(.2,.7,.3,1)"><img src="/assets/images/aanbod/merken.webp" alt="Merken van Wim van Breda" loading="lazy" decoding="async" width="1200" height="800" style="display:block;width:100%;height:100%;object-fit:cover;object-position:center"></div></div>
         <div style="padding:28px 26px 30px">
-          <h3 style="font:600 21px/1.2 Archivo,sans-serif;margin:0">Merken</h3>
+          <h2 style="font:600 21px/1.2 Archivo,sans-serif;margin:0">Merken</h2>
           <span style="display:inline-flex;align-items:center;gap:10px;font:600 14px/1 'Archivo',sans-serif;margin-top:16px">Bekijk alle merken <span data-arrow="" style="color:#FBAE00;transition:transform .24s cubic-bezier(.2,.7,.3,1)">→</span></span>
         </div>
       </button>
       <button data-active="{{ tabVact }}" onClick="{{ goVerhuur }}" onMouseEnter="{{ hoverIn }}" onMouseLeave="{{ hoverOut }}" data-rv="" style="opacity:0;transform:translateY(16px);transition:opacity .7s cubic-bezier(.2,.7,.3,1) 180ms,transform .28s cubic-bezier(.2,.7,.3,1),box-shadow .28s,border-color .28s;text-align:left;background:#fff;border:1px solid #E6E3DD;border-radius:2px;padding:0;cursor:pointer;overflow:hidden;display:flex;flex-direction:column">
         <div style="height:210px;overflow:hidden;background:#F4F2EE"><div data-zoom="" style="width:100%;height:100%;transition:transform .5s cubic-bezier(.2,.7,.3,1)"><img src="/assets/images/aanbod/verhuur.webp" alt="Machines voor verhuur bij Wim van Breda" loading="lazy" decoding="async" width="1200" height="800" style="display:block;width:100%;height:100%;object-fit:cover;object-position:30% center"></div></div>
         <div style="padding:28px 26px 30px">
-          <h3 style="font:600 21px/1.2 Archivo,sans-serif;margin:0">Verhuur</h3>
+          <h2 style="font:600 21px/1.2 Archivo,sans-serif;margin:0">Verhuur</h2>
           <span style="display:inline-flex;align-items:center;gap:10px;font:600 14px/1 'Archivo',sans-serif;margin-top:16px">Bekijk verhuur <span data-arrow="" style="color:#FBAE00;transition:transform .24s cubic-bezier(.2,.7,.3,1)">→</span></span>
         </div>
       </button>
       <button data-active="{{ tabOact }}" onClick="{{ goOccasions }}" onMouseEnter="{{ hoverIn }}" onMouseLeave="{{ hoverOut }}" data-rv="" style="opacity:0;transform:translateY(16px);transition:opacity .7s cubic-bezier(.2,.7,.3,1) 270ms,transform .28s cubic-bezier(.2,.7,.3,1),box-shadow .28s,border-color .28s;text-align:left;background:#fff;border:1px solid #E6E3DD;border-radius:2px;padding:0;cursor:pointer;overflow:hidden;display:flex;flex-direction:column">
         <div style="height:210px;overflow:hidden;background:#F4F2EE"><div data-zoom="" style="width:100%;height:100%;transition:transform .5s cubic-bezier(.2,.7,.3,1)"><img src="/assets/images/aanbod/occasions.webp" alt="Occasions van Wim van Breda" loading="lazy" decoding="async" width="1200" height="800" style="display:block;width:100%;height:100%;object-fit:cover;object-position:center"></div></div>
         <div style="padding:28px 26px 30px">
-          <h3 style="font:600 21px/1.2 Archivo,sans-serif;margin:0">Occasions</h3>
+          <h2 style="font:600 21px/1.2 Archivo,sans-serif;margin:0">Occasions</h2>
           <span style="display:inline-flex;align-items:center;gap:10px;font:600 14px/1 'Archivo',sans-serif;margin-top:16px">Bekijk occasions <span data-arrow="" style="color:#FBAE00;transition:transform .24s cubic-bezier(.2,.7,.3,1)">→</span></span>
         </div>
       </button>
@@ -656,7 +674,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
   <section style="max-width:1360px;margin:0 auto;padding:80px 40px">
     <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:40px;flex-wrap:wrap">
       <div>
-        <div style="display:flex;align-items:center;gap:14px;font:500 11px/1 'Archivo',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#8C867A"><svg class="wvb-marker" width="40" height="12" viewBox="0 0 40 12" fill="none" aria-hidden="true"><path d="M1 6H30M30 6 39 1M30 6 39 11" stroke="#C00020" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg> Uitgelicht</div>
+        <div style="display:flex;align-items:center;gap:14px;font:500 11px/1 'Archivo',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#7C766A"><svg class="wvb-marker" width="40" height="12" viewBox="0 0 40 12" fill="none" aria-hidden="true"><path d="M1 6H30M30 6 39 1M30 6 39 11" stroke="#C00020" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg> Uitgelicht</div>
         <h2 data-rv="" style="opacity:0;transform:translateY(16px);transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1);font:600 clamp(28px,3.2vw,44px)/1.08 Archivo,sans-serif;letter-spacing:-.022em;margin:16px 0 0">Machines uit ons aanbod</h2>
       </div>
       <button data-active="{{ tabNact }}" onClick="{{ goMachines }}" onMouseEnter="{{ navIn }}" onMouseLeave="{{ navOut }}" style="position:relative;background:none;border:0;cursor:pointer;padding:10px 2px;font:600 14px/1 'Archivo',sans-serif">
@@ -692,21 +710,21 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
     <div style="max-width:1360px;margin:0 auto;padding:88px 40px">
       <div style="display:grid;grid-template-columns:1fr 1.4fr;gap:60px;align-items:center" data-split="">
         <div>
-          <div style="display:flex;align-items:center;gap:14px;font:500 11px/1 'Archivo',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#8C867A"><svg class="wvb-marker" width="40" height="12" viewBox="0 0 40 12" fill="none" aria-hidden="true"><path d="M1 6H30M30 6 39 1M30 6 39 11" stroke="#C00020" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg> Zoeken</div>
+          <div style="display:flex;align-items:center;gap:14px;font:500 11px/1 'Archivo',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#7C766A"><svg class="wvb-marker" width="40" height="12" viewBox="0 0 40 12" fill="none" aria-hidden="true"><path d="M1 6H30M30 6 39 1M30 6 39 11" stroke="#C00020" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg> Zoeken</div>
           <h2 style="font:600 clamp(28px,3vw,40px)/1.1 Archivo,sans-serif;letter-spacing:-.022em;margin:16px 0 0">Vind de juiste machine</h2>
           <p style="font:400 16px/1.7 'Archivo',sans-serif;color:#57544D;margin:16px 0 0;max-width:44ch">Combineer machinetype en merk. U ziet direct wat wij daadwerkelijk leveren.</p>
         </div>
         <div style="background:#fff;border:1px solid #E6E3DD;padding:32px;display:flex;flex-direction:column;gap:20px">
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px" data-split="">
             <label style="display:flex;flex-direction:column;gap:9px">
-              <span style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#8C867A">Machinetype</span>
+              <span style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#7C766A">Machinetype</span>
               <select value="{{ homeTypeVal }}" onChange="{{ setHomeType }}" style="appearance:none;background:#fff;border:1px solid #D9D5CD;border-radius:2px;padding:15px 16px;font:400 15px/1 'Archivo',sans-serif;color:#111214;cursor:pointer">
                 <option value="">Alle types</option>
                 <sc-for list="{{ typeNames }}" as="t" hint-placeholder-count="6"><option value="{{ t }}">{{ t }}</option></sc-for>
               </select>
             </label>
             <label style="display:flex;flex-direction:column;gap:9px">
-              <span style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#8C867A">Merk</span>
+              <span style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#7C766A">Merk</span>
               <select value="{{ homeBrandVal }}" onChange="{{ setHomeBrand }}" style="appearance:none;background:#fff;border:1px solid #D9D5CD;border-radius:2px;padding:15px 16px;font:400 15px/1 'Archivo',sans-serif;color:#111214;cursor:pointer">
                 <option value="">Alle merken</option>
                 <sc-for list="{{ brandNames }}" as="b" hint-placeholder-count="8"><option value="{{ b }}">{{ b }}</option></sc-for>
@@ -734,19 +752,19 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
       <div style="display:flex;flex-direction:column">
         <div data-rv="" style="opacity:0;transform:translateY(16px);transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1);display:flex;gap:24px;padding:26px 0;border-top:1px solid #EDEAE4">
           <span style="font:500 12px/1.6 'Archivo',sans-serif;color:#FBAE00;flex:0 0 34px">01</span>
-          <div><h3 style="font:600 17px/1.3 Archivo,sans-serif;margin:0">Eigen werkplaats en monteurs</h3><p style="font:400 15px/1.65 'Archivo',sans-serif;color:#7C7770;margin:9px 0 0">Reparatie, onderhoud en keuringen in Geldermalsen of op locatie.</p></div>
+          <div><h3 style="font:600 17px/1.3 Archivo,sans-serif;margin:0">Eigen werkplaats en monteurs</h3><p style="font:400 15px/1.65 'Archivo',sans-serif;color:#7B766F;margin:9px 0 0">Reparatie, onderhoud en keuringen in Geldermalsen of op locatie.</p></div>
         </div>
         <div data-rv="" style="opacity:0;transform:translateY(16px);transition:opacity .7s cubic-bezier(.2,.7,.3,1) 80ms,transform .7s cubic-bezier(.2,.7,.3,1) 80ms;display:flex;gap:24px;padding:26px 0;border-top:1px solid #EDEAE4">
           <span style="font:500 12px/1.6 'Archivo',sans-serif;color:#FBAE00;flex:0 0 34px">02</span>
-          <div><h3 style="font:600 17px/1.3 Archivo,sans-serif;margin:0">Onderdelen op voorraad</h3><p style="font:400 15px/1.65 'Archivo',sans-serif;color:#7C7770;margin:9px 0 0">Een ruime parts-voorraad voor de merken die wij leveren.</p></div>
+          <div><h3 style="font:600 17px/1.3 Archivo,sans-serif;margin:0">Onderdelen op voorraad</h3><p style="font:400 15px/1.65 'Archivo',sans-serif;color:#7B766F;margin:9px 0 0">Een ruime parts-voorraad voor de merken die wij leveren.</p></div>
         </div>
         <div data-rv="" style="opacity:0;transform:translateY(16px);transition:opacity .7s cubic-bezier(.2,.7,.3,1) 160ms,transform .7s cubic-bezier(.2,.7,.3,1) 160ms;display:flex;gap:24px;padding:26px 0;border-top:1px solid #EDEAE4">
           <span style="font:500 12px/1.6 'Archivo',sans-serif;color:#FBAE00;flex:0 0 34px">03</span>
-          <div><h3 style="font:600 17px/1.3 Archivo,sans-serif;margin:0">Advies op de praktijk</h3><p style="font:400 15px/1.65 'Archivo',sans-serif;color:#7C7770;margin:9px 0 0">Wij kennen het werk in de berm, de sloot en op het terrein.</p></div>
+          <div><h3 style="font:600 17px/1.3 Archivo,sans-serif;margin:0">Advies op de praktijk</h3><p style="font:400 15px/1.65 'Archivo',sans-serif;color:#7B766F;margin:9px 0 0">Wij kennen het werk in de berm, de sloot en op het terrein.</p></div>
         </div>
         <div data-rv="" style="opacity:0;transform:translateY(16px);transition:opacity .7s cubic-bezier(.2,.7,.3,1) 240ms,transform .7s cubic-bezier(.2,.7,.3,1) 240ms;display:flex;gap:24px;padding:26px 0;border-top:1px solid #EDEAE4;border-bottom:1px solid #EDEAE4">
           <span style="font:500 12px/1.6 'Archivo',sans-serif;color:#FBAE00;flex:0 0 34px">04</span>
-          <div><h3 style="font:600 17px/1.3 Archivo,sans-serif;margin:0">Bewuste Vooruitgang</h3><p style="font:400 15px/1.65 'Archivo',sans-serif;color:#7C7770;margin:9px 0 0">Stap voor stap verduurzamen, zonder de bedrijfszekerheid te verliezen.</p></div>
+          <div><h3 style="font:600 17px/1.3 Archivo,sans-serif;margin:0">Bewuste Vooruitgang</h3><p style="font:400 15px/1.65 'Archivo',sans-serif;color:#7B766F;margin:9px 0 0">Stap voor stap verduurzamen, zonder de bedrijfszekerheid te verliezen.</p></div>
         </div>
       </div>
     </div>
@@ -780,10 +798,10 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
   <section style="max-width:1360px;margin:0 auto;padding:96px 40px">
     <div style="display:grid;grid-template-columns:1.1fr 1fr;gap:0;border:1px solid #E6E3DD" data-split="">
       <div style="position:relative;min-height:420px;overflow:hidden;background:#F4F2EE">
-        <img src="/assets/images/occasions/occasion-uitgelicht.jpg" alt="Uitgelichte occasion van Wim van Breda" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover;object-position:center">
+        <img src="/assets/images/occasions/occasion-uitgelicht.jpg" alt="Uitgelichte occasion van Wim van Breda" loading="lazy" width="1600" height="1066" style="display:block;width:100%;height:100%;object-fit:cover;object-position:center">
       </div>
       <div style="padding:56px 48px;display:flex;flex-direction:column;justify-content:center">
-        <div style="display:flex;align-items:center;gap:14px;font:500 11px/1 'Archivo',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#8C867A"><svg class="wvb-marker" width="40" height="12" viewBox="0 0 40 12" fill="none" aria-hidden="true"><path d="M1 6H30M30 6 39 1M30 6 39 11" stroke="#C00020" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg> Occasion</div>
+        <div style="display:flex;align-items:center;gap:14px;font:500 11px/1 'Archivo',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#7C766A"><svg class="wvb-marker" width="40" height="12" viewBox="0 0 40 12" fill="none" aria-hidden="true"><path d="M1 6H30M30 6 39 1M30 6 39 11" stroke="#C00020" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg> Occasion</div>
         <h2 style="font:600 clamp(26px,2.8vw,38px)/1.1 Archivo,sans-serif;letter-spacing:-.022em;margin:18px 0 0">Gebruikte machines, technisch nagekeken</h2>
         <p style="font:400 16px/1.75 'Archivo',sans-serif;color:#57544D;margin:18px 0 0;max-width:44ch">Elke occasion gaat eerst door onze werkplaats. U weet wat u koopt en bij wie u terecht kunt.</p>
         <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:34px">
@@ -798,8 +816,8 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
 <sc-if value="{{ isMachines }}" hint-placeholder-val="{{ false }}">
 <div>
   <section style="max-width:1360px;margin:0 auto;padding:56px 40px 0">
-    <nav style="display:flex;align-items:center;gap:10px;font:400 13px/1 'Archivo',sans-serif;color:#8C867A">
-      <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#8C867A;font:inherit">Home</button>
+    <nav style="display:flex;align-items:center;gap:10px;font:400 13px/1 'Archivo',sans-serif;color:#7C766A">
+      <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">Home</button>
       <span>/</span><span style="color:#111214">{{ listTitle }}</span>
     </nav>
     <div data-list-top="" style="max-width:62ch;margin-top:34px">
@@ -813,39 +831,39 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
       <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding-bottom:16px;border-bottom:1px solid #E6E3DD">
         <span data-vistitle="" style="font:600 14px/1 'Archivo',sans-serif">Filters</span>
         <sc-if value="{{ hasChips }}" hint-placeholder-val="{{ false }}">
-          <button onClick="{{ clearFilters }}" style="background:none;border:0;padding:0;cursor:pointer;font:500 12px/1 'Archivo',sans-serif;color:#8C867A;text-decoration:underline;text-decoration-color:#FBAE00;text-underline-offset:3px">Wis alle filters</button>
+          <button onClick="{{ clearFilters }}" style="background:none;border:0;padding:0;cursor:pointer;font:500 12px/1 'Archivo',sans-serif;color:#7C766A;text-decoration:underline;text-decoration-color:#FBAE00;text-underline-offset:3px">Wis alle filters</button>
         </sc-if>
       </div>
       <div style="padding:22px 0 6px">
         <input value="{{ qValue }}" onInput="{{ setQuery }}" placeholder="Zoeken op naam" aria-label="Zoeken op naam" style="width:100%;background:#fff;border:1px solid #D9D5CD;border-radius:2px;padding:14px 15px;font:400 14px/1 'Archivo',sans-serif">
       </div>
       <div style="padding:18px 0">
-        <div style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#8C867A;margin-bottom:14px">Machinetype</div>
+        <div style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#7C766A;margin-bottom:14px">Machinetype</div>
         <div data-facet="" style="display:flex;flex-direction:column;gap:2px;max-height:312px;overflow-y:auto;padding-right:4px">
           <sc-if value="{{ isOccList }}" hint-placeholder-val="{{ false }}">
             <button onClick="{{ resetTypes }}" onMouseEnter="{{ rowIn }}" onMouseLeave="{{ rowOut }}" style="display:flex;align-items:center;gap:11px;background:none;border:0;padding:9px 6px;margin:0 -6px;cursor:pointer;text-align:left;transition:background .2s">
               <span style="width:15px;height:15px;flex:0 0 15px;border:1.5px solid {{ allTypesBc }};background:{{ allTypesBg }};border-radius:1px;transition:all .2s"></span>
               <span style="font:500 14px/1.3 'Archivo',sans-serif;color:#111214;flex:1">Alle occasions</span>
-              <span style="font:400 12px/1 'Archivo',sans-serif;color:#8C867A">{{ occTypeTotal }}</span>
+              <span style="font:400 12px/1 'Archivo',sans-serif;color:#7C766A">{{ occTypeTotal }}</span>
             </button>
           </sc-if>
           <sc-for list="{{ typeOpts }}" as="t" hint-placeholder-count="6">
             <button onClick="{{ t.on }}" onMouseEnter="{{ rowIn }}" onMouseLeave="{{ rowOut }}" style="display:flex;align-items:center;gap:11px;background:none;border:0;padding:9px 6px;margin:0 -6px;cursor:pointer;text-align:left;transition:background .2s">
               <span style="width:15px;height:15px;flex:0 0 15px;border:1.5px solid {{ t.bc }};background:{{ t.bg }};border-radius:1px;transition:all .2s"></span>
               <span style="font:400 14px/1.3 'Archivo',sans-serif;color:#111214;flex:1">{{ t.name }}</span>
-              <span style="font:400 12px/1 'Archivo',sans-serif;color:#8C867A">{{ t.countLabel }}</span>
+              <span style="font:400 12px/1 'Archivo',sans-serif;color:#7C766A">{{ t.countLabel }}</span>
             </button>
           </sc-for>
         </div>
       </div>
       <div style="padding:18px 0;border-top:1px solid #F1EFEA">
-        <div style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#8C867A;margin-bottom:14px">Merk</div>
+        <div style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#7C766A;margin-bottom:14px">Merk</div>
         <div data-facet="" style="display:flex;flex-direction:column;gap:2px;max-height:312px;overflow-y:auto;padding-right:4px">
           <sc-for list="{{ brandOpts }}" as="b" hint-placeholder-count="8">
             <button onClick="{{ b.on }}" onMouseEnter="{{ rowIn }}" onMouseLeave="{{ rowOut }}" style="display:flex;align-items:center;gap:11px;background:none;border:0;padding:9px 6px;margin:0 -6px;cursor:pointer;text-align:left;transition:background .2s">
               <span style="width:15px;height:15px;flex:0 0 15px;border:1.5px solid {{ b.bc }};background:{{ b.bg }};border-radius:1px;transition:all .2s"></span>
               <span style="font:400 14px/1.3 'Archivo',sans-serif;color:#111214;flex:1">{{ b.name }}</span>
-              <span style="font:400 12px/1 'Archivo',sans-serif;color:#8C867A">{{ b.countLabel }}</span>
+              <span style="font:400 12px/1 'Archivo',sans-serif;color:#7C766A">{{ b.countLabel }}</span>
             </button>
           </sc-for>
         </div>
@@ -857,7 +875,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
         <div style="font:400 14px/1 'Archivo',sans-serif;color:#57544D"><strong style="font-weight:600;color:#111214">{{ resultCount }}</strong> {{ resultNoun }}</div>
         <div data-sortbar="" style="display:flex;align-items:center;gap:12px">
           <button data-mob="" onClick="{{ toggleDrawer }}" style="display:none;align-items:center;gap:9px;background:transparent;border:1px solid #000;padding:11px 16px;font:600 13px/1 'Archivo',sans-serif;cursor:pointer">{{ drawerLabel }} <span style="color:#C00020">{{ chipCountLabel }}</span></button>
-          <span data-sortlbl="" style="font:400 13px/1 'Archivo',sans-serif;color:#8C867A;white-space:nowrap">Sorteer op</span>
+          <span data-sortlbl="" style="font:400 13px/1 'Archivo',sans-serif;color:#7C766A;white-space:nowrap">Sorteer op</span>
           <div onMouseLeave="{{ closeSort }}" style="position:relative">
             <button onClick="{{ toggleSort }}" onMouseEnter="{{ sortHoverIn }}" onMouseLeave="{{ sortHoverOut }}" style="display:inline-flex;align-items:center;gap:14px;min-width:230px;justify-content:space-between;background:#fff;border:1px solid #000;padding:12px 15px;font:500 13px/1 'Archivo',sans-serif;color:#000;cursor:pointer;transition:background .2s,border-color .2s">
               {{ sortLabel }}
@@ -880,7 +898,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
       <sc-if value="{{ hasChips }}" hint-placeholder-val="{{ false }}">
         <div style="display:flex;flex-wrap:wrap;gap:9px;padding:20px 0 0;align-items:center">
           <sc-for list="{{ chips }}" as="c" hint-placeholder-count="2">
-            <button onClick="{{ c.off }}" onMouseEnter="{{ chipIn }}" onMouseLeave="{{ chipOut }}" style="display:inline-flex;align-items:center;gap:9px;background:#FFF6E0;border:1px solid #FBAE00;border-radius:2px;padding:9px 13px;font:500 13px/1 'Archivo',sans-serif;color:#111214;cursor:pointer;transition:all .2s">{{ c.label }} <span style="color:#8C867A">×</span></button>
+            <button onClick="{{ c.off }}" onMouseEnter="{{ chipIn }}" onMouseLeave="{{ chipOut }}" style="display:inline-flex;align-items:center;gap:9px;background:#FFF6E0;border:1px solid #FBAE00;border-radius:2px;padding:9px 13px;font:500 13px/1 'Archivo',sans-serif;color:#111214;cursor:pointer;transition:all .2s">{{ c.label }} <span style="color:#7C766A">×</span></button>
           </sc-for>
         </div>
       </sc-if>
@@ -898,7 +916,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
             </div>
             <div class="wvb-card__body">
               <div class="wvb-card__brand">{{ m.brand }}</div>
-              <h3 class="wvb-card__title">{{ m.name }}</h3>
+              <h2 class="wvb-card__title">{{ m.name }}</h2>
               <div class="wvb-card__cat">{{ m.typeLabel }}</div>
               <div class="wvb-card__meta">
                 <sc-if value="{{ m.hasOccStatus }}" hint-placeholder-val="{{ false }}">
@@ -963,7 +981,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
         <div style="text-align:center;padding:90px 20px;border:1px dashed #DDD8CF;margin-top:28px">
           <img src="/assets/tractor-opt.png" alt="" width="158" height="160" loading="lazy" decoding="async" style="width:64px;height:64px;opacity:.5">
           <div data-vistitle="" style="font:600 19px/1.3 Archivo,sans-serif;margin-top:18px">Geen machines gevonden</div>
-          <p style="font:400 15px/1.6 'Archivo',sans-serif;color:#7C7770;margin:10px 0 22px">Probeer een andere combinatie van type en merk.</p>
+          <p style="font:400 15px/1.6 'Archivo',sans-serif;color:#7B766F;margin:10px 0 22px">Probeer een andere combinatie van type en merk.</p>
           <button onClick="{{ clearFilters }}" onMouseEnter="{{ btnIn }}" onMouseLeave="{{ btnOut }}" style="background:#FBAE00;color:#111214;border:1px solid #111214;border-radius:2px;padding:14px 22px;font:600 14px/1 'Archivo',sans-serif;cursor:pointer;transition:all .22s">Wis alle filters</button>
         </div>
       </sc-if>
@@ -975,10 +993,10 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
 <sc-if value="{{ isDetail }}" hint-placeholder-val="{{ false }}">
 <div>
   <section style="max-width:1360px;margin:0 auto;padding:48px 40px 0">
-    <nav style="display:flex;align-items:center;gap:10px;font:400 13px/1 'Archivo',sans-serif;color:#8C867A;flex-wrap:wrap">
-      <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#8C867A;font:inherit">Home</button><span>/</span>
-      <button onClick="{{ backToList }}" onMouseEnter="{{ linkIn }}" onMouseLeave="{{ crumbOut }}" style="background:none;border:0;padding:0;cursor:pointer;color:#8C867A;font:inherit">{{ detailParent }}</button><span>/</span>
-      <sc-if value="{{ detail.hasType }}" hint-placeholder-val="{{ true }}"><button onClick="{{ goDetailType }}" onMouseEnter="{{ linkIn }}" onMouseLeave="{{ crumbOut }}" style="background:none;border:0;padding:0;cursor:pointer;color:#8C867A;font:inherit;min-width:0;overflow-wrap:anywhere;text-align:left">{{ detail.type }}</button></sc-if><sc-if value="{{ detail.hasType }}" hint-placeholder-val="{{ true }}"><span>/</span></sc-if>
+    <nav style="display:flex;align-items:center;gap:10px;font:400 13px/1 'Archivo',sans-serif;color:#7C766A;flex-wrap:wrap">
+      <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">Home</button><span>/</span>
+      <button onClick="{{ backToList }}" onMouseEnter="{{ linkIn }}" onMouseLeave="{{ crumbOut }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">{{ detailParent }}</button><span>/</span>
+      <sc-if value="{{ detail.hasType }}" hint-placeholder-val="{{ true }}"><button onClick="{{ goDetailType }}" onMouseEnter="{{ linkIn }}" onMouseLeave="{{ crumbOut }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit;min-width:0;overflow-wrap:anywhere;text-align:left">{{ detail.type }}</button></sc-if><sc-if value="{{ detail.hasType }}" hint-placeholder-val="{{ true }}"><span>/</span></sc-if>
       <span style="color:#111214;min-width:0;overflow-wrap:anywhere">{{ detail.name }}</span>
     </nav>
   </section>
@@ -1034,7 +1052,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
              geen nieuwe component, geen wijziging op machines zonder deze
              velden. -->
         <sc-if value="{{ detail.hasSeoTopics }}" hint-placeholder-val="{{ false }}">
-          <p style="font:400 14px/1.7 'Archivo',sans-serif;color:#8C867A;margin:14px 0 0">Gerelateerde toepassingen: <sc-for list="{{ detail.seoTopics }}" as="st" hint-placeholder-count="2"><a href="{{ st.href }}" style="color:#111214;text-decoration:underline;text-decoration-color:#FBAE00;text-underline-offset:2px">{{ st.label }}</a> </sc-for></p>
+          <p style="font:400 14px/1.7 'Archivo',sans-serif;color:#7C766A;margin:14px 0 0">Gerelateerde toepassingen: <sc-for list="{{ detail.seoTopics }}" as="st" hint-placeholder-count="2"><a href="{{ st.href }}" style="color:#111214;text-decoration:underline;text-decoration-color:#FBAE00;text-underline-offset:2px">{{ st.label }}</a> </sc-for></p>
         </sc-if>
       </div>
       </sc-if>
@@ -1084,7 +1102,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
           <tbody>
             <sc-for list="{{ detail.specs }}" as="s" hint-placeholder-count="5">
               <tr style="border-bottom:1px solid #F1EFEA">
-                <th scope="row" style="width:38%;text-align:left;padding:16px 20px 16px 0;font:400 14px/1.5 'Archivo',sans-serif;color:#8C867A;overflow-wrap:anywhere">{{ s.k }}</th>
+                <th scope="row" style="width:38%;text-align:left;padding:16px 20px 16px 0;font:400 14px/1.5 'Archivo',sans-serif;color:#7C766A;overflow-wrap:anywhere">{{ s.k }}</th>
                 <td style="padding:16px 0;font:500 15px/1.5 'Archivo',sans-serif;color:#111214;overflow-wrap:anywhere">{{ s.v }}</td>
               </tr>
             </sc-for>
@@ -1103,7 +1121,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
     </div>
 
     <div data-side="" style="position:sticky;top:130px;min-width:0">
-      <button onClick="{{ goDetailBrand }}" onMouseEnter="{{ linkIn }}" onMouseLeave="{{ crumbOut }}" style="background:none;border:0;padding:0;cursor:pointer;font:500 11px/1 'Archivo',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#8C867A;transition:color .2s">{{ detail.brand }}</button>
+      <button onClick="{{ goDetailBrand }}" onMouseEnter="{{ linkIn }}" onMouseLeave="{{ crumbOut }}" style="background:none;border:0;padding:0;cursor:pointer;font:500 11px/1 'Archivo',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#7C766A;transition:color .2s">{{ detail.brand }}</button>
       <h1 style="font:600 clamp(28px,3.4vw,44px)/1.06 Archivo,sans-serif;letter-spacing:-.03em;margin:14px 0 0;overflow-wrap:anywhere">{{ detail.name }}</h1>
       <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:18px">
         <sc-if value="{{ detail.hasType }}" hint-placeholder-val="{{ true }}"><button onClick="{{ goDetailType }}" onMouseEnter="{{ chipIn }}" onMouseLeave="{{ chipOut }}" style="font:400 12px/1 'Archivo',sans-serif;background:rgba(247,245,241,.62);border:1px solid transparent;padding:8px 11px;cursor:pointer;color:#111214;transition:border-color .2s,background .2s;min-width:0;overflow-wrap:anywhere;text-align:left">{{ detail.type }}</button></sc-if>
@@ -1113,7 +1131,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
 
       <sc-if value="{{ detail.hasKenmerken }}" hint-placeholder-val="{{ true }}">
       <div style="margin-top:28px;border-top:1px solid #EDEAE4;padding-top:22px">
-        <div style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#8C867A;margin-bottom:14px">Belangrijkste kenmerken</div>
+        <div style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#7C766A;margin-bottom:14px">Belangrijkste kenmerken</div>
         <div style="display:flex;flex-direction:column;gap:11px">
           <sc-for list="{{ detail.kenmerken }}" as="k" hint-placeholder-count="3">
             <div style="display:flex;gap:12px;align-items:flex-start"><span style="width:6px;height:6px;background:#FBAE00;margin-top:8px;flex:0 0 6px"></span><span style="font:400 15px/1.6 'Archivo',sans-serif;color:#111214">{{ k }}</span></div>
@@ -1140,14 +1158,14 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
             <div style="display:flex;flex-direction:column;gap:9px;margin-bottom:26px;padding:18px 0;border-top:1px solid #E4E0D8;border-bottom:1px solid #E4E0D8">
               <sc-if value="{{ detail.hasHuurPrijzen }}" hint-placeholder-val="{{ false }}">
                 <sc-for list="{{ detail.huurPrijzen }}" as="hp" hint-placeholder-count="2">
-                  <div style="display:flex;justify-content:space-between;gap:16px;font:400 14px/1.5 'Archivo',sans-serif"><span style="color:#7C7770">{{ hp.label }}</span><span style="font-weight:500">{{ hp.bedrag }}</span></div>
+                  <div style="display:flex;justify-content:space-between;gap:16px;font:400 14px/1.5 'Archivo',sans-serif"><span style="color:#7B766F">{{ hp.label }}</span><span style="font-weight:500">{{ hp.bedrag }}</span></div>
                 </sc-for>
               </sc-if>
-              <div style="display:flex;justify-content:space-between;gap:16px;font:400 14px/1.5 'Archivo',sans-serif"><span style="color:#7C7770">Huurperiode</span><span style="font-weight:500">Dag, week of project</span></div>
-              <div style="display:flex;justify-content:space-between;gap:16px;font:400 14px/1.5 'Archivo',sans-serif"><span style="color:#7C7770">Aflevering</span><span style="font-weight:500">Op locatie of afhalen</span></div>
-              <div style="display:flex;justify-content:space-between;gap:16px;font:400 14px/1.5 'Archivo',sans-serif"><span style="color:#7C7770">Onderhoud</span><span style="font-weight:500">Inbegrepen</span></div>
+              <div style="display:flex;justify-content:space-between;gap:16px;font:400 14px/1.5 'Archivo',sans-serif"><span style="color:#7B766F">Huurperiode</span><span style="font-weight:500">Dag, week of project</span></div>
+              <div style="display:flex;justify-content:space-between;gap:16px;font:400 14px/1.5 'Archivo',sans-serif"><span style="color:#7B766F">Aflevering</span><span style="font-weight:500">Op locatie of afhalen</span></div>
+              <div style="display:flex;justify-content:space-between;gap:16px;font:400 14px/1.5 'Archivo',sans-serif"><span style="color:#7B766F">Onderhoud</span><span style="font-weight:500">Inbegrepen</span></div>
             </div>
-            <sc-if value="{{ detail.hasHuurOpmerking }}" hint-placeholder-val="{{ false }}"><p style="font:400 13px/1.6 'Archivo',sans-serif;color:#7C7770;margin:-14px 0 22px">{{ detail.huurOpmerking }}</p></sc-if>
+            <sc-if value="{{ detail.hasHuurOpmerking }}" hint-placeholder-val="{{ false }}"><p style="font:400 13px/1.6 'Archivo',sans-serif;color:#7B766F;margin:-14px 0 22px">{{ detail.huurOpmerking }}</p></sc-if>
             <div style="display:flex;flex-direction:column;gap:12px">
               <button onClick="{{ goContact }}" onMouseEnter="{{ btnIn }}" onMouseLeave="{{ btnOut }}" style="display:inline-flex;align-items:center;justify-content:space-between;gap:10px;background:#FBAE00;color:#111214;border:1px solid #111214;border-radius:2px;padding:17px 22px;font:600 15px/1 'Archivo',sans-serif;cursor:pointer;transition:all .22s">Deze machine huren <span data-arrow="" style="transition:transform .24s cubic-bezier(.2,.7,.3,1)">→</span></button>
               <button onClick="{{ goContact }}" onMouseEnter="{{ btnIn }}" onMouseLeave="{{ btnOut }}" style="display:inline-flex;align-items:center;justify-content:space-between;gap:10px;background:transparent;color:#111214;border:1px solid #111214;border-radius:2px;padding:17px 22px;font:600 15px/1 'Archivo',sans-serif;cursor:pointer;transition:all .22s">Neem contact op <span data-arrow="" style="transition:transform .24s cubic-bezier(.2,.7,.3,1)">→</span></button>
@@ -1207,7 +1225,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
       </div>
 
       <div data-side="" style="position:sticky;top:130px;min-width:0">
-        <button onClick="{{ goDetailBrand }}" onMouseEnter="{{ linkIn }}" onMouseLeave="{{ crumbOut }}" style="background:none;border:0;padding:0;cursor:pointer;font:500 11px/1 'Archivo',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#8C867A;transition:color .2s">{{ detail.brand }}</button>
+        <button onClick="{{ goDetailBrand }}" onMouseEnter="{{ linkIn }}" onMouseLeave="{{ crumbOut }}" style="background:none;border:0;padding:0;cursor:pointer;font:500 11px/1 'Archivo',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#7C766A;transition:color .2s">{{ detail.brand }}</button>
         <h1 style="font:600 clamp(28px,3.4vw,44px)/1.06 Archivo,sans-serif;letter-spacing:-.03em;margin:14px 0 0;overflow-wrap:anywhere">{{ detail.name }}</h1>
         <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:18px">
           <sc-if value="{{ detail.hasType }}" hint-placeholder-val="{{ true }}"><button onClick="{{ goDetailType }}" onMouseEnter="{{ chipIn }}" onMouseLeave="{{ chipOut }}" style="font:400 12px/1 'Archivo',sans-serif;background:rgba(247,245,241,.62);border:1px solid transparent;padding:8px 11px;cursor:pointer;color:#111214;transition:border-color .2s,background .2s;min-width:0;overflow-wrap:anywhere;text-align:left">{{ detail.type }}</button></sc-if>
@@ -1217,7 +1235,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
 
         <sc-if value="{{ detail.hasKenmerken }}" hint-placeholder-val="{{ true }}">
         <div style="margin-top:28px;border-top:1px solid #EDEAE4;padding-top:22px">
-          <div style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#8C867A;margin-bottom:14px">Belangrijkste kenmerken</div>
+          <div style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#7C766A;margin-bottom:14px">Belangrijkste kenmerken</div>
           <div style="display:flex;flex-direction:column;gap:11px">
             <sc-for list="{{ detail.kenmerken }}" as="k" hint-placeholder-count="3">
               <div style="display:flex;gap:12px;align-items:flex-start"><span style="width:6px;height:6px;background:#FBAE00;margin-top:8px;flex:0 0 6px"></span><span style="font:400 15px/1.6 'Archivo',sans-serif;color:#111214">{{ k }}</span></div>
@@ -1242,9 +1260,9 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
               <div data-vistitle="" style="font:600 20px/1.3 Archivo,sans-serif">Deze machine huren?</div>
               <p style="font:400 15px/1.7 'Archivo',sans-serif;color:#6E6A63;margin:14px 0 22px">Wij verhuren per dag, week of voor de duur van uw project. Aflevering en instructie regelen wij; onderhoud tijdens de huurperiode nemen wij voor onze rekening.</p>
               <div style="display:flex;flex-direction:column;gap:9px;margin-bottom:26px;padding:18px 0;border-top:1px solid #E4E0D8;border-bottom:1px solid #E4E0D8">
-                <div style="display:flex;justify-content:space-between;gap:16px;font:400 14px/1.5 'Archivo',sans-serif"><span style="color:#7C7770">Huurperiode</span><span style="font-weight:500">Dag, week of project</span></div>
-                <div style="display:flex;justify-content:space-between;gap:16px;font:400 14px/1.5 'Archivo',sans-serif"><span style="color:#7C7770">Aflevering</span><span style="font-weight:500">Op locatie of afhalen</span></div>
-                <div style="display:flex;justify-content:space-between;gap:16px;font:400 14px/1.5 'Archivo',sans-serif"><span style="color:#7C7770">Onderhoud</span><span style="font-weight:500">Inbegrepen</span></div>
+                <div style="display:flex;justify-content:space-between;gap:16px;font:400 14px/1.5 'Archivo',sans-serif"><span style="color:#7B766F">Huurperiode</span><span style="font-weight:500">Dag, week of project</span></div>
+                <div style="display:flex;justify-content:space-between;gap:16px;font:400 14px/1.5 'Archivo',sans-serif"><span style="color:#7B766F">Aflevering</span><span style="font-weight:500">Op locatie of afhalen</span></div>
+                <div style="display:flex;justify-content:space-between;gap:16px;font:400 14px/1.5 'Archivo',sans-serif"><span style="color:#7B766F">Onderhoud</span><span style="font-weight:500">Inbegrepen</span></div>
               </div>
               <div style="display:flex;flex-direction:column;gap:12px">
                 <button onClick="{{ goContact }}" onMouseEnter="{{ btnIn }}" onMouseLeave="{{ btnOut }}" style="display:inline-flex;align-items:center;justify-content:space-between;gap:10px;background:#FBAE00;color:#111214;border:1px solid #111214;border-radius:2px;padding:17px 22px;font:600 15px/1 'Archivo',sans-serif;cursor:pointer;transition:all .22s">Deze machine huren <span data-arrow="" style="transition:transform .24s cubic-bezier(.2,.7,.3,1)">→</span></button>
@@ -1266,7 +1284,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
           <tbody>
             <sc-for list="{{ detail.specs }}" as="s" hint-placeholder-count="5">
               <tr style="border-bottom:1px solid #F1EFEA">
-                <th scope="row" style="width:38%;text-align:left;padding:16px 20px 16px 0;font:400 14px/1.5 'Archivo',sans-serif;color:#8C867A;overflow-wrap:anywhere">{{ s.k }}</th>
+                <th scope="row" style="width:38%;text-align:left;padding:16px 20px 16px 0;font:400 14px/1.5 'Archivo',sans-serif;color:#7C766A;overflow-wrap:anywhere">{{ s.k }}</th>
                 <td style="padding:16px 0;font:500 15px/1.5 'Archivo',sans-serif;color:#111214;overflow-wrap:anywhere">{{ s.v }}</td>
               </tr>
             </sc-for>
@@ -1324,9 +1342,9 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
 <div>
   <section style="background:transparent;border-bottom:1px solid #EFECE6">
     <div style="max-width:1420px;margin:0 auto;padding:56px 70px 72px">
-      <nav style="display:flex;align-items:center;gap:10px;font:400 13px/1 'Archivo',sans-serif;color:#8C867A;flex-wrap:wrap">
-        <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#8C867A;font:inherit">Home</button><span>/</span>
-        <button onClick="{{ goVerhuur }}" style="background:none;border:0;padding:0;cursor:pointer;color:#8C867A;font:inherit">Verhuur</button><span>/</span>
+      <nav style="display:flex;align-items:center;gap:10px;font:400 13px/1 'Archivo',sans-serif;color:#7C766A;flex-wrap:wrap">
+        <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">Home</button><span>/</span>
+        <button onClick="{{ goVerhuur }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">Verhuur</button><span>/</span>
         <span style="color:#111214">{{ rental.name }}</span>
       </nav>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:end;margin-top:40px" data-split="">
@@ -1335,7 +1353,10 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
           <h1 style="font:600 clamp(30px,3.8vw,50px)/1.06 Archivo,sans-serif;letter-spacing:-.03em;margin:24px 0 0;max-width:18ch">{{ rental.name }}</h1>
           <p style="font:400 17px/1.75 'Archivo',sans-serif;color:#43413C;margin:20px 0 0;max-width:52ch">{{ rental.intro }}</p>
         </div>
-        <div style="aspect-ratio:16/10;background:#EDEAE4;overflow:hidden"><image-slot data-shot id="renthero-{{ rental.id }}" shape="rect" fit="cover" placeholder="{{ rental.name }}" src="{{ rental.heroImgSrc }}" style="width:100%;height:100%"></image-slot></div>
+        <div style="aspect-ratio:16/10;background:#EDEAE4;overflow:hidden">
+          <sc-if value="{{ rental.hasHeroImg }}" hint-placeholder-val="{{ true }}">{{ rental.heroImgEl }}</sc-if>
+          <sc-if value="{{ rental.noHeroImg }}" hint-placeholder-val="{{ false }}"><image-slot data-shot id="renthero-{{ rental.id }}" shape="rect" placeholder="{{ rental.name }}"></image-slot></sc-if>
+        </div>
       </div>
     </div>
   </section>
@@ -1388,11 +1409,11 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
 <div>
   <section style="background:transparent;border-bottom:1px solid #EFECE6">
     <div style="max-width:1420px;margin:0 auto;padding:56px 70px 70px">
-      <nav style="display:flex;align-items:center;gap:10px;font:400 13px/1 'Archivo',sans-serif;color:#8C867A">
-        <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#8C867A;font:inherit">Home</button><span>/</span><span style="color:#111214">Verhuur</span>
+      <nav style="display:flex;align-items:center;gap:10px;font:400 13px/1 'Archivo',sans-serif;color:#7C766A">
+        <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">Home</button><span>/</span><span style="color:#111214">Verhuur</span>
       </nav>
       <div style="max-width:60ch;margin-top:38px">
-        <div style="display:flex;align-items:center;gap:14px"><svg class="wvb-marker" width="40" height="12" viewBox="0 0 40 12" fill="none" aria-hidden="true"><path d="M1 6H30M30 6 39 1M30 6 39 11" stroke="#C00020" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg><span style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.22em;text-transform:uppercase;color:#8C867A">Aanbod · verhuur</span></div>
+        <div style="display:flex;align-items:center;gap:14px"><svg class="wvb-marker" width="40" height="12" viewBox="0 0 40 12" fill="none" aria-hidden="true"><path d="M1 6H30M30 6 39 1M30 6 39 11" stroke="#C00020" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg><span style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.22em;text-transform:uppercase;color:#7C766A">Aanbod · verhuur</span></div>
         <h1 style="font:600 clamp(32px,4vw,54px)/1.05 Archivo,sans-serif;letter-spacing:-.03em;margin:24px 0 0">Verhuur</h1>
         <p style="font:400 17px/1.75 'Archivo',sans-serif;color:#43413C;margin:20px 0 0">Machines huren voor een project, een piek in het seizoen of ter overbrugging. Dezelfde machines en dezelfde service als bij verkoop, voor de periode die u nodig heeft.</p>
       </div>
@@ -1403,9 +1424,12 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
     <div style="max-width:1420px;margin:0 auto;padding:70px 70px 100px;display:flex;flex-direction:column;gap:24px">
       <sc-for list="{{ rentalCats }}" as="c" hint-placeholder-count="3">
         <button onClick="{{ c.open }}" onMouseEnter="{{ hoverIn }}" onMouseLeave="{{ hoverOut }}" data-rv="" data-split="" style="opacity:0;transform:translateY(16px);transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .28s cubic-bezier(.2,.7,.3,1),box-shadow .28s,border-color .28s;display:grid;grid-template-columns:1.1fr 1fr;gap:0;text-align:left;background:#fff;border:1px solid #E2DED7;padding:0;cursor:pointer;overflow:hidden">
-          <div style="height:320px;overflow:hidden;background:#EDEAE4"><div data-zoom="" style="width:100%;height:100%;transition:transform .5s cubic-bezier(.2,.7,.3,1)"><image-slot data-shot key="{{ c.id }}" id="rent-{{ c.id }}" shape="rect" fit="cover" placeholder="{{ c.name }}" src="{{ c.catImgSrc }}" style="width:100%;height:100%"></image-slot></div></div>
+          <div style="height:320px;overflow:hidden;background:#EDEAE4"><div data-zoom="" style="width:100%;height:100%;transition:transform .5s cubic-bezier(.2,.7,.3,1)">
+            <sc-if value="{{ c.hasCatImg }}" hint-placeholder-val="{{ true }}">{{ c.catImgEl }}</sc-if>
+            <sc-if value="{{ c.noCatImg }}" hint-placeholder-val="{{ false }}"><image-slot data-shot key="{{ c.id }}" id="rent-{{ c.id }}" shape="rect" placeholder="{{ c.name }}"></image-slot></sc-if>
+          </div></div>
           <div style="padding:48px 46px;display:flex;flex-direction:column;justify-content:center">
-            <div style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#8C867A">Verhuur</div>
+            <div style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#7C766A">Verhuur</div>
             <h2 style="font:600 clamp(22px,2.4vw,32px)/1.15 Archivo,sans-serif;letter-spacing:-.022em;margin:16px 0 0">{{ c.name }}</h2>
             <span style="display:inline-flex;align-items:center;gap:10px;margin-top:18px;font:600 14px/1 'Archivo',sans-serif">Bekijk verhuur <span data-arrow="" style="color:#FBAE00;transition:transform .24s cubic-bezier(.2,.7,.3,1)">→</span></span>
           </div>
@@ -1419,8 +1443,8 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
 <sc-if value="{{ isMerken }}" hint-placeholder-val="{{ false }}">
 <div>
   <section style="max-width:1360px;margin:0 auto;padding:56px 40px 0">
-    <nav style="display:flex;align-items:center;gap:10px;font:400 13px/1 'Archivo',sans-serif;color:#8C867A">
-      <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#8C867A;font:inherit">Home</button><span>/</span><span style="color:#111214">Merken</span>
+    <nav style="display:flex;align-items:center;gap:10px;font:400 13px/1 'Archivo',sans-serif;color:#7C766A">
+      <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">Home</button><span>/</span><span style="color:#111214">Merken</span>
     </nav>
     <div style="max-width:60ch;margin-top:34px">
       <h1 style="font:600 clamp(32px,4vw,54px)/1.05 Archivo,sans-serif;letter-spacing:-.03em;margin:0">Merken</h1>
@@ -1453,11 +1477,11 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
 <sc-if value="{{ isMerk }}" hint-placeholder-val="{{ false }}">
 <div>
   <section style="position:relative;overflow:hidden;border-bottom:1px solid #EFECE6;background:transparent">
-    <img src="/assets/grid-rood.png" alt="" aria-hidden="true" style="position:absolute;bottom:-180px;left:-120px;width:520px;opacity:.09;pointer-events:none">
+    <img src="/assets/grid-rood.png" alt="" aria-hidden="true" width="2201" height="2201" style="position:absolute;bottom:-180px;left:-120px;width:520px;opacity:.09;pointer-events:none">
     <div style="max-width:1360px;margin:0 auto;padding:72px 40px 76px">
-      <nav style="display:flex;align-items:center;gap:10px;font:400 13px/1 'Archivo',sans-serif;color:#8C867A;flex-wrap:wrap">
-        <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#8C867A;font:inherit">Home</button><span>/</span>
-        <button onClick="{{ goMerken }}" style="background:none;border:0;padding:0;cursor:pointer;color:#8C867A;font:inherit">Merken</button><span>/</span>
+      <nav style="display:flex;align-items:center;gap:10px;font:400 13px/1 'Archivo',sans-serif;color:#7C766A;flex-wrap:wrap">
+        <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">Home</button><span>/</span>
+        <button onClick="{{ goMerken }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">Merken</button><span>/</span>
         <span style="color:#111214">{{ brand.name }}</span>
       </nav>
       <sc-if value="{{ isOtherBrandHero }}" hint-placeholder-val="{{ true }}">
@@ -1470,8 +1494,8 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
           <h1 style="font:600 clamp(32px,4vw,54px)/1.05 Archivo,sans-serif;letter-spacing:-.03em;margin:28px 0 0">{{ brand.name }}</h1>
           <p style="font:400 17px/1.75 'Archivo',sans-serif;color:#57544D;margin:20px 0 0;max-width:58ch">{{ brand.tekst }}</p>
           <div style="display:flex;gap:36px;margin-top:34px;flex-wrap:wrap">
-            <div><div style="font:600 24px/1 Archivo,sans-serif">{{ brand.land }}</div><div style="font:400 13px/1.4 'Archivo',sans-serif;color:#8C867A;margin-top:7px">Herkomst</div></div>
-            <div><div style="font:600 24px/1 Archivo,sans-serif">{{ brandMachineCount }}</div><div style="font:400 13px/1.4 'Archivo',sans-serif;color:#8C867A;margin-top:7px">Machines bij ons</div></div>
+            <div><div style="font:600 24px/1 Archivo,sans-serif">{{ brand.land }}</div><div style="font:400 13px/1.4 'Archivo',sans-serif;color:#7C766A;margin-top:7px">Herkomst</div></div>
+            <div><div style="font:600 24px/1 Archivo,sans-serif">{{ brandMachineCount }}</div><div style="font:400 13px/1.4 'Archivo',sans-serif;color:#7C766A;margin-top:7px">Machines bij ons</div></div>
           </div>
         </div>
         <div style="aspect-ratio:{{ brandHeroRatio }};background:#F4F2EE;position:relative;overflow:hidden">
@@ -1500,8 +1524,8 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
           <h1 style="font:600 clamp(32px,4vw,54px)/1.05 Archivo,sans-serif;letter-spacing:-.03em;margin:28px 0 0">{{ brand.name }}</h1>
           <p style="font:400 17px/1.75 'Archivo',sans-serif;color:#57544D;margin:20px 0 0;max-width:58ch">{{ brand.tekst }}</p>
           <div style="display:flex;gap:36px;margin-top:34px;flex-wrap:wrap">
-            <div><div style="font:600 24px/1 Archivo,sans-serif">{{ brand.land }}</div><div style="font:400 13px/1.4 'Archivo',sans-serif;color:#8C867A;margin-top:7px">Herkomst</div></div>
-            <div><div style="font:600 24px/1 Archivo,sans-serif">{{ brandMachineCount }}</div><div style="font:400 13px/1.4 'Archivo',sans-serif;color:#8C867A;margin-top:7px">Machines bij ons</div></div>
+            <div><div style="font:600 24px/1 Archivo,sans-serif">{{ brand.land }}</div><div style="font:400 13px/1.4 'Archivo',sans-serif;color:#7C766A;margin-top:7px">Herkomst</div></div>
+            <div><div style="font:600 24px/1 Archivo,sans-serif">{{ brandMachineCount }}</div><div style="font:400 13px/1.4 'Archivo',sans-serif;color:#7C766A;margin-top:7px">Machines bij ons</div></div>
           </div>
         </div>
         <div style="aspect-ratio:3/2;position:relative;overflow:hidden">
@@ -1520,8 +1544,8 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
           <h1 style="font:600 clamp(32px,4vw,54px)/1.05 Archivo,sans-serif;letter-spacing:-.03em;margin:0">{{ brand.name }}</h1>
           <p style="font:400 17px/1.75 'Archivo',sans-serif;color:#57544D;margin:20px 0 0;max-width:58ch">{{ brand.tekst }}</p>
           <div style="display:flex;gap:36px;margin-top:34px;flex-wrap:wrap">
-            <div><div style="font:600 24px/1 Archivo,sans-serif">{{ brand.land }}</div><div style="font:400 13px/1.4 'Archivo',sans-serif;color:#8C867A;margin-top:7px">Herkomst</div></div>
-            <div><div style="font:600 24px/1 Archivo,sans-serif">{{ brandMachineCount }}</div><div style="font:400 13px/1.4 'Archivo',sans-serif;color:#8C867A;margin-top:7px">Machines bij ons</div></div>
+            <div><div style="font:600 24px/1 Archivo,sans-serif">{{ brand.land }}</div><div style="font:400 13px/1.4 'Archivo',sans-serif;color:#7C766A;margin-top:7px">Herkomst</div></div>
+            <div><div style="font:600 24px/1 Archivo,sans-serif">{{ brandMachineCount }}</div><div style="font:400 13px/1.4 'Archivo',sans-serif;color:#7C766A;margin-top:7px">Machines bij ons</div></div>
           </div>
         </div>
         <div class="brand-hero__media">
@@ -1549,7 +1573,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
         <!-- Subtiele SEO-tekstlink naar merk×product-landingspagina's, alleen
              bij een merk met een expliciete seoTopics-lijst. -->
         <sc-if value="{{ hasBrandSeoTopics }}" hint-placeholder-val="{{ false }}">
-          <p style="font:400 14px/1.7 'Archivo',sans-serif;color:#8C867A;margin:14px 0 0">Bekijk ook: <sc-for list="{{ brandSeoTopics }}" as="st" hint-placeholder-count="2"><a href="{{ st.href }}" style="color:#111214;text-decoration:underline;text-decoration-color:#FBAE00;text-underline-offset:2px">{{ st.label }}</a> </sc-for></p>
+          <p style="font:400 14px/1.7 'Archivo',sans-serif;color:#7C766A;margin:14px 0 0">Bekijk ook: <sc-for list="{{ brandSeoTopics }}" as="st" hint-placeholder-count="2"><a href="{{ st.href }}" style="color:#111214;text-decoration:underline;text-decoration-color:#FBAE00;text-underline-offset:2px">{{ st.label }}</a> </sc-for></p>
         </sc-if>
       </div>
       <div>
@@ -1583,7 +1607,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
     <sc-if value="{{ merkEmpty }}" hint-placeholder-val="{{ false }}">
       <div style="border:1px solid #E6E3DD;background:#fff;padding:64px 40px;text-align:center;margin-top:36px">
         <div data-vistitle="" style="font:600 20px/1.3 Archivo,sans-serif">Momenteel geen machines van {{ brand.name }} beschikbaar</div>
-        <p style="font:400 15px/1.7 'Archivo',sans-serif;color:#7C7770;margin:14px auto 26px;max-width:52ch">Wij leveren dit merk wel. Neem contact op voor de actuele mogelijkheden of bekijk het volledige machineaanbod.</p>
+        <p style="font:400 15px/1.7 'Archivo',sans-serif;color:#7B766F;margin:14px auto 26px;max-width:52ch">Wij leveren dit merk wel. Neem contact op voor de actuele mogelijkheden of bekijk het volledige machineaanbod.</p>
         <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
           <button onClick="{{ goContact }}" onMouseEnter="{{ btnIn }}" onMouseLeave="{{ btnOut }}" style="background:#FBAE00;border:1px solid #000;color:#000;padding:14px 22px;font:600 14px/1 'Archivo',sans-serif;cursor:pointer;transition:all .2s">Neem contact op →</button>
           <button onClick="{{ goMachines }}" onMouseEnter="{{ btnIn }}" onMouseLeave="{{ btnOut }}" style="background:transparent;border:1px solid #000;color:#000;padding:14px 22px;font:600 14px/1 'Archivo',sans-serif;cursor:pointer;transition:all .2s">Bekijk alle machines →</button>
@@ -1666,8 +1690,8 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
 
   <section style="border-bottom:1px solid #EFECE6">
     <div style="max-width:1360px;margin:0 auto;padding:44px 40px 0">
-      <nav style="display:flex;align-items:center;gap:10px;font:400 13px/1 'Archivo',sans-serif;color:#8C867A;padding-bottom:44px">
-        <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#8C867A;font:inherit">Home</button><span>/</span>
+      <nav style="display:flex;align-items:center;gap:10px;font:400 13px/1 'Archivo',sans-serif;color:#7C766A;padding-bottom:44px">
+        <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">Home</button><span>/</span>
         <span style="color:#111214">Service</span>
       </nav>
     </div>
@@ -1704,7 +1728,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
     <div style="max-width:1360px;margin:0 auto;padding:88px 40px;display:grid;grid-template-columns:1.05fr 1fr;gap:72px;align-items:center" data-split="">
       <div data-mask-reveal="" style="aspect-ratio:16/11;background:#EDEAE4;overflow:hidden"><image-slot data-shot id="sv-loc" shape="rect" placeholder="Servicebus of transport op locatie" src="/assets/images/service/sv-loc.webp" loading="lazy"></image-slot></div>
       <div>
-        <div style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#8C867A">Service op locatie</div>
+        <div style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#7C766A">Service op locatie</div>
         <h2 style="font:600 clamp(24px,2.7vw,36px)/1.12 Archivo,sans-serif;letter-spacing:-.024em;margin:18px 0 0">We verzorgen vervangend materieel</h2>
         <p style="font:400 17px/1.8 'Archivo',sans-serif;color:#43413C;margin:22px 0 0;max-width:52ch">Kunnen we uw machine niet ter plaatse repareren? Dan kunnen we een vrachtwagen sturen om uw machine op te halen en eventueel een vervangende machine in te zetten. Terwijl wij uw machine naar onze werkplaats vervoeren, kunt u uw werkzaamheden hervatten.</p>
         <button onClick="{{ goService }}" onMouseEnter="{{ btnIn }}" onMouseLeave="{{ btnOut }}" style="display:inline-flex;align-items:center;gap:10px;margin-top:30px;background:#FBAE00;color:#111214;border:1px solid #000;padding:15px 22px;font:600 15px/1 'Archivo',sans-serif;cursor:pointer;transition:all .2s">Service aanvragen <span data-arrow="" style="transition:transform .24s cubic-bezier(.2,.7,.3,1)">→</span></button>
@@ -1715,7 +1739,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
   <section style="border-bottom:1px solid #EFECE6">
     <div style="max-width:1360px;margin:0 auto;padding:88px 40px;display:grid;grid-template-columns:1fr 1.05fr;gap:72px;align-items:center" data-split="">
       <div data-svtext="">
-        <div style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#8C867A">Transport &amp; aflevering</div>
+        <div style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#7C766A">Transport &amp; aflevering</div>
         <h2 style="font:600 clamp(24px,2.7vw,36px)/1.12 Archivo,sans-serif;letter-spacing:-.024em;margin:18px 0 0">We brengen uw nieuwe machine</h2>
         <p style="font:400 17px/1.8 'Archivo',sans-serif;color:#43413C;margin:22px 0 0;max-width:52ch">Heeft u een nieuwe machine besteld? Dan hoeft u deze niet zelf op te halen. Wij brengen de machine naar u toe, overal in Nederland. Als het nodig is, nemen we uw oude machine direct mee terug.</p>
         <button onClick="{{ goMachines }}" onMouseEnter="{{ btnIn }}" onMouseLeave="{{ btnOut }}" style="display:inline-flex;align-items:center;gap:10px;margin-top:30px;background:#FBAE00;color:#111214;border:1px solid #000;padding:15px 22px;font:600 15px/1 'Archivo',sans-serif;cursor:pointer;transition:all .2s">Bekijk ons aanbod <span data-arrow="" style="transition:transform .24s cubic-bezier(.2,.7,.3,1)">→</span></button>
@@ -1727,7 +1751,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
   <section style="border-bottom:1px solid #EFECE6">
     <div style="max-width:1360px;margin:0 auto;padding:74px 40px;display:grid;grid-template-columns:1.15fr .85fr;gap:64px;align-items:center" data-split="">
       <div>
-        <div style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#8C867A">Kennis &amp; training</div>
+        <div style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#7C766A">Kennis &amp; training</div>
         <h2 style="font:600 clamp(22px,2.3vw,30px)/1.15 Archivo,sans-serif;letter-spacing:-.02em;margin:16px 0 0">Haal meer uit uw machine</h2>
         <p style="font:400 16px/1.8 'Archivo',sans-serif;color:#43413C;margin:18px 0 0;max-width:60ch">Om het beste uit uw materieel te halen, verzorgen we regelmatig trainingen, zowel bij ons in Geldermalsen als op locatie. Wie zijn machine goed kent, werkt plezieriger, efficiënter en betrouwbaarder. Zo haalt u het maximale uit uw machine tegen zo laag mogelijke kosten.</p>
       </div>
@@ -1737,7 +1761,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
 
   <section style="border-bottom:1px solid #EFECE6">
     <div style="max-width:1360px;margin:0 auto;padding:84px 40px">
-      <div style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#8C867A">Onderdelen &amp; logistiek</div>
+      <div style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#7C766A">Onderdelen &amp; logistiek</div>
       <h2 style="font:600 clamp(24px,2.7vw,36px)/1.12 Archivo,sans-serif;letter-spacing:-.024em;margin:18px 0 0">Onderdelen wanneer u ze nodig heeft</h2>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:56px;margin-top:44px" data-split="">
         <div style="border-top:2px solid #FBAE00;padding-top:26px">
@@ -1768,8 +1792,8 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
 
   <section>
     <div style="position:relative;overflow:hidden;max-width:1360px;margin:0 auto;padding:88px 40px 104px">
-      <img src="/assets/grid-rood.png" alt="" aria-hidden="true" style="position:absolute;top:20px;right:-100px;width:340px;opacity:.08;pointer-events:none">
-      <div style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#8C867A">Onze werkplaatsen</div>
+      <img src="/assets/grid-rood.png" alt="" aria-hidden="true" width="2201" height="2201" style="position:absolute;top:20px;right:-100px;width:340px;opacity:.08;pointer-events:none">
+      <div style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#7C766A">Onze werkplaatsen</div>
       <h2 style="font:600 clamp(24px,2.7vw,36px)/1.12 Archivo,sans-serif;letter-spacing:-.024em;margin:18px 0 0">Drie soorten werkplaatsen</h2>
       <p style="font:400 17px/1.8 'Archivo',sans-serif;color:#43413C;margin:20px 0 0;max-width:70ch">Bij Wim van Breda hebben we meerdere werkplaatsen. Iedere werkplaats is ingericht voor een ander soort werkzaamheden, zodat we machines gericht kunnen onderhouden en repareren.</p>
       <div data-svshops="" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;margin-top:48px">
@@ -1797,8 +1821,8 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
 <sc-if value="{{ isContact }}" hint-placeholder-val="{{ false }}">
 <div>
   <section style="max-width:1360px;margin:0 auto;padding:56px 40px 0">
-    <nav style="display:flex;align-items:center;gap:10px;font:400 13px/1 'Archivo',sans-serif;color:#8C867A">
-      <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#8C867A;font:inherit">Home</button><span>/</span><span style="color:#111214">Contact</span>
+    <nav style="display:flex;align-items:center;gap:10px;font:400 13px/1 'Archivo',sans-serif;color:#7C766A">
+      <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">Home</button><span>/</span><span style="color:#111214">Contact</span>
     </nav>
     <div style="max-width:58ch;margin-top:34px">
       <h1 style="font:600 clamp(32px,4vw,54px)/1.05 Archivo,sans-serif;letter-spacing:-.03em;margin:0">Contact</h1>
@@ -1809,27 +1833,27 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
   <section style="max-width:1360px;margin:0 auto;padding:48px 40px 90px;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start" data-split="">
     <div>
       <div style="border-top:1px solid #E6E3DD;padding:28px 0">
-        <div style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#8C867A">Bezoekadres</div>
+        <div style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#7C766A">Bezoekadres</div>
         <div style="font:600 20px/1.5 Archivo,sans-serif;margin-top:14px">Oudenhof 14<br>4191 NW Geldermalsen</div>
         <a href="https://maps.google.com/?q=Oudenhof+14+Geldermalsen" onMouseEnter="{{ btnIn }}" onMouseLeave="{{ btnOut }}" style="display:inline-flex;align-items:center;gap:10px;margin-top:20px;border:1px solid #111214;border-radius:2px;padding:14px 20px;font:600 14px/1 'Archivo',sans-serif;transition:all .22s">Route plannen <span data-arrow="" style="transition:transform .24s cubic-bezier(.2,.7,.3,1)">→</span></a>
       </div>
       <div style="border-top:1px solid #E6E3DD;padding:28px 0">
-        <div style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#8C867A">Bel ons</div>
+        <div style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#7C766A">Bel ons</div>
         <div style="display:flex;flex-direction:column;margin-top:12px">
-          <a href="tel:+31345585050" onMouseEnter="{{ rowIn }}" onMouseLeave="{{ rowOut }}" style="display:flex;justify-content:space-between;gap:20px;padding:14px 8px;margin:0 -8px;border-bottom:1px solid #F1EFEA;transition:background .2s"><span style="font:400 15px/1 'Archivo',sans-serif;color:#7C7770">Algemeen</span><span style="font:500 15px/1 'Archivo',sans-serif">+31(0)345 58 50 50</span></a>
-          <a href="tel:+31345585050" onMouseEnter="{{ rowIn }}" onMouseLeave="{{ rowOut }}" style="display:flex;justify-content:space-between;gap:20px;padding:14px 8px;margin:0 -8px;border-bottom:1px solid #F1EFEA;transition:background .2s"><span style="font:400 15px/1 'Archivo',sans-serif;color:#7C7770">Sales</span><span style="font:500 15px/1 'Archivo',sans-serif">+31(0)345 58 50 50</span></a>
-          <a href="tel:+31345585050" onMouseEnter="{{ rowIn }}" onMouseLeave="{{ rowOut }}" style="display:flex;justify-content:space-between;gap:20px;padding:14px 8px;margin:0 -8px;border-bottom:1px solid #F1EFEA;transition:background .2s"><span style="font:400 15px/1 'Archivo',sans-serif;color:#7C7770">Service</span><span style="font:500 15px/1 'Archivo',sans-serif">+31(0)345 58 50 50</span></a>
-          <a href="tel:+31345585050" onMouseEnter="{{ rowIn }}" onMouseLeave="{{ rowOut }}" style="display:flex;justify-content:space-between;gap:20px;padding:14px 8px;margin:0 -8px;border-bottom:1px solid #F1EFEA;transition:background .2s"><span style="font:400 15px/1 'Archivo',sans-serif;color:#7C7770">Parts</span><span style="font:500 15px/1 'Archivo',sans-serif">+31(0)345 58 50 50</span></a>
+          <a href="tel:+31345585050" onMouseEnter="{{ rowIn }}" onMouseLeave="{{ rowOut }}" style="display:flex;justify-content:space-between;gap:20px;padding:14px 8px;margin:0 -8px;border-bottom:1px solid #F1EFEA;transition:background .2s"><span style="font:400 15px/1 'Archivo',sans-serif;color:#7B766F">Algemeen</span><span style="font:500 15px/1 'Archivo',sans-serif">+31(0)345 58 50 50</span></a>
+          <a href="tel:+31345585050" onMouseEnter="{{ rowIn }}" onMouseLeave="{{ rowOut }}" style="display:flex;justify-content:space-between;gap:20px;padding:14px 8px;margin:0 -8px;border-bottom:1px solid #F1EFEA;transition:background .2s"><span style="font:400 15px/1 'Archivo',sans-serif;color:#7B766F">Sales</span><span style="font:500 15px/1 'Archivo',sans-serif">+31(0)345 58 50 50</span></a>
+          <a href="tel:+31345585050" onMouseEnter="{{ rowIn }}" onMouseLeave="{{ rowOut }}" style="display:flex;justify-content:space-between;gap:20px;padding:14px 8px;margin:0 -8px;border-bottom:1px solid #F1EFEA;transition:background .2s"><span style="font:400 15px/1 'Archivo',sans-serif;color:#7B766F">Service</span><span style="font:500 15px/1 'Archivo',sans-serif">+31(0)345 58 50 50</span></a>
+          <a href="tel:+31345585050" onMouseEnter="{{ rowIn }}" onMouseLeave="{{ rowOut }}" style="display:flex;justify-content:space-between;gap:20px;padding:14px 8px;margin:0 -8px;border-bottom:1px solid #F1EFEA;transition:background .2s"><span style="font:400 15px/1 'Archivo',sans-serif;color:#7B766F">Parts</span><span style="font:500 15px/1 'Archivo',sans-serif">+31(0)345 58 50 50</span></a>
         </div>
         <a href="https://wa.me/31643070306" onMouseEnter="{{ btnIn }}" onMouseLeave="{{ btnOut }}" style="display:inline-flex;align-items:center;gap:12px;margin-top:22px;background:#FBAE00;color:#111214;border-radius:2px;padding:16px 22px;font:600 14px/1 'Archivo',sans-serif;transition:all .22s">
           <span style="width:7px;height:7px;background:#C00020;border-radius:50%"></span> WhatsApp klantenservice · +31(0)6 43 07 03 06
         </a>
       </div>
       <div style="border-top:1px solid #E6E3DD;border-bottom:1px solid #E6E3DD;padding:28px 0">
-        <div style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#8C867A">Openingstijden</div>
+        <div style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#7C766A">Openingstijden</div>
         <div style="margin-top:12px">
           <sc-for list="{{ hours }}" as="h" hint-placeholder-count="7">
-            <div style="display:flex;justify-content:space-between;gap:20px;padding:11px 0;border-bottom:1px solid #F6F4F0"><span style="font:400 15px/1 'Archivo',sans-serif;color:#7C7770">{{ h.d }}</span><span style="font:500 15px/1 'Archivo',sans-serif">{{ h.t }}</span></div>
+            <div style="display:flex;justify-content:space-between;gap:20px;padding:11px 0;border-bottom:1px solid #F6F4F0"><span style="font:400 15px/1 'Archivo',sans-serif;color:#7B766F">{{ h.d }}</span><span style="font:500 15px/1 'Archivo',sans-serif">{{ h.t }}</span></div>
           </sc-for>
         </div>
       </div>
@@ -1837,11 +1861,11 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
 
     <form action="{{ formAction }}" method="POST" style="background:#ffffff;border:1px solid #EFECE6;padding:44px 40px">
       <h2 style="font:600 26px/1.15 Archivo,sans-serif;letter-spacing:-.02em;margin:0">Stuur ons gerust een bericht</h2>
-      <p style="font:400 15px/1.7 'Archivo',sans-serif;color:#7C7770;margin:12px 0 30px">Wij reageren op werkdagen binnen één werkdag.</p>
+      <p style="font:400 15px/1.7 'Archivo',sans-serif;color:#7B766F;margin:12px 0 30px">Wij reageren op werkdagen binnen één werkdag.</p>
 
       <sc-if value="{{ ctxActive }}" hint-placeholder-val="{{ false }}">
         <div style="border-left:2px solid #FBAE00;background:rgba(247,245,241,.62);padding:20px 22px;margin-bottom:30px">
-          <div style="font:500 10px/1 'Archivo',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#8C867A">Uw aanvraag gaat over</div>
+          <div style="font:500 10px/1 'Archivo',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#7C766A">Uw aanvraag gaat over</div>
           <div style="font:600 18px/1.35 Archivo,sans-serif;margin-top:10px">{{ ctxTitle }}</div>
           <div style="display:inline-flex;align-items:center;gap:8px;margin-top:12px;font:400 12px/1 'Archivo',sans-serif;color:#57544D;background:#fff;border:1px solid #E4E0D8;padding:7px 11px"><span style="width:5px;height:5px;background:#C00020"></span>{{ ctxTypeLabel }}</div>
         </div>
@@ -1892,9 +1916,12 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
       <div data-people="" style="display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:44px;justify-items:stretch">
         <sc-for list="{{ people }}" as="p" hint-placeholder-count="6">
           <article onMouseEnter="{{ hoverIn }}" onMouseLeave="{{ hoverOut }}" style="background:#fff;border:1px solid #E2DED7;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 1px 2px rgba(17,18,20,.04);transition:transform .24s cubic-bezier(.2,.7,.3,1),box-shadow .24s">
-            <div style="aspect-ratio:4/5;overflow:hidden;background:#FBAE00"><div data-zoom="" style="width:100%;height:100%;transition:transform .45s cubic-bezier(.2,.7,.3,1)"><image-slot data-shot key="{{ p.id }}" id="mw-{{ p.id }}" shape="rect" fit="cover" placeholder="{{ p.naam }} — portret" src="{{ p.photoSrc }}"></image-slot></div></div>
+            <div style="aspect-ratio:4/5;overflow:hidden;background:#FBAE00"><div data-zoom="" style="width:100%;height:100%;transition:transform .45s cubic-bezier(.2,.7,.3,1)">
+              <sc-if value="{{ p.hasPhotoImg }}" hint-placeholder-val="{{ true }}">{{ p.photoImgEl }}</sc-if>
+              <sc-if value="{{ p.noPhotoImg }}" hint-placeholder-val="{{ false }}"><image-slot data-shot key="{{ p.id }}" id="mw-{{ p.id }}" shape="rect" placeholder="{{ p.naam }} — portret"></image-slot></sc-if>
+            </div></div>
             <div style="padding:26px;display:flex;flex-direction:column;flex:1">
-              <div style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#8C867A">{{ p.afdeling }}</div>
+              <div style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#7C766A">{{ p.afdeling }}</div>
               <h3 style="font:600 20px/1.25 Archivo,sans-serif;margin:9px 0 0;min-height:calc(1.25em*2)">{{ p.naam }}</h3>
               <div style="font:400 14px/1.5 'Archivo',sans-serif;color:#6E6A63;margin-top:7px;min-height:calc(1.5em*3)">{{ p.functie }}</div>
               <div style="flex:1"></div>
@@ -1956,14 +1983,14 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
   </section>
 
   <section style="position:relative;overflow:hidden;background:transparent;border-bottom:1px solid #EFECE6">
-    <img src="/assets/grid-rood.png" alt="" aria-hidden="true" style="position:absolute;top:-90px;right:-120px;width:420px;opacity:.1;pointer-events:none">
+    <img src="/assets/grid-rood.png" alt="" aria-hidden="true" width="2201" height="2201" style="position:absolute;top:-90px;right:-120px;width:420px;opacity:.1;pointer-events:none">
     <div style="position:relative;max-width:1420px;margin:0 auto;padding:44px 70px 84px">
-      <nav style="display:flex;align-items:center;gap:10px;font:400 13px/1 'Archivo',sans-serif;color:#8C867A">
-        <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#8C867A;font:inherit">Home</button><span>/</span><span style="color:#111214">Over ons</span>
+      <nav style="display:flex;align-items:center;gap:10px;font:400 13px/1 'Archivo',sans-serif;color:#7C766A">
+        <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">Home</button><span>/</span><span style="color:#111214">Over ons</span>
       </nav>
       <div style="display:grid;grid-template-columns:1.05fr 1fr;gap:64px;align-items:start;margin-top:44px" data-split="">
         <div>
-          <div style="display:flex;align-items:center;gap:14px"><svg class="wvb-marker" width="40" height="12" viewBox="0 0 40 12" fill="none" aria-hidden="true"><path d="M1 6H30M30 6 39 1M30 6 39 11" stroke="#C00020" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg><span style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.22em;text-transform:uppercase;color:#8C867A">Familiebedrijf sinds 1957</span></div>
+          <div style="display:flex;align-items:center;gap:14px"><svg class="wvb-marker" width="40" height="12" viewBox="0 0 40 12" fill="none" aria-hidden="true"><path d="M1 6H30M30 6 39 1M30 6 39 11" stroke="#C00020" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg><span style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.22em;text-transform:uppercase;color:#7C766A">Familiebedrijf sinds 1957</span></div>
           <h1 style="font:600 clamp(34px,4.4vw,60px)/1.04 Archivo,sans-serif;letter-spacing:-.032em;margin:22px 0 0">Over ons</h1>
           <p style="font:400 17px/1.8 'Archivo',sans-serif;color:#43413C;margin:22px 0 0;max-width:54ch">Sinds 1957 adviseren, leveren en onderhouden wij machines. Wat begon als eenmanszaak is nu een familiebedrijf met eigen werkplaatsen, monteurs en magazijn.</p>
         </div>
@@ -1971,7 +1998,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
           <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px"><svg class="wvb-marker" width="40" height="12" viewBox="0 0 40 12" fill="none" aria-hidden="true"><path d="M1 6H30M30 6 39 1M30 6 39 11" stroke="#C00020" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg><span style="font:600 16px/1 Archivo,sans-serif;letter-spacing:.13em;text-transform:uppercase;color:#111214">Bedrijfsvideo</span></div>
           <sc-if value="{{ videoOff }}" hint-placeholder-val="{{ true }}">
             <button onClick="{{ playVideo }}" onMouseEnter="{{ videoIn }}" onMouseLeave="{{ videoOut }}" aria-label="Bedrijfsvideo afspelen" style="display:block;width:100%;position:relative;aspect-ratio:16/9;background:#1A1B1D;border:0;padding:0;cursor:pointer;overflow:hidden;border-radius:2px">
-              <div data-zoom="" style="position:absolute;inset:0;transition:transform .6s cubic-bezier(.2,.7,.3,1)"><img src="/assets/images/over-ons/bedrijfsvideo-cover.jpg" alt="Bedrijfsvideo Wim van Breda" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center"></div>
+              <div data-zoom="" style="position:absolute;inset:0;transition:transform .6s cubic-bezier(.2,.7,.3,1)"><img src="/assets/images/over-ons/bedrijfsvideo-cover.jpg" alt="Bedrijfsvideo Wim van Breda" loading="lazy" width="1280" height="720" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center"></div>
               <span aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(to top,rgba(10,11,13,.55),rgba(10,11,13,.05) 55%,rgba(10,11,13,.18))"></span>
               <span data-play="" aria-hidden="true" style="position:absolute;top:50%;left:50%;width:82px;height:82px;margin:-41px 0 0 -41px;background:#FBAE00;display:flex;align-items:center;justify-content:center;transition:transform .3s cubic-bezier(.2,.7,.3,1),box-shadow .3s;box-shadow:0 18px 40px -22px rgba(0,0,0,.7)">
                 <span style="width:0;height:0;border-left:20px solid #111214;border-top:13px solid transparent;border-bottom:13px solid transparent;margin-left:5px"></span>
@@ -1981,7 +2008,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
           </sc-if>
           <sc-if value="{{ videoOn }}" hint-placeholder-val="{{ false }}">
             <div style="position:relative;aspect-ratio:16/9;background:#000;overflow:hidden;border-radius:2px">
-              <iframe src="{{ videoSrc }}" title="Bedrijfsvideo Wim van Breda" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" style="position:absolute;inset:0;width:100%;height:100%;border:0"></iframe>
+              <iframe ref="{{ videoRef }}" title="Bedrijfsvideo Wim van Breda" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" style="position:absolute;inset:0;width:100%;height:100%;border:0"></iframe>
             </div>
           </sc-if>
         </div>
@@ -1999,11 +2026,11 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
   <section style="background:transparent">
     <div style="max-width:1420px;margin:0 auto;padding:96px 70px;display:grid;grid-template-columns:1fr 1.05fr;gap:72px;align-items:center" data-split="">
       <div>
-        <div style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#8C867A">01 — Service</div>
+        <div style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#7C766A">01 — Service</div>
         <h2 data-rv="" style="opacity:0;transform:translateY(16px);transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1);font:600 clamp(26px,2.9vw,38px)/1.1 Archivo,sans-serif;letter-spacing:-.024em;margin:18px 0 0">Kennispartner voor klanten</h2>
         <p style="font:400 17px/1.8 'Archivo',sans-serif;color:#43413C;margin:22px 0 0;max-width:52ch">Wij voelen ons bijna net zo verantwoordelijk voor het probleemloos functioneren van het machinepark van onze klanten als zijzelf. We werken samen aan projecten en zorgen ervoor dat er langs de weg gewerkt kan worden.</p>
       </div>
-      <div data-rv="" style="opacity:0;transform:translateY(16px);transition:opacity .8s cubic-bezier(.2,.7,.3,1) 100ms,transform .8s cubic-bezier(.2,.7,.3,1) 100ms;aspect-ratio:16/11;background:#EDEAE4;position:relative;overflow:hidden"><img src="/assets/images/over-ons/kennispartner-vlaggen.png" alt="Wim van Breda-vlaggen bij het bedrijf" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover;object-position:center"></div>
+      <div data-rv="" style="opacity:0;transform:translateY(16px);transition:opacity .8s cubic-bezier(.2,.7,.3,1) 100ms,transform .8s cubic-bezier(.2,.7,.3,1) 100ms;aspect-ratio:16/11;background:#EDEAE4;position:relative;overflow:hidden"><img src="/assets/images/over-ons/kennispartner-vlaggen.png" alt="Wim van Breda-vlaggen bij het bedrijf" loading="lazy" width="1400" height="933" style="display:block;width:100%;height:100%;object-fit:cover;object-position:center"></div>
     </div>
   </section>
 
@@ -2012,7 +2039,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
       <div data-rv="" data-dickphoto="" style="opacity:0;transform:translateY(16px);transition:opacity .8s cubic-bezier(.2,.7,.3,1),transform .8s cubic-bezier(.2,.7,.3,1)">
         <div style="aspect-ratio:3/4;background:#EDEAE4;position:relative;overflow:hidden"><image-slot data-shot id="over-dick" shape="rect" placeholder="Portret Dick van Breda" src="/dick-van-breda-mthd76nm-lzdy-opt.jpg" loading="lazy"></image-slot></div>
         <div style="font:600 17px/1.4 'Archivo',sans-serif;margin-top:18px">Dick van Breda</div>
-        <div style="font:400 14px/1.4 'Archivo',sans-serif;color:#7C7770;margin-top:5px">Directeur</div>
+        <div style="font:400 14px/1.4 'Archivo',sans-serif;color:#7B766F;margin-top:5px">Directeur</div>
       </div>
       <blockquote style="margin:0;border-left:2px solid #FBAE00;padding-left:40px">
         <span data-rv="" style="opacity:0;transform:translateY(16px);transition:opacity .7s cubic-bezier(.2,.7,.3,1) 100ms,transform .7s cubic-bezier(.2,.7,.3,1) 100ms;display:block;font:600 32px/1 Archivo,sans-serif;color:#FBAE00">“</span>
@@ -2024,9 +2051,9 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
 
   <section style="background:transparent">
     <div style="max-width:1420px;margin:0 auto;padding:96px 70px;display:grid;grid-template-columns:1.05fr 1fr;gap:72px;align-items:start" data-split="">
-      <div data-rv="" style="opacity:0;transform:translateY(16px);transition:opacity .8s cubic-bezier(.2,.7,.3,1),transform .8s cubic-bezier(.2,.7,.3,1);aspect-ratio:4/5;background:#EDEAE4;position:relative;overflow:hidden"><img src="/assets/images/over-ons/persoonlijk-advies-pand.jpg" alt="Interieur van Wim van Breda in Geldermalsen" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover;object-position:68% center"></div>
+      <div data-rv="" style="opacity:0;transform:translateY(16px);transition:opacity .8s cubic-bezier(.2,.7,.3,1),transform .8s cubic-bezier(.2,.7,.3,1);aspect-ratio:4/5;background:#EDEAE4;position:relative;overflow:hidden"><img src="/assets/images/over-ons/persoonlijk-advies-pand.jpg" alt="Interieur van Wim van Breda in Geldermalsen" loading="lazy" width="1400" height="921" style="display:block;width:100%;height:100%;object-fit:cover;object-position:68% center"></div>
       <div data-side="" style="position:sticky;top:150px">
-        <div style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#8C867A">02 — Advies</div>
+        <div style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#7C766A">02 — Advies</div>
         <h2 style="font:600 clamp(26px,2.9vw,38px)/1.1 Archivo,sans-serif;letter-spacing:-.024em;margin:18px 0 0">Persoonlijk advies op maat</h2>
         <p style="font:400 17px/1.8 'Archivo',sans-serif;color:#43413C;margin:22px 0 0;max-width:52ch">In principe kunt u alle technische informatie die u nodig heeft op deze website vinden. Datzelfde geldt voor de duizenden onderdelen in onze webshop. Toch vinden relaties het prettig om samen met onze mensen de mogelijkheden te bekijken en te bespreken. Ook willen ze advies over functies en toepassingsmogelijkheden van verschillende machines. En dat begrijpen wij maar al te goed. Het gaat immers om grote machines die soms voor specifieke toepassingen worden ingezet.</p>
         <p style="font:400 17px/1.8 'Archivo',sans-serif;color:#43413C;margin:20px 0 0;max-width:52ch">Als betrouwbare partner zetten we ons vanaf het eerste contact 100% voor u in. Of u nu belt, mailt of onze werkplaats binnenloopt, onze specialisten helpen u graag. Het liefst bekijken we elke situatie van dichtbij. Met de voeten in de berm, zogezegd. Door bij u langs te gaan en de situatie ter plekke te bekijken, voorzien we u van het beste advies.</p>
@@ -2040,11 +2067,11 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
 
   <section style="background:rgba(247,245,241,.62);border-top:1px solid #EFECE6">
     <div style="max-width:1420px;margin:0 auto;padding:80px 70px 0">
-      <div style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#8C867A">03 — Historie</div>
+      <div style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#7C766A">03 — Historie</div>
       <h2 style="font:600 clamp(26px,2.9vw,38px)/1.1 Archivo,sans-serif;letter-spacing:-.024em;margin:18px 0 0">De geschiedenis van Wim van Breda</h2>
       <p style="font:400 17px/1.8 'Archivo',sans-serif;color:#43413C;margin:18px 0 0;max-width:54ch">Wilt u meer weten over de geschiedenis van Wim van Breda? Dat kan natuurlijk. Bekijk het in onze tijdlijn onderaan deze pagina.</p>
       <div style="display:flex;align-items:center;gap:12px;margin-top:26px">
-        <span style="font:500 10px/1 'Archivo',sans-serif;letter-spacing:.22em;text-transform:uppercase;color:#8C867A">Naar de tijdlijn</span>
+        <span style="font:500 10px/1 'Archivo',sans-serif;letter-spacing:.22em;text-transform:uppercase;color:#7C766A">Naar de tijdlijn</span>
         <span style="width:1px;height:24px;background:linear-gradient(to bottom,#FBAE00,rgba(251,174,0,0));animation:wvbBob 2.6s ease-in-out infinite"></span>
       </div>
       <div style="height:70px"></div>
@@ -2052,15 +2079,15 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
   </section>
 
   <section style="position:relative;overflow:hidden;background:rgba(247,245,241,.62);border-bottom:1px solid #EFECE6;padding:0 0 90px">
-    <img src="/assets/grid-rood.png" alt="" aria-hidden="true" style="position:absolute;bottom:-140px;left:-110px;width:420px;opacity:.1;pointer-events:none">
+    <img src="/assets/grid-rood.png" alt="" aria-hidden="true" width="2201" height="2201" style="position:absolute;bottom:-140px;left:-110px;width:420px;opacity:.1;pointer-events:none">
     <div style="position:relative;max-width:1420px;margin:0 auto;padding:0 70px;display:flex;align-items:flex-end;justify-content:space-between;gap:30px;flex-wrap:wrap">
       <div style="display:flex;align-items:flex-end;gap:34px;flex-wrap:wrap">
         <div>
           <h3 style="font:600 clamp(22px,2.3vw,30px)/1.15 Archivo,sans-serif;letter-spacing:-.022em;margin:0">Tijdlijn 1957 — nu</h3>
-          <div style="font:400 14px/1.5 'Archivo',sans-serif;color:#7C7770;margin-top:10px">Sleep, scroll of gebruik de pijlen. Klik een jaartal voor het verhaal.</div>
+          <div style="font:400 14px/1.5 'Archivo',sans-serif;color:#7B766F;margin-top:10px">Sleep, scroll of gebruik de pijlen. Klik een jaartal voor het verhaal.</div>
         </div>
         <div style="display:flex;align-items:center;gap:16px;padding-bottom:2px">
-          <span aria-live="polite" style="font:500 13px/1 'Archivo',sans-serif;letter-spacing:.1em;color:#8C867A"><span style="color:#111214">{{ tlPos }}</span> / {{ tlTotal }}</span>
+          <span aria-live="polite" style="font:500 13px/1 'Archivo',sans-serif;letter-spacing:.1em;color:#7C766A"><span style="color:#111214">{{ tlPos }}</span> / {{ tlTotal }}</span>
           <div style="display:flex;gap:8px">
             <button onClick="{{ tlPrev }}" aria-label="Vorige gebeurtenis" disabled="{{ tlAtStart }}" onMouseEnter="{{ arrowPrevIn }}" onMouseLeave="{{ arrowOut }}" style="width:54px;height:54px;display:flex;align-items:center;justify-content:center;background:#fff;border:1px solid #22211E;color:#111214;opacity:{{ tlPrevOpacity }};cursor:{{ tlPrevCursor }};font:400 19px/1 'Archivo',sans-serif;transition:background .24s cubic-bezier(.2,.7,.3,1),border-color .24s,transform .24s,box-shadow .24s"><span data-ar="" style="display:block;transition:transform .24s cubic-bezier(.2,.7,.3,1)">←</span></button>
             <button onClick="{{ tlNext }}" aria-label="Volgende gebeurtenis" disabled="{{ tlAtEnd }}" onMouseEnter="{{ arrowNextIn }}" onMouseLeave="{{ arrowOut }}" style="width:54px;height:54px;display:flex;align-items:center;justify-content:center;background:#fff;border:1px solid #22211E;color:#111214;opacity:{{ tlNextOpacity }};cursor:{{ tlNextCursor }};font:400 19px/1 'Archivo',sans-serif;transition:background .24s cubic-bezier(.2,.7,.3,1),border-color .24s,transform .24s,box-shadow .24s"><span data-ar="" style="display:block;transition:transform .24s cubic-bezier(.2,.7,.3,1)">→</span></button>
@@ -2077,7 +2104,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
             <div style="flex:1;display:flex;align-items:flex-end;justify-content:center;padding:0 0 44px">
               <sc-if value="{{ e.photoTop }}" hint-placeholder-val="{{ true }}">
                 <div data-diamond="" style="width:128px;height:128px;position:relative;transform:rotate(45deg) scale({{ e.scale }});border:1px solid #22211E;background:#EDEAE4;box-shadow:0 18px 34px -28px rgba(17,18,20,.6);transition:transform .4s cubic-bezier(.2,.7,.3,1),border-color .3s">
-                  <div style="position:absolute;top:50%;left:50%;width:90px;height:90px;margin:-45px 0 0 -45px;transform:rotate(-45deg);overflow:hidden"><image-slot data-shot key="{{ e.id }}" id="tl-{{ e.id }}" shape="rect" placeholder="{{ e.year }}" src="{{ e.slotSrc }}"></image-slot></div>
+                  <div style="position:absolute;top:50%;left:50%;width:90px;height:90px;margin:-45px 0 0 -45px;transform:rotate(-45deg);overflow:hidden"><image-slot data-shot key="{{ e.id }}" id="tl-{{ e.id }}" shape="rect" placeholder="{{ e.year }}" ref="{{ e.slotRef }}"></image-slot></div>
                 </div>
               </sc-if>
               <sc-if value="{{ e.textTop }}" hint-placeholder-val="{{ false }}">
@@ -2092,7 +2119,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
             <div style="flex:1;display:flex;align-items:flex-start;justify-content:center;padding:44px 0 0">
               <sc-if value="{{ e.textTop }}" hint-placeholder-val="{{ false }}">
                 <div data-diamond="" style="width:128px;height:128px;position:relative;transform:rotate(45deg) scale({{ e.scale }});border:1px solid #22211E;background:#EDEAE4;box-shadow:0 18px 34px -28px rgba(17,18,20,.6);transition:transform .4s cubic-bezier(.2,.7,.3,1),border-color .3s">
-                  <div style="position:absolute;top:50%;left:50%;width:90px;height:90px;margin:-45px 0 0 -45px;transform:rotate(-45deg);overflow:hidden"><image-slot data-shot key="{{ e.id }}" id="tlb-{{ e.id }}" shape="rect" placeholder="{{ e.year }}" src="{{ e.slotSrc }}"></image-slot></div>
+                  <div style="position:absolute;top:50%;left:50%;width:90px;height:90px;margin:-45px 0 0 -45px;transform:rotate(-45deg);overflow:hidden"><image-slot data-shot key="{{ e.id }}" id="tlb-{{ e.id }}" shape="rect" placeholder="{{ e.year }}" ref="{{ e.slotRef }}"></image-slot></div>
                 </div>
               </sc-if>
               <sc-if value="{{ e.photoTop }}" hint-placeholder-val="{{ true }}">
@@ -2115,13 +2142,13 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
 <div>
   <section style="border-bottom:1px solid #EFECE6">
     <div style="max-width:1420px;margin:0 auto;padding:56px 70px 64px">
-      <nav style="display:flex;align-items:center;gap:10px;font:400 13px/1 'Archivo',sans-serif;color:#8C867A;flex-wrap:wrap">
-        <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#8C867A;font:inherit">Home</button><span>/</span>
-        <button onClick="{{ goOver }}" style="background:none;border:0;padding:0;cursor:pointer;color:#8C867A;font:inherit">Over ons</button><span>/</span>
+      <nav style="display:flex;align-items:center;gap:10px;font:400 13px/1 'Archivo',sans-serif;color:#7C766A;flex-wrap:wrap">
+        <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">Home</button><span>/</span>
+        <button onClick="{{ goOver }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">Over ons</button><span>/</span>
         <span style="color:#111214">Nieuws</span>
       </nav>
       <div style="max-width:60ch;margin-top:38px">
-        <div style="display:flex;align-items:center;gap:14px"><svg class="wvb-marker" width="40" height="12" viewBox="0 0 40 12" fill="none" aria-hidden="true"><path d="M1 6H30M30 6 39 1M30 6 39 11" stroke="#C00020" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg><span style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.22em;text-transform:uppercase;color:#8C867A">Over ons · nieuws</span></div>
+        <div style="display:flex;align-items:center;gap:14px"><svg class="wvb-marker" width="40" height="12" viewBox="0 0 40 12" fill="none" aria-hidden="true"><path d="M1 6H30M30 6 39 1M30 6 39 11" stroke="#C00020" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg><span style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.22em;text-transform:uppercase;color:#7C766A">Over ons · nieuws</span></div>
         <h1 style="font:600 clamp(32px,4vw,54px)/1.05 Archivo,sans-serif;letter-spacing:-.03em;margin:24px 0 0">Nieuws</h1>
         <p style="font:400 17px/1.75 'Archivo',sans-serif;color:#43413C;margin:20px 0 0">Nieuwe machines in het programma, leveringen, beurzen en ontwikkelingen binnen het bedrijf.</p>
       </div>
@@ -2148,7 +2175,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
             <sc-if value="{{ n.noImg }}" hint-placeholder-val="{{ true }}"><div style="width:100%;height:100%"><image-slot data-shot key="{{ n.id }}" id="news-{{ n.id }}" shape="rect" placeholder="{{ n.title }}"></image-slot></div></sc-if>
           </div>
           <div style="padding:26px;display:flex;flex-direction:column;flex:1">
-            <div style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#8C867A">{{ n.date }}</div>
+            <div style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#7C766A">{{ n.date }}</div>
             <h2 style="font:600 20px/1.28 Archivo,sans-serif;margin:12px 0 0;min-height:2.56em;overflow:hidden;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2">{{ n.title }}</h2>
             <div style="flex:1"></div>
             <span style="display:inline-flex;align-items:center;gap:10px;margin-top:22px;padding-top:18px;border-top:1px solid #F1EFEA;font:600 13px/1 'Archivo',sans-serif">Lees meer <span data-arrow="" style="color:#FBAE00;transition:transform .24s cubic-bezier(.2,.7,.3,1)">→</span></span>
@@ -2161,7 +2188,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
         <nav aria-label="Paginering nieuwsoverzicht" style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding-top:28px;border-top:1px solid #E6E3DD">
           <button onClick="{{ newsPrev }}" disabled="{{ newsPrevDis }}" style-hover="background:#FBAE00" style="background:#fff;border:1px solid #000;color:#000;padding:12px 16px;font:600 13px/1 'Archivo',sans-serif;cursor:pointer;transition:all .2s">← Vorige</button>
           <sc-for list="{{ newsPageLinks }}" as="p" hint-placeholder-count="3">
-            <sc-if value="{{ p.ellipsis }}" hint-placeholder-val="{{ false }}"><span aria-hidden="true" style="min-width:44px;padding:12px 6px;text-align:center;font:600 13px/1 'Archivo',sans-serif;color:#8C867A">{{ p.n }}</span></sc-if>
+            <sc-if value="{{ p.ellipsis }}" hint-placeholder-val="{{ false }}"><span aria-hidden="true" style="min-width:44px;padding:12px 6px;text-align:center;font:600 13px/1 'Archivo',sans-serif;color:#7C766A">{{ p.n }}</span></sc-if>
             <sc-if value="{{ p.active }}" hint-placeholder-val="{{ false }}"><button onClick="{{ p.go }}" aria-current="page" style="background:#FBAE00;border:1px solid #000;color:#000;min-width:44px;padding:12px 10px;font:600 13px/1 'Archivo',sans-serif;cursor:pointer;transition:all .2s">{{ p.n }}</button></sc-if>
             <sc-if value="{{ p.inactive }}" hint-placeholder-val="{{ true }}"><button onClick="{{ p.go }}" style-hover="background:#FBAE00" style="background:#ffffff;border:1px solid #000;color:#000;min-width:44px;padding:12px 10px;font:600 13px/1 'Archivo',sans-serif;cursor:pointer;transition:all .2s">{{ p.n }}</button></sc-if>
           </sc-for>
@@ -2177,13 +2204,13 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
 <div>
   <section style="border-bottom:1px solid #EFECE6">
     <div style="max-width:1420px;margin:0 auto;padding:56px 70px 60px">
-      <nav style="display:flex;align-items:center;gap:10px;font:400 13px/1 'Archivo',sans-serif;color:#8C867A;flex-wrap:wrap">
-        <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#8C867A;font:inherit">Home</button><span>/</span>
-        <button onClick="{{ goNieuws }}" style="background:none;border:0;padding:0;cursor:pointer;color:#8C867A;font:inherit">Nieuws</button><span>/</span>
+      <nav style="display:flex;align-items:center;gap:10px;font:400 13px/1 'Archivo',sans-serif;color:#7C766A;flex-wrap:wrap">
+        <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">Home</button><span>/</span>
+        <button onClick="{{ goNieuws }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">Nieuws</button><span>/</span>
         <span style="color:#111214">{{ article.title }}</span>
       </nav>
       <div style="max-width:70ch;margin-top:38px">
-        <div style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#8C867A">{{ article.date }}</div>
+        <div style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#7C766A">{{ article.date }}</div>
         <h1 style="font:600 clamp(30px,3.6vw,48px)/1.08 Archivo,sans-serif;letter-spacing:-.03em;margin:20px 0 0">{{ article.title }}</h1>
         <sc-if value="{{ articleHasIntro }}" hint-placeholder-val="{{ true }}"><p style="font:400 19px/1.75 'Archivo',sans-serif;color:#43413C;margin:22px 0 0">{{ article.intro }}</p></sc-if>
       </div>
@@ -2267,14 +2294,14 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
 <div>
   <section style="border-bottom:1px solid #EFECE6">
     <div style="max-width:1420px;margin:0 auto;padding:56px 70px 64px">
-      <nav style="display:flex;align-items:center;gap:10px;font:400 13px/1 'Archivo',sans-serif;color:#8C867A;flex-wrap:wrap">
-        <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#8C867A;font:inherit">Home</button><span>/</span>
+      <nav style="display:flex;align-items:center;gap:10px;font:400 13px/1 'Archivo',sans-serif;color:#7C766A;flex-wrap:wrap">
+        <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">Home</button><span>/</span>
         <span style="color:#111214">Sitemap</span>
       </nav>
       <div style="max-width:60ch;margin-top:38px">
         <h1 style="font:600 clamp(32px,4vw,54px)/1.05 Archivo,sans-serif;letter-spacing:-.03em;margin:24px 0 0">Sitemap</h1>
         <p style="font:400 17px/1.75 'Archivo',sans-serif;color:#43413C;margin:20px 0 0">Overzicht van de website van Wim van Breda: bestaande hoofdpagina's en de nieuwe inhoudelijke pagina's per onderwerp.</p>
-        <p style="font:400 15px/1.7 'Archivo',sans-serif;color:#8C867A;margin:14px 0 0">De pagina's onder "Belangrijke websitepagina's" zijn onderdeel van de hoofdwebsite en bereikbaar via het menu op de homepage.</p>
+        <p style="font:400 15px/1.7 'Archivo',sans-serif;color:#7C766A;margin:14px 0 0">De pagina's onder "Belangrijke websitepagina's" zijn onderdeel van de hoofdwebsite en bereikbaar via het menu op de homepage.</p>
       </div>
     </div>
   </section>
@@ -2296,11 +2323,11 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
 <sc-if value="{{ isWerken }}" hint-placeholder-val="{{ false }}">
 <div>
   <section style="position:relative;overflow:hidden;border-bottom:1px solid #EFECE6">
-    <img src="/assets/grid-rood.png" alt="" aria-hidden="true" style="position:absolute;top:-90px;right:-120px;width:400px;opacity:.09;pointer-events:none">
+    <img src="/assets/grid-rood.png" alt="" aria-hidden="true" width="2201" height="2201" style="position:absolute;top:-90px;right:-120px;width:400px;opacity:.09;pointer-events:none">
     <div style="position:relative;max-width:1420px;margin:0 auto;padding:56px 70px 76px">
-      <nav style="display:flex;align-items:center;gap:10px;font:400 13px/1 'Archivo',sans-serif;color:#8C867A;flex-wrap:wrap">
-        <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#8C867A;font:inherit">Home</button><span>/</span>
-        <button onClick="{{ goOver }}" style="background:none;border:0;padding:0;cursor:pointer;color:#8C867A;font:inherit">Over ons</button><span>/</span>
+      <nav style="display:flex;align-items:center;gap:10px;font:400 13px/1 'Archivo',sans-serif;color:#7C766A;flex-wrap:wrap">
+        <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">Home</button><span>/</span>
+        <button onClick="{{ goOver }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">Over ons</button><span>/</span>
         <span style="color:#111214">Werken bij</span>
       </nav>
       <div style="display:grid;grid-template-columns:1.05fr 1fr;gap:64px;align-items:end;margin-top:40px" data-split="">
@@ -2326,11 +2353,11 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
           <button onClick="{{ v.open }}" onMouseEnter="{{ hoverIn }}" onMouseLeave="{{ hoverOut }}" style="text-align:left;background:#fff;border:1px solid #E2DED7;padding:32px 34px;cursor:pointer;display:grid;grid-template-columns:1fr auto;gap:28px;align-items:center;transition:transform .28s cubic-bezier(.2,.7,.3,1),box-shadow .28s,border-color .28s" data-split="">
             <div>
               <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center">
-                <span style="font:500 10px/1 'Archivo',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#8C867A">{{ v.afdeling }}</span>
+                <span style="font:500 10px/1 'Archivo',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#7C766A">{{ v.afdeling }}</span>
                 <span style="width:4px;height:4px;background:#FBAE00"></span>
-                <span style="font:400 13px/1 'Archivo',sans-serif;color:#8C867A">{{ v.locatie }}</span>
+                <span style="font:400 13px/1 'Archivo',sans-serif;color:#7C766A">{{ v.locatie }}</span>
                 <span style="width:4px;height:4px;background:#FBAE00"></span>
-                <span style="font:400 13px/1 'Archivo',sans-serif;color:#8C867A">{{ v.uren }}</span>
+                <span style="font:400 13px/1 'Archivo',sans-serif;color:#7C766A">{{ v.uren }}</span>
               </div>
               <h3 style="font:600 clamp(19px,2vw,24px)/1.25 Archivo,sans-serif;margin:14px 0 0">{{ v.titel }}</h3>
             </div>
@@ -2347,19 +2374,19 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
 <div>
   <section style="border-bottom:1px solid #EFECE6">
     <div style="max-width:1420px;margin:0 auto;padding:56px 70px 64px">
-      <nav style="display:flex;align-items:center;gap:10px;font:400 13px/1 'Archivo',sans-serif;color:#8C867A;flex-wrap:wrap">
-        <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#8C867A;font:inherit">Home</button><span>/</span>
-        <button onClick="{{ goWerken }}" style="background:none;border:0;padding:0;cursor:pointer;color:#8C867A;font:inherit">Werken bij</button><span>/</span>
+      <nav style="display:flex;align-items:center;gap:10px;font:400 13px/1 'Archivo',sans-serif;color:#7C766A;flex-wrap:wrap">
+        <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">Home</button><span>/</span>
+        <button onClick="{{ goWerken }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">Werken bij</button><span>/</span>
         <span style="color:#111214">{{ vac.titel }}</span>
       </nav>
       <div style="margin-top:38px;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:64px;align-items:start" data-split="">
         <div style="max-width:62ch">
           <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center">
-            <span style="font:500 10px/1 'Archivo',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#8C867A">{{ vac.afdeling }}</span>
+            <span style="font:500 10px/1 'Archivo',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#7C766A">{{ vac.afdeling }}</span>
             <span style="width:4px;height:4px;background:#FBAE00"></span>
-            <span style="font:400 13px/1 'Archivo',sans-serif;color:#8C867A">{{ vac.locatie }}</span>
+            <span style="font:400 13px/1 'Archivo',sans-serif;color:#7C766A">{{ vac.locatie }}</span>
             <span style="width:4px;height:4px;background:#FBAE00"></span>
-            <span style="font:400 13px/1 'Archivo',sans-serif;color:#8C867A">{{ vac.uren }}</span>
+            <span style="font:400 13px/1 'Archivo',sans-serif;color:#7C766A">{{ vac.uren }}</span>
           </div>
           <h1 style="font:600 clamp(30px,3.6vw,48px)/1.08 Archivo,sans-serif;letter-spacing:-.03em;margin:22px 0 0">{{ vac.titel }}</h1>
           <p style="font:400 17px/1.85 'Archivo',sans-serif;color:#43413C;margin:22px 0 0">{{ vac.intro }}</p>
@@ -2426,12 +2453,12 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
               <label style="display:flex;flex-direction:column;gap:9px;margin-top:24px">
                 <span style="font:500 13px/1 'Archivo',sans-serif">CV uploaden *</span>
                 <input type="file" name="cv" accept=".pdf,.doc,.docx,application/pdf" required="required" style="border:1px dashed #C9C4BA;padding:18px 16px;font:400 14px/1.4 'Archivo',sans-serif;background:#FCFBF9;cursor:pointer">
-                <span style="font:400 12px/1.6 'Archivo',sans-serif;color:#8C867A">PDF of DOCX, maximaal 10 MB.</span>
+                <span style="font:400 12px/1.6 'Archivo',sans-serif;color:#7C766A">PDF of DOCX, maximaal 10 MB.</span>
               </label>
               <sc-if value="{{ applyError }}" hint-placeholder-val="{{ false }}">
                 <div role="alert" style="margin-top:20px;border-left:2px solid #E1021D;background:#FDF3F4;padding:14px 16px;font:400 14px/1.6 'Archivo',sans-serif;color:#8A1220">{{ applyErrorText }}</div>
               </sc-if>
-              <p style="font:400 12px/1.7 'Archivo',sans-serif;color:#8C867A;margin:24px 0 0;max-width:60ch">Wij gebruiken je gegevens en cv uitsluitend voor deze sollicitatieprocedure en bewaren ze niet langer dan nodig. Zie ons privacybeleid.</p>
+              <p style="font:400 12px/1.7 'Archivo',sans-serif;color:#7C766A;margin:24px 0 0;max-width:60ch">Wij gebruiken je gegevens en cv uitsluitend voor deze sollicitatieprocedure en bewaren ze niet langer dan nodig. Zie ons privacybeleid.</p>
               <button type="submit" disabled="{{ applyBusy }}" onMouseEnter="{{ btnIn }}" onMouseLeave="{{ btnOut }}" style="margin-top:26px;display:inline-flex;align-items:center;gap:10px;background:#FBAE00;color:#111214;border:1px solid #111214;padding:18px 28px;font:600 15px/1 'Archivo',sans-serif;cursor:pointer;opacity:{{ applyOpacity }};transition:all .22s">{{ applyLabel }} <span data-arrow="" style="transition:transform .24s cubic-bezier(.2,.7,.3,1)">→</span></button>
             </form>
           </sc-if>
@@ -2447,13 +2474,13 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
 <div>
   <section style="border-bottom:1px solid #EFECE6">
     <div style="max-width:1420px;margin:0 auto;padding:56px 70px 64px">
-      <nav style="display:flex;align-items:center;gap:10px;font:400 13px/1 'Archivo',sans-serif;color:#8C867A;flex-wrap:wrap">
-        <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#8C867A;font:inherit">Home</button><span>/</span>
-        <button onClick="{{ goOver }}" style="background:none;border:0;padding:0;cursor:pointer;color:#8C867A;font:inherit">Over ons</button><span>/</span>
+      <nav style="display:flex;align-items:center;gap:10px;font:400 13px/1 'Archivo',sans-serif;color:#7C766A;flex-wrap:wrap">
+        <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">Home</button><span>/</span>
+        <button onClick="{{ goOver }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">Over ons</button><span>/</span>
         <span style="color:#111214">Geleverd</span>
       </nav>
       <div style="max-width:60ch;margin-top:38px">
-        <div style="display:flex;align-items:center;gap:14px"><svg class="wvb-marker" width="40" height="12" viewBox="0 0 40 12" fill="none" aria-hidden="true"><path d="M1 6H30M30 6 39 1M30 6 39 11" stroke="#C00020" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg><span style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.22em;text-transform:uppercase;color:#8C867A">Over ons · geleverd</span></div>
+        <div style="display:flex;align-items:center;gap:14px"><svg class="wvb-marker" width="40" height="12" viewBox="0 0 40 12" fill="none" aria-hidden="true"><path d="M1 6H30M30 6 39 1M30 6 39 11" stroke="#C00020" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg><span style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.22em;text-transform:uppercase;color:#7C766A">Over ons · geleverd</span></div>
         <h1 style="font:600 clamp(32px,4vw,54px)/1.05 Archivo,sans-serif;letter-spacing:-.03em;margin:24px 0 0">Geleverd</h1>
         <p style="font:400 17px/1.75 'Archivo',sans-serif;color:#43413C;margin:20px 0 0">Machines die recent hun weg naar onze klanten vonden. Een beeld van wat wij leveren en waar het werk gebeurt.</p>
       </div>
@@ -2475,13 +2502,13 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
             <sc-if value="{{ d.noImg }}" hint-placeholder-val="{{ true }}"><image-slot data-shot key="{{ d.id }}" id="lev-{{ d.id }}" shape="rect" placeholder="{{ d.machine }}"></image-slot></sc-if>
           </div></div>
           <div style="min-height:0;flex:1 1 auto;display:flex;flex-direction:column;padding:20px;box-sizing:border-box">
-            <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;font:500 10px/14px 'Archivo',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#8C867A">
+            <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;font:500 10px/14px 'Archivo',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#7C766A">
               <sc-if value="{{ d.hasCategorie }}" hint-placeholder-val="{{ true }}"><span>{{ d.categorie }}</span></sc-if>
               <sc-if value="{{ d.hasMerk }}" hint-placeholder-val="{{ true }}"><span aria-hidden="true" style="width:4px;height:4px;background:#FBAE00"></span></sc-if>
               <sc-if value="{{ d.hasMerk }}" hint-placeholder-val="{{ true }}"><span>{{ d.merk }}</span></sc-if>
             </div>
             <h2 style="font:600 16px/1.3 Archivo,sans-serif;margin:8px 0 0;overflow:hidden;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2">{{ d.machine }}</h2>
-            <sc-if value="{{ d.hasDatum }}" hint-placeholder-val="{{ false }}"><div style="font:400 13px/1 'Archivo',sans-serif;color:#8C867A;margin-top:8px">Geleverd op {{ d.datum }}</div></sc-if>
+            <sc-if value="{{ d.hasDatum }}" hint-placeholder-val="{{ false }}"><div style="font:400 13px/1 'Archivo',sans-serif;color:#7C766A;margin-top:8px">Geleverd op {{ d.datum }}</div></sc-if>
             <div style="flex:1 1 auto;min-height:8px"></div>
           </div>
         </button>
@@ -2491,7 +2518,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
         <nav aria-label="Paginering geleverde machines" style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:48px;padding-top:28px;border-top:1px solid #E6E3DD">
           <button onClick="{{ delivPrev }}" disabled="{{ delivPrevDis }}" style-hover="background:#FBAE00" style="background:#fff;border:1px solid #000;color:#000;padding:12px 16px;font:600 13px/1 'Archivo',sans-serif;cursor:pointer;transition:all .2s">← Vorige</button>
           <sc-for list="{{ delivPageLinks }}" as="p" hint-placeholder-count="3">
-            <sc-if value="{{ p.gap }}" hint-placeholder-val="{{ false }}"><span aria-hidden="true" style="min-width:22px;text-align:center;font:600 13px/1 'Archivo',sans-serif;color:#8C867A">…</span></sc-if>
+            <sc-if value="{{ p.gap }}" hint-placeholder-val="{{ false }}"><span aria-hidden="true" style="min-width:22px;text-align:center;font:600 13px/1 'Archivo',sans-serif;color:#7C766A">…</span></sc-if>
             <sc-if value="{{ p.active }}" hint-placeholder-val="{{ false }}"><button onClick="{{ p.go }}" aria-current="page" style="background:#FBAE00;border:1px solid #000;color:#000;min-width:44px;padding:12px 10px;font:600 13px/1 'Archivo',sans-serif;cursor:pointer;transition:all .2s">{{ p.n }}</button></sc-if>
             <sc-if value="{{ p.inactive }}" hint-placeholder-val="{{ true }}"><button onClick="{{ p.go }}" style-hover="background:#FBAE00" style="background:#ffffff;border:1px solid #000;color:#000;min-width:44px;padding:12px 10px;font:600 13px/1 'Archivo',sans-serif;cursor:pointer;transition:all .2s">{{ p.n }}</button></sc-if>
           </sc-for>
@@ -2508,20 +2535,20 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
 <div>
   <section style="border-bottom:1px solid #EFECE6">
     <div style="max-width:1420px;margin:0 auto;padding:56px 70px 60px">
-      <nav style="display:flex;align-items:center;gap:10px;font:400 13px/1 'Archivo',sans-serif;color:#8C867A;flex-wrap:wrap">
-        <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#8C867A;font:inherit">Home</button><span>/</span>
-        <button onClick="{{ goOver }}" style="background:none;border:0;padding:0;cursor:pointer;color:#8C867A;font:inherit">Over ons</button><span>/</span>
-        <button onClick="{{ goGeleverd }}" style="background:none;border:0;padding:0;cursor:pointer;color:#8C867A;font:inherit">Geleverd</button><span>/</span>
+      <nav style="display:flex;align-items:center;gap:10px;font:400 13px/1 'Archivo',sans-serif;color:#7C766A;flex-wrap:wrap">
+        <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">Home</button><span>/</span>
+        <button onClick="{{ goOver }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">Over ons</button><span>/</span>
+        <button onClick="{{ goGeleverd }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">Geleverd</button><span>/</span>
         <span style="color:#111214">{{ delivery.machine }}</span>
       </nav>
       <div style="max-width:70ch;margin-top:38px">
-        <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;font:500 11px/1 'Archivo',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#8C867A">
+        <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;font:500 11px/1 'Archivo',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#7C766A">
           <sc-if value="{{ deliveryHasCategorie }}" hint-placeholder-val="{{ true }}"><span>{{ delivery.categorie }}</span></sc-if>
           <sc-if value="{{ deliveryHasMerk }}" hint-placeholder-val="{{ true }}"><span aria-hidden="true" style="width:4px;height:4px;background:#FBAE00"></span></sc-if>
           <sc-if value="{{ deliveryHasMerk }}" hint-placeholder-val="{{ true }}"><span>{{ delivery.merk }}</span></sc-if>
         </div>
         <h1 style="font:600 clamp(28px,3.4vw,44px)/1.12 Archivo,sans-serif;letter-spacing:-.03em;margin:20px 0 0">{{ delivery.machine }}</h1>
-        <sc-if value="{{ deliveryHasDatum }}" hint-placeholder-val="{{ false }}"><p style="font:400 15px/1 'Archivo',sans-serif;color:#8C867A;margin:18px 0 0">Geleverd op {{ deliveryDatum }}</p></sc-if>
+        <sc-if value="{{ deliveryHasDatum }}" hint-placeholder-val="{{ false }}"><p style="font:400 15px/1 'Archivo',sans-serif;color:#7C766A;margin:18px 0 0">Geleverd op {{ deliveryDatum }}</p></sc-if>
       </div>
     </div>
   </section>
@@ -2589,13 +2616,13 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
 <div>
   <section style="border-bottom:1px solid #EFECE6">
     <div style="max-width:1420px;margin:0 auto;padding:56px 70px 64px">
-      <nav style="display:flex;align-items:center;gap:10px;font:400 13px/1 'Archivo',sans-serif;color:#8C867A;flex-wrap:wrap">
-        <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#8C867A;font:inherit">Home</button><span>/</span>
-        <button onClick="{{ goOver }}" style="background:none;border:0;padding:0;cursor:pointer;color:#8C867A;font:inherit">Over ons</button><span>/</span>
+      <nav style="display:flex;align-items:center;gap:10px;font:400 13px/1 'Archivo',sans-serif;color:#7C766A;flex-wrap:wrap">
+        <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">Home</button><span>/</span>
+        <button onClick="{{ goOver }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">Over ons</button><span>/</span>
         <span style="color:#111214">Magazines</span>
       </nav>
       <div style="max-width:60ch;margin-top:38px">
-        <div style="display:flex;align-items:center;gap:14px"><svg class="wvb-marker" width="40" height="12" viewBox="0 0 40 12" fill="none" aria-hidden="true"><path d="M1 6H30M30 6 39 1M30 6 39 11" stroke="#C00020" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg><span style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.22em;text-transform:uppercase;color:#8C867A">Over ons · magazines</span></div>
+        <div style="display:flex;align-items:center;gap:14px"><svg class="wvb-marker" width="40" height="12" viewBox="0 0 40 12" fill="none" aria-hidden="true"><path d="M1 6H30M30 6 39 1M30 6 39 11" stroke="#C00020" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg><span style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.22em;text-transform:uppercase;color:#7C766A">Over ons · magazines</span></div>
         <h1 style="font:600 clamp(32px,4vw,54px)/1.05 Archivo,sans-serif;letter-spacing:-.03em;margin:24px 0 0">Magazines</h1>
         <p style="font:400 17px/1.75 'Archivo',sans-serif;color:#43413C;margin:20px 0 0">Onze uitgaven met machinenieuws, klantverhalen uit de praktijk en achtergronden over het werk in weg, berm en sloot.</p>
       </div>
@@ -2608,7 +2635,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
         <article onClick="{{ m.open }}" onMouseEnter="{{ hoverIn }}" onMouseLeave="{{ hoverOut }}" style="background:#fff;border:1px solid #E2DED7;cursor:pointer;display:flex;flex-direction:column;overflow:hidden;transition:transform .28s cubic-bezier(.2,.7,.3,1),box-shadow .28s,border-color .28s">
           <div style="aspect-ratio:210/297;overflow:hidden;background:#EDEAE4"><div data-zoom="" style="width:100%;height:100%;transition:transform .5s cubic-bezier(.2,.7,.3,1)"><image-slot data-shot key="{{ m.id }}" id="mag-{{ m.id }}" shape="rect" placeholder="Cover {{ m.editie }}"></image-slot></div></div>
           <div style="padding:24px;display:flex;flex-direction:column;flex:1">
-            <div style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#8C867A">{{ m.jaar }}</div>
+            <div style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#7C766A">{{ m.jaar }}</div>
             <h2 style="font:600 18px/1.3 Archivo,sans-serif;margin:11px 0 0">{{ m.editie }}</h2>
             <p style="font:400 14px/1.7 'Archivo',sans-serif;color:#6E6A63;margin:10px 0 0">{{ m.tekst }}</p>
             <div style="flex:1"></div>
@@ -2637,16 +2664,16 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
 <div>
   <section style="border-bottom:1px solid #EFECE6">
     <div style="max-width:1420px;margin:0 auto;padding:56px 70px 76px">
-      <nav style="display:flex;align-items:center;gap:10px;font:400 13px/1 'Archivo',sans-serif;color:#8C867A;flex-wrap:wrap">
-        <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#8C867A;font:inherit">Home</button><span>/</span>
-        <button onClick="{{ goMagazines }}" style="background:none;border:0;padding:0;cursor:pointer;color:#8C867A;font:inherit">Magazines</button><span>/</span>
+      <nav style="display:flex;align-items:center;gap:10px;font:400 13px/1 'Archivo',sans-serif;color:#7C766A;flex-wrap:wrap">
+        <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">Home</button><span>/</span>
+        <button onClick="{{ goMagazines }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">Magazines</button><span>/</span>
         <span style="color:#111214">{{ magazine.editie }}</span>
       </nav>
       <div style="display:grid;grid-template-columns:380px 1fr;gap:64px;align-items:start;margin-top:44px" data-split="">
         <div>
           <div style="aspect-ratio:210/297;background:#EDEAE4;overflow:hidden;border:1px solid #E2DED7"><image-slot data-shot id="magdet-{{ magazine.id }}" shape="rect" placeholder="Cover {{ magazine.editie }}"></image-slot></div>
           <div style="margin-top:18px;border:1px solid #E2DED7;background:#F8F6F2;padding:18px 20px">
-            <div style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#8C867A">PDF {{ magazine.editie }}</div>
+            <div style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#7C766A">PDF {{ magazine.editie }}</div>
             <label style="display:inline-flex;align-items:center;gap:10px;margin-top:14px;background:#fff;border:1px solid #000;padding:11px 16px;font:600 13px/1 'Archivo',sans-serif;cursor:pointer">
               <input onChange="{{ onMagPdf }}" type="file" accept="application/pdf,.pdf" style="position:absolute;width:1px;height:1px;opacity:0;overflow:hidden">
               {{ magPdfBtnLabel }}
@@ -2655,7 +2682,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
           </div>
         </div>
         <div>
-          <div style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#8C867A">Editie {{ magazine.jaar }}</div>
+          <div style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#7C766A">Editie {{ magazine.jaar }}</div>
           <h1 style="font:600 clamp(28px,3.4vw,46px)/1.08 Archivo,sans-serif;letter-spacing:-.03em;margin:20px 0 0">{{ magazine.editie }}</h1>
           <p style="font:400 18px/1.75 'Archivo',sans-serif;color:#43413C;margin:22px 0 0;max-width:56ch">{{ magazine.tekst }}</p>
           <sc-if value="{{ magHasPdf }}" hint-placeholder-val="{{ false }}">
@@ -2678,14 +2705,14 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
 <sc-if value="{{ isSeo }}" hint-placeholder-val="{{ false }}">
 <div style="background:transparent;border-bottom:1px solid #EFECE6">
   <section style="max-width:1000px;margin:0 auto;padding:64px 40px 90px">
-    <div style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#8C867A">CMS · ontwerpvoorstel</div>
+    <div style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#7C766A">CMS · ontwerpvoorstel</div>
     <h1 style="font:600 clamp(28px,3.4vw,42px)/1.06 Archivo,sans-serif;letter-spacing:-.028em;margin:16px 0 0">SEO-paneel per pagina</h1>
     <p style="font:400 16px/1.75 'Archivo',sans-serif;color:#57544D;margin:16px 0 0;max-width:60ch">Zo ziet het SEO-blok eruit bij het bewerken van een machine, occasion, merk, vacature of nieuwsbericht. Handmatige invoer heeft altijd voorrang op de automatische fallback.</p>
 
     <div style="background:#fff;border:1px solid #E6E3DD;margin-top:40px">
       <div style="padding:22px 28px;border-bottom:1px solid #EFECE6;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap">
         <div style="font:600 16px/1 Archivo,sans-serif">SEO</div>
-        <div style="font:400 12px/1 'Archivo',sans-serif;color:#8C867A">Machine · Herder Musketier-Y maaikorf</div>
+        <div style="font:400 12px/1 'Archivo',sans-serif;color:#7C766A">Machine · Herder Musketier-Y maaikorf</div>
       </div>
       <div style="padding:30px 28px;display:flex;flex-direction:column;gap:26px">
         <label style="display:flex;flex-direction:column;gap:9px">
@@ -2711,11 +2738,11 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
               <button onClick="{{ setIndexYes }}" style="background:{{ idxYesBg }};color:{{ idxYesFg }};border:0;padding:13px 24px;font:600 13px/1 'Archivo',sans-serif;cursor:pointer;transition:all .2s">Ja</button>
               <button onClick="{{ setIndexNo }}" style="background:{{ idxNoBg }};color:{{ idxNoFg }};border:0;padding:13px 24px;font:600 13px/1 'Archivo',sans-serif;cursor:pointer;transition:all .2s">Nee</button>
             </div>
-            <div style="font:400 13px/1.6 'Archivo',sans-serif;color:#8C867A;margin-top:6px">Filtercombinaties zonder SEO-waarde staan standaard op <em>noindex</em> met canonical naar de categorie. Bewuste landingspagina's zoals <span style="font-family:'Archivo',sans-serif">/machines/klepelmaaiers/votex/</span> worden handmatig aangezet.</div>
+            <div style="font:400 13px/1.6 'Archivo',sans-serif;color:#7C766A;margin-top:6px">Filtercombinaties zonder SEO-waarde staan standaard op <em>noindex</em> met canonical naar de categorie. Bewuste landingspagina's zoals <span style="font-family:'Archivo',sans-serif">/machines/klepelmaaiers/votex/</span> worden handmatig aangezet.</div>
           </div>
         </div>
         <div style="border-top:1px solid #EFECE6;padding-top:26px">
-          <div style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#8C867A">Voorbeeld in Google</div>
+          <div style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#7C766A">Voorbeeld in Google</div>
           <div style="margin-top:18px;max-width:600px">
             <div style="font:400 13px/1.4 'Archivo',sans-serif;color:#5F6368">www.wimvanbreda.nl › machines › maaikorven</div>
             <div style="font:400 20px/1.3 Archivo,sans-serif;color:#1A0DAB;margin-top:5px">{{ seoT }}</div>
@@ -2733,14 +2760,14 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
 <section style="border-top:1px solid #EFECE6;background:transparent">
   <div style="max-width:1360px;margin:0 auto;padding:88px 40px;display:grid;grid-template-columns:1fr 1.15fr;gap:64px;align-items:start" data-split="">
     <div>
-      <div style="display:flex;align-items:center;gap:14px;font:500 11px/1 'Archivo',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#8C867A"><svg class="wvb-marker" width="40" height="12" viewBox="0 0 40 12" fill="none" aria-hidden="true"><path d="M1 6H30M30 6 39 1M30 6 39 11" stroke="#C00020" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg> In 3 stappen</div>
+      <div style="display:flex;align-items:center;gap:14px;font:500 11px/1 'Archivo',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#7C766A"><svg class="wvb-marker" width="40" height="12" viewBox="0 0 40 12" fill="none" aria-hidden="true"><path d="M1 6H30M30 6 39 1M30 6 39 11" stroke="#C00020" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg> In 3 stappen</div>
       <h2 data-hometitle2="" style="font:600 clamp(20px,calc(2.42vw - 3.5px),29px)/1.1 Archivo,sans-serif;letter-spacing:-.024em;margin:16px 0 0">Kunnen wij u ergens mee helpen?</h2>
       <p style="font:400 16px/1.75 'Archivo',sans-serif;color:#57544D;margin:16px 0 0;max-width:44ch">Vertel kort waar u naar op zoek bent. Wij zetten de juiste collega op uw vraag.</p>
     </div>
     <div style="border:1px solid #E6E3DD;padding:36px 34px">
       <div style="display:flex;align-items:center;gap:14px">
         <div style="flex:1;height:3px;background:#F1EFEA;position:relative"><div style="position:absolute;inset:0;background:#FBAE00;transform-origin:left;transform:scaleX({{ qProgress }});transition:transform .34s cubic-bezier(.2,.7,.3,1)"></div></div>
-        <span style="font:400 12px/1 'Archivo',sans-serif;color:#8C867A">{{ qLabel }}</span>
+        <span style="font:400 12px/1 'Archivo',sans-serif;color:#7C766A">{{ qLabel }}</span>
       </div>
 
       <sc-if value="{{ qStep1 }}" hint-placeholder-val="{{ true }}">
@@ -2757,7 +2784,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
       <sc-if value="{{ qStep2 }}" hint-placeholder-val="{{ false }}">
         <div style="margin-top:30px">
           <div data-vistitle="" style="font:600 19px/1.35 Archivo,sans-serif">Waar kunnen wij u mee helpen?</div>
-          <div style="font:400 14px/1.5 'Archivo',sans-serif;color:#8C867A;margin-top:8px">Onderwerp: {{ qTopic }}</div>
+          <div style="font:400 14px/1.5 'Archivo',sans-serif;color:#7C766A;margin-top:8px">Onderwerp: {{ qTopic }}</div>
           <textarea onInput="{{ setQMsg }}" rows="4" placeholder="Bijvoorbeeld: ik zoek een klepelmaaier voor bermonderhoud achter een 90 pk tractor." style="width:100%;margin-top:18px;border:1px solid #D9D5CD;border-radius:2px;padding:14px 15px;font:400 15px/1.6 'Archivo',sans-serif;resize:vertical"></textarea>
           <div style="display:flex;gap:12px;margin-top:20px;flex-wrap:wrap">
             <button onClick="{{ qBack }}" style="background:none;border:1px solid #D9D5CD;border-radius:2px;padding:14px 20px;font:600 14px/1 'Archivo',sans-serif;cursor:pointer">Terug</button>
@@ -2788,7 +2815,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
           <img src="/assets/tractor-opt.png" alt="" width="158" height="160" loading="lazy" decoding="async" style="width:46px;height:46px;flex:0 0 46px">
           <div>
             <div data-vistitle="" style="font:600 19px/1.35 Archivo,sans-serif">Bedankt, uw vraag staat bij ons</div>
-            <p style="font:400 15px/1.7 'Archivo',sans-serif;color:#7C7770;margin:8px 0 16px">Een collega van {{ qTopic }} neemt op werkdagen binnen één werkdag contact met u op.</p>
+            <p style="font:400 15px/1.7 'Archivo',sans-serif;color:#7B766F;margin:8px 0 16px">Een collega van {{ qTopic }} neemt op werkdagen binnen één werkdag contact met u op.</p>
             <button onClick="{{ qReset }}" style="background:none;border:0;padding:0;cursor:pointer;font:500 14px/1 'Archivo',sans-serif;border-bottom:1px solid #FBAE00;padding-bottom:3px">Nog een vraag stellen</button>
           </div>
         </div>
@@ -2805,7 +2832,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
     <h2 style="font:600 clamp(28px,3.4vw,46px)/1.06 Archivo,sans-serif;letter-spacing:-.028em;margin:0 0 64px;max-width:22ch">Rust, vakmanschap en machines die blijven draaien.</h2>
     <div style="display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:48px" data-split="">
       <div>
-        <img src="/assets/wvb-logo.svg" alt="Wim van Breda" style="height:74px;width:auto;display:block">
+        <img src="/assets/wvb-logo.svg" alt="Wim van Breda" width="299" height="83" style="height:74px;width:auto;display:block">
         <div style="font:400 15px/1.8 'Archivo',sans-serif;color:rgba(17,18,20,.72);margin-top:26px">Oudenhof 14<br>4191 NW Geldermalsen</div>
         <div style="display:flex;flex-direction:column;gap:10px;margin-top:22px">
           <a href="tel:+31345585050" style="color:#111214;font:500 15px/1 'Archivo',sans-serif;width:max-content;border-bottom:2px solid rgba(17,18,20,.35);padding-bottom:4px">+31(0)345 58 50 50</a>
@@ -5481,7 +5508,20 @@ class Component extends DCLogic {
       isMachines: page==='machines'||page==='occasions',
       isVerhuurHome: page==='verhuur'&&!s.param,
       isRentalCat: page==='verhuur'&&!!s.param,
-      rental: rentalCat ? Object.assign({}, rentalCat, {heroImgSrc: Component.RENTAL_CAT_IMG[rentalCat.id] || ''}) : {},
+      // heroImgEl/hasHeroImg/noHeroImg i.p.v. een kaal src="{{ rental.heroImgSrc }}"
+      // op <image-slot>: die attribuut-interpolatie wordt door de runtime
+      // NIET vervangen (image-slot leest zijn src-attribuut als vaste,
+      // auteursgestuurde string, niet als binding), waardoor de letterlijke
+      // "{{ rental.heroImgSrc }}"-tekst als src bleef staan en de browser
+      // die als (404) netwerk-request opvroeg. photoEl() bouwt hier i.p.v.
+      // daarvan een echt, vooraf opgelost <img>-element, exact zoals overal
+      // elders op de site waar een berekende foto getoond wordt.
+      rental: rentalCat ? Object.assign({}, rentalCat, {
+        heroImgSrc: Component.RENTAL_CAT_IMG[rentalCat.id] || '',
+        hasHeroImg: !!Component.RENTAL_CAT_IMG[rentalCat.id],
+        noHeroImg: !Component.RENTAL_CAT_IMG[rentalCat.id],
+        heroImgEl: Component.RENTAL_CAT_IMG[rentalCat.id] ? this.photoEl({src:Component.RENTAL_CAT_IMG[rentalCat.id]}, rentalCat.name, {lazy:false, fit:'cover'}) : null
+      }) : {},
       isDetail: page==='detail' && !!detailRaw,
       isMerken: page==='merken',
       isMerk: page==='merk',
@@ -5597,7 +5637,7 @@ class Component extends DCLogic {
       magPdf: magPdfUrl || '#',
       magPdfBtnLabel: magPdfUrl ? 'Vervang pdf' : 'Upload pdf',
       magPdfNote: magPdfErr || (magPdfName ? magPdfName : 'Alleen application/pdf. De cover hierboven blijft een afbeeldingsveld.'),
-      magPdfNoteColor: magPdfErr ? '#C00020' : '#7C7770',
+      magPdfNoteColor: magPdfErr ? '#C00020' : '#7B766F',
       onMagPdf: (e)=>{
         const file = e.target.files && e.target.files[0];
         if(!file) return;
@@ -5676,6 +5716,12 @@ class Component extends DCLogic {
       videoOff: !s.videoPlaying,
       videoOn: s.videoPlaying,
       videoSrc: 'https://www.youtube-nocookie.com/embed/'+this.videoId()+'?autoplay=1&rel=0',
+      // videoRef zet de src pas via een ref-callback (ná mount, dus altijd al
+      // opgelost) i.p.v. rechtstreeks src="{{ videoSrc }}" in de template:
+      // dat laatste komt via de sc-if-placeholderweergave (vóór React
+      // geladen is) letterlijk als "{{ videoSrc }}" in de DOM terecht, wat de
+      // browser als een echte (404) netwerk-request naar YouTube uitvoert.
+      videoRef: (el)=>{ if (el) el.src = 'https://www.youtube-nocookie.com/embed/'+this.videoId()+'?autoplay=1&rel=0'; },
       playVideo: ()=>this.setState({videoPlaying:true}),
       videoIn:this.videoIn, videoOut:this.videoOut,
       tlRef: (el)=>{ this._tl = el; },
@@ -5702,7 +5748,16 @@ class Component extends DCLogic {
           // en blijft daarom als enige op zijn sidecar-slot draaien; de
           // slot-precedentie in image-slot.js geeft toch voorrang aan een
           // bestaande sidecar-entry boven dit src-attribuut.
+          // slotRef zet dit pad via een ref-callback imperatief op het
+          // src-attribuut, i.p.v. een src="{{ slotSrc }}" in de template
+          // zelf: dat laatste wordt door de sc-for-placeholderweergave (vóór
+          // React geladen is) letterlijk als "{{ e.slotSrc }}" in de DOM
+          // gezet, wat de browser als een echte (404) netwerk-request
+          // uitvoert. Een ref-callback loopt uitsluitend via React zelf, ná
+          // mount, dus met een altijd al opgeloste string — en behoudt de
+          // sidecar-precedentie hierboven (die leest hetzelfde attribuut).
           slotSrc: '/assets/images/over-ons/tijdlijn/' + (top ? 'tl-' : 'tlb-') + e.id + '.webp',
+          slotRef: (el)=>{ if (el) el.setAttribute('src', '/assets/images/over-ons/tijdlijn/' + (top ? 'tl-' : 'tlb-') + e.id + '.webp'); },
           select: ()=>this.tlGo(i)
         });
       }),
@@ -5818,7 +5873,10 @@ class Component extends DCLogic {
       // van een bijbehorende verhuurmachine (zelfde bestand, geen dubbele kopie).
       rentalCats: Component.RENTAL.map(c=>Object.assign({},c,{
         open: ()=>this.nav('verhuur',c.id),
-        catImgSrc: Component.RENTAL_CAT_IMG[c.id] || ''
+        catImgSrc: Component.RENTAL_CAT_IMG[c.id] || '',
+        hasCatImg: !!Component.RENTAL_CAT_IMG[c.id],
+        noCatImg: !Component.RENTAL_CAT_IMG[c.id],
+        catImgEl: Component.RENTAL_CAT_IMG[c.id] ? this.photoEl({src:Component.RENTAL_CAT_IMG[c.id]}, c.name, {lazy:true, fit:'cover'}) : null
       })),
       closeMenu: ()=>this.setState({menu:null}),
       toggleMob: ()=>this.setState({mob:!s.mob}),
@@ -5994,7 +6052,7 @@ class Component extends DCLogic {
       detailToepassingen: detailRaw ? (this.deco(detailRaw, s.rentalFrom).toepassingen||[]).map(t=>({label:t, go: ()=>this.nav('machines',null,{q:t})})) : [],
       goDetailType: ()=>{ if(detailRaw) this.nav(detailRaw.isOccasion?'occasions':'machines',null,{ftype:[detailRaw.type]}); },
       goDetailBrand: ()=>{ if(!detailRaw) return; const b=Component.BRANDS.find(x=>x.name===detailRaw.brand); if(b) this.nav('merk',b.id); else this.nav('machines',null,{fbrand:[detailRaw.brand]}); },
-      crumbOut: (e)=>{ e.currentTarget.style.color='#8C867A'; },
+      crumbOut: (e)=>{ e.currentTarget.style.color='#7C766A'; },
 
       brand: brand || {},
       brandSlotId: brand ? brand.id : 'none',
@@ -6085,14 +6143,20 @@ class Component extends DCLogic {
       // staan — nooit een verzonnen/generieke foto.
       // mobielHref/hasMobiel en hasEmail: tonen die regel alleen wanneer de
       // data ook echt aanwezig is (geen verzonnen contactgegevens).
-      people: Component.PEOPLE.filter(p=>p.afdeling===s.dept).map(p=>Object.assign({},p,{
-        photoSrc: p.photo ? p.photo : (p.hasPhoto ? ('assets/images/medewerkers/'+p.id+'.jpg') : ''),
+      people: Component.PEOPLE.filter(p=>p.afdeling===s.dept).map(p=>{
+        const photoSrc = p.photo ? p.photo : (p.hasPhoto ? ('assets/images/medewerkers/'+p.id+'.jpg') : '');
+        return Object.assign({},p,{
+        photoSrc,
+        hasPhotoImg: !!photoSrc,
+        noPhotoImg: !photoSrc,
+        photoImgEl: photoSrc ? this.photoEl({src:photoSrc}, p.naam+' — portret', {lazy:true, fit:'cover'}) : null,
         hasMobiel: !!p.mobiel,
         noMobiel: !p.mobiel,
         mobielHref: p.mobiel ? ('tel:'+p.mobiel.replace(/\(0\)/g,'').replace(/[^0-9+]/g,'')) : '',
         hasEmail: !!p.email,
         noEmail: !p.email
-      })),
+        });
+      }),
       tabIn:this.tabIn, tabOut:this.tabOut, ddIn:this.ddIn, ddOut:this.ddOut,
       tabMachinesHover: (e)=>{ this.ddIn(e); this.setState({menuTab:'machines'}); },
       tabMerkenHover: (e)=>{ this.ddIn(e); this.setState({menuTab:'merken'}); },
