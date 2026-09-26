@@ -465,7 +465,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
     <nav data-desk="" style="position:relative;align-self:stretch;display:flex;align-items:center;gap:6px">
       <div onMouseEnter="{{ openAanbod }}" onMouseLeave="{{ closeMenu }}" style="position:relative;align-self:stretch;display:flex;align-items:center">
         <button onClick="{{ goMachines }}" style="background:none;border:0;cursor:pointer;padding:10px 16px;font:500 17px/1 'Archivo',sans-serif;color:#000000;display:flex;align-items:center;gap:8px">
-          Aanbod
+          {{ tr.nav_aanbod }}
           <span style="width:5px;height:5px;border-right:1.5px solid rgba(0,0,0,.55);border-bottom:1.5px solid rgba(0,0,0,.55);transform:rotate(45deg);margin-top:-3px"></span>
         </button>
         <sc-if value="{{ menuAanbod }}" hint-placeholder-val="{{ false }}">
@@ -488,25 +488,25 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
             <div style="width:740px;max-width:calc(100vw - 32px);background:#FBAE00;box-shadow:0 10px 30px rgba(0,0,0,.08);display:grid;grid-template-columns:236px 1fr;overflow:hidden">
               <div style="padding:18px 14px;display:flex;flex-direction:column;gap:0;border-right:1px solid rgba(0,0,0,.12)">
                 <button data-active="{{ tabNact }}" onClick="{{ goMachines }}" onMouseEnter="{{ tabMachinesHover }}" onMouseLeave="{{ ddOut }}" style="text-align:left;background:transparent;border:0;border-left:2px solid {{ tabNbc }};cursor:pointer;padding:11px 13px 11px 11px;display:flex;flex-direction:column;gap:3px;transition:background .2s">
-                  <span style="display:flex;align-items:center;justify-content:space-between;gap:10px;font:600 15px/1 'Archivo',sans-serif;color:#000">Nieuwe machines<span data-ddarrow="" style="opacity:1;transition:transform .2s cubic-bezier(.2,.7,.3,1),color .2s ease">→</span></span>
+                  <span style="display:flex;align-items:center;justify-content:space-between;gap:10px;font:600 15px/1 'Archivo',sans-serif;color:#000">{{ tr.nav_nieuwe_machines }}<span data-ddarrow="" style="opacity:1;transition:transform .2s cubic-bezier(.2,.7,.3,1),color .2s ease">→</span></span>
                 </button>
                 <button data-active="{{ tabMact }}" onClick="{{ goMerken }}" onMouseEnter="{{ tabMerkenHover }}" onMouseLeave="{{ ddOut }}" style="text-align:left;background:transparent;border:0;border-left:2px solid {{ tabMbc }};cursor:pointer;padding:11px 13px 11px 11px;display:flex;flex-direction:column;gap:3px;transition:background .2s">
-                  <span style="display:flex;align-items:center;justify-content:space-between;gap:10px;font:600 15px/1 'Archivo',sans-serif;color:#000">Merken<span data-ddarrow="" style="opacity:1;transition:transform .2s cubic-bezier(.2,.7,.3,1),color .2s ease">→</span></span>
+                  <span style="display:flex;align-items:center;justify-content:space-between;gap:10px;font:600 15px/1 'Archivo',sans-serif;color:#000">{{ tr.nav_merken }}<span data-ddarrow="" style="opacity:1;transition:transform .2s cubic-bezier(.2,.7,.3,1),color .2s ease">→</span></span>
                 </button>
                 <button data-active="{{ tabVact }}" onClick="{{ goVerhuur }}" onMouseEnter="{{ tabVerhuurHover }}" onMouseLeave="{{ ddOut }}" style="text-align:left;background:transparent;border:0;border-left:2px solid {{ tabVbc }};cursor:pointer;padding:11px 13px 11px 11px;display:flex;flex-direction:column;gap:3px;transition:background .2s">
-                  <span style="display:flex;align-items:center;justify-content:space-between;gap:10px;font:600 15px/1 'Archivo',sans-serif;color:#000">Verhuur<span data-ddarrow="" style="opacity:1;transition:transform .2s cubic-bezier(.2,.7,.3,1),color .2s ease">→</span></span>
+                  <span style="display:flex;align-items:center;justify-content:space-between;gap:10px;font:600 15px/1 'Archivo',sans-serif;color:#000">{{ tr.nav_verhuur }}<span data-ddarrow="" style="opacity:1;transition:transform .2s cubic-bezier(.2,.7,.3,1),color .2s ease">→</span></span>
                 </button>
                 <button data-active="{{ tabEact }}" onClick="{{ goElektrisch }}" onMouseEnter="{{ tabElektrischHover }}" onMouseLeave="{{ ddOut }}" style="text-align:left;background:transparent;border:0;border-left:2px solid {{ tabEbc }};cursor:pointer;padding:11px 13px 11px 11px;display:flex;flex-direction:column;gap:3px;transition:background .2s">
-                  <span style="display:flex;align-items:center;justify-content:space-between;gap:10px;font:600 15px/1 'Archivo',sans-serif;color:#000">Elektrische machines<span data-ddarrow="" style="opacity:1;transition:transform .2s cubic-bezier(.2,.7,.3,1),color .2s ease">→</span></span>
+                  <span style="display:flex;align-items:center;justify-content:space-between;gap:10px;font:600 15px/1 'Archivo',sans-serif;color:#000">{{ tr.nav_elektrisch }}<span data-ddarrow="" style="opacity:1;transition:transform .2s cubic-bezier(.2,.7,.3,1),color .2s ease">→</span></span>
                 </button>
                 <button data-active="{{ tabEcoact }}" onClick="{{ goEcologisch }}" onMouseEnter="{{ tabEcologischHover }}" onMouseLeave="{{ ddOut }}" style="text-align:left;background:transparent;border:0;border-left:2px solid {{ tabEcobc }};cursor:pointer;padding:11px 13px 11px 11px;display:flex;flex-direction:column;gap:3px;transition:background .2s">
-                  <span style="display:flex;align-items:center;justify-content:space-between;gap:10px;font:600 15px/1 'Archivo',sans-serif;color:#000">Ecologische machines<span data-ddarrow="" style="opacity:1;transition:transform .2s cubic-bezier(.2,.7,.3,1),color .2s ease">→</span></span>
+                  <span style="display:flex;align-items:center;justify-content:space-between;gap:10px;font:600 15px/1 'Archivo',sans-serif;color:#000">{{ tr.nav_ecologisch }}<span data-ddarrow="" style="opacity:1;transition:transform .2s cubic-bezier(.2,.7,.3,1),color .2s ease">→</span></span>
                 </button>
               </div>
               <div style="padding:18px 20px;display:flex;flex-direction:column;justify-content:space-between;gap:14px;min-height:266px">
                 <sc-if value="{{ tabIsMachines }}" hint-placeholder-val="{{ true }}">
                   <div style="display:flex;flex-direction:column;gap:18px;animation:wvbSwap .24s cubic-bezier(.2,.7,.3,1) both">
-                    <div style="font:500 10px/1 'Archivo',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:rgba(0,0,0,.74)">Uitgelichte machinetypes</div>
+                    <div style="font:500 10px/1 'Archivo',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:rgba(0,0,0,.74)">{{ tr.nav_uitgelicht_types }}</div>
                     <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:2px 16px">
                       <sc-for list="{{ menuTypeOpts }}" as="t" hint-placeholder-count="6">
                         <button onClick="{{ t.quick }}" onMouseEnter="{{ ddIn }}" onMouseLeave="{{ ddOut }}" style="display:flex;align-items:center;justify-content:space-between;gap:10px;text-align:left;background:none;border:0;padding:8px 8px 8px 6px;margin:0 -6px;cursor:pointer;font:500 14px/1.3 'Archivo',sans-serif;color:#000;transition:background .2s">
@@ -516,13 +516,13 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
                       </sc-for>
                     </div>
                     <button data-active="{{ tabNact }}" onClick="{{ goMachines }}" onMouseEnter="{{ btnIn }}" onMouseLeave="{{ btnOut }}" style="margin-top:auto;align-self:flex-start;background:#111214;color:#fff;border:0;padding:11px 16px;font:600 12px/1 'Archivo',sans-serif;cursor:pointer;display:inline-flex;gap:9px;align-items:center;transition:all .22s">
-                      Bekijk alle nieuwe machines <span data-arrow="" style="transition:transform .24s cubic-bezier(.2,.7,.3,1)">→</span>
+                      {{ tr.nav_cta_nieuwe_machines }} <span data-arrow="" style="transition:transform .24s cubic-bezier(.2,.7,.3,1)">→</span>
                     </button>
                   </div>
                 </sc-if>
                 <sc-if value="{{ tabIsMerken }}" hint-placeholder-val="{{ false }}">
                   <div style="display:flex;flex-direction:column;gap:18px;animation:wvbSwap .24s cubic-bezier(.2,.7,.3,1) both">
-                    <div style="font:500 10px/1 'Archivo',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:rgba(0,0,0,.74)">Uitgelichte merken</div>
+                    <div style="font:500 10px/1 'Archivo',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:rgba(0,0,0,.74)">{{ tr.nav_uitgelicht_merken }}</div>
                     <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:2px 16px">
                       <sc-for list="{{ topBrands }}" as="b" hint-placeholder-count="6">
                         <button onClick="{{ b.open }}" onMouseEnter="{{ ddIn }}" onMouseLeave="{{ ddOut }}" style="display:flex;align-items:center;justify-content:space-between;gap:10px;text-align:left;background:none;border:0;padding:8px 8px 8px 6px;margin:0 -6px;cursor:pointer;font:500 14px/1.3 'Archivo',sans-serif;color:#000;transition:background .2s">
@@ -532,13 +532,13 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
                       </sc-for>
                     </div>
                     <button data-active="{{ tabMact }}" onClick="{{ goMerken }}" onMouseEnter="{{ btnIn }}" onMouseLeave="{{ btnOut }}" style="margin-top:auto;align-self:flex-start;background:#111214;color:#fff;border:0;padding:11px 16px;font:600 12px/1 'Archivo',sans-serif;cursor:pointer;display:inline-flex;gap:9px;align-items:center;transition:all .22s">
-                      Bekijk alle merken <span data-arrow="" style="transition:transform .24s cubic-bezier(.2,.7,.3,1)">→</span>
+                      {{ tr.nav_cta_merken }} <span data-arrow="" style="transition:transform .24s cubic-bezier(.2,.7,.3,1)">→</span>
                     </button>
                   </div>
                 </sc-if>
                 <sc-if value="{{ tabIsVerhuur }}" hint-placeholder-val="{{ false }}">
                   <div style="display:flex;flex-direction:column;gap:18px;animation:wvbSwap .24s cubic-bezier(.2,.7,.3,1) both">
-                    <div style="font:500 10px/1 'Archivo',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:rgba(0,0,0,.74)">Verhuurcategorieën</div>
+                    <div style="font:500 10px/1 'Archivo',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:rgba(0,0,0,.74)">{{ tr.nav_verhuurcategorieen }}</div>
                     <div style="display:flex;flex-direction:column;gap:2px">
                       <sc-for list="{{ rentalCats }}" as="c" hint-placeholder-count="3">
                         <button onClick="{{ c.open }}" onMouseEnter="{{ ddIn }}" onMouseLeave="{{ ddOut }}" style="display:flex;align-items:center;justify-content:space-between;gap:10px;text-align:left;background:none;border:0;padding:8px 8px 8px 6px;margin:0 -6px;cursor:pointer;font:500 14px/1.3 'Archivo',sans-serif;color:#000;transition:background .2s">
@@ -548,13 +548,13 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
                       </sc-for>
                     </div>
                     <button data-active="{{ tabVact }}" onClick="{{ goVerhuur }}" onMouseEnter="{{ btnIn }}" onMouseLeave="{{ btnOut }}" style="margin-top:auto;align-self:flex-start;background:#111214;color:#fff;border:0;padding:11px 16px;font:600 12px/1 'Archivo',sans-serif;cursor:pointer;display:inline-flex;gap:9px;align-items:center;transition:all .22s">
-                      Bekijk verhuur <span data-arrow="" style="transition:transform .24s cubic-bezier(.2,.7,.3,1)">→</span>
+                      {{ tr.nav_cta_verhuur }} <span data-arrow="" style="transition:transform .24s cubic-bezier(.2,.7,.3,1)">→</span>
                     </button>
                   </div>
                 </sc-if>
                 <sc-if value="{{ tabIsElektrisch }}" hint-placeholder-val="{{ false }}">
                   <div style="display:flex;flex-direction:column;gap:18px;animation:wvbSwap .24s cubic-bezier(.2,.7,.3,1) both">
-                    <div style="font:500 10px/1 'Archivo',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:rgba(0,0,0,.74)">Uitgelicht elektrisch</div>
+                    <div style="font:500 10px/1 'Archivo',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:rgba(0,0,0,.74)">{{ tr.nav_uitgelicht_elektrisch }}</div>
                     <div style="display:flex;flex-direction:column;gap:2px">
                       <sc-for list="{{ menuElektrischOpts }}" as="t" hint-placeholder-count="4">
                         <button onClick="{{ t.quick }}" onMouseEnter="{{ ddIn }}" onMouseLeave="{{ ddOut }}" style="display:flex;align-items:center;justify-content:space-between;gap:10px;text-align:left;background:none;border:0;padding:8px 8px 8px 6px;margin:0 -6px;cursor:pointer;font:500 14px/1.3 'Archivo',sans-serif;color:#000;transition:background .2s">
@@ -564,13 +564,13 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
                       </sc-for>
                     </div>
                     <button data-active="{{ tabEact }}" onClick="{{ goElektrisch }}" onMouseEnter="{{ btnIn }}" onMouseLeave="{{ btnOut }}" style="margin-top:auto;align-self:flex-start;background:#111214;color:#fff;border:0;padding:11px 16px;font:600 12px/1 'Archivo',sans-serif;cursor:pointer;display:inline-flex;gap:9px;align-items:center;transition:all .22s">
-                      Bekijk elektrische machines <span data-arrow="" style="transition:transform .24s cubic-bezier(.2,.7,.3,1)">→</span>
+                      {{ tr.nav_cta_elektrisch }} <span data-arrow="" style="transition:transform .24s cubic-bezier(.2,.7,.3,1)">→</span>
                     </button>
                   </div>
                 </sc-if>
                 <sc-if value="{{ tabIsEcologisch }}" hint-placeholder-val="{{ false }}">
                   <div style="display:flex;flex-direction:column;gap:18px;animation:wvbSwap .24s cubic-bezier(.2,.7,.3,1) both">
-                    <div style="font:500 10px/1 'Archivo',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:rgba(0,0,0,.74)">Uitgelicht ecologisch</div>
+                    <div style="font:500 10px/1 'Archivo',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:rgba(0,0,0,.74)">{{ tr.nav_uitgelicht_ecologisch }}</div>
                     <div style="display:flex;flex-direction:column;gap:2px">
                       <sc-for list="{{ menuEcologischOpts }}" as="t" hint-placeholder-count="4">
                         <button onClick="{{ t.quick }}" onMouseEnter="{{ ddIn }}" onMouseLeave="{{ ddOut }}" style="display:flex;align-items:center;justify-content:space-between;gap:10px;text-align:left;background:none;border:0;padding:8px 8px 8px 6px;margin:0 -6px;cursor:pointer;font:500 14px/1.3 'Archivo',sans-serif;color:#000;transition:background .2s">
@@ -580,7 +580,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
                       </sc-for>
                     </div>
                     <button data-active="{{ tabEcoact }}" onClick="{{ goEcologisch }}" onMouseEnter="{{ btnIn }}" onMouseLeave="{{ btnOut }}" style="margin-top:auto;align-self:flex-start;background:#111214;color:#fff;border:0;padding:11px 16px;font:600 12px/1 'Archivo',sans-serif;cursor:pointer;display:inline-flex;gap:9px;align-items:center;transition:all .22s">
-                      Bekijk ecologische machines <span data-arrow="" style="transition:transform .24s cubic-bezier(.2,.7,.3,1)">→</span>
+                      {{ tr.nav_cta_ecologisch }} <span data-arrow="" style="transition:transform .24s cubic-bezier(.2,.7,.3,1)">→</span>
                     </button>
                   </div>
                 </sc-if>
@@ -591,41 +591,61 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
       </div>
 
       <button onClick="{{ goOccasions }}" onMouseEnter="{{ navIn }}" onMouseLeave="{{ navOut }}" style="position:relative;background:none;border:0;cursor:pointer;padding:10px 16px;font:500 17px/1 'Archivo',sans-serif;color:#000000">
-        Occasions
+        {{ tr.nav_occasions }}
         <span data-uline="" style="position:absolute;left:14px;right:14px;bottom:4px;height:2px;background:#E1021D;transform:scaleX(0);transform-origin:left;transition:transform .26s cubic-bezier(.2,.7,.3,1)"></span>
       </button>
       <button onClick="{{ goServicePage }}" onMouseEnter="{{ navIn }}" onMouseLeave="{{ navOut }}" style="position:relative;background:none;border:0;cursor:pointer;padding:10px 16px;font:500 17px/1 'Archivo',sans-serif;color:#000000">
-        Service
+        {{ tr.nav_service }}
         <span data-uline="" style="position:absolute;left:14px;right:14px;bottom:4px;height:2px;background:#E1021D;transform:scaleX(0);transform-origin:left;transition:transform .26s cubic-bezier(.2,.7,.3,1)"></span>
       </button>
       <div onMouseEnter="{{ openOver }}" onMouseLeave="{{ closeMenu }}" style="position:relative;align-self:stretch;display:flex;align-items:center">
         <button onClick="{{ goOver }}" style="background:none;border:0;cursor:pointer;padding:10px 16px;font:500 17px/1 'Archivo',sans-serif;color:#000000;display:flex;align-items:center;gap:8px">
-          Over ons
+          {{ tr.nav_over_ons }}
           <span style="width:5px;height:5px;border-right:1.5px solid rgba(0,0,0,.55);border-bottom:1.5px solid rgba(0,0,0,.55);transform:rotate(45deg);margin-top:-3px"></span>
         </button>
         <sc-if value="{{ menuOver }}" hint-placeholder-val="{{ false }}">
           <div style="position:absolute;top:100%;left:-16px;padding-top:1px;animation:wvbDrawer .2s cubic-bezier(.2,.7,.3,1) both">
             <div style="width:236px;background:#FBAE00;box-shadow:0 10px 30px rgba(0,0,0,.08);padding:8px;display:flex;flex-direction:column;gap:0">
-              <a href="#nieuws" onClick="{{ goNieuws }}" onMouseEnter="{{ ddIn }}" onMouseLeave="{{ ddOut }}" style="display:flex;align-items:center;justify-content:space-between;gap:12px;height:46px;padding:0 14px;color:#000;font:500 15px/1 'Archivo',sans-serif;transition:background .2s">Nieuws<span data-ddarrow="" style="opacity:1;transition:transform .2s cubic-bezier(.2,.7,.3,1),color .2s ease">→</span></a>
-              <a href="#werken-bij" onClick="{{ goWerken }}" onMouseEnter="{{ ddIn }}" onMouseLeave="{{ ddOut }}" style="display:flex;align-items:center;justify-content:space-between;gap:12px;height:46px;padding:0 14px;color:#000;font:500 15px/1 'Archivo',sans-serif;transition:background .2s">Werken bij<span data-ddarrow="" style="opacity:1;transition:transform .2s cubic-bezier(.2,.7,.3,1),color .2s ease">→</span></a>
-              <a href="#geleverd" onClick="{{ goGeleverd }}" onMouseEnter="{{ ddIn }}" onMouseLeave="{{ ddOut }}" style="display:flex;align-items:center;justify-content:space-between;gap:12px;height:46px;padding:0 14px;color:#000;font:500 15px/1 'Archivo',sans-serif;transition:background .2s">Geleverd<span data-ddarrow="" style="opacity:1;transition:transform .2s cubic-bezier(.2,.7,.3,1),color .2s ease">→</span></a>
-              <a href="#magazines" onClick="{{ goMagazines }}" onMouseEnter="{{ ddIn }}" onMouseLeave="{{ ddOut }}" style="display:flex;align-items:center;justify-content:space-between;gap:12px;height:46px;padding:0 14px;color:#000;font:500 15px/1 'Archivo',sans-serif;transition:background .2s">Magazines<span data-ddarrow="" style="opacity:1;transition:transform .2s cubic-bezier(.2,.7,.3,1),color .2s ease">→</span></a>
+              <a href="#nieuws" onClick="{{ goNieuws }}" onMouseEnter="{{ ddIn }}" onMouseLeave="{{ ddOut }}" style="display:flex;align-items:center;justify-content:space-between;gap:12px;height:46px;padding:0 14px;color:#000;font:500 15px/1 'Archivo',sans-serif;transition:background .2s">{{ tr.nav_nieuws }}<span data-ddarrow="" style="opacity:1;transition:transform .2s cubic-bezier(.2,.7,.3,1),color .2s ease">→</span></a>
+              <a href="#werken-bij" onClick="{{ goWerken }}" onMouseEnter="{{ ddIn }}" onMouseLeave="{{ ddOut }}" style="display:flex;align-items:center;justify-content:space-between;gap:12px;height:46px;padding:0 14px;color:#000;font:500 15px/1 'Archivo',sans-serif;transition:background .2s">{{ tr.nav_werken_bij }}<span data-ddarrow="" style="opacity:1;transition:transform .2s cubic-bezier(.2,.7,.3,1),color .2s ease">→</span></a>
+              <a href="#geleverd" onClick="{{ goGeleverd }}" onMouseEnter="{{ ddIn }}" onMouseLeave="{{ ddOut }}" style="display:flex;align-items:center;justify-content:space-between;gap:12px;height:46px;padding:0 14px;color:#000;font:500 15px/1 'Archivo',sans-serif;transition:background .2s">{{ tr.nav_geleverd }}<span data-ddarrow="" style="opacity:1;transition:transform .2s cubic-bezier(.2,.7,.3,1),color .2s ease">→</span></a>
+              <a href="#magazines" onClick="{{ goMagazines }}" onMouseEnter="{{ ddIn }}" onMouseLeave="{{ ddOut }}" style="display:flex;align-items:center;justify-content:space-between;gap:12px;height:46px;padding:0 14px;color:#000;font:500 15px/1 'Archivo',sans-serif;transition:background .2s">{{ tr.nav_magazines }}<span data-ddarrow="" style="opacity:1;transition:transform .2s cubic-bezier(.2,.7,.3,1),color .2s ease">→</span></a>
             </div>
           </div>
         </sc-if>
       </div>
       <button onClick="{{ goContactPage }}" onMouseEnter="{{ navIn }}" onMouseLeave="{{ navOut }}" style="position:relative;background:none;border:0;cursor:pointer;padding:10px 16px;font:500 17px/1 'Archivo',sans-serif;color:#000000">
-        Contact
+        {{ tr.nav_contact }}
         <span data-uline="" style="position:absolute;left:14px;right:14px;bottom:4px;height:2px;background:#E1021D;transform:scaleX(0);transform-origin:left;transition:transform .26s cubic-bezier(.2,.7,.3,1)"></span>
       </button>
       <span style="width:1px;height:24px;background:rgba(0,0,0,.28);margin:0 12px"></span>
+      <!-- Taalkeuze NL/EN/DE: zelfde knop+lijst-dropdown-patroon als "Onderwerp"
+           op het contactformulier en "Sorteer op" op /machines/ — geen native
+           <select>, dus gegarandeerd hetzelfde lettertype/gewicht als de rest
+           van de header. Klikken wisselt this.state.lang (localStorage,
+           this.t()/tr.* leest overal dezelfde waarde) — geen aparte URL's. -->
+      <div onMouseLeave="{{ closeLang }}" style="position:relative;align-self:stretch;display:flex;align-items:center">
+        <button onClick="{{ toggleLang }}" aria-label="{{ tr.nav_taal }}" style="background:none;border:0;cursor:pointer;padding:10px 12px;font:600 14px/1 'Archivo',sans-serif;color:#000000;display:flex;align-items:center;gap:6px;letter-spacing:.04em">
+          {{ langLabel }}
+          <span style="width:5px;height:5px;border-right:1.5px solid rgba(0,0,0,.55);border-bottom:1.5px solid rgba(0,0,0,.55);transform:rotate(45deg);margin-top:-3px"></span>
+        </button>
+        <sc-if value="{{ langOpen }}" hint-placeholder-val="{{ false }}">
+          <div style="position:absolute;top:100%;right:0;padding-top:1px;z-index:60;animation:wvbDrawer .18s cubic-bezier(.2,.7,.3,1) both">
+            <div style="min-width:150px;background:#fff;border:1px solid #E2DED7;box-shadow:0 20px 44px -34px rgba(17,18,20,.45);padding:6px;display:flex;flex-direction:column">
+              <sc-for list="{{ langOpts }}" as="o" hint-placeholder-count="3">
+                <button onClick="{{ o.on }}" onMouseEnter="{{ rowIn }}" onMouseLeave="{{ rowOut }}" style="text-align:left;background:{{ o.bg }};border:0;padding:11px 14px;cursor:pointer;font:500 14px/1.3 'Archivo',sans-serif;color:#111214;transition:background .18s">{{ o.label }}</button>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+      </div>
       <a href="https://webshop.wimvanbreda.nl/" target="_blank" rel="noopener noreferrer" onMouseEnter="{{ btnIn }}" onMouseLeave="{{ btnOut }}" style="display:inline-flex;align-items:center;gap:10px;background:transparent;border:1px solid #000000;padding:14px 20px;font:600 15px/1 'Archivo',sans-serif;color:#000000;transition:all .22s">
-        Webshop <span data-arrow="" style="transition:transform .24s cubic-bezier(.2,.7,.3,1)">→</span>
+        {{ tr.nav_webshop }} <span data-arrow="" style="transition:transform .24s cubic-bezier(.2,.7,.3,1)">→</span>
       </a>
     </nav>
 
-    <button data-mob="" onClick="{{ toggleMob }}" aria-label="Menu" style="position:relative;display:none;align-items:center;gap:10px;background:transparent;border:1px solid #000000;padding:13px 18px;cursor:pointer;font:600 14px/1 'Archivo',sans-serif">
-      Menu
+    <button data-mob="" onClick="{{ toggleMob }}" aria-label="{{ tr.nav_menu }}" style="position:relative;display:none;align-items:center;gap:10px;background:transparent;border:1px solid #000000;padding:13px 18px;cursor:pointer;font:600 14px/1 'Archivo',sans-serif">
+      {{ tr.nav_menu }}
       <span style="display:flex;flex-direction:column;gap:3px">
         <span style="width:16px;height:1.5px;background:#111214"></span>
         <span style="width:16px;height:1.5px;background:#FBAE00"></span>
@@ -637,20 +657,28 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
 
   <sc-if value="{{ mob }}" hint-placeholder-val="{{ false }}">
     <div style="background:#fff;border-bottom:1px solid #C00020;padding:14px 30px 26px;display:flex;flex-direction:column;gap:2px;animation:wvbDrawer .22s ease both">
-      <button onClick="{{ goMachines }}" style="text-align:left;background:none;border:0;border-bottom:1px solid #F1EFEA;padding:18px 4px;font:500 17px/1 'Archivo',sans-serif;cursor:pointer">Nieuwe machines</button>
-      <button onClick="{{ goMerken }}" style="text-align:left;background:none;border:0;border-bottom:1px solid #F1EFEA;padding:18px 4px;font:500 17px/1 'Archivo',sans-serif;cursor:pointer">Merken</button>
-      <button onClick="{{ goOccasions }}" style="text-align:left;background:none;border:0;border-bottom:1px solid #F1EFEA;padding:18px 4px;font:500 17px/1 'Archivo',sans-serif;cursor:pointer">Occasions</button>
-      <button onClick="{{ goVerhuur }}" style="text-align:left;background:none;border:0;border-bottom:1px solid #F1EFEA;padding:18px 4px;font:500 17px/1 'Archivo',sans-serif;cursor:pointer">Verhuur</button>
-      <button onClick="{{ goElektrisch }}" style="text-align:left;background:none;border:0;border-bottom:1px solid #F1EFEA;padding:18px 4px;font:500 17px/1 'Archivo',sans-serif;cursor:pointer">Elektrische machines</button>
-      <button onClick="{{ goEcologisch }}" style="text-align:left;background:none;border:0;border-bottom:1px solid #F1EFEA;padding:18px 4px;font:500 17px/1 'Archivo',sans-serif;cursor:pointer">Ecologische machines</button>
-      <button onClick="{{ goServicePage }}" style="text-align:left;background:none;border:0;border-bottom:1px solid #F1EFEA;padding:18px 4px;font:500 17px/1 'Archivo',sans-serif;cursor:pointer">Service</button>
-      <button onClick="{{ goOver }}" style="text-align:left;background:none;border:0;border-bottom:1px solid #F1EFEA;padding:18px 4px;font:500 17px/1 'Archivo',sans-serif;cursor:pointer">Over ons</button>
-      <button onClick="{{ goNieuws }}" style="text-align:left;background:none;border:0;border-bottom:1px solid #F1EFEA;padding:16px 4px 16px 20px;font:400 16px/1 'Archivo',sans-serif;cursor:pointer;color:#57544D">Nieuws</button>
-      <button onClick="{{ goWerken }}" style="text-align:left;background:none;border:0;border-bottom:1px solid #F1EFEA;padding:16px 4px 16px 20px;font:400 16px/1 'Archivo',sans-serif;cursor:pointer;color:#57544D">Werken bij</button>
-      <button onClick="{{ goGeleverd }}" style="text-align:left;background:none;border:0;border-bottom:1px solid #F1EFEA;padding:16px 4px 16px 20px;font:400 16px/1 'Archivo',sans-serif;cursor:pointer;color:#57544D">Geleverd</button>
-      <button onClick="{{ goMagazines }}" style="text-align:left;background:none;border:0;border-bottom:1px solid #F1EFEA;padding:16px 4px 16px 20px;font:400 16px/1 'Archivo',sans-serif;cursor:pointer;color:#57544D">Magazines</button>
-      <button onClick="{{ goContactPage }}" style="text-align:left;background:none;border:0;border-bottom:1px solid #F1EFEA;padding:18px 4px;font:500 17px/1 'Archivo',sans-serif;cursor:pointer">Contact</button>
-      <a href="https://webshop.wimvanbreda.nl/" target="_blank" rel="noopener noreferrer" style="margin-top:16px;display:inline-flex;justify-content:center;gap:9px;background:#FBAE00;padding:18px;border-radius:2px;font:600 15px/1 'Archivo',sans-serif">Webshop →</a>
+      <button onClick="{{ goMachines }}" style="text-align:left;background:none;border:0;border-bottom:1px solid #F1EFEA;padding:18px 4px;font:500 17px/1 'Archivo',sans-serif;cursor:pointer">{{ tr.nav_nieuwe_machines }}</button>
+      <button onClick="{{ goMerken }}" style="text-align:left;background:none;border:0;border-bottom:1px solid #F1EFEA;padding:18px 4px;font:500 17px/1 'Archivo',sans-serif;cursor:pointer">{{ tr.nav_merken }}</button>
+      <button onClick="{{ goOccasions }}" style="text-align:left;background:none;border:0;border-bottom:1px solid #F1EFEA;padding:18px 4px;font:500 17px/1 'Archivo',sans-serif;cursor:pointer">{{ tr.nav_occasions }}</button>
+      <button onClick="{{ goVerhuur }}" style="text-align:left;background:none;border:0;border-bottom:1px solid #F1EFEA;padding:18px 4px;font:500 17px/1 'Archivo',sans-serif;cursor:pointer">{{ tr.nav_verhuur }}</button>
+      <button onClick="{{ goElektrisch }}" style="text-align:left;background:none;border:0;border-bottom:1px solid #F1EFEA;padding:18px 4px;font:500 17px/1 'Archivo',sans-serif;cursor:pointer">{{ tr.nav_elektrisch }}</button>
+      <button onClick="{{ goEcologisch }}" style="text-align:left;background:none;border:0;border-bottom:1px solid #F1EFEA;padding:18px 4px;font:500 17px/1 'Archivo',sans-serif;cursor:pointer">{{ tr.nav_ecologisch }}</button>
+      <button onClick="{{ goServicePage }}" style="text-align:left;background:none;border:0;border-bottom:1px solid #F1EFEA;padding:18px 4px;font:500 17px/1 'Archivo',sans-serif;cursor:pointer">{{ tr.nav_service }}</button>
+      <button onClick="{{ goOver }}" style="text-align:left;background:none;border:0;border-bottom:1px solid #F1EFEA;padding:18px 4px;font:500 17px/1 'Archivo',sans-serif;cursor:pointer">{{ tr.nav_over_ons }}</button>
+      <button onClick="{{ goNieuws }}" style="text-align:left;background:none;border:0;border-bottom:1px solid #F1EFEA;padding:16px 4px 16px 20px;font:400 16px/1 'Archivo',sans-serif;cursor:pointer;color:#57544D">{{ tr.nav_nieuws }}</button>
+      <button onClick="{{ goWerken }}" style="text-align:left;background:none;border:0;border-bottom:1px solid #F1EFEA;padding:16px 4px 16px 20px;font:400 16px/1 'Archivo',sans-serif;cursor:pointer;color:#57544D">{{ tr.nav_werken_bij }}</button>
+      <button onClick="{{ goGeleverd }}" style="text-align:left;background:none;border:0;border-bottom:1px solid #F1EFEA;padding:16px 4px 16px 20px;font:400 16px/1 'Archivo',sans-serif;cursor:pointer;color:#57544D">{{ tr.nav_geleverd }}</button>
+      <button onClick="{{ goMagazines }}" style="text-align:left;background:none;border:0;border-bottom:1px solid #F1EFEA;padding:16px 4px 16px 20px;font:400 16px/1 'Archivo',sans-serif;cursor:pointer;color:#57544D">{{ tr.nav_magazines }}</button>
+      <button onClick="{{ goContactPage }}" style="text-align:left;background:none;border:0;border-bottom:1px solid #F1EFEA;padding:18px 4px;font:500 17px/1 'Archivo',sans-serif;cursor:pointer">{{ tr.nav_contact }}</button>
+      <a href="https://webshop.wimvanbreda.nl/" target="_blank" rel="noopener noreferrer" style="margin-top:16px;display:inline-flex;justify-content:center;gap:9px;background:#FBAE00;padding:18px;border-radius:2px;font:600 15px/1 'Archivo',sans-serif">{{ tr.nav_webshop }} →</a>
+      <div style="margin-top:18px;padding-top:18px;border-top:1px solid #F1EFEA;display:flex;align-items:center;gap:10px">
+        <span style="font:500 13px/1 'Archivo',sans-serif;color:#57544D;text-transform:uppercase;letter-spacing:.04em">{{ tr.nav_taal }}</span>
+        <div style="display:flex;gap:6px">
+          <sc-for list="{{ langOpts }}" as="lo" hint-placeholder-count="3">
+            <button onClick="{{ lo.on }}" data-active="{{ lo.active }}" style="background:{{ lo.bg }};border:1px solid #E6E3DD;padding:7px 12px;border-radius:2px;font:600 13px/1 'Archivo',sans-serif;cursor:pointer;color:#111214">{{ lo.codeUp }}</button>
+          </sc-for>
+        </div>
+      </div>
     </div>
   </sc-if>
 </header>
@@ -676,24 +704,24 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
         <svg class="wvb-marker" style="transform-origin:left;animation:wvbLine .7s cubic-bezier(.2,.7,.3,1) .35s both" width="40" height="12" viewBox="0 0 40 12" fill="none" aria-hidden="true"><path d="M1 6H30M30 6 39 1M30 6 39 11" stroke="#C00020" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
         <span style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.22em;text-transform:uppercase;color:#F3EFE7">Geldermalsen</span>
       </div>
-      <h1 style="animation:wvbRise .95s cubic-bezier(.2,.7,.3,1) .4s both;font:600 clamp(34px,4.6vw,66px)/1.04 Archivo,sans-serif;letter-spacing:-.032em;color:#fff;margin:26px 0 0;max-width:19ch;text-wrap:balance">De meest effectieve machines voor weg-, berm- en slootonderhoud</h1>
-      <p style="animation:wvbRise .95s cubic-bezier(.2,.7,.3,1) .55s both;font:400 18px/1.7 'Archivo',sans-serif;color:rgba(255,255,255,.84);max-width:50ch;margin:24px 0 0">Wij adviseren, leveren en onderhouden machines voor gemeenten, aannemers, waterschappen en loonbedrijven.</p>
+      <h1 style="animation:wvbRise .95s cubic-bezier(.2,.7,.3,1) .4s both;font:600 clamp(34px,4.6vw,66px)/1.04 Archivo,sans-serif;letter-spacing:-.032em;color:#fff;margin:26px 0 0;max-width:19ch;text-wrap:balance">{{ tr.home_hero_title }}</h1>
+      <p style="animation:wvbRise .95s cubic-bezier(.2,.7,.3,1) .55s both;font:400 18px/1.7 'Archivo',sans-serif;color:rgba(255,255,255,.84);max-width:50ch;margin:24px 0 0">{{ tr.home_hero_sub }}</p>
       <div style="animation:wvbRise .95s cubic-bezier(.2,.7,.3,1) .7s both;display:flex;flex-wrap:wrap;gap:14px;margin-top:38px">
         <button data-active="{{ tabNact }}" onClick="{{ goMachines }}" onMouseEnter="{{ skewIn }}" onMouseLeave="{{ skewOut }}" style="position:relative;overflow:hidden;background:#FBAE00;color:#111214;border:1px solid #111214;padding:19px 30px;font:600 15px/1 'Archivo',sans-serif;cursor:pointer">
           <span data-fill="" style="position:absolute;top:0;bottom:0;left:-8%;width:120%;background:#E1021D;transform:skewX(-11deg) scaleX(0);transform-origin:left;transition:transform .34s cubic-bezier(.22,.7,.28,1)"></span>
-          <span data-lbl="" style="position:relative;display:inline-flex;align-items:center;gap:11px;transition:color .3s">Bekijk ons aanbod <span data-arrow="" style="transition:transform .26s cubic-bezier(.2,.7,.3,1)">→</span></span>
+          <span data-lbl="" style="position:relative;display:inline-flex;align-items:center;gap:11px;transition:color .3s">{{ tr.home_cta_aanbod }} <span data-arrow="" style="transition:transform .26s cubic-bezier(.2,.7,.3,1)">→</span></span>
         </button>
         <button onClick="{{ goContact }}" onMouseEnter="{{ skewIn }}" onMouseLeave="{{ skewOut }}" style="position:relative;overflow:hidden;background:transparent;color:#fff;border:1px solid rgba(255,255,255,.5);padding:19px 30px;font:600 15px/1 'Archivo',sans-serif;cursor:pointer">
           <span data-fill="" style="position:absolute;top:0;bottom:0;left:-8%;width:120%;background:#FBAE00;transform:skewX(-11deg) scaleX(0);transform-origin:left;transition:transform .34s cubic-bezier(.22,.7,.28,1)"></span>
-          <span data-lbl="" data-dark="" style="position:relative;display:inline-flex;align-items:center;gap:11px;transition:color .3s">Neem contact op <span data-arrow="" style="transition:transform .26s cubic-bezier(.2,.7,.3,1)">→</span></span>
+          <span data-lbl="" data-dark="" style="position:relative;display:inline-flex;align-items:center;gap:11px;transition:color .3s">{{ tr.common_cta_contact }} <span data-arrow="" style="transition:transform .26s cubic-bezier(.2,.7,.3,1)">→</span></span>
         </button>
       </div>
       <div data-usp="" style="display:flex;align-items:center;flex-wrap:wrap;gap:0 34px;margin-top:60px;animation:wvbRise 1s cubic-bezier(.2,.7,.3,1) .95s both">
-        <span style="font:500 15px/1.4 'Archivo',sans-serif;color:#FBAE00">Sinds 1957</span>
+        <span style="font:500 15px/1.4 'Archivo',sans-serif;color:#FBAE00">{{ tr.home_since }}</span>
         <span aria-hidden="true" style="width:1px;height:20px;background:#FBAE00;opacity:.55"></span>
-        <span style="font:500 15px/1.4 'Archivo',sans-serif;color:#FBAE00">22 merken</span>
+        <span style="font:500 15px/1.4 'Archivo',sans-serif;color:#FBAE00">{{ tr.home_brands_count }}</span>
         <span aria-hidden="true" style="width:1px;height:20px;background:#FBAE00;opacity:.55"></span>
-        <span style="font:500 15px/1.4 'Archivo',sans-serif;color:#FBAE00">Machines, service &amp; onderdelen</span>
+        <span style="font:500 15px/1.4 'Archivo',sans-serif;color:#FBAE00">{{ tr.home_usp3 }}</span>
       </div>
     </div>
   </section>
@@ -705,29 +733,29 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
       <button data-active="{{ tabNact }}" onClick="{{ goMachines }}" onMouseEnter="{{ hoverIn }}" onMouseLeave="{{ hoverOut }}" data-rv="" style="opacity:0;transform:translateY(16px);transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .28s cubic-bezier(.2,.7,.3,1),box-shadow .28s,border-color .28s;text-align:left;background:#fff;border:1px solid #E6E3DD;border-radius:2px;padding:0;cursor:pointer;overflow:hidden;display:flex;flex-direction:column">
         <div style="height:210px;overflow:hidden;background:#F4F2EE"><div data-zoom="" style="width:100%;height:100%;transition:transform .5s cubic-bezier(.2,.7,.3,1)"><img src="/assets/images/aanbod/nieuwe-machines.webp" alt="Nieuwe machines van Wim van Breda" loading="lazy" decoding="async" width="1200" height="800" style="display:block;width:100%;height:100%;object-fit:cover;object-position:center"></div></div>
         <div style="padding:28px 26px 30px">
-          <h2 style="font:600 21px/1.2 Archivo,sans-serif;margin:0">Nieuwe machines</h2>
-          <span style="display:inline-flex;align-items:center;gap:10px;font:600 14px/1 'Archivo',sans-serif;margin-top:16px">Bekijk aanbod <span data-arrow="" style="color:#FBAE00;transition:transform .24s cubic-bezier(.2,.7,.3,1)">→</span></span>
+          <h2 style="font:600 21px/1.2 Archivo,sans-serif;margin:0">{{ tr.nav_nieuwe_machines }}</h2>
+          <span style="display:inline-flex;align-items:center;gap:10px;font:600 14px/1 'Archivo',sans-serif;margin-top:16px">{{ tr.home_bekijk_aanbod }} <span data-arrow="" style="color:#FBAE00;transition:transform .24s cubic-bezier(.2,.7,.3,1)">→</span></span>
         </div>
       </button>
       <button data-active="{{ tabMact }}" onClick="{{ goMerken }}" onMouseEnter="{{ hoverIn }}" onMouseLeave="{{ hoverOut }}" data-rv="" style="opacity:0;transform:translateY(16px);transition:opacity .7s cubic-bezier(.2,.7,.3,1) 90ms,transform .28s cubic-bezier(.2,.7,.3,1),box-shadow .28s,border-color .28s;text-align:left;background:#fff;border:1px solid #E6E3DD;border-radius:2px;padding:0;cursor:pointer;overflow:hidden;display:flex;flex-direction:column">
         <div style="height:210px;overflow:hidden;background:#F4F2EE"><div data-zoom="" style="width:100%;height:100%;transition:transform .5s cubic-bezier(.2,.7,.3,1)"><img src="/assets/images/aanbod/merken.webp" alt="Merken van Wim van Breda" loading="lazy" decoding="async" width="1200" height="800" style="display:block;width:100%;height:100%;object-fit:cover;object-position:center"></div></div>
         <div style="padding:28px 26px 30px">
-          <h2 style="font:600 21px/1.2 Archivo,sans-serif;margin:0">Merken</h2>
-          <span style="display:inline-flex;align-items:center;gap:10px;font:600 14px/1 'Archivo',sans-serif;margin-top:16px">Bekijk alle merken <span data-arrow="" style="color:#FBAE00;transition:transform .24s cubic-bezier(.2,.7,.3,1)">→</span></span>
+          <h2 style="font:600 21px/1.2 Archivo,sans-serif;margin:0">{{ tr.nav_merken }}</h2>
+          <span style="display:inline-flex;align-items:center;gap:10px;font:600 14px/1 'Archivo',sans-serif;margin-top:16px">{{ tr.nav_cta_merken }} <span data-arrow="" style="color:#FBAE00;transition:transform .24s cubic-bezier(.2,.7,.3,1)">→</span></span>
         </div>
       </button>
       <button data-active="{{ tabVact }}" onClick="{{ goVerhuur }}" onMouseEnter="{{ hoverIn }}" onMouseLeave="{{ hoverOut }}" data-rv="" style="opacity:0;transform:translateY(16px);transition:opacity .7s cubic-bezier(.2,.7,.3,1) 180ms,transform .28s cubic-bezier(.2,.7,.3,1),box-shadow .28s,border-color .28s;text-align:left;background:#fff;border:1px solid #E6E3DD;border-radius:2px;padding:0;cursor:pointer;overflow:hidden;display:flex;flex-direction:column">
         <div style="height:210px;overflow:hidden;background:#F4F2EE"><div data-zoom="" style="width:100%;height:100%;transition:transform .5s cubic-bezier(.2,.7,.3,1)"><img src="/assets/images/aanbod/verhuur.webp" alt="Machines voor verhuur bij Wim van Breda" loading="lazy" decoding="async" width="1200" height="800" style="display:block;width:100%;height:100%;object-fit:cover;object-position:30% center"></div></div>
         <div style="padding:28px 26px 30px">
-          <h2 style="font:600 21px/1.2 Archivo,sans-serif;margin:0">Verhuur</h2>
-          <span style="display:inline-flex;align-items:center;gap:10px;font:600 14px/1 'Archivo',sans-serif;margin-top:16px">Bekijk verhuur <span data-arrow="" style="color:#FBAE00;transition:transform .24s cubic-bezier(.2,.7,.3,1)">→</span></span>
+          <h2 style="font:600 21px/1.2 Archivo,sans-serif;margin:0">{{ tr.nav_verhuur }}</h2>
+          <span style="display:inline-flex;align-items:center;gap:10px;font:600 14px/1 'Archivo',sans-serif;margin-top:16px">{{ tr.nav_cta_verhuur }} <span data-arrow="" style="color:#FBAE00;transition:transform .24s cubic-bezier(.2,.7,.3,1)">→</span></span>
         </div>
       </button>
       <button data-active="{{ tabOact }}" onClick="{{ goOccasions }}" onMouseEnter="{{ hoverIn }}" onMouseLeave="{{ hoverOut }}" data-rv="" style="opacity:0;transform:translateY(16px);transition:opacity .7s cubic-bezier(.2,.7,.3,1) 270ms,transform .28s cubic-bezier(.2,.7,.3,1),box-shadow .28s,border-color .28s;text-align:left;background:#fff;border:1px solid #E6E3DD;border-radius:2px;padding:0;cursor:pointer;overflow:hidden;display:flex;flex-direction:column">
         <div style="height:210px;overflow:hidden;background:#F4F2EE"><div data-zoom="" style="width:100%;height:100%;transition:transform .5s cubic-bezier(.2,.7,.3,1)"><img src="/assets/images/aanbod/occasions.webp" alt="Occasions van Wim van Breda" loading="lazy" decoding="async" width="1200" height="800" style="display:block;width:100%;height:100%;object-fit:cover;object-position:center"></div></div>
         <div style="padding:28px 26px 30px">
-          <h2 style="font:600 21px/1.2 Archivo,sans-serif;margin:0">Occasions</h2>
-          <span style="display:inline-flex;align-items:center;gap:10px;font:600 14px/1 'Archivo',sans-serif;margin-top:16px">Bekijk occasions <span data-arrow="" style="color:#FBAE00;transition:transform .24s cubic-bezier(.2,.7,.3,1)">→</span></span>
+          <h2 style="font:600 21px/1.2 Archivo,sans-serif;margin:0">{{ tr.nav_occasions }}</h2>
+          <span style="display:inline-flex;align-items:center;gap:10px;font:600 14px/1 'Archivo',sans-serif;margin-top:16px">{{ tr.home_bekijk_occasions }} <span data-arrow="" style="color:#FBAE00;transition:transform .24s cubic-bezier(.2,.7,.3,1)">→</span></span>
         </div>
       </button>
     </div>
@@ -736,11 +764,11 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
   <section style="max-width:1360px;margin:0 auto;padding:80px 40px">
     <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:40px;flex-wrap:wrap">
       <div>
-        <div style="display:flex;align-items:center;gap:14px;font:500 11px/1 'Archivo',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#7C766A"><svg class="wvb-marker" width="40" height="12" viewBox="0 0 40 12" fill="none" aria-hidden="true"><path d="M1 6H30M30 6 39 1M30 6 39 11" stroke="#C00020" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg> Uitgelicht</div>
-        <h2 data-rv="" style="opacity:0;transform:translateY(16px);transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1);font:600 clamp(28px,3.2vw,44px)/1.08 Archivo,sans-serif;letter-spacing:-.022em;margin:16px 0 0">Machines uit ons aanbod</h2>
+        <div style="display:flex;align-items:center;gap:14px;font:500 11px/1 'Archivo',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#7C766A"><svg class="wvb-marker" width="40" height="12" viewBox="0 0 40 12" fill="none" aria-hidden="true"><path d="M1 6H30M30 6 39 1M30 6 39 11" stroke="#C00020" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg> {{ tr.home_uitgelicht }}</div>
+        <h2 data-rv="" style="opacity:0;transform:translateY(16px);transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1);font:600 clamp(28px,3.2vw,44px)/1.08 Archivo,sans-serif;letter-spacing:-.022em;margin:16px 0 0">{{ tr.home_machines_titel }}</h2>
       </div>
       <button data-active="{{ tabNact }}" onClick="{{ goMachines }}" onMouseEnter="{{ navIn }}" onMouseLeave="{{ navOut }}" style="position:relative;background:none;border:0;cursor:pointer;padding:10px 2px;font:600 14px/1 'Archivo',sans-serif">
-        Alle machines →
+        {{ tr.home_alle_machines }}
         <span data-uline="" style="position:absolute;left:2px;right:2px;bottom:4px;height:2px;background:#E1021D;transform:scaleX(0);transform-origin:left;transition:transform .26s cubic-bezier(.2,.7,.3,1)"></span>
       </button>
     </div>
@@ -759,7 +787,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
             <div class="wvb-feat-card__cat">{{ m.typeLabel }}</div>
             <div class="wvb-feat-card__spacer"></div>
             <div class="wvb-feat-card__footer">
-              <span style="font:600 13px/1 'Archivo',sans-serif">Bekijk machine</span>
+              <span style="font:600 13px/1 'Archivo',sans-serif">{{ tr.common_bekijk_machine }}</span>
               <span data-arrow="" style="color:#FBAE00;transition:transform .24s cubic-bezier(.2,.7,.3,1)">→</span>
             </div>
           </div>
@@ -772,23 +800,23 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
     <div style="max-width:1360px;margin:0 auto;padding:88px 40px">
       <div style="display:grid;grid-template-columns:1fr 1.4fr;gap:60px;align-items:center" data-split="">
         <div>
-          <div style="display:flex;align-items:center;gap:14px;font:500 11px/1 'Archivo',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#7C766A"><svg class="wvb-marker" width="40" height="12" viewBox="0 0 40 12" fill="none" aria-hidden="true"><path d="M1 6H30M30 6 39 1M30 6 39 11" stroke="#C00020" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg> Zoeken</div>
-          <h2 style="font:600 clamp(28px,3vw,40px)/1.1 Archivo,sans-serif;letter-spacing:-.022em;margin:16px 0 0">Vind de juiste machine</h2>
-          <p style="font:400 16px/1.7 'Archivo',sans-serif;color:#57544D;margin:16px 0 0;max-width:44ch">Combineer machinetype en merk. U ziet direct wat wij daadwerkelijk leveren.</p>
+          <div style="display:flex;align-items:center;gap:14px;font:500 11px/1 'Archivo',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#7C766A"><svg class="wvb-marker" width="40" height="12" viewBox="0 0 40 12" fill="none" aria-hidden="true"><path d="M1 6H30M30 6 39 1M30 6 39 11" stroke="#C00020" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg> {{ tr.home_zoeken }}</div>
+          <h2 style="font:600 clamp(28px,3vw,40px)/1.1 Archivo,sans-serif;letter-spacing:-.022em;margin:16px 0 0">{{ tr.home_vind_machine }}</h2>
+          <p style="font:400 16px/1.7 'Archivo',sans-serif;color:#57544D;margin:16px 0 0;max-width:44ch">{{ tr.home_vind_machine_desc }}</p>
         </div>
         <div style="background:#fff;border:1px solid #E6E3DD;padding:32px;display:flex;flex-direction:column;gap:20px">
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px" data-split="">
             <label style="display:flex;flex-direction:column;gap:9px">
-              <span style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#7C766A">Machinetype</span>
+              <span style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#7C766A">{{ tr.common_machinetype }}</span>
               <select value="{{ homeTypeVal }}" onChange="{{ setHomeType }}" style="appearance:none;background:#fff;border:1px solid #D9D5CD;border-radius:2px;padding:15px 16px;font:400 15px/1 'Archivo',sans-serif;color:#111214;cursor:pointer">
-                <option value="">Alle types</option>
+                <option value="">{{ tr.common_alle_types }}</option>
                 <sc-for list="{{ typeNames }}" as="t" hint-placeholder-count="6"><option value="{{ t }}">{{ t }}</option></sc-for>
               </select>
             </label>
             <label style="display:flex;flex-direction:column;gap:9px">
-              <span style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#7C766A">Merk</span>
+              <span style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#7C766A">{{ tr.common_merk }}</span>
               <select value="{{ homeBrandVal }}" onChange="{{ setHomeBrand }}" style="appearance:none;background:#fff;border:1px solid #D9D5CD;border-radius:2px;padding:15px 16px;font:400 15px/1 'Archivo',sans-serif;color:#111214;cursor:pointer">
-                <option value="">Alle merken</option>
+                <option value="">{{ tr.common_alle_merken }}</option>
                 <sc-for list="{{ brandNames }}" as="b" hint-placeholder-count="8"><option value="{{ b }}">{{ b }}</option></sc-for>
               </select>
             </label>
@@ -804,29 +832,29 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
   <section style="max-width:1360px;margin:0 auto;padding:96px 40px">
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:72px" data-split="">
       <div>
-        <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px"><svg class="wvb-marker" width="40" height="12" viewBox="0 0 40 12" fill="none" aria-hidden="true"><path d="M1 6H30M30 6 39 1M30 6 39 11" stroke="#C00020" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg><span style="font:600 16px/1 Archivo,sans-serif;letter-spacing:.13em;text-transform:uppercase;color:#111214">Service &amp; advies</span></div>
-        <h2 data-rv="" data-hometitle1="" style="opacity:0;transform:translateY(16px);transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1);font:600 clamp(27px,calc(3.2vw - 4.9px),38px)/1.08 Archivo,sans-serif;letter-spacing:-.022em;margin:0">Waarom Wim van Breda</h2>
-        <p style="font:400 16px/1.75 'Archivo',sans-serif;color:#57544D;margin:20px 0 0;max-width:50ch">Ruim zestig jaar ervaring, een eigen werkplaats, een grote onderdelenvoorraad en service waar u op kunt bouwen — van eerste advies tot jarenlang gebruik.</p>
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px"><svg class="wvb-marker" width="40" height="12" viewBox="0 0 40 12" fill="none" aria-hidden="true"><path d="M1 6H30M30 6 39 1M30 6 39 11" stroke="#C00020" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg><span style="font:600 16px/1 Archivo,sans-serif;letter-spacing:.13em;text-transform:uppercase;color:#111214">{{ tr.home_service_advies }}</span></div>
+        <h2 data-rv="" data-hometitle1="" style="opacity:0;transform:translateY(16px);transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1);font:600 clamp(27px,calc(3.2vw - 4.9px),38px)/1.08 Archivo,sans-serif;letter-spacing:-.022em;margin:0">{{ tr.home_waarom }}</h2>
+        <p style="font:400 16px/1.75 'Archivo',sans-serif;color:#57544D;margin:20px 0 0;max-width:50ch">{{ tr.home_waarom_tekst }}</p>
         <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:32px">
-          <button onClick="{{ goService }}" onMouseEnter="{{ btnIn }}" onMouseLeave="{{ btnOut }}" style="display:inline-flex;align-items:center;gap:10px;background:#FBAE00;color:#111214;border:1px solid #111214;border-radius:2px;padding:17px 26px;font:600 15px/1 'Archivo',sans-serif;cursor:pointer;transition:all .22s">Service aanvragen <span data-arrow="" style="transition:transform .24s cubic-bezier(.2,.7,.3,1)">→</span></button>
+          <button onClick="{{ goService }}" onMouseEnter="{{ btnIn }}" onMouseLeave="{{ btnOut }}" style="display:inline-flex;align-items:center;gap:10px;background:#FBAE00;color:#111214;border:1px solid #111214;border-radius:2px;padding:17px 26px;font:600 15px/1 'Archivo',sans-serif;cursor:pointer;transition:all .22s">{{ tr.foot_service_aanvragen }} <span data-arrow="" style="transition:transform .24s cubic-bezier(.2,.7,.3,1)">→</span></button>
         </div>
       </div>
       <div style="display:flex;flex-direction:column">
         <div data-rv="" style="opacity:0;transform:translateY(16px);transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1);display:flex;gap:24px;padding:26px 0;border-top:1px solid #EDEAE4">
           <span style="font:500 12px/1.6 'Archivo',sans-serif;color:#FBAE00;flex:0 0 34px">01</span>
-          <div><h3 style="font:600 17px/1.3 Archivo,sans-serif;margin:0">Eigen werkplaats en (service)monteurs</h3><p style="font:400 15px/1.65 'Archivo',sans-serif;color:#7B766F;margin:9px 0 0">Reparatie, onderhoud en keuringen in Geldermalsen of op locatie.</p></div>
+          <div><h3 style="font:600 17px/1.3 Archivo,sans-serif;margin:0">{{ tr.home_item1_titel }}</h3><p style="font:400 15px/1.65 'Archivo',sans-serif;color:#7B766F;margin:9px 0 0">{{ tr.home_item1_tekst }}</p></div>
         </div>
         <div data-rv="" style="opacity:0;transform:translateY(16px);transition:opacity .7s cubic-bezier(.2,.7,.3,1) 80ms,transform .7s cubic-bezier(.2,.7,.3,1) 80ms;display:flex;gap:24px;padding:26px 0;border-top:1px solid #EDEAE4">
           <span style="font:500 12px/1.6 'Archivo',sans-serif;color:#FBAE00;flex:0 0 34px">02</span>
-          <div><h3 style="font:600 17px/1.3 Archivo,sans-serif;margin:0">Grote onderdelen voorraad</h3><p style="font:400 15px/1.65 'Archivo',sans-serif;color:#7B766F;margin:9px 0 0">Een ruime parts-voorraad voor de merken die wij leveren.</p></div>
+          <div><h3 style="font:600 17px/1.3 Archivo,sans-serif;margin:0">{{ tr.home_item2_titel }}</h3><p style="font:400 15px/1.65 'Archivo',sans-serif;color:#7B766F;margin:9px 0 0">{{ tr.home_item2_tekst }}</p></div>
         </div>
         <div data-rv="" style="opacity:0;transform:translateY(16px);transition:opacity .7s cubic-bezier(.2,.7,.3,1) 160ms,transform .7s cubic-bezier(.2,.7,.3,1) 160ms;display:flex;gap:24px;padding:26px 0;border-top:1px solid #EDEAE4">
           <span style="font:500 12px/1.6 'Archivo',sans-serif;color:#FBAE00;flex:0 0 34px">03</span>
-          <div><h3 style="font:600 17px/1.3 Archivo,sans-serif;margin:0">Praktisch advies</h3><p style="font:400 15px/1.65 'Archivo',sans-serif;color:#7B766F;margin:9px 0 0">Wij begrijpen het werk van onze klanten.</p></div>
+          <div><h3 style="font:600 17px/1.3 Archivo,sans-serif;margin:0">{{ tr.home_item3_titel }}</h3><p style="font:400 15px/1.65 'Archivo',sans-serif;color:#7B766F;margin:9px 0 0">{{ tr.home_item3_tekst }}</p></div>
         </div>
         <div data-rv="" style="opacity:0;transform:translateY(16px);transition:opacity .7s cubic-bezier(.2,.7,.3,1) 240ms,transform .7s cubic-bezier(.2,.7,.3,1) 240ms;display:flex;gap:24px;padding:26px 0;border-top:1px solid #EDEAE4;border-bottom:1px solid #EDEAE4">
           <span style="font:500 12px/1.6 'Archivo',sans-serif;color:#FBAE00;flex:0 0 34px">04</span>
-          <div><h3 style="font:600 17px/1.3 Archivo,sans-serif;margin:0">Bewuste Vooruitgang</h3><p style="font:400 15px/1.65 'Archivo',sans-serif;color:#7B766F;margin:9px 0 0">Samen met onze klanten en leveranciers zorgen voor de juiste machine voor de juiste toepassing.</p></div>
+          <div><h3 style="font:600 17px/1.3 Archivo,sans-serif;margin:0">{{ tr.home_item4_titel }}</h3><p style="font:400 15px/1.65 'Archivo',sans-serif;color:#7B766F;margin:9px 0 0">{{ tr.home_item4_tekst }}</p></div>
         </div>
       </div>
     </div>
@@ -836,10 +864,10 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
     <div style="max-width:1420px;margin:0 auto;padding:80px 70px 0">
       <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:30px;flex-wrap:wrap">
         <div>
-          <h2 style="font:600 clamp(22px,2.2vw,30px)/1.1 Archivo,sans-serif;letter-spacing:-.02em;margin:0">Onze merken</h2>
-          <p style="font:400 16px/1.7 'Archivo',sans-serif;color:#57544D;margin:14px 0 0;max-width:52ch">Wij werken met sterke merken.</p>
+          <h2 style="font:600 clamp(22px,2.2vw,30px)/1.1 Archivo,sans-serif;letter-spacing:-.02em;margin:0">{{ tr.home_onze_merken }}</h2>
+          <p style="font:400 16px/1.7 'Archivo',sans-serif;color:#57544D;margin:14px 0 0;max-width:52ch">{{ tr.home_onze_merken_desc }}</p>
         </div>
-        <button onClick="{{ goMerken }}" onMouseEnter="{{ btnIn }}" onMouseLeave="{{ btnOut }}" style="display:inline-flex;align-items:center;gap:10px;background:#FBAE00;color:#111214;border:1px solid #000;padding:15px 22px;font:600 15px/1 'Archivo',sans-serif;cursor:pointer;transition:all .2s">Bekijk al onze merken <span data-arrow="" style="transition:transform .24s cubic-bezier(.2,.7,.3,1)">→</span></button>
+        <button onClick="{{ goMerken }}" onMouseEnter="{{ btnIn }}" onMouseLeave="{{ btnOut }}" style="display:inline-flex;align-items:center;gap:10px;background:#FBAE00;color:#111214;border:1px solid #000;padding:15px 22px;font:600 15px/1 'Archivo',sans-serif;cursor:pointer;transition:all .2s">{{ tr.home_cta_al_onze_merken }} <span data-arrow="" style="transition:transform .24s cubic-bezier(.2,.7,.3,1)">→</span></button>
       </div>
       <div data-brandteaser="" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:40px;padding-bottom:80px">
         <sc-for list="{{ featuredBrands }}" as="b" hint-placeholder-count="3">
@@ -850,7 +878,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
             </div>
             <h3 style="font:600 22px/1.2 Archivo,sans-serif;margin:0">{{ b.name }}</h3>
             <div style="flex:1"></div>
-            <span style="display:inline-flex;align-items:center;gap:10px;font:600 13px/1 'Archivo',sans-serif;color:#111214">Bekijk merk <span data-arrow="" style="color:#FBAE00;transition:transform .24s cubic-bezier(.2,.7,.3,1)">→</span></span>
+            <span style="display:inline-flex;align-items:center;gap:10px;font:600 13px/1 'Archivo',sans-serif;color:#111214">{{ tr.common_bekijk_merk }} <span data-arrow="" style="color:#FBAE00;transition:transform .24s cubic-bezier(.2,.7,.3,1)">→</span></span>
           </button>
         </sc-for>
       </div>
@@ -863,11 +891,11 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
         <img src="/assets/images/occasions/occasion-uitgelicht.jpg" alt="Uitgelichte occasion van Wim van Breda" loading="lazy" width="1600" height="1066" style="display:block;width:100%;height:100%;object-fit:cover;object-position:center">
       </div>
       <div style="padding:56px 48px;display:flex;flex-direction:column;justify-content:center">
-        <div style="display:flex;align-items:center;gap:14px;font:500 11px/1 'Archivo',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#7C766A"><svg class="wvb-marker" width="40" height="12" viewBox="0 0 40 12" fill="none" aria-hidden="true"><path d="M1 6H30M30 6 39 1M30 6 39 11" stroke="#C00020" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg> Occasion</div>
-        <h2 style="font:600 clamp(26px,2.8vw,38px)/1.1 Archivo,sans-serif;letter-spacing:-.022em;margin:18px 0 0">Gebruikte machines, ruim aanbod</h2>
-        <p style="font:400 16px/1.75 'Archivo',sans-serif;color:#57544D;margin:18px 0 0;max-width:44ch">Elke occasion gaat eerst door onze werkplaats. U weet wat u koopt en bij wie u terecht kunt.</p>
+        <div style="display:flex;align-items:center;gap:14px;font:500 11px/1 'Archivo',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#7C766A"><svg class="wvb-marker" width="40" height="12" viewBox="0 0 40 12" fill="none" aria-hidden="true"><path d="M1 6H30M30 6 39 1M30 6 39 11" stroke="#C00020" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg> {{ tr.home_occasion_eyebrow }}</div>
+        <h2 style="font:600 clamp(26px,2.8vw,38px)/1.1 Archivo,sans-serif;letter-spacing:-.022em;margin:18px 0 0">{{ tr.home_occasion_titel }}</h2>
+        <p style="font:400 16px/1.75 'Archivo',sans-serif;color:#57544D;margin:18px 0 0;max-width:44ch">{{ tr.home_occasion_tekst }}</p>
         <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:34px">
-          <button onClick="{{ goOccasions }}" onMouseEnter="{{ btnIn }}" onMouseLeave="{{ btnOut }}" style="display:inline-flex;align-items:center;gap:10px;background:#FBAE00;color:#111214;border:1px solid #111214;border-radius:2px;padding:17px 26px;font:600 15px/1 'Archivo',sans-serif;cursor:pointer;transition:all .22s">Ontdek ons actuele aanbod occasions <span data-arrow="" style="transition:transform .24s cubic-bezier(.2,.7,.3,1)">→</span></button>
+          <button onClick="{{ goOccasions }}" onMouseEnter="{{ btnIn }}" onMouseLeave="{{ btnOut }}" style="display:inline-flex;align-items:center;gap:10px;background:#FBAE00;color:#111214;border:1px solid #111214;border-radius:2px;padding:17px 26px;font:600 15px/1 'Archivo',sans-serif;cursor:pointer;transition:all .22s">{{ tr.home_occasion_cta }} <span data-arrow="" style="transition:transform .24s cubic-bezier(.2,.7,.3,1)">→</span></button>
         </div>
       </div>
     </div>
@@ -879,7 +907,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
 <div>
   <section style="max-width:1360px;margin:0 auto;padding:56px 40px 0">
     <nav style="display:flex;align-items:center;gap:10px;font:400 13px/1 'Archivo',sans-serif;color:#7C766A">
-      <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">Home</button>
+      <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">{{ tr.common_home_breadcrumb }}</button>
       <span>/</span><span style="color:#111214">{{ listTitle }}</span>
     </nav>
     <div data-list-top="" style="max-width:62ch;margin-top:34px">
@@ -1019,7 +1047,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
               <div class="wvb-feat-card__cat">{{ m.typeLabel }}</div>
               <div class="wvb-feat-card__spacer"></div>
               <div class="wvb-feat-card__footer">
-                <span style="font:600 13px/1 'Archivo',sans-serif">Bekijk machine</span>
+                <span style="font:600 13px/1 'Archivo',sans-serif">{{ tr.common_bekijk_machine }}</span>
                 <span data-arrow="" style="color:#FBAE00;transition:transform .24s cubic-bezier(.2,.7,.3,1)">→</span>
               </div>
             </div>
@@ -1056,7 +1084,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
 <div>
   <section style="max-width:1360px;margin:0 auto;padding:48px 40px 0">
     <nav style="display:flex;align-items:center;gap:10px;font:400 13px/1 'Archivo',sans-serif;color:#7C766A;flex-wrap:wrap">
-      <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">Home</button><span>/</span>
+      <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">{{ tr.common_home_breadcrumb }}</button><span>/</span>
       <button onClick="{{ backToList }}" onMouseEnter="{{ linkIn }}" onMouseLeave="{{ crumbOut }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">{{ detailParent }}</button><span>/</span>
       <sc-if value="{{ detail.hasType }}" hint-placeholder-val="{{ true }}"><button onClick="{{ goDetailType }}" onMouseEnter="{{ linkIn }}" onMouseLeave="{{ crumbOut }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit;min-width:0;overflow-wrap:anywhere;text-align:left">{{ detail.type }}</button></sc-if><sc-if value="{{ detail.hasType }}" hint-placeholder-val="{{ true }}"><span>/</span></sc-if>
       <span style="color:#111214;min-width:0;overflow-wrap:anywhere">{{ detail.name }}</span>
@@ -1414,7 +1442,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
   <section style="background:transparent;border-bottom:1px solid #EFECE6">
     <div style="max-width:1420px;margin:0 auto;padding:22px 70px 18px">
       <nav style="display:flex;align-items:center;gap:10px;font:400 13px/1 'Archivo',sans-serif;color:#7C766A;flex-wrap:wrap">
-        <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">Home</button><span>/</span>
+        <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">{{ tr.common_home_breadcrumb }}</button><span>/</span>
         <button onClick="{{ goVerhuur }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">Verhuur</button><span>/</span>
         <span style="color:#111214">{{ rental.name }}</span>
       </nav>
@@ -1489,7 +1517,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
   <section style="background:transparent;border-bottom:1px solid #EFECE6">
     <div style="max-width:1420px;margin:0 auto;padding:56px 70px 70px">
       <nav style="display:flex;align-items:center;gap:10px;font:400 13px/1 'Archivo',sans-serif;color:#7C766A">
-        <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">Home</button><span>/</span><span style="color:#111214">Verhuur</span>
+        <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">{{ tr.common_home_breadcrumb }}</button><span>/</span><span style="color:#111214">Verhuur</span>
       </nav>
       <div style="max-width:60ch;margin-top:38px">
         <div style="display:flex;align-items:center;gap:14px"><svg class="wvb-marker" width="40" height="12" viewBox="0 0 40 12" fill="none" aria-hidden="true"><path d="M1 6H30M30 6 39 1M30 6 39 11" stroke="#C00020" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg><span style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.22em;text-transform:uppercase;color:#7C766A">Aanbod · verhuur</span></div>
@@ -1522,7 +1550,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
 <div>
   <section style="max-width:1360px;margin:0 auto;padding:56px 40px 0">
     <nav style="display:flex;align-items:center;gap:10px;font:400 13px/1 'Archivo',sans-serif;color:#7C766A">
-      <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">Home</button><span>/</span><span style="color:#111214">Merken</span>
+      <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">{{ tr.common_home_breadcrumb }}</button><span>/</span><span style="color:#111214">Merken</span>
     </nav>
     <div style="max-width:60ch;margin-top:34px">
       <h1 style="font:600 clamp(32px,4vw,54px)/1.05 Archivo,sans-serif;letter-spacing:-.03em;margin:0">Merken</h1>
@@ -1558,7 +1586,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
     <img src="/assets/grid-rood.png" alt="" aria-hidden="true" width="2201" height="2201" style="position:absolute;bottom:-180px;left:-120px;width:520px;opacity:.09;pointer-events:none">
     <div style="max-width:1360px;margin:0 auto;padding:72px 40px 76px">
       <nav style="display:flex;align-items:center;gap:10px;font:400 13px/1 'Archivo',sans-serif;color:#7C766A;flex-wrap:wrap">
-        <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">Home</button><span>/</span>
+        <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">{{ tr.common_home_breadcrumb }}</button><span>/</span>
         <button onClick="{{ goMerken }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">Merken</button><span>/</span>
         <span style="color:#111214">{{ brand.name }}</span>
       </nav>
@@ -1740,7 +1768,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
 <div>
   <section style="max-width:1360px;margin:0 auto;padding:56px 40px 0">
     <nav style="display:flex;align-items:center;gap:10px;font:400 13px/1 'Archivo',sans-serif;color:#7C766A">
-      <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">Home</button>
+      <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">{{ tr.common_home_breadcrumb }}</button>
       <span>/</span><span style="color:#111214">{{ tagCatName }}</span>
     </nav>
     <div data-list-top="" style="max-width:62ch;margin-top:34px">
@@ -1840,7 +1868,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
   <section style="border-bottom:1px solid #EFECE6">
     <div style="max-width:1360px;margin:0 auto;padding:44px 40px 0">
       <nav style="display:flex;align-items:center;gap:10px;font:400 13px/1 'Archivo',sans-serif;color:#7C766A;padding-bottom:44px">
-        <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">Home</button><span>/</span>
+        <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">{{ tr.common_home_breadcrumb }}</button><span>/</span>
         <span style="color:#111214">Service</span>
       </nav>
     </div>
@@ -1971,7 +1999,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
 <div>
   <section style="max-width:1360px;margin:0 auto;padding:56px 40px 0">
     <nav style="display:flex;align-items:center;gap:10px;font:400 13px/1 'Archivo',sans-serif;color:#7C766A">
-      <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">Home</button><span>/</span><span style="color:#111214">Contact</span>
+      <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">{{ tr.common_home_breadcrumb }}</button><span>/</span><span style="color:#111214">Contact</span>
     </nav>
     <div style="max-width:58ch;margin-top:34px">
       <h1 style="font:600 clamp(32px,4vw,54px)/1.05 Archivo,sans-serif;letter-spacing:-.03em;margin:0">Contact</h1>
@@ -2185,7 +2213,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
     <img src="/assets/grid-rood.png" alt="" aria-hidden="true" width="2201" height="2201" style="position:absolute;top:-90px;right:-120px;width:420px;opacity:.1;pointer-events:none">
     <div style="position:relative;max-width:1420px;margin:0 auto;padding:44px 70px 84px">
       <nav style="display:flex;align-items:center;gap:10px;font:400 13px/1 'Archivo',sans-serif;color:#7C766A">
-        <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">Home</button><span>/</span><span style="color:#111214">Over ons</span>
+        <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">{{ tr.common_home_breadcrumb }}</button><span>/</span><span style="color:#111214">Over ons</span>
       </nav>
       <div style="display:grid;grid-template-columns:1.05fr 1fr;gap:64px;align-items:start;margin-top:44px" data-split="">
         <div>
@@ -2339,7 +2367,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
   <section style="border-bottom:1px solid #EFECE6">
     <div style="max-width:1420px;margin:0 auto;padding:56px 70px 64px">
       <nav style="display:flex;align-items:center;gap:10px;font:400 13px/1 'Archivo',sans-serif;color:#7C766A;flex-wrap:wrap">
-        <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">Home</button><span>/</span>
+        <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">{{ tr.common_home_breadcrumb }}</button><span>/</span>
         <button onClick="{{ goOver }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">Over ons</button><span>/</span>
         <span style="color:#111214">Nieuws</span>
       </nav>
@@ -2401,7 +2429,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
   <section style="border-bottom:1px solid #EFECE6">
     <div style="max-width:1420px;margin:0 auto;padding:56px 70px 60px">
       <nav style="display:flex;align-items:center;gap:10px;font:400 13px/1 'Archivo',sans-serif;color:#7C766A;flex-wrap:wrap">
-        <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">Home</button><span>/</span>
+        <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">{{ tr.common_home_breadcrumb }}</button><span>/</span>
         <button onClick="{{ goNieuws }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">Nieuws</button><span>/</span>
         <span style="color:#111214">{{ article.title }}</span>
       </nav>
@@ -2491,7 +2519,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
   <section style="border-bottom:1px solid #EFECE6">
     <div style="max-width:1420px;margin:0 auto;padding:56px 70px 64px">
       <nav style="display:flex;align-items:center;gap:10px;font:400 13px/1 'Archivo',sans-serif;color:#7C766A;flex-wrap:wrap">
-        <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">Home</button><span>/</span>
+        <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">{{ tr.common_home_breadcrumb }}</button><span>/</span>
         <span style="color:#111214">Sitemap</span>
       </nav>
       <div style="max-width:60ch;margin-top:38px">
@@ -2522,7 +2550,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
     <img src="/assets/grid-rood.png" alt="" aria-hidden="true" width="2201" height="2201" style="position:absolute;top:-90px;right:-120px;width:400px;opacity:.09;pointer-events:none">
     <div style="position:relative;max-width:1420px;margin:0 auto;padding:56px 70px 76px">
       <nav style="display:flex;align-items:center;gap:10px;font:400 13px/1 'Archivo',sans-serif;color:#7C766A;flex-wrap:wrap">
-        <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">Home</button><span>/</span>
+        <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">{{ tr.common_home_breadcrumb }}</button><span>/</span>
         <button onClick="{{ goOver }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">Over ons</button><span>/</span>
         <span style="color:#111214">Werken bij</span>
       </nav>
@@ -2571,7 +2599,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
   <section style="border-bottom:1px solid #EFECE6">
     <div style="max-width:1420px;margin:0 auto;padding:56px 70px 64px">
       <nav style="display:flex;align-items:center;gap:10px;font:400 13px/1 'Archivo',sans-serif;color:#7C766A;flex-wrap:wrap">
-        <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">Home</button><span>/</span>
+        <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">{{ tr.common_home_breadcrumb }}</button><span>/</span>
         <button onClick="{{ goWerken }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">Werken bij</button><span>/</span>
         <span style="color:#111214">{{ vac.titel }}</span>
       </nav>
@@ -2671,7 +2699,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
   <section style="border-bottom:1px solid #EFECE6">
     <div style="max-width:1420px;margin:0 auto;padding:56px 70px 64px">
       <nav style="display:flex;align-items:center;gap:10px;font:400 13px/1 'Archivo',sans-serif;color:#7C766A;flex-wrap:wrap">
-        <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">Home</button><span>/</span>
+        <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">{{ tr.common_home_breadcrumb }}</button><span>/</span>
         <button onClick="{{ goOver }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">Over ons</button><span>/</span>
         <span style="color:#111214">Geleverd</span>
       </nav>
@@ -2732,7 +2760,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
   <section style="border-bottom:1px solid #EFECE6">
     <div style="max-width:1420px;margin:0 auto;padding:56px 70px 60px">
       <nav style="display:flex;align-items:center;gap:10px;font:400 13px/1 'Archivo',sans-serif;color:#7C766A;flex-wrap:wrap">
-        <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">Home</button><span>/</span>
+        <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">{{ tr.common_home_breadcrumb }}</button><span>/</span>
         <button onClick="{{ goOver }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">Over ons</button><span>/</span>
         <button onClick="{{ goGeleverd }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">Geleverd</button><span>/</span>
         <span style="color:#111214">{{ delivery.machine }}</span>
@@ -2813,7 +2841,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
   <section style="border-bottom:1px solid #EFECE6">
     <div style="max-width:1420px;margin:0 auto;padding:56px 70px 64px">
       <nav style="display:flex;align-items:center;gap:10px;font:400 13px/1 'Archivo',sans-serif;color:#7C766A;flex-wrap:wrap">
-        <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">Home</button><span>/</span>
+        <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">{{ tr.common_home_breadcrumb }}</button><span>/</span>
         <button onClick="{{ goOver }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">Over ons</button><span>/</span>
         <span style="color:#111214">Magazines</span>
       </nav>
@@ -2861,7 +2889,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
   <section style="border-bottom:1px solid #EFECE6">
     <div style="max-width:1420px;margin:0 auto;padding:56px 70px 76px">
       <nav style="display:flex;align-items:center;gap:10px;font:400 13px/1 'Archivo',sans-serif;color:#7C766A;flex-wrap:wrap">
-        <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">Home</button><span>/</span>
+        <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">{{ tr.common_home_breadcrumb }}</button><span>/</span>
         <button onClick="{{ goMagazines }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">Magazines</button><span>/</span>
         <span style="color:#111214">{{ magazine.editie }}</span>
       </nav>
@@ -3025,7 +3053,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
   <div data-footwrap="" style="max-width:1420px;margin:0 auto;padding:96px 70px 40px;position:relative">
     <span aria-hidden="true" data-fcorner="" style="position:absolute;top:40px;left:70px;width:28px;height:28px;border-top:1px solid #C00020;border-left:1px solid #C00020;pointer-events:none"></span>
     <span aria-hidden="true" data-fcorner="" style="position:absolute;top:40px;right:70px;width:28px;height:28px;border-top:1px solid #C00020;border-right:1px solid #C00020;pointer-events:none"></span>
-    <h2 style="font:600 clamp(28px,3.4vw,46px)/1.06 Archivo,sans-serif;letter-spacing:-.028em;margin:0 0 64px;max-width:22ch">Rust, vakmanschap en machines die blijven draaien.</h2>
+    <h2 style="font:600 clamp(28px,3.4vw,46px)/1.06 Archivo,sans-serif;letter-spacing:-.028em;margin:0 0 64px;max-width:22ch">{{ tr.foot_heading }}</h2>
     <div style="display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:48px" data-footgrid="">
       <div data-footbrand="">
         <img src="/assets/wvb-logo.svg" alt="Wim van Breda" width="299" height="83" style="height:74px;width:auto;display:block">
@@ -3036,30 +3064,30 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
         </div>
       </div>
       <div>
-        <div data-foottitle="" style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:rgba(17,18,20,.62)">Aanbod</div>
+        <div data-foottitle="" style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:rgba(17,18,20,.62)">{{ tr.nav_aanbod }}</div>
         <div style="display:flex;flex-direction:column;gap:2px;margin-top:18px">
-          <button data-active="{{ tabNact }}" onClick="{{ goMachines }}" onMouseEnter="{{ ftIn }}" onMouseLeave="{{ ftOut }}" style="text-align:left;background:none;border:0;padding:8px 0;cursor:pointer;color:#111214;font:400 15px/1.5 'Archivo',sans-serif;transition:color .2s">Nieuwe machines</button>
-          <button onClick="{{ goOccasions }}" onMouseEnter="{{ ftIn }}" onMouseLeave="{{ ftOut }}" style="text-align:left;background:none;border:0;padding:8px 0;cursor:pointer;color:#111214;font:400 15px/1.5 'Archivo',sans-serif;transition:color .2s">Occasions</button>
-          <button data-active="{{ tabVact }}" onClick="{{ goVerhuur }}" onMouseEnter="{{ ftIn }}" onMouseLeave="{{ ftOut }}" style="text-align:left;background:none;border:0;padding:8px 0;cursor:pointer;color:#111214;font:400 15px/1.5 'Archivo',sans-serif;transition:color .2s">Verhuur</button>
-          <button data-active="{{ tabMact }}" onClick="{{ goMerken }}" onMouseEnter="{{ ftIn }}" onMouseLeave="{{ ftOut }}" style="text-align:left;background:none;border:0;padding:8px 0;cursor:pointer;color:#111214;font:400 15px/1.5 'Archivo',sans-serif;transition:color .2s">Merken</button>
+          <button data-active="{{ tabNact }}" onClick="{{ goMachines }}" onMouseEnter="{{ ftIn }}" onMouseLeave="{{ ftOut }}" style="text-align:left;background:none;border:0;padding:8px 0;cursor:pointer;color:#111214;font:400 15px/1.5 'Archivo',sans-serif;transition:color .2s">{{ tr.nav_nieuwe_machines }}</button>
+          <button onClick="{{ goOccasions }}" onMouseEnter="{{ ftIn }}" onMouseLeave="{{ ftOut }}" style="text-align:left;background:none;border:0;padding:8px 0;cursor:pointer;color:#111214;font:400 15px/1.5 'Archivo',sans-serif;transition:color .2s">{{ tr.nav_occasions }}</button>
+          <button data-active="{{ tabVact }}" onClick="{{ goVerhuur }}" onMouseEnter="{{ ftIn }}" onMouseLeave="{{ ftOut }}" style="text-align:left;background:none;border:0;padding:8px 0;cursor:pointer;color:#111214;font:400 15px/1.5 'Archivo',sans-serif;transition:color .2s">{{ tr.nav_verhuur }}</button>
+          <button data-active="{{ tabMact }}" onClick="{{ goMerken }}" onMouseEnter="{{ ftIn }}" onMouseLeave="{{ ftOut }}" style="text-align:left;background:none;border:0;padding:8px 0;cursor:pointer;color:#111214;font:400 15px/1.5 'Archivo',sans-serif;transition:color .2s">{{ tr.nav_merken }}</button>
         </div>
       </div>
       <div>
-        <div data-foottitle="" style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:rgba(17,18,20,.62)">Over ons</div>
+        <div data-foottitle="" style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:rgba(17,18,20,.62)">{{ tr.nav_over_ons }}</div>
         <div style="display:flex;flex-direction:column;gap:2px;margin-top:18px">
-          <button onClick="{{ goOver }}" onMouseEnter="{{ ftIn }}" onMouseLeave="{{ ftOut }}" style="text-align:left;background:none;border:0;padding:8px 0;cursor:pointer;color:#111214;font:400 15px/1.5 'Archivo',sans-serif;transition:color .2s">Over ons</button>
-          <button onClick="{{ goNieuws }}" onMouseEnter="{{ ftIn }}" onMouseLeave="{{ ftOut }}" style="text-align:left;background:none;border:0;padding:8px 0;cursor:pointer;color:#111214;font:400 15px/1.5 'Archivo',sans-serif;transition:color .2s">Nieuws</button>
-          <button onClick="{{ goWerken }}" onMouseEnter="{{ ftIn }}" onMouseLeave="{{ ftOut }}" style="text-align:left;background:none;border:0;padding:8px 0;cursor:pointer;color:#111214;font:400 15px/1.5 'Archivo',sans-serif;transition:color .2s">Werken bij</button>
-          <button onClick="{{ goGeleverd }}" onMouseEnter="{{ ftIn }}" onMouseLeave="{{ ftOut }}" style="text-align:left;background:none;border:0;padding:8px 0;cursor:pointer;color:#111214;font:400 15px/1.5 'Archivo',sans-serif;transition:color .2s">Geleverd</button>
-          <button onClick="{{ goMagazines }}" onMouseEnter="{{ ftIn }}" onMouseLeave="{{ ftOut }}" style="text-align:left;background:none;border:0;padding:8px 0;cursor:pointer;color:#111214;font:400 15px/1.5 'Archivo',sans-serif;transition:color .2s">Magazines</button>
+          <button onClick="{{ goOver }}" onMouseEnter="{{ ftIn }}" onMouseLeave="{{ ftOut }}" style="text-align:left;background:none;border:0;padding:8px 0;cursor:pointer;color:#111214;font:400 15px/1.5 'Archivo',sans-serif;transition:color .2s">{{ tr.nav_over_ons }}</button>
+          <button onClick="{{ goNieuws }}" onMouseEnter="{{ ftIn }}" onMouseLeave="{{ ftOut }}" style="text-align:left;background:none;border:0;padding:8px 0;cursor:pointer;color:#111214;font:400 15px/1.5 'Archivo',sans-serif;transition:color .2s">{{ tr.nav_nieuws }}</button>
+          <button onClick="{{ goWerken }}" onMouseEnter="{{ ftIn }}" onMouseLeave="{{ ftOut }}" style="text-align:left;background:none;border:0;padding:8px 0;cursor:pointer;color:#111214;font:400 15px/1.5 'Archivo',sans-serif;transition:color .2s">{{ tr.nav_werken_bij }}</button>
+          <button onClick="{{ goGeleverd }}" onMouseEnter="{{ ftIn }}" onMouseLeave="{{ ftOut }}" style="text-align:left;background:none;border:0;padding:8px 0;cursor:pointer;color:#111214;font:400 15px/1.5 'Archivo',sans-serif;transition:color .2s">{{ tr.nav_geleverd }}</button>
+          <button onClick="{{ goMagazines }}" onMouseEnter="{{ ftIn }}" onMouseLeave="{{ ftOut }}" style="text-align:left;background:none;border:0;padding:8px 0;cursor:pointer;color:#111214;font:400 15px/1.5 'Archivo',sans-serif;transition:color .2s">{{ tr.nav_magazines }}</button>
         </div>
       </div>
       <div data-footwide="">
-        <div data-foottitle="" style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:rgba(17,18,20,.62)">Service &amp; contact</div>
+        <div data-foottitle="" style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:rgba(17,18,20,.62)">{{ tr.foot_service_contact }}</div>
         <div style="display:flex;flex-direction:column;gap:2px;margin-top:18px">
-          <button onClick="{{ goService }}" onMouseEnter="{{ ftIn }}" onMouseLeave="{{ ftOut }}" style="text-align:left;background:none;border:0;padding:8px 0;cursor:pointer;color:#111214;font:400 15px/1.5 'Archivo',sans-serif;transition:color .2s">Service aanvragen</button>
-          <button onClick="{{ goContactPage }}" onMouseEnter="{{ ftIn }}" onMouseLeave="{{ ftOut }}" style="text-align:left;background:none;border:0;padding:8px 0;cursor:pointer;color:#111214;font:400 15px/1.5 'Archivo',sans-serif;transition:color .2s">Contact</button>
-          <a href="https://webshop.wimvanbreda.nl/" target="_blank" rel="noopener noreferrer" onMouseEnter="{{ ftIn }}" onMouseLeave="{{ ftOut }}" style="padding:8px 0;color:#111214;font:400 15px/1.5 'Archivo',sans-serif;transition:color .2s">Webshop</a>
+          <button onClick="{{ goService }}" onMouseEnter="{{ ftIn }}" onMouseLeave="{{ ftOut }}" style="text-align:left;background:none;border:0;padding:8px 0;cursor:pointer;color:#111214;font:400 15px/1.5 'Archivo',sans-serif;transition:color .2s">{{ tr.foot_service_aanvragen }}</button>
+          <button onClick="{{ goContactPage }}" onMouseEnter="{{ ftIn }}" onMouseLeave="{{ ftOut }}" style="text-align:left;background:none;border:0;padding:8px 0;cursor:pointer;color:#111214;font:400 15px/1.5 'Archivo',sans-serif;transition:color .2s">{{ tr.nav_contact }}</button>
+          <a href="https://webshop.wimvanbreda.nl/" target="_blank" rel="noopener noreferrer" onMouseEnter="{{ ftIn }}" onMouseLeave="{{ ftOut }}" style="padding:8px 0;color:#111214;font:400 15px/1.5 'Archivo',sans-serif;transition:color .2s">{{ tr.nav_webshop }}</a>
         </div>
       </div>
     </div>
@@ -3069,15 +3097,15 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
         Wim van Breda B.V. · Bewuste Vooruitgang
       </div>
       <div style="display:flex;gap:26px;flex-wrap:wrap">
-        <a href="#privacy" onMouseEnter="{{ ftIn }}" onMouseLeave="{{ ftOut }}" style="color:rgba(17,18,20,.75);font:400 13px/1 'Archivo',sans-serif;transition:color .2s">Privacy</a>
-        <a href="#voorwaarden" onMouseEnter="{{ ftIn }}" onMouseLeave="{{ ftOut }}" style="color:rgba(17,18,20,.75);font:400 13px/1 'Archivo',sans-serif;transition:color .2s">Voorwaarden</a>
-        <button onClick="{{ goSitemap }}" onMouseEnter="{{ ftIn }}" onMouseLeave="{{ ftOut }}" style="background:none;border:0;padding:0;cursor:pointer;color:rgba(17,18,20,.75);font:400 13px/1 'Archivo',sans-serif;transition:color .2s">Sitemap</button>
+        <a href="#privacy" onMouseEnter="{{ ftIn }}" onMouseLeave="{{ ftOut }}" style="color:rgba(17,18,20,.75);font:400 13px/1 'Archivo',sans-serif;transition:color .2s">{{ tr.foot_privacy }}</a>
+        <a href="#voorwaarden" onMouseEnter="{{ ftIn }}" onMouseLeave="{{ ftOut }}" style="color:rgba(17,18,20,.75);font:400 13px/1 'Archivo',sans-serif;transition:color .2s">{{ tr.foot_voorwaarden }}</a>
+        <button onClick="{{ goSitemap }}" onMouseEnter="{{ ftIn }}" onMouseLeave="{{ ftOut }}" style="background:none;border:0;padding:0;cursor:pointer;color:rgba(17,18,20,.75);font:400 13px/1 'Archivo',sans-serif;transition:color .2s">{{ tr.foot_sitemap }}</button>
         <a href="https://nl.linkedin.com/company/wim-van-breda-bv" target="_blank" rel="noopener noreferrer" onMouseEnter="{{ ftIn }}" onMouseLeave="{{ ftOut }}" style="color:rgba(17,18,20,.75);font:400 13px/1 'Archivo',sans-serif;transition:color .2s">LinkedIn</a>
         <a href="https://www.facebook.com/wimvanbredabv/?locale=nl_NL" target="_blank" rel="noopener noreferrer" onMouseEnter="{{ ftIn }}" onMouseLeave="{{ ftOut }}" style="color:rgba(17,18,20,.75);font:400 13px/1 'Archivo',sans-serif;transition:color .2s">Facebook</a>
         <a href="https://www.instagram.com/wimvanbredabv/" target="_blank" rel="noopener noreferrer" onMouseEnter="{{ ftIn }}" onMouseLeave="{{ ftOut }}" style="color:rgba(17,18,20,.75);font:400 13px/1 'Archivo',sans-serif;transition:color .2s">Instagram</a>
       </div>
       <div data-credit="" style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
-        <span style="font:400 12px/1 'Archivo',sans-serif;color:rgba(17,18,20,.75)">Website gerealiseerd door:</span>
+        <span style="font:400 12px/1 'Archivo',sans-serif;color:rgba(17,18,20,.75)">{{ tr.foot_credit }}</span>
         <a href="https://aichecked.nl/" target="_blank" rel="noopener noreferrer" onMouseEnter="{{ creditIn }}" onMouseLeave="{{ creditOut }}" aria-label="AIChecked.nl — website realisatie" style="display:inline-flex;align-items:center;justify-content:center;height:33px;width:142px;padding:0 14px;background:#0B0C0C;border-radius:999px;overflow:hidden;transition:transform .18s cubic-bezier(.2,.7,.3,1),box-shadow .18s,opacity .18s">
           <img src="/assets/aichecked-opt.png" alt="AIChecked.nl" width="300" height="100" loading="lazy" decoding="async" style="height:100%;width:100%;object-fit:contain;display:block">
         </a>
@@ -4359,7 +4387,15 @@ class Component extends DCLogic {
     index:true,
     tlActive:0, videoPlaying:false, menuTab:'machines', rentalCat:null, gallery:0, lightbox:false, galDragging:false, galDrag:0, rentalFrom:null, ctx:null,
     applySent:false, applyBusy:false, applyError:null, dept:'Algemeen', bpage:1, dPage:1, magPage:1, nieuwsPage:1, lpage:1, magPdfs:{}, magPdfErr:null, badImgs:{},
-    galSlots: (()=>{ try { return JSON.parse(localStorage.getItem('wvb-gal-slots')||'{}'); } catch(e){ return {}; } })()
+    galSlots: (()=>{ try { return JSON.parse(localStorage.getItem('wvb-gal-slots')||'{}'); } catch(e){ return {}; } })(),
+    // Taalkeuze (NL/EN/DE): onthouden per browser via localStorage, net als
+    // galSlots hierboven. NL blijft de standaard/fallback wanneer er nog
+    // niets gekozen is of de opgeslagen waarde ongeldig is. Alleen de
+    // getoonde tekst wisselt (zie Component.I18N/this.t() hieronder) — er
+    // zijn bewust geen aparte /en//de/-URL's (client-side taalwisselaar,
+    // geen aparte crawlbare taalversies).
+    lang: (()=>{ try { const v = localStorage.getItem('wvb-lang'); return ['nl','en','de'].includes(v) ? v : 'nl'; } catch(e){ return 'nl'; } })(),
+    langOpen:false
   };
 
   ddIn = (e)=>{ const el=e.currentTarget;
@@ -4409,6 +4445,17 @@ class Component extends DCLogic {
 
   reduced(){ return window.matchMedia('(prefers-reduced-motion: reduce)').matches; }
 
+  // Vertaalhulp: zoekt "key" op in Component.I18N voor de huidige taal,
+  // valt terug op Nederlands, en als allerlaatste redmiddel op de key zelf
+  // (zodat een ontbrekende vertaling nooit een lege/kapotte pagina geeft,
+  // hooguit zichtbaar Nederlandse tekst in een EN/DE-weergave — bewust,
+  // zie eindrapport "Taalkeuze NL/EN/DE" voor welke pagina's nog niet
+  // volledig vertaald zijn).
+  t(key){
+    const dict = Component.I18N[this.state.lang] || Component.I18N.nl;
+    return (dict && dict[key]) || Component.I18N.nl[key] || key;
+  }
+
   slug(s){ return String(s).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,''); }
 
   contactWith(title,type,path){
@@ -4426,6 +4473,129 @@ class Component extends DCLogic {
   static ONDERWERP_BY_CTX = {
     machine:'Nieuwe machine', occasion:'Occasion', verhuur:'Verhuur',
     service:'Service', onderdelen:'Onderdelen', werkenbij:'Werken bij'
+  };
+
+  // Taalkeuze NL/EN/DE — zie this.t()/state.lang. NL is de brontaal en
+  // dubbelt als fallback (this.t() valt terug op I18N.nl voor een key die
+  // in EN/DE nog ontbreekt). Sitebreed toegepast: header/mobiel menu,
+  // footer en de volledige homepage. Overige pagina's (Over ons, Aanbod-
+  // overzicht, Service, Contact, Verhuur) hebben vooralsnog alleen de
+  // gedeelde chrome (nav/footer) vertaald — de eigen kopteksten/lopende
+  // tekst van die pagina's en alle individuele machine-/merk-/nieuws-
+  // /occasion-teksten blijven nog Nederlands. Zie eindrapport "Taalkeuze
+  // NL/EN/DE" voor de volledige stand van zaken per pagina.
+  static I18N = {
+    nl: {
+      nav_aanbod:'Aanbod', nav_nieuwe_machines:'Nieuwe machines', nav_merken:'Merken',
+      nav_verhuur:'Verhuur', nav_elektrisch:'Elektrische machines', nav_ecologisch:'Ecologische machines',
+      nav_uitgelicht_types:'Uitgelichte machinetypes', nav_cta_nieuwe_machines:'Bekijk alle nieuwe machines',
+      nav_uitgelicht_merken:'Uitgelichte merken', nav_cta_merken:'Bekijk alle merken',
+      nav_verhuurcategorieen:'Verhuurcategorieën', nav_cta_verhuur:'Bekijk verhuur',
+      nav_uitgelicht_elektrisch:'Uitgelicht elektrisch', nav_cta_elektrisch:'Bekijk elektrische machines',
+      nav_uitgelicht_ecologisch:'Uitgelicht ecologisch', nav_cta_ecologisch:'Bekijk ecologische machines',
+      nav_occasions:'Occasions', nav_service:'Service', nav_over_ons:'Over ons',
+      nav_nieuws:'Nieuws', nav_werken_bij:'Werken bij', nav_geleverd:'Geleverd', nav_magazines:'Magazines',
+      nav_contact:'Contact', nav_webshop:'Webshop', nav_menu:'Menu', nav_taal:'Taal',
+      foot_service_contact:'Service & contact', foot_service_aanvragen:'Service aanvragen',
+      foot_privacy:'Privacy', foot_voorwaarden:'Voorwaarden', foot_sitemap:'Sitemap',
+      foot_credit:'Website gerealiseerd door:', foot_heading:'Rust, vakmanschap en machines die blijven draaien.',
+      home_hero_title:'De meest effectieve machines voor weg-, berm- en slootonderhoud',
+      home_hero_sub:'Wij adviseren, leveren en onderhouden machines voor gemeenten, aannemers, waterschappen en loonbedrijven.',
+      home_cta_aanbod:'Bekijk ons aanbod', common_cta_contact:'Neem contact op',
+      home_since:'Sinds 1957', home_brands_count:'22 merken', home_usp3:'Machines, service & onderdelen',
+      home_bekijk_aanbod:'Bekijk aanbod', home_bekijk_occasions:'Bekijk occasions',
+      home_uitgelicht:'Uitgelicht', home_machines_titel:'Machines uit ons aanbod', home_alle_machines:'Alle machines →',
+      common_bekijk_machine:'Bekijk machine',
+      home_zoeken:'Zoeken', home_vind_machine:'Vind de juiste machine',
+      home_vind_machine_desc:'Combineer machinetype en merk. U ziet direct wat wij daadwerkelijk leveren.',
+      common_machinetype:'Machinetype', common_alle_types:'Alle types', common_merk:'Merk', common_alle_merken:'Alle merken',
+      home_service_advies:'Service & advies', home_waarom:'Waarom Wim van Breda',
+      home_waarom_tekst:'Ruim zestig jaar ervaring, een eigen werkplaats, een grote onderdelenvoorraad en service waar u op kunt bouwen — van eerste advies tot jarenlang gebruik.',
+      home_item1_titel:'Eigen werkplaats en (service)monteurs', home_item1_tekst:'Reparatie, onderhoud en keuringen in Geldermalsen of op locatie.',
+      home_item2_titel:'Grote onderdelen voorraad', home_item2_tekst:'Een ruime parts-voorraad voor de merken die wij leveren.',
+      home_item3_titel:'Praktisch advies', home_item3_tekst:'Wij begrijpen het werk van onze klanten.',
+      home_item4_titel:'Bewuste Vooruitgang', home_item4_tekst:'Samen met onze klanten en leveranciers zorgen voor de juiste machine voor de juiste toepassing.',
+      home_onze_merken:'Onze merken', home_onze_merken_desc:'Wij werken met sterke merken.',
+      home_cta_al_onze_merken:'Bekijk al onze merken', common_bekijk_merk:'Bekijk merk',
+      home_occasion_eyebrow:'Occasion', home_occasion_titel:'Gebruikte machines, ruim aanbod',
+      home_occasion_tekst:'Elke occasion gaat eerst door onze werkplaats. U weet wat u koopt en bij wie u terecht kunt.',
+      home_occasion_cta:'Ontdek ons actuele aanbod occasions',
+      common_home_breadcrumb:'Home', common_bekijk:'Bekijk', home_bekijk_alle_machines:'Bekijk alle machines'
+    },
+    en: {
+      nav_aanbod:'Products', nav_nieuwe_machines:'New machines', nav_merken:'Brands',
+      nav_verhuur:'Rental', nav_elektrisch:'Electric machines', nav_ecologisch:'Ecological machines',
+      nav_uitgelicht_types:'Featured machine types', nav_cta_nieuwe_machines:'View all new machines',
+      nav_uitgelicht_merken:'Featured brands', nav_cta_merken:'View all brands',
+      nav_verhuurcategorieen:'Rental categories', nav_cta_verhuur:'View rental range',
+      nav_uitgelicht_elektrisch:'Featured electric', nav_cta_elektrisch:'View electric machines',
+      nav_uitgelicht_ecologisch:'Featured ecological', nav_cta_ecologisch:'View ecological machines',
+      nav_occasions:'Used machines', nav_service:'Service', nav_over_ons:'About us',
+      nav_nieuws:'News', nav_werken_bij:'Careers', nav_geleverd:'Delivered', nav_magazines:'Magazines',
+      nav_contact:'Contact', nav_webshop:'Webshop', nav_menu:'Menu', nav_taal:'Language',
+      foot_service_contact:'Service & contact', foot_service_aanvragen:'Request service',
+      foot_privacy:'Privacy', foot_voorwaarden:'Terms', foot_sitemap:'Sitemap',
+      foot_credit:'Website by:', foot_heading:'Calm, craftsmanship, and machines that keep running.',
+      home_hero_title:'The most effective machines for road, verge and ditch maintenance',
+      home_hero_sub:'We advise on, supply and maintain machines for municipalities, contractors, water boards and agricultural contractors.',
+      home_cta_aanbod:'View our range', common_cta_contact:'Get in touch',
+      home_since:'Since 1957', home_brands_count:'22 brands', home_usp3:'Machines, service & parts',
+      home_bekijk_aanbod:'View range', home_bekijk_occasions:'View used machines',
+      home_uitgelicht:'Featured', home_machines_titel:'Machines from our range', home_alle_machines:'All machines →',
+      common_bekijk_machine:'View machine',
+      home_zoeken:'Search', home_vind_machine:'Find the right machine',
+      home_vind_machine_desc:'Combine machine type and brand. See exactly what we actually supply.',
+      common_machinetype:'Machine type', common_alle_types:'All types', common_merk:'Brand', common_alle_merken:'All brands',
+      home_service_advies:'Service & advice', home_waarom:'Why Wim van Breda',
+      home_waarom_tekst:'Over sixty years of experience, our own workshop, a large parts inventory, and service you can rely on — from first advice to years of use.',
+      home_item1_titel:'Our own workshop and (service) technicians', home_item1_tekst:'Repairs, maintenance and inspections in Geldermalsen or on-site.',
+      home_item2_titel:'Large parts inventory', home_item2_tekst:'An extensive parts stock for the brands we supply.',
+      home_item3_titel:'Practical advice', home_item3_tekst:"We understand our customers' work.",
+      home_item4_titel:'Conscious Progress', home_item4_tekst:'Working together with our customers and suppliers to find the right machine for the right application.',
+      home_onze_merken:'Our brands', home_onze_merken_desc:'We work with strong brands.',
+      home_cta_al_onze_merken:'View all our brands', common_bekijk_merk:'View brand',
+      home_occasion_eyebrow:'Used machine', home_occasion_titel:'Used machines, wide range',
+      home_occasion_tekst:"Every used machine first goes through our workshop. You know what you're buying and who to turn to.",
+      home_occasion_cta:'Discover our current range of used machines',
+      common_home_breadcrumb:'Home', common_bekijk:'View', home_bekijk_alle_machines:'View all machines'
+    },
+    de: {
+      nav_aanbod:'Angebot', nav_nieuwe_machines:'Neue Maschinen', nav_merken:'Marken',
+      nav_verhuur:'Vermietung', nav_elektrisch:'Elektrische Maschinen', nav_ecologisch:'Ökologische Maschinen',
+      nav_uitgelicht_types:'Ausgewählte Maschinentypen', nav_cta_nieuwe_machines:'Alle neuen Maschinen ansehen',
+      nav_uitgelicht_merken:'Ausgewählte Marken', nav_cta_merken:'Alle Marken ansehen',
+      nav_verhuurcategorieen:'Mietkategorien', nav_cta_verhuur:'Vermietung ansehen',
+      nav_uitgelicht_elektrisch:'Ausgewählt: elektrisch', nav_cta_elektrisch:'Elektrische Maschinen ansehen',
+      nav_uitgelicht_ecologisch:'Ausgewählt: ökologisch', nav_cta_ecologisch:'Ökologische Maschinen ansehen',
+      nav_occasions:'Gebrauchtmaschinen', nav_service:'Service', nav_over_ons:'Über uns',
+      nav_nieuws:'Neuigkeiten', nav_werken_bij:'Karriere', nav_geleverd:'Geliefert', nav_magazines:'Magazine',
+      nav_contact:'Kontakt', nav_webshop:'Webshop', nav_menu:'Menü', nav_taal:'Sprache',
+      foot_service_contact:'Service & Kontakt', foot_service_aanvragen:'Service anfragen',
+      foot_privacy:'Datenschutz', foot_voorwaarden:'AGB', foot_sitemap:'Sitemap',
+      foot_credit:'Website erstellt von:', foot_heading:'Ruhe, Fachwissen und Maschinen, die weiterlaufen.',
+      home_hero_title:'Die effektivsten Maschinen für Straßen-, Bankett- und Grabenunterhalt',
+      home_hero_sub:'Wir beraten, liefern und warten Maschinen für Gemeinden, Bauunternehmen, Wasserverbände und Lohnunternehmen.',
+      home_cta_aanbod:'Unser Angebot ansehen', common_cta_contact:'Kontakt aufnehmen',
+      home_since:'Seit 1957', home_brands_count:'22 Marken', home_usp3:'Maschinen, Service & Ersatzteile',
+      home_bekijk_aanbod:'Angebot ansehen', home_bekijk_occasions:'Gebrauchtmaschinen ansehen',
+      home_uitgelicht:'Ausgewählt', home_machines_titel:'Maschinen aus unserem Angebot', home_alle_machines:'Alle Maschinen →',
+      common_bekijk_machine:'Maschine ansehen',
+      home_zoeken:'Suche', home_vind_machine:'Die richtige Maschine finden',
+      home_vind_machine_desc:'Kombinieren Sie Maschinentyp und Marke. Sie sehen direkt, was wir tatsächlich liefern.',
+      common_machinetype:'Maschinentyp', common_alle_types:'Alle Typen', common_merk:'Marke', common_alle_merken:'Alle Marken',
+      home_service_advies:'Service & Beratung', home_waarom:'Warum Wim van Breda',
+      home_waarom_tekst:'Über sechzig Jahre Erfahrung, eine eigene Werkstatt, ein großes Ersatzteillager und Service, auf den Sie sich verlassen können — von der ersten Beratung bis zum jahrelangen Einsatz.',
+      home_item1_titel:'Eigene Werkstatt und (Service-)Techniker', home_item1_tekst:'Reparatur, Wartung und Prüfungen in Geldermalsen oder vor Ort.',
+      home_item2_titel:'Großes Ersatzteillager', home_item2_tekst:'Ein umfangreiches Ersatzteillager für die von uns gelieferten Marken.',
+      home_item3_titel:'Praktische Beratung', home_item3_tekst:'Wir verstehen die Arbeit unserer Kunden.',
+      home_item4_titel:'Bewusster Fortschritt', home_item4_tekst:'Gemeinsam mit unseren Kunden und Lieferanten sorgen wir für die richtige Maschine für die richtige Anwendung.',
+      home_onze_merken:'Unsere Marken', home_onze_merken_desc:'Wir arbeiten mit starken Marken.',
+      home_cta_al_onze_merken:'Alle unsere Marken ansehen', common_bekijk_merk:'Marke ansehen',
+      home_occasion_eyebrow:'Gebrauchtmaschine', home_occasion_titel:'Gebrauchtmaschinen, großes Angebot',
+      home_occasion_tekst:'Jede Gebrauchtmaschine durchläuft zunächst unsere Werkstatt. Sie wissen, was Sie kaufen und an wen Sie sich wenden können.',
+      home_occasion_cta:'Entdecken Sie unser aktuelles Gebrauchtmaschinenangebot',
+      common_home_breadcrumb:'Startseite', common_bekijk:'Ansehen', home_bekijk_alle_machines:'Alle Maschinen ansehen'
+    }
   };
 
   // Jaren met volledige maandnavigatie (archief); overige jaren tonen alleen maanden met leveringen
@@ -4460,7 +4630,7 @@ class Component extends DCLogic {
     // contactpagina (onderwerpVal/setOnderwerp).
     const ctxType = extra && extra.ctx ? extra.ctx.type : null;
     const onderwerp = Component.ONDERWERP_BY_CTX[ctxType] || 'Anders';
-    const st = Object.assign({page,param:param||null,menu:null,mob:false,q:'',ftype:[],fbrand:[],sort:'nieuwste',fstatus:[],hrMin:'',hrMax:'',sortOpen:false,drawer:false,onderwerpOpen:false,gallery:0,lightbox:false,rentalFrom:null,ctx:null,onderwerp,applySent:false,applyBusy:false,applyError:null,bpage:1,lpage:1},extra||{});
+    const st = Object.assign({page,param:param||null,menu:null,mob:false,q:'',ftype:[],fbrand:[],sort:'nieuwste',fstatus:[],hrMin:'',hrMax:'',sortOpen:false,drawer:false,onderwerpOpen:false,langOpen:false,gallery:0,lightbox:false,rentalFrom:null,ctx:null,onderwerp,applySent:false,applyBusy:false,applyError:null,bpage:1,lpage:1},extra||{});
     if (this.reduced()){ this.setState(st); window.scrollTo(0,0); return; }
     this.setState({transit:true,menu:null,mob:false});
     clearTimeout(this._t1); clearTimeout(this._t2);
@@ -4760,6 +4930,12 @@ class Component extends DCLogic {
   applyMeta(){
     const m = this.meta(); if(!m) return;
     document.title = m.t;
+    // <html lang="..."> volgt de gekozen taal — een reëel, legitiem signaal
+    // voor screenreaders/browsers, ook zonder aparte /en//de/-URL's. De
+    // meta title/description/canonical hieronder blijven bewust Nederlands:
+    // zonder eigen taal-URL's heeft een vertaalde <title> geen SEO-waarde
+    // (zoekmachines zien altijd dezelfde URL) — zie eindrapport.
+    document.documentElement.lang = this.state.lang;
     const set = (sel,attr,val,make)=>{
       let el = document.head.querySelector(sel);
       if(!el){ el = make(); document.head.appendChild(el); }
@@ -4894,6 +5070,15 @@ class Component extends DCLogic {
       {'@type':'ListItem',position:3,name:fullName,item:BASE+m.u}
     ];
     put('crumbs',{'@context':'https://schema.org','@type':'BreadcrumbList',itemListElement:crumbs});
+  }
+
+  // Taalkeuze NL/EN/DE: onthouden per browser (localStorage, geen aparte
+  // /en//de/-URL's — zie de toelichting bij state.lang hierboven). Werkt
+  // sitebreed omdat this.t() bij elke render de huidige this.state.lang
+  // opnieuw opzoekt.
+  setLang(lang){
+    try { localStorage.setItem('wvb-lang', lang); } catch(e){}
+    this.setState({lang, langOpen:false});
   }
 
   // hover choreography
@@ -5735,8 +5920,8 @@ class Component extends DCLogic {
     const brEnd = !!br && br.scrollLeft >= br.scrollWidth - br.clientWidth - 2;
 
     const homeSearchLabel = (s.homeType||s.homeBrand)
-      ? 'Bekijk ' + [s.homeType,s.homeBrand].filter(Boolean).join(' · ')
-      : 'Bekijk alle machines';
+      ? this.t('common_bekijk') + ' ' + [s.homeType,s.homeBrand].filter(Boolean).join(' · ')
+      : this.t('home_bekijk_alle_machines');
 
     return {
       transit: s.transit,
@@ -6131,6 +6316,22 @@ class Component extends DCLogic {
       })),
       closeMenu: ()=>this.setState({menu:null}),
       toggleMob: ()=>this.setState({mob:!s.mob}),
+      // Eén object met alle vertaalde strings voor de huidige taal (NL als
+      // fallback voor nog niet vertaalde keys) — sjablonen gebruiken
+      // {{ tr.sleutelnaam }} i.p.v. voor elke tekst een los render-data-veld
+      // te moeten aanmaken. Zie Component.I18N hieronder voor alle keys per
+      // taal en het eindrapport voor welke pagina's dit al gebruiken.
+      tr: Object.assign({}, Component.I18N.nl, Component.I18N[s.lang] || {}),
+      lang: s.lang,
+      langOpen: !!s.langOpen,
+      langLabel: s.lang.toUpperCase(),
+      toggleLang: ()=>this.setState({langOpen:!s.langOpen}),
+      closeLang: ()=>this.setState({langOpen:false}),
+      langOpts: [
+        {code:'nl', label:'Nederlands', on: ()=>this.setLang('nl')},
+        {code:'en', label:'English', on: ()=>this.setLang('en')},
+        {code:'de', label:'Deutsch', on: ()=>this.setLang('de')}
+      ].map(o=>({...o, codeUp:o.code.toUpperCase(), active:o.code===s.lang, bg:o.code===s.lang?'#FFF6E0':'transparent'})),
 
       hoverIn:this.hoverIn, hoverOut:this.hoverOut, btnIn:this.btnIn, btnOut:this.btnOut,
       navIn:this.navIn, navOut:this.navOut, rowIn:this.rowIn, rowOut:this.rowOut,
