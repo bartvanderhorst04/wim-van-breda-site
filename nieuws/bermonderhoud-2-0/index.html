@@ -1402,28 +1402,33 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
 
 <sc-if value="{{ isRentalCat }}" hint-placeholder-val="{{ false }}">
 <div>
+  <!-- Compacte hero: breadcrumb + label + H1 + korte intro + afbeelding.
+       De verhuurmachines ("Beschikbaar in deze categorie") staan bewust
+       DIRECT hieronder (zie volgende sectie) — de langere huurtekst
+       (rental.voorwaardenTitel/voorwaarden) is verplaatst naar ná de
+       machinekaarten, zodat een bezoeker de 3 beschikbare machines zonder
+       eerst door een tekstblok te scrollen ziet. Gedeeld template voor
+       alle verhuurcategorieën (Maaimachines, Aanbouwwerktuigen, Bosbouw),
+       dus deze volgorde + compactere maatvoering geldt automatisch voor
+       alle drie. -->
   <section style="background:transparent;border-bottom:1px solid #EFECE6">
-    <div style="max-width:1420px;margin:0 auto;padding:56px 70px 72px">
+    <div style="max-width:1420px;margin:0 auto;padding:22px 70px 18px">
       <nav style="display:flex;align-items:center;gap:10px;font:400 13px/1 'Archivo',sans-serif;color:#7C766A;flex-wrap:wrap">
         <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">Home</button><span>/</span>
         <button onClick="{{ goVerhuur }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">Verhuur</button><span>/</span>
         <span style="color:#111214">{{ rental.name }}</span>
       </nav>
       <!-- align-items:start (was :end): titel+tekst horen bovenaan, gelijk
-           met de bovenkant van de afbeelding ernaast — met :end zakte dit
-           tekstblok (korter dan de 16:10-afbeelding) naar de onderkant van
-           de rij, wat op desktop/tablet uit balans oogde. Gedeeld template
-           voor alle verhuurcategorieën (Maaimachines, Aanbouwwerktuigen,
-           Bosbouw), dus deze fix geldt voor alle drie. Op mobiel (≤980px)
-           klapt [data-split] naar één kolom; daar stond de tekst al boven
-           de afbeelding (brondata-volgorde) en verandert dit niets. -->
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;margin-top:40px" data-split="">
+           met de bovenkant van de afbeelding ernaast. Op mobiel (≤980px)
+           klapt [data-split] naar één kolom; daar staat de tekst al boven
+           de afbeelding (brondata-volgorde). -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;margin-top:14px" data-split="">
         <div>
           <span style="display:inline-flex;align-items:center;gap:9px;border:1px solid #E4E0D8;padding:8px 12px;font:500 10px/1 'Archivo',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#57544D"><span style="width:6px;height:6px;background:#FBAE00"></span>Verhuur</span>
-          <h1 style="font:600 clamp(30px,3.8vw,50px)/1.06 Archivo,sans-serif;letter-spacing:-.03em;margin:24px 0 0;max-width:18ch">{{ rental.name }}</h1>
-          <p style="font:400 17px/1.75 'Archivo',sans-serif;color:#43413C;margin:20px 0 0;max-width:52ch">{{ rental.intro }}</p>
+          <h1 style="font:600 clamp(26px,3vw,38px)/1.1 Archivo,sans-serif;letter-spacing:-.03em;margin:12px 0 0;max-width:18ch">{{ rental.name }}</h1>
+          <p style="font:400 16px/1.55 'Archivo',sans-serif;color:#43413C;margin:8px 0 0;max-width:52ch">{{ rental.intro }}</p>
         </div>
-        <div style="aspect-ratio:16/10;background:#EDEAE4;overflow:hidden">
+        <div style="aspect-ratio:16/6;background:#EDEAE4;overflow:hidden">
           <sc-if value="{{ rental.hasHeroImg }}" hint-placeholder-val="{{ true }}">{{ rental.heroImgEl }}</sc-if>
           <sc-if value="{{ rental.noHeroImg }}" hint-placeholder-val="{{ false }}"><image-slot data-shot id="renthero-{{ rental.id }}" shape="rect" placeholder="{{ rental.name }}"></image-slot></sc-if>
         </div>
@@ -1431,24 +1436,13 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
     </div>
   </section>
 
-  <section style="border-bottom:1px solid #EFECE6">
-    <div style="max-width:1420px;margin:0 auto;padding:56px 70px">
-      <h2 style="font:600 clamp(22px,2.4vw,30px)/1.15 Archivo,sans-serif;letter-spacing:-.022em;margin:0">{{ rental.voorwaardenTitel }}</h2>
-      <div style="max-width:74ch;margin-top:22px;display:flex;flex-direction:column;gap:16px">
-        <sc-for list="{{ rental.voorwaarden }}" as="p" hint-placeholder-count="3">
-          <p style="font:400 17px/1.85 'Archivo',sans-serif;color:#43413C;margin:0">{{ p }}</p>
-        </sc-for>
-      </div>
-    </div>
-  </section>
-
   <section style="background:rgba(247,245,241,.62)">
-    <div style="max-width:1420px;margin:0 auto;padding:64px 70px 100px">
-      <div style="display:flex;align-items:baseline;justify-content:space-between;gap:20px;flex-wrap:wrap;padding-bottom:20px;border-bottom:1px solid #E4E0D8">
-        <h2 style="font:600 clamp(20px,2vw,26px)/1.15 Archivo,sans-serif;letter-spacing:-.02em;margin:0">Beschikbaar in deze categorie</h2>
+    <div style="max-width:1420px;margin:0 auto;padding:20px 70px 56px">
+      <div style="display:flex;align-items:baseline;justify-content:space-between;gap:20px;flex-wrap:wrap;padding-bottom:14px;border-bottom:1px solid #E4E0D8">
+        <h2 style="font:600 clamp(19px,1.8vw,24px)/1.15 Archivo,sans-serif;letter-spacing:-.02em;margin:0">Beschikbaar in deze categorie</h2>
         <span style="font:400 14px/1 'Archivo',sans-serif;color:#57544D"><strong style="font-weight:600;color:#111214">{{ resultCount }}</strong> machines</span>
       </div>
-      <div data-rentgrid="" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;width:100%;margin-top:32px">
+      <div data-rentgrid="" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;width:100%;margin-top:24px">
         <sc-for list="{{ results }}" as="m" hint-placeholder-count="3">
           <button class="wvb-feat-card" onClick="{{ m.open }}" onMouseEnter="{{ hoverIn }}" onMouseLeave="{{ hoverOut }}" style="border:1px solid #E6E3DD;border-radius:2px;padding:0;cursor:pointer;transition:transform .28s cubic-bezier(.2,.7,.3,1),box-shadow .28s,border-color .28s">
             <div class="wvb-feat-card__img" data-fit="{{ m.rentalCardFit }}">
@@ -1468,6 +1462,21 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
               </div>
             </div>
           </button>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- Uitgebreide huurtekst (voorwaarden): bewust verplaatst naar ná de
+       machinekaarten hierboven — zelfde inhoud, alleen lager op de pagina
+       (zie eindrapport "Verhuurcategoriepagina's: machines direct
+       zichtbaar"). -->
+  <section style="border-bottom:1px solid #EFECE6">
+    <div style="max-width:1420px;margin:0 auto;padding:56px 70px 64px">
+      <h2 style="font:600 clamp(22px,2.4vw,30px)/1.15 Archivo,sans-serif;letter-spacing:-.022em;margin:0">{{ rental.voorwaardenTitel }}</h2>
+      <div style="max-width:74ch;margin-top:22px;display:flex;flex-direction:column;gap:16px">
+        <sc-for list="{{ rental.voorwaarden }}" as="p" hint-placeholder-count="3">
+          <p style="font:400 17px/1.85 'Archivo',sans-serif;color:#43413C;margin:0">{{ p }}</p>
         </sc-for>
       </div>
     </div>
