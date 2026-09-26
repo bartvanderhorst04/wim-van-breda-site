@@ -231,7 +231,7 @@ a:active{color:#111214}
   [data-footwrap] [data-fcorner]{left:20px!important}
   [data-footwrap] [data-fcorner]+[data-fcorner]{left:auto!important;right:20px!important}
 }
-@media (max-width:900px){[data-overhero]{height:min(78vh,700px)!important;min-height:560px!important}[data-overhero]>img{object-position:32% 52%!important}[data-overhero] [data-overtitle]{font-size:clamp(32px,8.5vw,44px)!important}[data-overhero]>div:last-child{padding:70px 24px 56px!important}}
+@media (max-width:900px){[data-overhero],[data-homehero],[data-svhero]{height:min(46vh,420px)!important;min-height:360px!important}[data-overhero]>img{object-position:32% 52%!important}[data-overhero] [data-overtitle]{font-size:clamp(32px,8.5vw,44px)!important}[data-overhero]>div:last-child,[data-homehero]>div:last-child,[data-svhero]>div:last-child{padding:40px 24px 36px!important}}
 /* BrandMarker — centrale decoratieve markering vóór sectielabels (bv.
    "UITGELICHT", "WERKEN BIJ WIM VAN BREDA"). Eén vorm, sitebreed hergebruikt;
    schaalt op smalle schermen mee via width, height:auto behoudt de
@@ -328,12 +328,12 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
 /* Herder-specifieke merkhero (uitsluitend /merken/herder/) — twee kolommen,
    grote verticale foto rechts, groot logo links. Andere merkpagina's blijven
    de standaard hero (hierboven, ongewijzigd) gebruiken. */
-.brand-hero{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(300px,0.75fr);gap:clamp(40px,6vw,88px);align-items:center;margin-top:56px}
-.brand-hero__media{width:100%;max-width:420px;justify-self:end;aspect-ratio:2/3;overflow:hidden;background:#EFECE6}
+.brand-hero{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(300px,0.75fr);gap:clamp(40px,6vw,88px);align-items:center;margin-top:32px}
+.brand-hero__media{width:100%;max-width:340px;justify-self:end;aspect-ratio:4/5;overflow:hidden;background:#EFECE6}
 .brand-hero__media img{display:block;width:100%;height:100%;object-fit:cover;object-position:center top}
 .brand-hero__logo{display:flex;align-items:center;justify-content:flex-start;margin-bottom:24px}
 @media (max-width:900px){.brand-hero{grid-template-columns:minmax(0,1fr) minmax(250px,0.7fr);gap:32px}}
-@media (max-width:700px){.brand-hero{grid-template-columns:1fr}.brand-hero__media{width:100%;max-width:420px;justify-self:center;margin-top:40px}}
+@media (max-width:700px){.brand-hero{grid-template-columns:1fr}.brand-hero__media{width:100%;max-width:300px;aspect-ratio:16/11;justify-self:center;margin-top:24px}}
 /* Portret Dick van Breda ("Over ons"): op desktop staat de foto in een
    vaste 380px-kolom naast het citaat. Zodra [data-split] hieronder
    (max-width:980px) naar één kolom klapt, zou de foto anders de volle
@@ -685,9 +685,15 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
 
 <main style="flex:1 0 auto">
 
+<!-- Hero-hoogte: bewust verkleind (was min(86vh,880px);min-height:820px) t.o.v.
+     de oorspronkelijke, bijna-schermvullende hero — zie eindrapport "Belangrijke
+     content sneller zichtbaar (sitebreed)". Zelfde kleinere maatvoering geldt nu
+     voor [data-homehero] (hier), [data-svhero] (/service/) en [data-overhero]
+     (/over-ons/) — drie identieke secties die alle drie eenzelfde volle-viewport-
+     hero gebruikten. Mobiele override: zie @media(max-width:900px) hierboven. -->
 <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
 <div>
-  <section style="position:relative;margin-top:0;height:min(86vh,880px);min-height:820px;overflow:hidden;background:#0E0F11">
+  <section data-homehero="" style="position:relative;margin-top:0;height:min(52vh,520px);min-height:420px;overflow:hidden;background:#0E0F11">
     <div style="position:absolute;inset:0;overflow:hidden">
       <picture>
         <source srcset="/assets/hero-home-mobile.webp 750w, /assets/hero-home-opt.webp 1920w" sizes="100vw" type="image/webp">
@@ -699,7 +705,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
     <div aria-hidden="true" style="position:absolute;inset:0;background:radial-gradient(120% 118% at 50% 44%,rgba(0,0,0,0) 52%,rgba(0,0,0,.42) 100%)"></div>
     <div aria-hidden="true" style="position:absolute;left:0;right:0;bottom:0;height:130px;background:linear-gradient(to top,rgba(10,11,13,.55),rgba(10,11,13,0))"></div>
 
-    <div style="position:relative;height:100%;max-width:1420px;margin:0 auto;padding:70px 70px 78px;display:flex;flex-direction:column;justify-content:flex-end">
+    <div style="position:relative;height:100%;max-width:1420px;margin:0 auto;padding:48px 64px 40px;display:flex;flex-direction:column;justify-content:flex-end">
       <div style="margin-top:auto;display:flex;align-items:center;gap:14px;animation:wvbRise .8s cubic-bezier(.2,.7,.3,1) .25s both">
         <svg class="wvb-marker" style="transform-origin:left;animation:wvbLine .7s cubic-bezier(.2,.7,.3,1) .35s both" width="40" height="12" viewBox="0 0 40 12" fill="none" aria-hidden="true"><path d="M1 6H30M30 6 39 1M30 6 39 11" stroke="#C00020" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
         <span style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.22em;text-transform:uppercase;color:#F3EFE7">Geldermalsen</span>
@@ -728,7 +734,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
 
 
 
-  <section style="max-width:1360px;margin:0 auto;padding:60px 40px 40px">
+  <section style="max-width:1360px;margin:0 auto;padding:40px 40px 40px">
     <div data-routes="" style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px">
       <button data-active="{{ tabNact }}" onClick="{{ goMachines }}" onMouseEnter="{{ hoverIn }}" onMouseLeave="{{ hoverOut }}" data-rv="" style="opacity:0;transform:translateY(16px);transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .28s cubic-bezier(.2,.7,.3,1),box-shadow .28s,border-color .28s;text-align:left;background:#fff;border:1px solid #E6E3DD;border-radius:2px;padding:0;cursor:pointer;overflow:hidden;display:flex;flex-direction:column">
         <div style="height:210px;overflow:hidden;background:#F4F2EE"><div data-zoom="" style="width:100%;height:100%;transition:transform .5s cubic-bezier(.2,.7,.3,1)"><img src="/assets/images/aanbod/nieuwe-machines.webp" alt="Nieuwe machines van Wim van Breda" loading="lazy" decoding="async" width="1200" height="800" style="display:block;width:100%;height:100%;object-fit:cover;object-position:center"></div></div>
@@ -1584,14 +1590,14 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
 <div>
   <section style="position:relative;overflow:hidden;border-bottom:1px solid #EFECE6;background:transparent">
     <img src="/assets/grid-rood.png" alt="" aria-hidden="true" width="2201" height="2201" style="position:absolute;bottom:-180px;left:-120px;width:520px;opacity:.09;pointer-events:none">
-    <div style="max-width:1360px;margin:0 auto;padding:72px 40px 76px">
+    <div style="max-width:1360px;margin:0 auto;padding:56px 40px 44px">
       <nav style="display:flex;align-items:center;gap:10px;font:400 13px/1 'Archivo',sans-serif;color:#7C766A;flex-wrap:wrap">
         <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">{{ tr.common_home_breadcrumb }}</button><span>/</span>
         <button onClick="{{ goMerken }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">Merken</button><span>/</span>
         <span style="color:#111214">{{ brand.name }}</span>
       </nav>
       <sc-if value="{{ isOtherBrandHero }}" hint-placeholder-val="{{ true }}">
-      <div style="display:grid;grid-template-columns:1fr 380px;gap:56px;align-items:end;margin-top:56px" data-split="">
+      <div style="display:grid;grid-template-columns:1fr 380px;gap:56px;align-items:end;margin-top:36px" data-split="">
         <div>
           <div class="brand-detail__logo" style="display:flex;align-items:center;justify-content:flex-start;width:auto;min-height:64px">
             <sc-if value="{{ brandHasLogo }}" hint-placeholder-val="{{ false }}">{{ brandLogoEl }}</sc-if>
@@ -1621,7 +1627,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
            Andere merkpagina's blijven via isOtherBrandHero/isHerderHero
            volledig ongewijzigd. -->
       <sc-if value="{{ isRaymoHero }}" hint-placeholder-val="{{ false }}">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:end;margin-top:56px" data-split="">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:end;margin-top:36px" data-split="">
         <div>
           <div class="brand-detail__logo" style="display:flex;align-items:center;justify-content:flex-start;width:auto;min-height:64px">
             <sc-if value="{{ brandHasLogo }}" hint-placeholder-val="{{ false }}">{{ brandLogoEl }}</sc-if>
@@ -1663,42 +1669,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
     </div>
   </section>
 
-  <section style="background:transparent;border-bottom:1px solid #EFECE6">
-    <div style="max-width:1360px;margin:0 auto;padding:84px 40px 92px;display:grid;grid-template-columns:1fr 1fr;gap:72px" data-split="">
-      <div>
-        <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px">
-          <svg class="wvb-marker" width="40" height="12" viewBox="0 0 40 12" fill="none" aria-hidden="true"><path d="M1 6H30M30 6 39 1M30 6 39 11" stroke="#C00020" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-          <span style="font:600 16px/1 Archivo,sans-serif;letter-spacing:.13em;text-transform:uppercase;color:#111214">Het merk</span>
-        </div>
-        <h2 style="font:600 clamp(24px,2.6vw,34px)/1.12 Archivo,sans-serif;letter-spacing:-.022em;margin:0">{{ seoH2a }}</h2>
-        <sc-for list="{{ seoOverParas }}" as="op" hint-placeholder-count="2">
-          <p style="font:400 16px/1.8 'Archivo',sans-serif;color:#57544D;margin:18px 0 0">{{ op }}</p>
-        </sc-for>
-        <h3 style="font:600 20px/1.25 Archivo,sans-serif;margin:38px 0 0">{{ seoH2b }}</h3>
-        <p style="font:400 16px/1.8 'Archivo',sans-serif;color:#57544D;margin:14px 0 0">{{ seoP2 }}</p>
-        <!-- Subtiele SEO-tekstlink naar merk×product-landingspagina's, alleen
-             bij een merk met een expliciete seoTopics-lijst. -->
-        <sc-if value="{{ hasBrandSeoTopics }}" hint-placeholder-val="{{ false }}">
-          <p style="font:400 14px/1.7 'Archivo',sans-serif;color:#7C766A;margin:14px 0 0">Bekijk ook: <sc-for list="{{ brandSeoTopics }}" as="st" hint-placeholder-count="2"><a href="{{ st.href }}" style="color:#111214;text-decoration:underline;text-decoration-color:#FBAE00;text-underline-offset:2px">{{ st.label }}</a> </sc-for></p>
-        </sc-if>
-      </div>
-      <div>
-        <div style="aspect-ratio:{{ brandSeoRatio }};background:#EFECE6;overflow:hidden">
-          <sc-if value="{{ brandHasSeoImg }}" hint-placeholder-val="{{ false }}">{{ brandSeoImgEl }}</sc-if>
-          <sc-if value="{{ brandSeoImgFromSlot }}" hint-placeholder-val="{{ true }}"><image-slot data-shot id="bseo-{{ brandSlotId }}" shape="rect" placeholder="{{ brand.name }} machine in het werk"></image-slot></sc-if>
-        </div>
-        <h3 style="font:600 20px/1.25 Archivo,sans-serif;margin:34px 0 0">{{ seoH2c }}</h3>
-        <p style="font:400 16px/1.8 'Archivo',sans-serif;color:#57544D;margin:14px 0 0">{{ seoP3 }}</p>
-        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:26px">
-          <sc-for list="{{ seoTags }}" as="tag" hint-placeholder-count="5">
-            <span style="background:#fff;border:1px solid #E0DCD4;padding:9px 13px;font:500 12px/1 'Archivo',sans-serif;color:#57544D">{{ tag }}</span>
-          </sc-for>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section style="max-width:1360px;margin:0 auto;padding:64px 40px 100px">
+  <section style="max-width:1360px;margin:0 auto;padding:48px 40px 100px">
     <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap">
       <div>
         <h2 style="font:600 clamp(24px,2.6vw,34px)/1.1 Archivo,sans-serif;letter-spacing:-.022em;margin:0">Machines van {{ brand.name }}</h2>
@@ -1752,6 +1723,41 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
         <button onClick="{{ merkNext }}" disabled="{{ merkNextDis }}" style-hover="background:#FBAE00" style="background:#fff;border:1px solid #000;color:#000;padding:12px 16px;font:600 13px/1 'Archivo',sans-serif;cursor:pointer;transition:all .2s">Volgende →</button>
       </nav>
     </sc-if>
+  </section>
+
+  <section style="background:transparent;border-bottom:1px solid #EFECE6">
+    <div style="max-width:1360px;margin:0 auto;padding:84px 40px 92px;display:grid;grid-template-columns:1fr 1fr;gap:72px" data-split="">
+      <div>
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px">
+          <svg class="wvb-marker" width="40" height="12" viewBox="0 0 40 12" fill="none" aria-hidden="true"><path d="M1 6H30M30 6 39 1M30 6 39 11" stroke="#C00020" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          <span style="font:600 16px/1 Archivo,sans-serif;letter-spacing:.13em;text-transform:uppercase;color:#111214">Het merk</span>
+        </div>
+        <h2 style="font:600 clamp(24px,2.6vw,34px)/1.12 Archivo,sans-serif;letter-spacing:-.022em;margin:0">{{ seoH2a }}</h2>
+        <sc-for list="{{ seoOverParas }}" as="op" hint-placeholder-count="2">
+          <p style="font:400 16px/1.8 'Archivo',sans-serif;color:#57544D;margin:18px 0 0">{{ op }}</p>
+        </sc-for>
+        <h3 style="font:600 20px/1.25 Archivo,sans-serif;margin:38px 0 0">{{ seoH2b }}</h3>
+        <p style="font:400 16px/1.8 'Archivo',sans-serif;color:#57544D;margin:14px 0 0">{{ seoP2 }}</p>
+        <!-- Subtiele SEO-tekstlink naar merk×product-landingspagina's, alleen
+             bij een merk met een expliciete seoTopics-lijst. -->
+        <sc-if value="{{ hasBrandSeoTopics }}" hint-placeholder-val="{{ false }}">
+          <p style="font:400 14px/1.7 'Archivo',sans-serif;color:#7C766A;margin:14px 0 0">Bekijk ook: <sc-for list="{{ brandSeoTopics }}" as="st" hint-placeholder-count="2"><a href="{{ st.href }}" style="color:#111214;text-decoration:underline;text-decoration-color:#FBAE00;text-underline-offset:2px">{{ st.label }}</a> </sc-for></p>
+        </sc-if>
+      </div>
+      <div>
+        <div style="aspect-ratio:{{ brandSeoRatio }};background:#EFECE6;overflow:hidden">
+          <sc-if value="{{ brandHasSeoImg }}" hint-placeholder-val="{{ false }}">{{ brandSeoImgEl }}</sc-if>
+          <sc-if value="{{ brandSeoImgFromSlot }}" hint-placeholder-val="{{ true }}"><image-slot data-shot id="bseo-{{ brandSlotId }}" shape="rect" placeholder="{{ brand.name }} machine in het werk"></image-slot></sc-if>
+        </div>
+        <h3 style="font:600 20px/1.25 Archivo,sans-serif;margin:34px 0 0">{{ seoH2c }}</h3>
+        <p style="font:400 16px/1.8 'Archivo',sans-serif;color:#57544D;margin:14px 0 0">{{ seoP3 }}</p>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:26px">
+          <sc-for list="{{ seoTags }}" as="tag" hint-placeholder-count="5">
+            <span style="background:#fff;border:1px solid #E0DCD4;padding:9px 13px;font:500 12px/1 'Archivo',sans-serif;color:#57544D">{{ tag }}</span>
+          </sc-for>
+        </div>
+      </div>
+    </div>
   </section>
 </div>
 </sc-if>
@@ -1829,7 +1835,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
 
 <sc-if value="{{ isService }}" hint-placeholder-val="{{ false }}">
 <div>
-  <section aria-label="Service en reparatie" data-svhero="" style="position:relative;height:min(86vh,880px);min-height:820px;overflow:hidden;background:#0E0F11">
+  <section aria-label="Service en reparatie" data-svhero="" style="position:relative;height:min(52vh,520px);min-height:420px;overflow:hidden;background:#0E0F11">
     <div style="position:absolute;inset:0;overflow:hidden">
       <picture>
         <source srcset="/assets/service-hero-opt.webp" type="image/webp">
@@ -1841,7 +1847,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
     <div aria-hidden="true" style="position:absolute;inset:0;background:radial-gradient(120% 118% at 50% 44%,rgba(0,0,0,0) 52%,rgba(0,0,0,.42) 100%)"></div>
     <div aria-hidden="true" style="position:absolute;left:0;right:0;bottom:0;height:130px;background:linear-gradient(to top,rgba(10,11,13,.55),rgba(10,11,13,0))"></div>
 
-    <div style="position:relative;height:100%;max-width:1420px;margin:0 auto;padding:70px 70px 78px;display:flex;flex-direction:column;justify-content:flex-end">
+    <div style="position:relative;height:100%;max-width:1420px;margin:0 auto;padding:48px 64px 40px;display:flex;flex-direction:column;justify-content:flex-end">
       <div style="margin-top:auto;display:flex;align-items:center;gap:14px;animation:wvbRise .8s cubic-bezier(.2,.7,.3,1) .25s both">
         <svg class="wvb-marker" style="transform-origin:left;animation:wvbLine .7s cubic-bezier(.2,.7,.3,1) .35s both" width="40" height="12" viewBox="0 0 40 12" fill="none" aria-hidden="true"><path d="M1 6H30M30 6 39 1M30 6 39 11" stroke="#C00020" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
         <span style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.22em;text-transform:uppercase;color:#F3EFE7">Service &amp; reparatie · Geldermalsen</span>
@@ -2168,7 +2174,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
 
 <sc-if value="{{ isOver }}" hint-placeholder-val="{{ false }}">
 <div>
-  <section aria-label="Bewuste vooruitgang" data-overhero="" style="position:relative;height:min(86vh,880px);min-height:820px;overflow:hidden;background:#0E0F11">
+  <section aria-label="Bewuste vooruitgang" data-overhero="" style="position:relative;height:min(52vh,520px);min-height:420px;overflow:hidden;background:#0E0F11">
     <!-- De hero toont de bedrijfsvideo als klik-om-af-te-spelen "lite embed": bij
          paginalaad staat er alleen een stilstaande thumbnail (gewone <img>, telt
          niet mee als third-party request) met een play-knop erbovenop. Pas na een
@@ -2199,7 +2205,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
     <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(120% 118% at 50% 44%,rgba(0,0,0,0) 52%,rgba(0,0,0,.42) 100%)"></div>
     <div aria-hidden="true" style="position:absolute;left:0;right:0;bottom:0;height:130px;pointer-events:none;background:linear-gradient(to top,rgba(10,11,13,.55),rgba(10,11,13,0))"></div>
 
-    <div style="position:relative;height:100%;max-width:1420px;margin:0 auto;padding:70px 70px 78px;display:flex;flex-direction:column;justify-content:flex-end;pointer-events:none">
+    <div style="position:relative;height:100%;max-width:1420px;margin:0 auto;padding:48px 64px 40px;display:flex;flex-direction:column;justify-content:flex-end;pointer-events:none">
       <div style="margin-top:auto;display:flex;align-items:center;gap:14px;animation:wvbRise .8s cubic-bezier(.2,.7,.3,1) .25s both">
         <svg class="wvb-marker" style="transform-origin:left;animation:wvbLine .7s cubic-bezier(.2,.7,.3,1) .35s both" width="40" height="12" viewBox="0 0 40 12" fill="none" aria-hidden="true"><path d="M1 6H30M30 6 39 1M30 6 39 11" stroke="#C00020" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
         <span style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.22em;text-transform:uppercase;color:#F3EFE7">Familiebedrijf sinds 1957 · Geldermalsen</span>
@@ -2548,23 +2554,20 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
 <div>
   <section style="position:relative;overflow:hidden;border-bottom:1px solid #EFECE6">
     <img src="/assets/grid-rood.png" alt="" aria-hidden="true" width="2201" height="2201" style="position:absolute;top:-90px;right:-120px;width:400px;opacity:.09;pointer-events:none">
-    <div style="position:relative;max-width:1420px;margin:0 auto;padding:56px 70px 76px">
+    <div style="position:relative;max-width:1420px;margin:0 auto;padding:44px 70px 36px">
       <nav style="display:flex;align-items:center;gap:10px;font:400 13px/1 'Archivo',sans-serif;color:#7C766A;flex-wrap:wrap">
         <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">{{ tr.common_home_breadcrumb }}</button><span>/</span>
         <button onClick="{{ goOver }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">Over ons</button><span>/</span>
         <span style="color:#111214">Werken bij</span>
       </nav>
-      <div style="display:grid;grid-template-columns:1.05fr 1fr;gap:64px;align-items:end;margin-top:40px" data-split="">
+      <div style="display:grid;grid-template-columns:1.05fr 1fr;gap:64px;align-items:end;margin-top:26px" data-split="">
         <div>
           <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px"><svg class="wvb-marker" width="40" height="12" viewBox="0 0 40 12" fill="none" aria-hidden="true"><path d="M1 6H30M30 6 39 1M30 6 39 11" stroke="#C00020" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg><span style="font:600 16px/1 Archivo,sans-serif;letter-spacing:.13em;text-transform:uppercase;color:#111214">Werken bij Wim van Breda</span></div>
           <h1 style="font:600 clamp(30px,3.8vw,52px)/1.06 Archivo,sans-serif;letter-spacing:-.03em;margin:0;max-width:22ch">Echte vakmensen met passie voor deze sector</h1>
         </div>
-        <div style="aspect-ratio:16/11;background:#EDEAE4;overflow:hidden">{{ werkenHeroImgEl }}</div>
+        <div style="aspect-ratio:16/9;background:#EDEAE4;overflow:hidden">{{ werkenHeroImgEl }}</div>
       </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:56px;margin-top:52px" data-split="">
-        <p style="font:400 17px/1.85 'Archivo',sans-serif;color:#43413C;margin:0">Bij Wim van Breda werken echte vakmensen. Sommige collega's zetten zich al 20, 25 of zelfs 40 jaar voor ons in. We combineren onze jarenlange ervaring met innovaties en een toekomstvisie. Alleen zo blijven we de toonaangevende specialist voor weg-, berm- en slootonderhoud.</p>
-        <p style="font:400 17px/1.85 'Archivo',sans-serif;color:#43413C;margin:0">Werken bij Wim van Breda betekent dat je ervoor gáát. We vinden het belangrijk dat je in ons team past. Ons team bestaat uit mensen die behalve hun vakkennis ook hun ideeën en inzichten delen. Mensen die aan oplossingen werken voordat klanten een probleem ervaren, naar de toekomst kijken en voor elkaar klaarstaan.</p>
-      </div>
+
     </div>
   </section>
 
@@ -2588,6 +2591,15 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
             <span style="display:inline-flex;align-items:center;gap:10px;font:600 14px/1 'Archivo',sans-serif;white-space:nowrap">{{ v.cta }} <span data-arrow="" style="color:#FBAE00;transition:transform .24s cubic-bezier(.2,.7,.3,1)">→</span></span>
           </button>
         </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section style="border-top:1px solid #EFECE6">
+    <div style="max-width:1420px;margin:0 auto;padding:64px 70px">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:56px" data-split="">
+        <p style="font:400 17px/1.85 'Archivo',sans-serif;color:#43413C;margin:0">Bij Wim van Breda werken echte vakmensen. Sommige collega's zetten zich al 20, 25 of zelfs 40 jaar voor ons in. We combineren onze jarenlange ervaring met innovaties en een toekomstvisie. Alleen zo blijven we de toonaangevende specialist voor weg-, berm- en slootonderhoud.</p>
+        <p style="font:400 17px/1.85 'Archivo',sans-serif;color:#43413C;margin:0">Werken bij Wim van Breda betekent dat je ervoor gáát. We vinden het belangrijk dat je in ons team past. Ons team bestaat uit mensen die behalve hun vakkennis ook hun ideeën en inzichten delen. Mensen die aan oplossingen werken voordat klanten een probleem ervaren, naar de toekomst kijken en voor elkaar klaarstaan.</p>
       </div>
     </div>
   </section>
