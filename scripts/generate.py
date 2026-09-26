@@ -50,7 +50,14 @@ def main():
         written.append(pg['path'])
     written.append(write_spa_copy("/sitemap/"))
     written.append(write_spa_copy("/contact/"))
-    print(f"Geschreven: {len(written)} pagina's (incl. /sitemap/ en /contact/ als SPA-kopie)")
+    # Aanbod-dropdown, 2 nieuwe categorieoverzichten (zelfde SPA-kopie-
+    # mechanisme als /sitemap/ en /contact/ hierboven — geen eigen
+    # sub-pagina's per item, dus geen aparte build_catalog_pages.py-functie
+    # nodig zoals bij /machine/<slug>/ e.d.). Zie Component.resolveInitialPage()
+    # ('elektrisch'/'ecologisch') en Component.MACHINES tags:[] in de bundel.
+    written.append(write_spa_copy("/elektrische-machines/"))
+    written.append(write_spa_copy("/ecologische-machines/"))
+    print(f"Geschreven: {len(written)} pagina's (incl. /sitemap/, /contact/, /elektrische-machines/ en /ecologische-machines/ als SPA-kopie)")
     for w in written:
         print(" ", w)
     return written
