@@ -1409,7 +1409,15 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
         <button onClick="{{ goVerhuur }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">Verhuur</button><span>/</span>
         <span style="color:#111214">{{ rental.name }}</span>
       </nav>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:end;margin-top:40px" data-split="">
+      <!-- align-items:start (was :end): titel+tekst horen bovenaan, gelijk
+           met de bovenkant van de afbeelding ernaast — met :end zakte dit
+           tekstblok (korter dan de 16:10-afbeelding) naar de onderkant van
+           de rij, wat op desktop/tablet uit balans oogde. Gedeeld template
+           voor alle verhuurcategorieën (Maaimachines, Aanbouwwerktuigen,
+           Bosbouw), dus deze fix geldt voor alle drie. Op mobiel (≤980px)
+           klapt [data-split] naar één kolom; daar stond de tekst al boven
+           de afbeelding (brondata-volgorde) en verandert dit niets. -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;margin-top:40px" data-split="">
         <div>
           <span style="display:inline-flex;align-items:center;gap:9px;border:1px solid #E4E0D8;padding:8px 12px;font:500 10px/1 'Archivo',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#57544D"><span style="width:6px;height:6px;background:#FBAE00"></span>Verhuur</span>
           <h1 style="font:600 clamp(30px,3.8vw,50px)/1.06 Archivo,sans-serif;letter-spacing:-.03em;margin:24px 0 0;max-width:18ch">{{ rental.name }}</h1>
@@ -1477,7 +1485,6 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
       <div style="max-width:60ch;margin-top:38px">
         <div style="display:flex;align-items:center;gap:14px"><svg class="wvb-marker" width="40" height="12" viewBox="0 0 40 12" fill="none" aria-hidden="true"><path d="M1 6H30M30 6 39 1M30 6 39 11" stroke="#C00020" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg><span style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.22em;text-transform:uppercase;color:#7C766A">Aanbod · verhuur</span></div>
         <h1 style="font:600 clamp(32px,4vw,54px)/1.05 Archivo,sans-serif;letter-spacing:-.03em;margin:24px 0 0">Verhuur</h1>
-        <p style="font:400 17px/1.75 'Archivo',sans-serif;color:#43413C;margin:20px 0 0">Machines huren voor een project, een piek in het seizoen of ter overbrugging. Dezelfde machines en dezelfde service als bij verkoop, voor de periode die u nodig heeft.</p>
       </div>
     </div>
   </section>
@@ -3888,7 +3895,7 @@ class Component extends DCLogic {
   };
 
   static RENTAL = [
-    {id:'maaimachines',name:'Maaimachines',intro:'Zelfrijdende en getrokken maaimachines voor bermen, taluds en terreinen. Kort of langer huren, met instructie bij aflevering.',
+    {id:'maaimachines',name:'Maaimachines',intro:'Zelfrijdende en getrokken machines voor bermen, taluds en terreinen. Kort of langer huren, met instructie bij aflevering.',
       voorwaardenTitel:'Maaimachines huren',
       voorwaarden:[
         'Heeft u tijdelijk extra maaicapaciteit nodig of wilt u een project uitvoeren zonder direct een machine aan te schaffen? Bij Wim van Breda kunt u professionele maaimachines voor korte termijn huren.',
