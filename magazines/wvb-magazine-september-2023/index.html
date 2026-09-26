@@ -1981,18 +1981,37 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
 <sc-if value="{{ isOver }}" hint-placeholder-val="{{ false }}">
 <div>
   <section aria-label="Bewuste vooruitgang" data-overhero="" style="position:relative;height:min(86vh,880px);min-height:820px;overflow:hidden;background:#0E0F11">
-    <div style="position:absolute;inset:0;overflow:hidden">
-      <picture>
-        <source srcset="/assets/over-ons-hero-opt.webp" type="image/webp">
-        <img src="/assets/over-ons-hero.png" alt="Kind op een rode speelgoedtractor op een zandpad in het landschap" width="1920" height="1278" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;object-position:50% 80%;animation:wvbZoom 14s cubic-bezier(.2,.6,.3,1) forwards">
-      </picture>
+    <!-- De hero toont de bedrijfsvideo als klik-om-af-te-spelen "lite embed": bij
+         paginalaad staat er alleen een stilstaande thumbnail (gewone <img>, telt
+         niet mee als third-party request) met een play-knop erbovenop. Pas na een
+         klik (playVideo, gedeelde state met de kleinere widget verderop op de
+         pagina) wordt de echte YouTube-iframe aangemaakt en gaat afspelen — de
+         YouTube-request en -laadtijd worden dus nooit meegerekend in de LCP/FCP
+         van deze pagina. De iframe zelf (16:9) wordt via container query-units
+         (cqw/cqh) precies zo groot/gecentreerd gemaakt dat hij de volledige,
+         variabele hero-afmeting vult (zelfde "cover"-gedrag als de oude
+         achtergrondfoto had), zonder JS-meting nodig te hebben. -->
+    <div style="position:absolute;inset:0;overflow:hidden;container-type:size">
+      <sc-if value="{{ videoOff }}" hint-placeholder-val="{{ true }}">
+        <button onClick="{{ playVideo }}" onMouseEnter="{{ videoIn }}" onMouseLeave="{{ videoOut }}" aria-label="Bedrijfsvideo Wim van Breda afspelen" style="display:block;width:100%;height:100%;position:relative;background:#1A1B1D;border:0;padding:0;cursor:pointer;overflow:hidden">
+          <div data-zoom="" style="position:absolute;inset:0;transition:transform .6s cubic-bezier(.2,.7,.3,1)"><img src="/assets/images/over-ons/bedrijfsvideo-cover.jpg" alt="Bedrijfsvideo Wim van Breda" width="1280" height="720" fetchpriority="high" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center"></div>
+          <span data-play="" aria-hidden="true" style="position:absolute;top:50%;left:50%;width:82px;height:82px;margin:-41px 0 0 -41px;background:#FBAE00;display:flex;align-items:center;justify-content:center;transition:transform .3s cubic-bezier(.2,.7,.3,1),box-shadow .3s;box-shadow:0 18px 40px -22px rgba(0,0,0,.7)">
+            <span style="width:0;height:0;border-left:20px solid #111214;border-top:13px solid transparent;border-bottom:13px solid transparent;margin-left:5px"></span>
+          </span>
+        </button>
+      </sc-if>
+      <sc-if value="{{ videoOn }}" hint-placeholder-val="{{ false }}">
+        <div style="position:absolute;inset:0;background:#000">
+          <iframe ref="{{ videoRef }}" title="Bedrijfsvideo Wim van Breda" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:100cqw;height:56.25cqw;min-width:177.78cqh;min-height:100cqh;border:0"></iframe>
+        </div>
+      </sc-if>
     </div>
-    <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(97deg,rgba(10,11,13,.9) 0%,rgba(10,11,13,.74) 38%,rgba(10,11,13,.34) 68%,rgba(10,11,13,.08) 100%)"></div>
-    <div aria-hidden="true" style="position:absolute;inset:0;background:radial-gradient(58% 68% at 78% 44%,rgba(251,174,0,.26) 0%,rgba(251,174,0,.07) 46%,rgba(251,174,0,0) 74%);animation:wvbGlow 2.4s ease-out both"></div>
-    <div aria-hidden="true" style="position:absolute;inset:0;background:radial-gradient(120% 118% at 50% 44%,rgba(0,0,0,0) 52%,rgba(0,0,0,.42) 100%)"></div>
-    <div aria-hidden="true" style="position:absolute;left:0;right:0;bottom:0;height:130px;background:linear-gradient(to top,rgba(10,11,13,.55),rgba(10,11,13,0))"></div>
+    <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(97deg,rgba(10,11,13,.9) 0%,rgba(10,11,13,.74) 38%,rgba(10,11,13,.34) 68%,rgba(10,11,13,.08) 100%)"></div>
+    <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(58% 68% at 78% 44%,rgba(251,174,0,.26) 0%,rgba(251,174,0,.07) 46%,rgba(251,174,0,0) 74%);animation:wvbGlow 2.4s ease-out both"></div>
+    <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(120% 118% at 50% 44%,rgba(0,0,0,0) 52%,rgba(0,0,0,.42) 100%)"></div>
+    <div aria-hidden="true" style="position:absolute;left:0;right:0;bottom:0;height:130px;pointer-events:none;background:linear-gradient(to top,rgba(10,11,13,.55),rgba(10,11,13,0))"></div>
 
-    <div style="position:relative;height:100%;max-width:1420px;margin:0 auto;padding:70px 70px 78px;display:flex;flex-direction:column;justify-content:flex-end">
+    <div style="position:relative;height:100%;max-width:1420px;margin:0 auto;padding:70px 70px 78px;display:flex;flex-direction:column;justify-content:flex-end;pointer-events:none">
       <div style="margin-top:auto;display:flex;align-items:center;gap:14px;animation:wvbRise .8s cubic-bezier(.2,.7,.3,1) .25s both">
         <svg class="wvb-marker" style="transform-origin:left;animation:wvbLine .7s cubic-bezier(.2,.7,.3,1) .35s both" width="40" height="12" viewBox="0 0 40 12" fill="none" aria-hidden="true"><path d="M1 6H30M30 6 39 1M30 6 39 11" stroke="#C00020" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
         <span style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.22em;text-transform:uppercase;color:#F3EFE7">Familiebedrijf sinds 1957 · Geldermalsen</span>
@@ -2015,22 +2034,14 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
           <p style="font:400 17px/1.8 'Archivo',sans-serif;color:#43413C;margin:22px 0 0;max-width:54ch">Sinds 1957 adviseren, leveren en onderhouden wij machines. Wat begon als eenmanszaak is nu een familiebedrijf met eigen werkplaatsen, monteurs en magazijn.</p>
         </div>
         <div>
-          <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px"><svg class="wvb-marker" width="40" height="12" viewBox="0 0 40 12" fill="none" aria-hidden="true"><path d="M1 6H30M30 6 39 1M30 6 39 11" stroke="#C00020" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg><span style="font:600 16px/1 Archivo,sans-serif;letter-spacing:.13em;text-transform:uppercase;color:#111214">Bedrijfsvideo</span></div>
-          <sc-if value="{{ videoOff }}" hint-placeholder-val="{{ true }}">
-            <button onClick="{{ playVideo }}" onMouseEnter="{{ videoIn }}" onMouseLeave="{{ videoOut }}" aria-label="Bedrijfsvideo afspelen" style="display:block;width:100%;position:relative;aspect-ratio:16/9;background:#1A1B1D;border:0;padding:0;cursor:pointer;overflow:hidden;border-radius:2px">
-              <div data-zoom="" style="position:absolute;inset:0;transition:transform .6s cubic-bezier(.2,.7,.3,1)"><img src="/assets/images/over-ons/bedrijfsvideo-cover.jpg" alt="Bedrijfsvideo Wim van Breda" loading="lazy" width="1280" height="720" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center"></div>
-              <span aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(to top,rgba(10,11,13,.55),rgba(10,11,13,.05) 55%,rgba(10,11,13,.18))"></span>
-              <span data-play="" aria-hidden="true" style="position:absolute;top:50%;left:50%;width:82px;height:82px;margin:-41px 0 0 -41px;background:#FBAE00;display:flex;align-items:center;justify-content:center;transition:transform .3s cubic-bezier(.2,.7,.3,1),box-shadow .3s;box-shadow:0 18px 40px -22px rgba(0,0,0,.7)">
-                <span style="width:0;height:0;border-left:20px solid #111214;border-top:13px solid transparent;border-bottom:13px solid transparent;margin-left:5px"></span>
-              </span>
-              <span style="position:absolute;left:22px;bottom:20px;font:500 12px/1 'Archivo',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#fff">Wim van Breda · bedrijfsfilm</span>
-            </button>
-          </sc-if>
-          <sc-if value="{{ videoOn }}" hint-placeholder-val="{{ false }}">
-            <div style="position:relative;aspect-ratio:16/9;background:#000;overflow:hidden;border-radius:2px">
-              <iframe ref="{{ videoRef }}" title="Bedrijfsvideo Wim van Breda" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" style="position:absolute;inset:0;width:100%;height:100%;border:0"></iframe>
-            </div>
-          </sc-if>
+          <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px"><svg class="wvb-marker" width="40" height="12" viewBox="0 0 40 12" fill="none" aria-hidden="true"><path d="M1 6H30M30 6 39 1M30 6 39 11" stroke="#C00020" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg><span style="font:600 16px/1 Archivo,sans-serif;letter-spacing:.13em;text-transform:uppercase;color:#111214">Ons pand</span></div>
+          <!-- De bedrijfsvideo is verhuisd naar de hero bovenaan deze pagina; op
+               deze plek staat nu een foto van het bedrijfspand in Geldermalsen. -->
+          <div style="position:relative;aspect-ratio:16/9;background:#EDEAE4;overflow:hidden;border-radius:2px">
+            <img src="/assets/images/over-ons/pand-luchtfoto.jpg" alt="Luchtfoto van het bedrijfspand van Wim van Breda in Geldermalsen" loading="lazy" decoding="async" width="1320" height="988" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 22%">
+            <span aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(to top,rgba(10,11,13,.5),rgba(10,11,13,0) 45%)"></span>
+            <span style="position:absolute;left:22px;bottom:20px;font:500 12px/1 'Archivo',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#fff">Wim van Breda · Geldermalsen</span>
+          </div>
         </div>
       </div>
     </div>
@@ -2064,7 +2075,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
       <blockquote style="margin:0;border-left:2px solid #FBAE00;padding-left:40px">
         <span data-rv="" style="opacity:0;transform:translateY(16px);transition:opacity .7s cubic-bezier(.2,.7,.3,1) 100ms,transform .7s cubic-bezier(.2,.7,.3,1) 100ms;display:block;font:600 32px/1 Archivo,sans-serif;color:#FBAE00">“</span>
         <p data-rv="" style="opacity:0;transform:translateY(16px);transition:opacity .8s cubic-bezier(.2,.7,.3,1) 160ms,transform .8s cubic-bezier(.2,.7,.3,1) 160ms;font:600 clamp(28px,3.4vw,46px)/1.14 Archivo,sans-serif;letter-spacing:-.026em;color:#111214;margin:12px 0 0;max-width:26ch">Wij gaan voor communicatie en samenwerking!</p>
-        <p data-rv="" style="opacity:0;transform:translateY(16px);transition:opacity .8s cubic-bezier(.2,.7,.3,1) 280ms,transform .8s cubic-bezier(.2,.7,.3,1) 280ms;font:400 17px/1.8 'Archivo',sans-serif;color:#43413C;margin:30px 0 0;max-width:62ch">Gaat er een machine kapot in Friesland? Die kan natuurlijk niet langs de weg blijven staan, files veroorzaken en een gevaarlijke situatie opleveren. Als het om een klein mankement gaat, proberen we de machinist op afstand te helpen om het zelf op te lossen. Of we zoeken iemand in de regio om er naartoe te gaan. Is het een lastiger probleem, dan gaan we er zelf naartoe. Hoe dan ook denken we altijd mee. Bijvoorbeeld door een andere machine in te zetten en de kapotte machine op de terugweg mee te nemen naar onze werkplaats. Dan kan onze klant snel doorwerken terwijl wij aan de slag gaan met zijn machine.</p>
+        <p data-rv="" style="opacity:0;transform:translateY(16px);transition:opacity .8s cubic-bezier(.2,.7,.3,1) 280ms,transform .8s cubic-bezier(.2,.7,.3,1) 280ms;font:400 17px/1.8 'Archivo',sans-serif;color:#43413C;margin:30px 0 0;max-width:62ch">Gaat er een machine kapot. Die kan natuurlijk niet langs de weg blijven staan, files veroorzaken en een gevaarlijke situatie opleveren. Als het om een klein mankement gaat, proberen we de machinist op afstand te helpen om het zelf op te lossen. Of we zoeken iemand in de regio om er naartoe te gaan. Is het een lastiger probleem, dan gaan we er zelf naartoe. Hoe dan ook denken we altijd mee. Bijvoorbeeld door een andere machine in te zetten en de kapotte machine op de terugweg mee te nemen naar onze werkplaats. Dan kan onze klant snel doorwerken terwijl wij aan de slag gaan met zijn machine.</p>
       </blockquote>
     </div>
   </section>
