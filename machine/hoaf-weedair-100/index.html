@@ -2097,8 +2097,15 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
               <div style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#7C766A">{{ p.afdeling }}</div>
               <h3 style="font:600 20px/1.25 Archivo,sans-serif;margin:9px 0 0;min-height:calc(1.25em*2)">{{ p.naam }}</h3>
               <div style="font:400 14px/1.5 'Archivo',sans-serif;color:#6E6A63;margin-top:7px;min-height:calc(1.5em*3)">{{ p.functie }}</div>
-              <div style="flex:1"></div>
-              <div style="display:flex;flex-direction:column;gap:10px;margin-top:22px;padding-top:18px;border-top:1px solid #F1EFEA">
+              <!-- Geen flex:1-vulblok meer tussen functie en de scheidingslijn:
+                   naam (min-height 2 regels) + functie (min-height 3 regels) +
+                   contactblok (altijd 3 rijen, ook onzichtbare plaatshouders
+                   via hasMobiel/noMobiel en hasEmail/noEmail) geven al een
+                   volledig voorspelbare, gelijke kaarthoogte — de vulblok was
+                   dus overbodig en zorgde er juist voor dat de ruimte boven
+                   het lijntje (margin-top hieronder) veel groter uitviel dan
+                   de ruimte eronder (padding-top). Nu identiek: 18px/18px. -->
+              <div style="display:flex;flex-direction:column;gap:10px;margin-top:18px;padding-top:18px;border-top:1px solid #F1EFEA">
                 <sc-if value="{{ p.hasMobiel }}" hint-placeholder-val="{{ false }}"><a href="{{ p.mobielHref }}" style="display:flex;align-items:center;gap:10px;font:400 14px/1.4 'Archivo',sans-serif"><span aria-hidden="true" style="width:6px;height:6px;flex:0 0 6px;background:#C00020"></span>{{ p.mobiel }}</a></sc-if>
                 <sc-if value="{{ p.noMobiel }}" hint-placeholder-val="{{ true }}"><div aria-hidden="true" style="display:flex;align-items:center;gap:10px;font:400 14px/1.4 'Archivo',sans-serif;visibility:hidden"><span style="width:6px;height:6px;flex:0 0 6px"></span>&nbsp;</div></sc-if>
                 <a href="tel:+31345585050" style="display:flex;align-items:center;gap:10px;font:400 14px/1.4 'Archivo',sans-serif"><span aria-hidden="true" style="width:6px;height:6px;flex:0 0 6px;background:#C00020"></span>+31(0)345 58 50 50</a>
@@ -4149,7 +4156,7 @@ class Component extends DCLogic {
 
     {id:'arie-voorneveld',afdeling:'Parts',functie:'Manager Parts & Logistiek',naam:'Arie Voorneveld',email:'arievoorneveld@wimvanbreda.nl',hasPhoto:true},
     {id:'frans-beverloo',afdeling:'Parts',functie:'Verkoopadviseur Parts',naam:'Frans Beverloo',email:'fransbeverloo@wimvanbreda.nl',hasPhoto:true},
-    {id:'jordi-de-leeuw',afdeling:'Parts',functie:'Verkoopadviseur Parts / Webshopbeheer',naam:'Jordi de Leeuw',email:'jordideleeuw@wimvanbreda.nl',hasPhoto:true},
+    {id:'jordi-de-leeuw',afdeling:'Parts',functie:'Verkoopadviseur Parts / Webshopbeheer / Inkoop',naam:'Jordi de Leeuw',email:'jordideleeuw@wimvanbreda.nl',hasPhoto:true},
     {id:'john-van-breda',afdeling:'Parts',functie:'Directeur / Verkoopadviseur Parts',naam:'John van Breda',email:'johnvanbreda@wimvanbreda.nl',hasPhoto:true},
     {id:'bert-holland',afdeling:'Parts',functie:'Parts Medewerker',naam:'Bert Holland',email:'logistiek@wimvanbreda.nl',photo:'assets/images/medewerkers/wimvanbredabvgebouw.png'},
     {id:'nino-herremans',afdeling:'Parts',functie:'Parts Medewerker',naam:'Nino Herremans',email:'ninoherremans@wimvanbreda.nl',photo:'assets/images/medewerkers/wimvanbredabvgebouw.png'},
