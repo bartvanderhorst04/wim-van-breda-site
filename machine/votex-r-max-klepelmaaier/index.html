@@ -1910,7 +1910,6 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
           <div style="aspect-ratio:4/3;overflow:hidden;background:#EDEAE4"><div data-zoom="" style="width:100%;height:100%;transition:transform .5s cubic-bezier(.2,.7,.3,1)"><image-slot data-shot id="svc-card-werkplaats" shape="rect" placeholder="Werkplaats" src="/assets/images/service/sv-w1.webp" loading="lazy"></image-slot></div></div>
           <div style="padding:32px 30px;display:flex;flex-direction:column;flex:1">
             <h3 style="font:600 clamp(20px,2.1vw,26px)/1.2 Archivo,sans-serif;letter-spacing:-.02em;margin:0">{{ tr.svc_card_werkplaats_title }}</h3>
-            <p style="font:400 15px/1.7 'Archivo',sans-serif;color:#57544D;margin:12px 0 0">{{ tr.svc_card_werkplaats_text }}</p>
             <div style="flex:1"></div>
             <span style="display:inline-flex;align-items:center;gap:10px;margin-top:20px;font:600 14px/1 'Archivo',sans-serif">{{ tr.common_lees_meer }} <span data-arrow="" style="color:#FBAE00;transition:transform .24s cubic-bezier(.2,.7,.3,1)">→</span></span>
           </div>
@@ -1919,7 +1918,6 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
           <div style="aspect-ratio:4/3;overflow:hidden;background:#EDEAE4"><div data-zoom="" style="width:100%;height:100%;transition:transform .5s cubic-bezier(.2,.7,.3,1)"><image-slot data-shot id="svc-card-magazijn" shape="rect" placeholder="Magazijn" src="/assets/images/werken-bij/vacature-monteur-mechanisatie.jpg" loading="lazy"></image-slot></div></div>
           <div style="padding:32px 30px;display:flex;flex-direction:column;flex:1">
             <h3 style="font:600 clamp(20px,2.1vw,26px)/1.2 Archivo,sans-serif;letter-spacing:-.02em;margin:0">{{ tr.svc_card_magazijn_title }}</h3>
-            <p style="font:400 15px/1.7 'Archivo',sans-serif;color:#57544D;margin:12px 0 0">{{ tr.svc_card_magazijn_text }}</p>
             <div style="flex:1"></div>
             <span style="display:inline-flex;align-items:center;gap:10px;margin-top:20px;font:600 14px/1 'Archivo',sans-serif">{{ tr.common_lees_meer }} <span data-arrow="" style="color:#FBAE00;transition:transform .24s cubic-bezier(.2,.7,.3,1)">→</span></span>
           </div>
@@ -2060,27 +2058,30 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
      (contactWith('Service & reparatie',...) -> vooringevuld contactformulier). -->
 <sc-if value="{{ isWerkplaats }}" hint-placeholder-val="{{ false }}">
 <div>
-  <section style="border-bottom:1px solid #EFECE6">
-    <div style="max-width:1360px;margin:0 auto;padding:44px 40px 0">
-      <nav style="display:flex;align-items:center;gap:10px;font:400 13px/1 'Archivo',sans-serif;color:#7C766A;padding-bottom:44px;flex-wrap:wrap">
-        <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">{{ tr.common_home_breadcrumb }}</button><span>/</span>
-        <button onClick="{{ goServicePage }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">{{ tr.svc_breadcrumb }}</button><span>/</span>
-        <span style="color:#111214">{{ tr.svc_card_werkplaats_title }}</span>
-      </nav>
+  <section aria-label="{{ tr.svc_card_werkplaats_title }}" style="position:relative;height:min(58vh,560px);min-height:420px;overflow:hidden;background:#0E0F11">
+    <div style="position:absolute;inset:0;overflow:hidden">
+      <img src="/assets/images/service/werkplaats-hero.webp" alt="(Service)monteur van Wim van Breda aan het werk in de werkplaats" width="1134" height="756" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;object-position:50% 40%;animation:wvbZoom 14s cubic-bezier(.2,.6,.3,1) forwards">
+    </div>
+    <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(97deg,rgba(10,11,13,.9) 0%,rgba(10,11,13,.74) 38%,rgba(10,11,13,.34) 68%,rgba(10,11,13,.08) 100%)"></div>
+    <div aria-hidden="true" style="position:absolute;inset:0;background:radial-gradient(120% 118% at 50% 44%,rgba(0,0,0,0) 52%,rgba(0,0,0,.42) 100%)"></div>
+    <div aria-hidden="true" style="position:absolute;left:0;right:0;bottom:0;height:110px;background:linear-gradient(to top,rgba(10,11,13,.55),rgba(10,11,13,0))"></div>
+    <div style="position:relative;height:100%;max-width:1420px;margin:0 auto;padding:56px 70px;display:flex;flex-direction:column;justify-content:flex-end">
+      <div style="display:flex;align-items:center;gap:14px">
+        <svg class="wvb-marker" width="40" height="12" viewBox="0 0 40 12" fill="none" aria-hidden="true"><path d="M1 6H30M30 6 39 1M30 6 39 11" stroke="#C00020" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        <span style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.22em;text-transform:uppercase;color:#F3EFE7">{{ tr.svc_card_werkplaats_title }}</span>
+      </div>
+      <h1 style="font:600 clamp(32px,4.4vw,56px)/1.06 Archivo,sans-serif;letter-spacing:-.03em;color:#fff;margin:22px 0 0;max-width:20ch;text-wrap:balance">{{ tr.wp_title }}</h1>
+      <p style="font:400 17px/1.7 'Archivo',sans-serif;color:rgba(255,255,255,.86);max-width:52ch;margin:20px 0 0">{{ tr.wp_intro }}</p>
     </div>
   </section>
 
   <section style="border-bottom:1px solid #EFECE6">
-    <div style="max-width:1360px;margin:0 auto;padding:0 40px 80px;display:grid;grid-template-columns:1fr 1.05fr;gap:72px;align-items:center" data-split="">
-      <div>
-        <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px">
-          <svg class="wvb-marker" width="40" height="12" viewBox="0 0 40 12" fill="none" aria-hidden="true"><path d="M1 6H30M30 6 39 1M30 6 39 11" stroke="#C00020" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-          <span style="font:600 16px/1 Archivo,sans-serif;letter-spacing:.13em;text-transform:uppercase;color:#111214">{{ tr.svc_card_werkplaats_title }}</span>
-        </div>
-        <h1 style="font:600 clamp(30px,3.6vw,48px)/1.1 Archivo,sans-serif;letter-spacing:-.028em;margin:0">{{ tr.wp_title }}</h1>
-        <p style="font:400 17px/1.8 'Archivo',sans-serif;color:#43413C;margin:22px 0 0;max-width:52ch">{{ tr.wp_intro }}</p>
-      </div>
-      <div style="aspect-ratio:16/11;background:#EDEAE4;overflow:hidden"><image-slot data-shot id="wp-hero" shape="rect" placeholder="Onderhoud in de werkplaats" src="/assets/images/service/werkplaats-hero.webp" loading="lazy"></image-slot></div>
+    <div style="max-width:1360px;margin:0 auto;padding:24px 40px">
+      <nav style="display:flex;align-items:center;gap:10px;font:400 13px/1 'Archivo',sans-serif;color:#7C766A;flex-wrap:wrap">
+        <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">{{ tr.common_home_breadcrumb }}</button><span>/</span>
+        <button onClick="{{ goServicePage }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">{{ tr.svc_breadcrumb }}</button><span>/</span>
+        <span style="color:#111214">{{ tr.svc_card_werkplaats_title }}</span>
+      </nav>
     </div>
   </section>
 
@@ -2151,27 +2152,30 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
      als niet-gebruikte handler, contactWith('Onderdelen',...)). -->
 <sc-if value="{{ isMagazijn }}" hint-placeholder-val="{{ false }}">
 <div>
-  <section style="border-bottom:1px solid #EFECE6">
-    <div style="max-width:1360px;margin:0 auto;padding:44px 40px 0">
-      <nav style="display:flex;align-items:center;gap:10px;font:400 13px/1 'Archivo',sans-serif;color:#7C766A;padding-bottom:44px;flex-wrap:wrap">
-        <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">{{ tr.common_home_breadcrumb }}</button><span>/</span>
-        <button onClick="{{ goServicePage }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">{{ tr.svc_breadcrumb }}</button><span>/</span>
-        <span style="color:#111214">{{ tr.svc_card_magazijn_title }}</span>
-      </nav>
+  <section aria-label="{{ tr.svc_card_magazijn_title }}" style="position:relative;height:min(58vh,560px);min-height:420px;overflow:hidden;background:#0E0F11">
+    <div style="position:absolute;inset:0;overflow:hidden">
+      <img src="/assets/images/service/magazijn-hero.webp" alt="Onderdelenmagazijn van Wim van Breda" width="1134" height="756" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;object-position:50% 42%;animation:wvbZoom 14s cubic-bezier(.2,.6,.3,1) forwards">
+    </div>
+    <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(97deg,rgba(10,11,13,.9) 0%,rgba(10,11,13,.74) 38%,rgba(10,11,13,.34) 68%,rgba(10,11,13,.08) 100%)"></div>
+    <div aria-hidden="true" style="position:absolute;inset:0;background:radial-gradient(120% 118% at 50% 44%,rgba(0,0,0,0) 52%,rgba(0,0,0,.42) 100%)"></div>
+    <div aria-hidden="true" style="position:absolute;left:0;right:0;bottom:0;height:110px;background:linear-gradient(to top,rgba(10,11,13,.55),rgba(10,11,13,0))"></div>
+    <div style="position:relative;height:100%;max-width:1420px;margin:0 auto;padding:56px 70px;display:flex;flex-direction:column;justify-content:flex-end">
+      <div style="display:flex;align-items:center;gap:14px">
+        <svg class="wvb-marker" width="40" height="12" viewBox="0 0 40 12" fill="none" aria-hidden="true"><path d="M1 6H30M30 6 39 1M30 6 39 11" stroke="#C00020" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        <span style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.22em;text-transform:uppercase;color:#F3EFE7">{{ tr.svc_card_magazijn_title }}</span>
+      </div>
+      <h1 style="font:600 clamp(32px,4.4vw,56px)/1.06 Archivo,sans-serif;letter-spacing:-.03em;color:#fff;margin:22px 0 0;max-width:20ch;text-wrap:balance">{{ tr.mg_title }}</h1>
+      <p style="font:400 17px/1.7 'Archivo',sans-serif;color:rgba(255,255,255,.86);max-width:52ch;margin:20px 0 0">{{ tr.mg_intro }}</p>
     </div>
   </section>
 
   <section style="border-bottom:1px solid #EFECE6">
-    <div style="max-width:1360px;margin:0 auto;padding:0 40px 80px;display:grid;grid-template-columns:1fr 1.05fr;gap:72px;align-items:center" data-split="">
-      <div>
-        <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px">
-          <svg class="wvb-marker" width="40" height="12" viewBox="0 0 40 12" fill="none" aria-hidden="true"><path d="M1 6H30M30 6 39 1M30 6 39 11" stroke="#C00020" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-          <span style="font:600 16px/1 Archivo,sans-serif;letter-spacing:.13em;text-transform:uppercase;color:#111214">{{ tr.svc_card_magazijn_title }}</span>
-        </div>
-        <h1 style="font:600 clamp(30px,3.6vw,48px)/1.1 Archivo,sans-serif;letter-spacing:-.028em;margin:0">{{ tr.mg_title }}</h1>
-        <p style="font:400 17px/1.8 'Archivo',sans-serif;color:#43413C;margin:22px 0 0;max-width:52ch">{{ tr.mg_intro }}</p>
-      </div>
-      <div style="aspect-ratio:16/11;background:#EDEAE4;overflow:hidden"><image-slot data-shot id="mg-hero" shape="rect" placeholder="Onderdelen in ons magazijn" src="/assets/images/service/magazijn-hero.webp" loading="lazy"></image-slot></div>
+    <div style="max-width:1360px;margin:0 auto;padding:24px 40px">
+      <nav style="display:flex;align-items:center;gap:10px;font:400 13px/1 'Archivo',sans-serif;color:#7C766A;flex-wrap:wrap">
+        <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">{{ tr.common_home_breadcrumb }}</button><span>/</span>
+        <button onClick="{{ goServicePage }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">{{ tr.svc_breadcrumb }}</button><span>/</span>
+        <span style="color:#111214">{{ tr.svc_card_magazijn_title }}</span>
+      </nav>
     </div>
   </section>
 
@@ -19111,10 +19115,17 @@ class Component extends DCLogic {
     const ctxType = extra && extra.ctx ? extra.ctx.type : null;
     const onderwerp = Component.ONDERWERP_BY_CTX[ctxType] || 'Anders';
     const st = Object.assign({page,param:param||null,menu:null,mob:false,q:'',ftype:[],fbrand:[],sort:'nieuwste',fstatus:[],hrMin:'',hrMax:'',sortOpen:false,drawer:false,onderwerpOpen:false,langOpen:false,gallery:0,lightbox:false,rentalFrom:null,ctx:null,onderwerp,applySent:false,applyBusy:false,applyError:null,bpage:1,lpage:1},extra||{});
-    if (this.reduced()){ this.setState(st); window.scrollTo(0,0); return; }
+    // behavior:'instant' expliciet: html heeft globaal scroll-behavior:smooth
+    // (voor de anchor-dropdownlinks in de header). Zonder deze override werd
+    // window.scrollTo(0,0) hier ook een geanimeerde scroll, die kan worden
+    // onderbroken door een net daarna optredende layout-shift (bv. een
+    // hero-afbeelding die nog laadt/decodeert) — de pagina eindigde dan
+    // ergens halverwege in plaats van boven. instant scrollt in één keer,
+    // ongeacht de CSS-instelling.
+    if (this.reduced()){ this.setState(st); window.scrollTo({top:0,left:0,behavior:'instant'}); return; }
     this.setState({transit:true,menu:null,mob:false});
     clearTimeout(this._t1); clearTimeout(this._t2);
-    this._t1 = setTimeout(()=>{ this.setState(st); window.scrollTo(0,0); }, 400);
+    this._t1 = setTimeout(()=>{ this.setState(st); window.scrollTo({top:0,left:0,behavior:'instant'}); }, 400);
     this._t2 = setTimeout(()=>this.setState({transit:false}), 800);
   }
 
