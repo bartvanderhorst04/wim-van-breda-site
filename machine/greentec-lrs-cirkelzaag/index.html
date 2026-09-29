@@ -231,7 +231,7 @@ a:active{color:#111214}
   [data-footwrap] [data-fcorner]{left:20px!important}
   [data-footwrap] [data-fcorner]+[data-fcorner]{left:auto!important;right:20px!important}
 }
-@media (max-width:900px){[data-overhero],[data-homehero],[data-svhero]{height:min(46vh,420px)!important;min-height:360px!important}[data-overhero]>img{object-position:32% 52%!important}[data-overhero] [data-overtitle]{font-size:clamp(32px,8.5vw,44px)!important}[data-overhero]>div:last-child,[data-homehero]>div:last-child,[data-svhero]>div:last-child{padding:40px 24px 36px!important}}
+@media (max-width:900px){[data-overhero]{height:min(78vh,700px)!important;min-height:560px!important}[data-overhero]>img{object-position:32% 52%!important}[data-overhero] [data-overtitle]{font-size:clamp(32px,8.5vw,44px)!important}[data-overhero]>div:last-child{padding:70px 24px 56px!important}}
 /* BrandMarker — centrale decoratieve markering vóór sectielabels (bv.
    "UITGELICHT", "WERKEN BIJ WIM VAN BREDA"). Eén vorm, sitebreed hergebruikt;
    schaalt op smalle schermen mee via width, height:auto behoudt de
@@ -328,12 +328,12 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
 /* Herder-specifieke merkhero (uitsluitend /merken/herder/) — twee kolommen,
    grote verticale foto rechts, groot logo links. Andere merkpagina's blijven
    de standaard hero (hierboven, ongewijzigd) gebruiken. */
-.brand-hero{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(300px,0.75fr);gap:clamp(40px,6vw,88px);align-items:center;margin-top:32px}
-.brand-hero__media{width:100%;max-width:340px;justify-self:end;aspect-ratio:4/5;overflow:hidden;background:#EFECE6}
+.brand-hero{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(300px,0.75fr);gap:clamp(40px,6vw,88px);align-items:center;margin-top:56px}
+.brand-hero__media{width:100%;max-width:420px;justify-self:end;aspect-ratio:2/3;overflow:hidden;background:#EFECE6}
 .brand-hero__media img{display:block;width:100%;height:100%;object-fit:cover;object-position:center top}
 .brand-hero__logo{display:flex;align-items:center;justify-content:flex-start;margin-bottom:24px}
 @media (max-width:900px){.brand-hero{grid-template-columns:minmax(0,1fr) minmax(250px,0.7fr);gap:32px}}
-@media (max-width:700px){.brand-hero{grid-template-columns:1fr}.brand-hero__media{width:100%;max-width:300px;aspect-ratio:16/11;justify-self:center;margin-top:24px}}
+@media (max-width:700px){.brand-hero{grid-template-columns:1fr}.brand-hero__media{width:100%;max-width:420px;justify-self:center;margin-top:40px}}
 /* Portret Dick van Breda ("Over ons"): op desktop staat de foto in een
    vaste 380px-kolom naast het citaat. Zodra [data-split] hieronder
    (max-width:980px) naar één kolom klapt, zou de foto anders de volle
@@ -685,15 +685,21 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
 
 <main style="flex:1 0 auto">
 
-<!-- Hero-hoogte: bewust verkleind (was min(86vh,880px);min-height:820px) t.o.v.
-     de oorspronkelijke, bijna-schermvullende hero — zie eindrapport "Belangrijke
-     content sneller zichtbaar (sitebreed)". Zelfde kleinere maatvoering geldt nu
-     voor [data-homehero] (hier), [data-svhero] (/service/) en [data-overhero]
-     (/over-ons/) — drie identieke secties die alle drie eenzelfde volle-viewport-
-     hero gebruikten. Mobiele override: zie @media(max-width:900px) hierboven. -->
+<!-- Herohoogte height:min(86vh,880px);min-height:820px — bewust weer op deze
+     waarde teruggezet nadat een eerdere verkleining naar min(52vh,520px) een
+     regressie veroorzaakte: de tekststapel (eyebrow+h1+intro+knoppen+USP-rij)
+     paste niet meer binnen de kortere sectie, overflow:hidden sneed daardoor de
+     bovenkant van de kop af (leek alsof die achter de sticky header viel), en de
+     drastisch bredere/kortere box dwong de achtergrondfoto tot een veel
+     agressievere/onscherpere object-fit:cover-uitsnede. Zelfde waarde geldt voor
+     [data-homehero] (hier), [data-svhero] (/service/) en [data-overhero]
+     (/over-ons/) — drie identieke secties. Mobiele override: zie
+     @media(max-width:900px) hierboven (uitsluitend [data-overhero]; home/service
+     hebben bewust geen aparte mobiele hoogte en gebruiken op elke breedte
+     dezelfde vh-gebaseerde waarde hierboven). -->
 <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
 <div>
-  <section data-homehero="" style="position:relative;margin-top:0;height:min(52vh,520px);min-height:420px;overflow:hidden;background:#0E0F11">
+  <section data-homehero="" style="position:relative;margin-top:0;height:min(86vh,880px);min-height:820px;overflow:hidden;background:#0E0F11">
     <div style="position:absolute;inset:0;overflow:hidden">
       <picture>
         <source srcset="/assets/hero-home-mobile.webp 750w, /assets/hero-home-opt.webp 1920w" sizes="100vw" type="image/webp">
@@ -705,7 +711,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
     <div aria-hidden="true" style="position:absolute;inset:0;background:radial-gradient(120% 118% at 50% 44%,rgba(0,0,0,0) 52%,rgba(0,0,0,.42) 100%)"></div>
     <div aria-hidden="true" style="position:absolute;left:0;right:0;bottom:0;height:130px;background:linear-gradient(to top,rgba(10,11,13,.55),rgba(10,11,13,0))"></div>
 
-    <div style="position:relative;height:100%;max-width:1420px;margin:0 auto;padding:48px 64px 40px;display:flex;flex-direction:column;justify-content:flex-end">
+    <div style="position:relative;height:100%;max-width:1420px;margin:0 auto;padding:70px 70px 78px;display:flex;flex-direction:column;justify-content:flex-end">
       <div style="margin-top:auto;display:flex;align-items:center;gap:14px;animation:wvbRise .8s cubic-bezier(.2,.7,.3,1) .25s both">
         <svg class="wvb-marker" style="transform-origin:left;animation:wvbLine .7s cubic-bezier(.2,.7,.3,1) .35s both" width="40" height="12" viewBox="0 0 40 12" fill="none" aria-hidden="true"><path d="M1 6H30M30 6 39 1M30 6 39 11" stroke="#C00020" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
         <span style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.22em;text-transform:uppercase;color:#F3EFE7">Geldermalsen</span>
@@ -1835,7 +1841,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
 
 <sc-if value="{{ isService }}" hint-placeholder-val="{{ false }}">
 <div>
-  <section aria-label="Service en reparatie" data-svhero="" style="position:relative;height:min(52vh,520px);min-height:420px;overflow:hidden;background:#0E0F11">
+  <section aria-label="Service en reparatie" data-svhero="" style="position:relative;height:min(86vh,880px);min-height:820px;overflow:hidden;background:#0E0F11">
     <div style="position:absolute;inset:0;overflow:hidden">
       <picture>
         <source srcset="/assets/service-hero-opt.webp" type="image/webp">
@@ -1847,7 +1853,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
     <div aria-hidden="true" style="position:absolute;inset:0;background:radial-gradient(120% 118% at 50% 44%,rgba(0,0,0,0) 52%,rgba(0,0,0,.42) 100%)"></div>
     <div aria-hidden="true" style="position:absolute;left:0;right:0;bottom:0;height:130px;background:linear-gradient(to top,rgba(10,11,13,.55),rgba(10,11,13,0))"></div>
 
-    <div style="position:relative;height:100%;max-width:1420px;margin:0 auto;padding:48px 64px 40px;display:flex;flex-direction:column;justify-content:flex-end">
+    <div style="position:relative;height:100%;max-width:1420px;margin:0 auto;padding:70px 70px 78px;display:flex;flex-direction:column;justify-content:flex-end">
       <div style="margin-top:auto;display:flex;align-items:center;gap:14px;animation:wvbRise .8s cubic-bezier(.2,.7,.3,1) .25s both">
         <svg class="wvb-marker" style="transform-origin:left;animation:wvbLine .7s cubic-bezier(.2,.7,.3,1) .35s both" width="40" height="12" viewBox="0 0 40 12" fill="none" aria-hidden="true"><path d="M1 6H30M30 6 39 1M30 6 39 11" stroke="#C00020" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
         <span style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.22em;text-transform:uppercase;color:#F3EFE7">{{ tr.svc_hero_eyebrow }}</span>
@@ -2174,7 +2180,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
 
 <sc-if value="{{ isOver }}" hint-placeholder-val="{{ false }}">
 <div>
-  <section aria-label="Bewuste vooruitgang" data-overhero="" style="position:relative;height:min(52vh,520px);min-height:420px;overflow:hidden;background:#0E0F11">
+  <section aria-label="Bewuste vooruitgang" data-overhero="" style="position:relative;height:min(86vh,880px);min-height:820px;overflow:hidden;background:#0E0F11">
     <!-- De hero toont de bedrijfsvideo als klik-om-af-te-spelen "lite embed": bij
          paginalaad staat er alleen een stilstaande thumbnail (gewone <img>, telt
          niet mee als third-party request) met een play-knop erbovenop. Pas na een
@@ -2205,7 +2211,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
     <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(120% 118% at 50% 44%,rgba(0,0,0,0) 52%,rgba(0,0,0,.42) 100%)"></div>
     <div aria-hidden="true" style="position:absolute;left:0;right:0;bottom:0;height:130px;pointer-events:none;background:linear-gradient(to top,rgba(10,11,13,.55),rgba(10,11,13,0))"></div>
 
-    <div style="position:relative;height:100%;max-width:1420px;margin:0 auto;padding:48px 64px 40px;display:flex;flex-direction:column;justify-content:flex-end;pointer-events:none">
+    <div style="position:relative;height:100%;max-width:1420px;margin:0 auto;padding:70px 70px 78px;display:flex;flex-direction:column;justify-content:flex-end;pointer-events:none">
       <div style="margin-top:auto;display:flex;align-items:center;gap:14px;animation:wvbRise .8s cubic-bezier(.2,.7,.3,1) .25s both">
         <svg class="wvb-marker" style="transform-origin:left;animation:wvbLine .7s cubic-bezier(.2,.7,.3,1) .35s both" width="40" height="12" viewBox="0 0 40 12" fill="none" aria-hidden="true"><path d="M1 6H30M30 6 39 1M30 6 39 11" stroke="#C00020" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
         <span style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.22em;text-transform:uppercase;color:#F3EFE7">{{ tr.over_hero_eyebrow }}</span>
@@ -2554,18 +2560,18 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
 <div>
   <section style="position:relative;overflow:hidden;border-bottom:1px solid #EFECE6">
     <img src="/assets/grid-rood.png" alt="" aria-hidden="true" width="2201" height="2201" style="position:absolute;top:-90px;right:-120px;width:400px;opacity:.09;pointer-events:none">
-    <div style="position:relative;max-width:1420px;margin:0 auto;padding:44px 70px 36px">
+    <div style="position:relative;max-width:1420px;margin:0 auto;padding:56px 70px 76px">
       <nav style="display:flex;align-items:center;gap:10px;font:400 13px/1 'Archivo',sans-serif;color:#7C766A;flex-wrap:wrap">
         <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">{{ tr.common_home_breadcrumb }}</button><span>/</span>
         <button onClick="{{ goOver }}" style="background:none;border:0;padding:0;cursor:pointer;color:#7C766A;font:inherit">{{ tr.nav_over_ons }}</button><span>/</span>
         <span style="color:#111214">{{ tr.nav_werken_bij }}</span>
       </nav>
-      <div style="display:grid;grid-template-columns:1.05fr 1fr;gap:64px;align-items:end;margin-top:26px" data-split="">
+      <div style="display:grid;grid-template-columns:1.05fr 1fr;gap:64px;align-items:end;margin-top:40px" data-split="">
         <div>
           <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px"><svg class="wvb-marker" width="40" height="12" viewBox="0 0 40 12" fill="none" aria-hidden="true"><path d="M1 6H30M30 6 39 1M30 6 39 11" stroke="#C00020" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg><span style="font:600 16px/1 Archivo,sans-serif;letter-spacing:.13em;text-transform:uppercase;color:#111214">{{ tr.werken_eyebrow }}</span></div>
           <h1 style="font:600 clamp(30px,3.8vw,52px)/1.06 Archivo,sans-serif;letter-spacing:-.03em;margin:0;max-width:22ch">{{ tr.werken_h1 }}</h1>
         </div>
-        <div style="aspect-ratio:16/9;background:#EDEAE4;overflow:hidden">{{ werkenHeroImgEl }}</div>
+        <div style="aspect-ratio:16/11;background:#EDEAE4;overflow:hidden">{{ werkenHeroImgEl }}</div>
       </div>
 
     </div>
