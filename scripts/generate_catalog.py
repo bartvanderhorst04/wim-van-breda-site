@@ -6,8 +6,8 @@ Uitvoeren vanuit de scripts/-map: python3 generate_catalog.py
 BELANGRIJK — sinds "Herstel de volledige HTML-sitemap structureel":
 Elke pagina die build_catalog_pages.py hieronder aanmaakt (alle
 /machine/<slug>/, /occasion/<slug>/, /merken/<slug>/ + hub, /nieuws/<slug>/
-+ hub, /verhuur/ + categorieën, /service/, /geleverd/, /werken-bij/ + hub,
-/magazines/<slug>/ + hub, /over-ons/) wordt NIET meer als eigen,
++ hub, /verhuur/ + categorieën, /service/, /werkplaats/, /magazijn/,
+/geleverd/, /werken-bij/ + hub, /magazines/<slug>/ + hub, /over-ons/) wordt NIET meer als eigen,
 losstaande "look-alike" HTML/CSS gepubliceerd. In plaats daarvan wordt elk
 van deze paden achteraf overschreven met een LETTERLIJKE kopie van
 "Wim van Breda.dc.html" zelf (dezelfde bundel als index.html) — zie
@@ -59,6 +59,8 @@ def main():
     written.append(B.build_nieuws_hub())
     written += B.build_verhuur()
     written.append(B.build_service())
+    written.append(B.build_werkplaats())
+    written.append(B.build_magazijn())
     written.append(B.build_geleverd())
     written += B.build_werken_bij()
     written += B.build_magazines()

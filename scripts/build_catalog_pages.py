@@ -345,12 +345,41 @@ def build_verhuur():
 # ===========================================================================
 def build_service():
     title = "Service, reparatie en onderhoud | Wim van Breda"
-    desc = "Reparatie en onderhoud van machines in onze werkplaats in Geldermalsen of bij u op locatie. Servicemonteurs, vervangend materieel en duizenden onderdelen op voorraad."
-    items = ["Eigen werkplaats in Geldermalsen", "Onderhoud en reparatie op locatie", "Servicemonteurs", "Vervangend materieel", "Duizenden onderdelen op voorraad"]
+    desc = "Reparatie en onderhoud van machines in onze werkplaats in Geldermalsen of bij u op locatie. (Service)monteurs, vervangend materieel en duizenden onderdelen op voorraad."
+    items = ["Eigen werkplaats in Geldermalsen", "Onderhoud en reparatie op locatie", "(Service)monteurs", "Vervangend materieel", "Duizenden onderdelen op voorraad"]
     body = f'<p class="wvb-intro">{esc(desc)}</p>{h2("Wat wij bieden", ul([esc(i) for i in items]))}{DEFAULT_CTA}'
     trail = [("Home", "/"), ("Service", None)]
     write_page("/service/", shell("/service/", title, desc, "Service, reparatie en onderhoud", trail, body))
     return "/service/"
+
+
+# ===========================================================================
+# WERKPLAATS + MAGAZIJN — twee nieuwe onderliggende servicepagina's (eigen
+# SPA-paginastatus 'werkplaats'/'magazijn', zie Component.resolveInitialPage()
+# en Component.meta() in "Wim van Breda.dc.html"). Zelfde opzet als
+# build_service() hierboven: geen verzonnen tekst, alleen de al bestaande
+# omschrijving/USP's die de SPA zelf ook toont, zodat deze tussenliggende
+# (voor de definitieve SPA-kopie meteen weer overschreven, zie
+# generate_catalog.py) HTML nooit uit de pas loopt met de echte pagina.
+# ===========================================================================
+def build_werkplaats():
+    title = "Werkplaats: onderhoud en reparatie | Wim van Breda"
+    desc = "Onze werkplaats in Geldermalsen: 3 werkplaatsen, vakkundige (service)monteurs en onderhoud of reparatie bij u op locatie."
+    items = ["3 werkplaatsen", "Vakkundige (service)monteurs", "Bereikbaar via telefoon, e-mail en WhatsApp"]
+    body = f'<p class="wvb-intro">{esc(desc)}</p>{h2("Wat wij bieden", ul([esc(i) for i in items]))}{DEFAULT_CTA}'
+    trail = [("Home", "/"), ("Service", "/service/"), ("Werkplaats", None)]
+    write_page("/werkplaats/", shell("/werkplaats/", title, desc, "Onze werkplaats", trail, body))
+    return "/werkplaats/"
+
+
+def build_magazijn():
+    title = "Magazijn: onderdelen op voorraad | Wim van Breda"
+    desc = "Ons magazijn in Geldermalsen: circa 200.000 artikelen op voorraad, nachtleveringen en bestellen via de webshop."
+    items = ["Nachtlevering", "WhatsApp-service", "Circa 200.000 artikelen op voorraad", "3 verkoopspecialisten via telefoon, e-mail en WhatsApp", "Onderdelen bestellen via de webshop"]
+    body = f'<p class="wvb-intro">{esc(desc)}</p>{h2("Wat wij bieden", ul([esc(i) for i in items]))}{DEFAULT_CTA}'
+    trail = [("Home", "/"), ("Service", "/service/"), ("Magazijn", None)]
+    write_page("/magazijn/", shell("/magazijn/", title, desc, "Ons magazijn", trail, body))
+    return "/magazijn/"
 
 
 # ===========================================================================
