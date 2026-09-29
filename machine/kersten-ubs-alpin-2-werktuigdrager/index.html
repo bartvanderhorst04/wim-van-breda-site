@@ -163,6 +163,14 @@ a{transition:color var(--wvb-dur) ease}
 a:hover{color:var(--wvb-primary)}
 a:active{color:#111214}
 :focus-visible{outline:2px solid #FBAE00;outline-offset:3px}
+/* Footer-tekstlinks (data-flink, zie footer verderop): naast de gewone
+   focus-outline hierboven krijgt ook het rode streepje-onder-de-tekst
+   ([data-uline], normaal via ftIn/ftOut op :hover getoond) dezelfde
+   zichtbaarheid bij toetsenbordfocus — puur CSS, geen extra JS nodig.
+   !important is vereist omdat [data-uline] zijn scaleX(0)/scaleX(1) als
+   inline style krijgt (transform wordt door ftIn/ftOut direct op het
+   element gezet). */
+[data-flink]:focus-visible [data-uline]{transform:scaleX(1)!important}
 ::selection{background:#FBAE00;color:#111214}
 @keyframes wvbLayer{0%{opacity:0}12%{opacity:1}72%{opacity:1}100%{opacity:0}}
 @keyframes wvbDrive{0%{transform:translateX(-14vw) translateY(0)}25%{transform:translateX(18vw) translateY(-3px)}50%{transform:translateX(50vw) translateY(0)}75%{transform:translateX(82vw) translateY(-3px)}100%{transform:translateX(116vw) translateY(0)}}
@@ -1914,7 +1922,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
 
   <section style="border-bottom:1px solid #EFECE6">
     <div style="max-width:1360px;margin:0 auto;padding:88px 40px;display:grid;grid-template-columns:1.05fr 1fr;gap:72px;align-items:center" data-split="">
-      <div data-mask-reveal="" style="aspect-ratio:16/11;background:#EDEAE4;overflow:hidden"><image-slot data-shot id="sv-loc" shape="rect" placeholder="Servicebus of transport op locatie" src="/assets/images/service/sv-loc.webp" loading="lazy"></image-slot></div>
+      <div style="aspect-ratio:16/11;background:#EDEAE4;overflow:hidden"><image-slot data-shot id="sv-loc" shape="rect" placeholder="Servicebus of transport op locatie" src="/assets/images/service/sv-loc.webp" loading="lazy"></image-slot></div>
       <div>
         <div style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#7C766A">{{ tr.svc_onloc_eyebrow }}</div>
         <h2 style="font:600 clamp(24px,2.7vw,36px)/1.12 Archivo,sans-serif;letter-spacing:-.024em;margin:18px 0 0">{{ tr.svc_onloc_title }}</h2>
@@ -1932,7 +1940,7 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
         <p style="font:400 17px/1.8 'Archivo',sans-serif;color:#43413C;margin:22px 0 0;max-width:52ch">{{ tr.svc_transport_text }}</p>
         <button onClick="{{ goMachines }}" onMouseEnter="{{ btnIn }}" onMouseLeave="{{ btnOut }}" style="display:inline-flex;align-items:center;gap:10px;margin-top:30px;background:#FBAE00;color:#111214;border:1px solid #000;padding:15px 22px;font:600 15px/1 'Archivo',sans-serif;cursor:pointer;transition:all .2s">{{ tr.svc_transport_cta }} <span data-arrow="" style="transition:transform .24s cubic-bezier(.2,.7,.3,1)">→</span></button>
       </div>
-      <div data-mask-reveal="" style="aspect-ratio:16/11;background:#EDEAE4;overflow:hidden"><image-slot data-shot id="sv-transport" shape="rect" placeholder="Aflevering van een nieuwe machine" src="/assets/images/service/sv-transport.webp" loading="lazy"></image-slot></div>
+      <div style="aspect-ratio:16/11;background:#EDEAE4;overflow:hidden"><image-slot data-shot id="sv-transport" shape="rect" placeholder="Aflevering van een nieuwe machine" src="/assets/images/service/sv-transport.webp" loading="lazy"></image-slot></div>
     </div>
   </section>
 
@@ -3083,28 +3091,28 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
       <div>
         <div data-foottitle="" style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:rgba(17,18,20,.62)">{{ tr.nav_aanbod }}</div>
         <div style="display:flex;flex-direction:column;gap:2px;margin-top:18px">
-          <button data-active="{{ tabNact }}" onClick="{{ goMachines }}" onMouseEnter="{{ ftIn }}" onMouseLeave="{{ ftOut }}" style="text-align:left;background:none;border:0;padding:8px 0;cursor:pointer;color:#111214;font:400 15px/1.5 'Archivo',sans-serif;transition:color .2s">{{ tr.nav_nieuwe_machines }}</button>
-          <button onClick="{{ goOccasions }}" onMouseEnter="{{ ftIn }}" onMouseLeave="{{ ftOut }}" style="text-align:left;background:none;border:0;padding:8px 0;cursor:pointer;color:#111214;font:400 15px/1.5 'Archivo',sans-serif;transition:color .2s">{{ tr.nav_occasions }}</button>
-          <button data-active="{{ tabVact }}" onClick="{{ goVerhuur }}" onMouseEnter="{{ ftIn }}" onMouseLeave="{{ ftOut }}" style="text-align:left;background:none;border:0;padding:8px 0;cursor:pointer;color:#111214;font:400 15px/1.5 'Archivo',sans-serif;transition:color .2s">{{ tr.nav_verhuur }}</button>
-          <button data-active="{{ tabMact }}" onClick="{{ goMerken }}" onMouseEnter="{{ ftIn }}" onMouseLeave="{{ ftOut }}" style="text-align:left;background:none;border:0;padding:8px 0;cursor:pointer;color:#111214;font:400 15px/1.5 'Archivo',sans-serif;transition:color .2s">{{ tr.nav_merken }}</button>
+          <button data-flink="" data-active="{{ tabNact }}" onClick="{{ goMachines }}" onMouseEnter="{{ ftIn }}" onMouseLeave="{{ ftOut }}" style="text-align:left;background:none;border:0;padding:8px 0;cursor:pointer;color:#111214;font:400 15px/1.5 'Archivo',sans-serif"><span style="position:relative;display:inline-block">{{ tr.nav_nieuwe_machines }}<span data-uline="" style="position:absolute;left:0;right:0;bottom:-3px;height:2px;background:#E1021D;transform:scaleX(0);transform-origin:left;transition:transform .26s cubic-bezier(.2,.7,.3,1)"></span></span></button>
+          <button data-flink="" onClick="{{ goOccasions }}" onMouseEnter="{{ ftIn }}" onMouseLeave="{{ ftOut }}" style="text-align:left;background:none;border:0;padding:8px 0;cursor:pointer;color:#111214;font:400 15px/1.5 'Archivo',sans-serif"><span style="position:relative;display:inline-block">{{ tr.nav_occasions }}<span data-uline="" style="position:absolute;left:0;right:0;bottom:-3px;height:2px;background:#E1021D;transform:scaleX(0);transform-origin:left;transition:transform .26s cubic-bezier(.2,.7,.3,1)"></span></span></button>
+          <button data-flink="" data-active="{{ tabVact }}" onClick="{{ goVerhuur }}" onMouseEnter="{{ ftIn }}" onMouseLeave="{{ ftOut }}" style="text-align:left;background:none;border:0;padding:8px 0;cursor:pointer;color:#111214;font:400 15px/1.5 'Archivo',sans-serif"><span style="position:relative;display:inline-block">{{ tr.nav_verhuur }}<span data-uline="" style="position:absolute;left:0;right:0;bottom:-3px;height:2px;background:#E1021D;transform:scaleX(0);transform-origin:left;transition:transform .26s cubic-bezier(.2,.7,.3,1)"></span></span></button>
+          <button data-flink="" data-active="{{ tabMact }}" onClick="{{ goMerken }}" onMouseEnter="{{ ftIn }}" onMouseLeave="{{ ftOut }}" style="text-align:left;background:none;border:0;padding:8px 0;cursor:pointer;color:#111214;font:400 15px/1.5 'Archivo',sans-serif"><span style="position:relative;display:inline-block">{{ tr.nav_merken }}<span data-uline="" style="position:absolute;left:0;right:0;bottom:-3px;height:2px;background:#E1021D;transform:scaleX(0);transform-origin:left;transition:transform .26s cubic-bezier(.2,.7,.3,1)"></span></span></button>
         </div>
       </div>
       <div>
         <div data-foottitle="" style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:rgba(17,18,20,.62)">{{ tr.nav_over_ons }}</div>
         <div style="display:flex;flex-direction:column;gap:2px;margin-top:18px">
-          <button onClick="{{ goOver }}" onMouseEnter="{{ ftIn }}" onMouseLeave="{{ ftOut }}" style="text-align:left;background:none;border:0;padding:8px 0;cursor:pointer;color:#111214;font:400 15px/1.5 'Archivo',sans-serif;transition:color .2s">{{ tr.nav_over_ons }}</button>
-          <button onClick="{{ goNieuws }}" onMouseEnter="{{ ftIn }}" onMouseLeave="{{ ftOut }}" style="text-align:left;background:none;border:0;padding:8px 0;cursor:pointer;color:#111214;font:400 15px/1.5 'Archivo',sans-serif;transition:color .2s">{{ tr.nav_nieuws }}</button>
-          <button onClick="{{ goWerken }}" onMouseEnter="{{ ftIn }}" onMouseLeave="{{ ftOut }}" style="text-align:left;background:none;border:0;padding:8px 0;cursor:pointer;color:#111214;font:400 15px/1.5 'Archivo',sans-serif;transition:color .2s">{{ tr.nav_werken_bij }}</button>
-          <button onClick="{{ goGeleverd }}" onMouseEnter="{{ ftIn }}" onMouseLeave="{{ ftOut }}" style="text-align:left;background:none;border:0;padding:8px 0;cursor:pointer;color:#111214;font:400 15px/1.5 'Archivo',sans-serif;transition:color .2s">{{ tr.nav_geleverd }}</button>
-          <button onClick="{{ goMagazines }}" onMouseEnter="{{ ftIn }}" onMouseLeave="{{ ftOut }}" style="text-align:left;background:none;border:0;padding:8px 0;cursor:pointer;color:#111214;font:400 15px/1.5 'Archivo',sans-serif;transition:color .2s">{{ tr.nav_magazines }}</button>
+          <button data-flink="" onClick="{{ goOver }}" onMouseEnter="{{ ftIn }}" onMouseLeave="{{ ftOut }}" style="text-align:left;background:none;border:0;padding:8px 0;cursor:pointer;color:#111214;font:400 15px/1.5 'Archivo',sans-serif"><span style="position:relative;display:inline-block">{{ tr.nav_over_ons }}<span data-uline="" style="position:absolute;left:0;right:0;bottom:-3px;height:2px;background:#E1021D;transform:scaleX(0);transform-origin:left;transition:transform .26s cubic-bezier(.2,.7,.3,1)"></span></span></button>
+          <button data-flink="" onClick="{{ goNieuws }}" onMouseEnter="{{ ftIn }}" onMouseLeave="{{ ftOut }}" style="text-align:left;background:none;border:0;padding:8px 0;cursor:pointer;color:#111214;font:400 15px/1.5 'Archivo',sans-serif"><span style="position:relative;display:inline-block">{{ tr.nav_nieuws }}<span data-uline="" style="position:absolute;left:0;right:0;bottom:-3px;height:2px;background:#E1021D;transform:scaleX(0);transform-origin:left;transition:transform .26s cubic-bezier(.2,.7,.3,1)"></span></span></button>
+          <button data-flink="" onClick="{{ goWerken }}" onMouseEnter="{{ ftIn }}" onMouseLeave="{{ ftOut }}" style="text-align:left;background:none;border:0;padding:8px 0;cursor:pointer;color:#111214;font:400 15px/1.5 'Archivo',sans-serif"><span style="position:relative;display:inline-block">{{ tr.nav_werken_bij }}<span data-uline="" style="position:absolute;left:0;right:0;bottom:-3px;height:2px;background:#E1021D;transform:scaleX(0);transform-origin:left;transition:transform .26s cubic-bezier(.2,.7,.3,1)"></span></span></button>
+          <button data-flink="" onClick="{{ goGeleverd }}" onMouseEnter="{{ ftIn }}" onMouseLeave="{{ ftOut }}" style="text-align:left;background:none;border:0;padding:8px 0;cursor:pointer;color:#111214;font:400 15px/1.5 'Archivo',sans-serif"><span style="position:relative;display:inline-block">{{ tr.nav_geleverd }}<span data-uline="" style="position:absolute;left:0;right:0;bottom:-3px;height:2px;background:#E1021D;transform:scaleX(0);transform-origin:left;transition:transform .26s cubic-bezier(.2,.7,.3,1)"></span></span></button>
+          <button data-flink="" onClick="{{ goMagazines }}" onMouseEnter="{{ ftIn }}" onMouseLeave="{{ ftOut }}" style="text-align:left;background:none;border:0;padding:8px 0;cursor:pointer;color:#111214;font:400 15px/1.5 'Archivo',sans-serif"><span style="position:relative;display:inline-block">{{ tr.nav_magazines }}<span data-uline="" style="position:absolute;left:0;right:0;bottom:-3px;height:2px;background:#E1021D;transform:scaleX(0);transform-origin:left;transition:transform .26s cubic-bezier(.2,.7,.3,1)"></span></span></button>
         </div>
       </div>
       <div data-footwide="">
         <div data-foottitle="" style="font:500 11px/1 'Archivo',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:rgba(17,18,20,.62)">{{ tr.foot_service_contact }}</div>
         <div style="display:flex;flex-direction:column;gap:2px;margin-top:18px">
-          <button onClick="{{ goService }}" onMouseEnter="{{ ftIn }}" onMouseLeave="{{ ftOut }}" style="text-align:left;background:none;border:0;padding:8px 0;cursor:pointer;color:#111214;font:400 15px/1.5 'Archivo',sans-serif;transition:color .2s">{{ tr.foot_service_aanvragen }}</button>
-          <button onClick="{{ goContactPage }}" onMouseEnter="{{ ftIn }}" onMouseLeave="{{ ftOut }}" style="text-align:left;background:none;border:0;padding:8px 0;cursor:pointer;color:#111214;font:400 15px/1.5 'Archivo',sans-serif;transition:color .2s">{{ tr.nav_contact }}</button>
-          <a href="https://webshop.wimvanbreda.nl/" target="_blank" rel="noopener noreferrer" onMouseEnter="{{ ftIn }}" onMouseLeave="{{ ftOut }}" style="padding:8px 0;color:#111214;font:400 15px/1.5 'Archivo',sans-serif;transition:color .2s">{{ tr.nav_webshop }}</a>
+          <button data-flink="" onClick="{{ goService }}" onMouseEnter="{{ ftIn }}" onMouseLeave="{{ ftOut }}" style="text-align:left;background:none;border:0;padding:8px 0;cursor:pointer;color:#111214;font:400 15px/1.5 'Archivo',sans-serif"><span style="position:relative;display:inline-block">{{ tr.foot_service_aanvragen }}<span data-uline="" style="position:absolute;left:0;right:0;bottom:-3px;height:2px;background:#E1021D;transform:scaleX(0);transform-origin:left;transition:transform .26s cubic-bezier(.2,.7,.3,1)"></span></span></button>
+          <button data-flink="" onClick="{{ goContactPage }}" onMouseEnter="{{ ftIn }}" onMouseLeave="{{ ftOut }}" style="text-align:left;background:none;border:0;padding:8px 0;cursor:pointer;color:#111214;font:400 15px/1.5 'Archivo',sans-serif"><span style="position:relative;display:inline-block">{{ tr.nav_contact }}<span data-uline="" style="position:absolute;left:0;right:0;bottom:-3px;height:2px;background:#E1021D;transform:scaleX(0);transform-origin:left;transition:transform .26s cubic-bezier(.2,.7,.3,1)"></span></span></button>
+          <a data-flink="" href="https://webshop.wimvanbreda.nl/" target="_blank" rel="noopener noreferrer" onMouseEnter="{{ ftIn }}" onMouseLeave="{{ ftOut }}" style="padding:8px 0;color:#111214;font:400 15px/1.5 'Archivo',sans-serif"><span style="position:relative;display:inline-block">{{ tr.nav_webshop }}<span data-uline="" style="position:absolute;left:0;right:0;bottom:-3px;height:2px;background:#E1021D;transform:scaleX(0);transform-origin:left;transition:transform .26s cubic-bezier(.2,.7,.3,1)"></span></span></a>
         </div>
       </div>
     </div>
@@ -3114,12 +3122,12 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
         Wim van Breda B.V. · {{ tr.over_bewuste_vooruitgang_title }}
       </div>
       <div style="display:flex;gap:26px;flex-wrap:wrap">
-        <a href="#privacy" onMouseEnter="{{ ftIn }}" onMouseLeave="{{ ftOut }}" style="color:rgba(17,18,20,.75);font:400 13px/1 'Archivo',sans-serif;transition:color .2s">{{ tr.foot_privacy }}</a>
-        <a href="#voorwaarden" onMouseEnter="{{ ftIn }}" onMouseLeave="{{ ftOut }}" style="color:rgba(17,18,20,.75);font:400 13px/1 'Archivo',sans-serif;transition:color .2s">{{ tr.foot_voorwaarden }}</a>
-        <button onClick="{{ goSitemap }}" onMouseEnter="{{ ftIn }}" onMouseLeave="{{ ftOut }}" style="background:none;border:0;padding:0;cursor:pointer;color:rgba(17,18,20,.75);font:400 13px/1 'Archivo',sans-serif;transition:color .2s">{{ tr.foot_sitemap }}</button>
-        <a href="https://nl.linkedin.com/company/wim-van-breda-bv" target="_blank" rel="noopener noreferrer" onMouseEnter="{{ ftIn }}" onMouseLeave="{{ ftOut }}" style="color:rgba(17,18,20,.75);font:400 13px/1 'Archivo',sans-serif;transition:color .2s">LinkedIn</a>
-        <a href="https://www.facebook.com/wimvanbredabv/?locale=nl_NL" target="_blank" rel="noopener noreferrer" onMouseEnter="{{ ftIn }}" onMouseLeave="{{ ftOut }}" style="color:rgba(17,18,20,.75);font:400 13px/1 'Archivo',sans-serif;transition:color .2s">Facebook</a>
-        <a href="https://www.instagram.com/wimvanbredabv/" target="_blank" rel="noopener noreferrer" onMouseEnter="{{ ftIn }}" onMouseLeave="{{ ftOut }}" style="color:rgba(17,18,20,.75);font:400 13px/1 'Archivo',sans-serif;transition:color .2s">Instagram</a>
+        <a data-flink="" href="#privacy" onMouseEnter="{{ ftIn }}" onMouseLeave="{{ ftOut }}" style="color:rgba(17,18,20,.75);font:400 13px/1 'Archivo',sans-serif"><span style="position:relative;display:inline-block">{{ tr.foot_privacy }}<span data-uline="" style="position:absolute;left:0;right:0;bottom:-3px;height:2px;background:#E1021D;transform:scaleX(0);transform-origin:left;transition:transform .26s cubic-bezier(.2,.7,.3,1)"></span></span></a>
+        <a data-flink="" href="#voorwaarden" onMouseEnter="{{ ftIn }}" onMouseLeave="{{ ftOut }}" style="color:rgba(17,18,20,.75);font:400 13px/1 'Archivo',sans-serif"><span style="position:relative;display:inline-block">{{ tr.foot_voorwaarden }}<span data-uline="" style="position:absolute;left:0;right:0;bottom:-3px;height:2px;background:#E1021D;transform:scaleX(0);transform-origin:left;transition:transform .26s cubic-bezier(.2,.7,.3,1)"></span></span></a>
+        <button data-flink="" onClick="{{ goSitemap }}" onMouseEnter="{{ ftIn }}" onMouseLeave="{{ ftOut }}" style="background:none;border:0;padding:0;cursor:pointer;color:rgba(17,18,20,.75);font:400 13px/1 'Archivo',sans-serif"><span style="position:relative;display:inline-block">{{ tr.foot_sitemap }}<span data-uline="" style="position:absolute;left:0;right:0;bottom:-3px;height:2px;background:#E1021D;transform:scaleX(0);transform-origin:left;transition:transform .26s cubic-bezier(.2,.7,.3,1)"></span></span></button>
+        <a data-flink="" href="https://nl.linkedin.com/company/wim-van-breda-bv" target="_blank" rel="noopener noreferrer" onMouseEnter="{{ ftIn }}" onMouseLeave="{{ ftOut }}" style="color:rgba(17,18,20,.75);font:400 13px/1 'Archivo',sans-serif"><span style="position:relative;display:inline-block">LinkedIn<span data-uline="" style="position:absolute;left:0;right:0;bottom:-3px;height:2px;background:#E1021D;transform:scaleX(0);transform-origin:left;transition:transform .26s cubic-bezier(.2,.7,.3,1)"></span></span></a>
+        <a data-flink="" href="https://www.facebook.com/wimvanbredabv/?locale=nl_NL" target="_blank" rel="noopener noreferrer" onMouseEnter="{{ ftIn }}" onMouseLeave="{{ ftOut }}" style="color:rgba(17,18,20,.75);font:400 13px/1 'Archivo',sans-serif"><span style="position:relative;display:inline-block">Facebook<span data-uline="" style="position:absolute;left:0;right:0;bottom:-3px;height:2px;background:#E1021D;transform:scaleX(0);transform-origin:left;transition:transform .26s cubic-bezier(.2,.7,.3,1)"></span></span></a>
+        <a data-flink="" href="https://www.instagram.com/wimvanbredabv/" target="_blank" rel="noopener noreferrer" onMouseEnter="{{ ftIn }}" onMouseLeave="{{ ftOut }}" style="color:rgba(17,18,20,.75);font:400 13px/1 'Archivo',sans-serif"><span style="position:relative;display:inline-block">Instagram<span data-uline="" style="position:absolute;left:0;right:0;bottom:-3px;height:2px;background:#E1021D;transform:scaleX(0);transform-origin:left;transition:transform .26s cubic-bezier(.2,.7,.3,1)"></span></span></a>
       </div>
       <div data-credit="" style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
         <span style="font:400 12px/1 'Archivo',sans-serif;color:rgba(17,18,20,.75)">{{ tr.foot_credit }}</span>
@@ -19369,8 +19377,15 @@ class Component extends DCLogic {
   chipOut = (e)=>{ const el=e.currentTarget; el.style.borderColor=el.dataset.b||''; el.style.transform='none'; };
   fieldIn = (e)=>{ e.currentTarget.style.borderBottomColor='#FBAE00'; };
   fieldOut = (e)=>{ e.currentTarget.style.borderBottomColor='#D9D5CD'; };
-  ftIn = (e)=>{ const el=e.currentTarget; el.style.color='#E1021D'; el.style.borderBottomColor='#E1021D'; };
-  ftOut = (e)=>{ const el=e.currentTarget; el.style.color=''; el.style.borderBottomColor=''; };
+  // Footer-tekstlinks: zelfde subtiele rode streepje-onder-de-tekst als de
+  // header-navigatie (navIn/navOut hierboven), i.p.v. het hele woord rood te
+  // kleuren. [data-uline] zit in een inline-block wrapper die alleen de
+  // tekst omvat (niet de volledige, evt. gestretchte knop-/kolombreedte),
+  // dus het streepje loopt nooit breder dan het woord zelf. Toetsenbord-
+  // focus krijgt dezelfde aanduiding via de CSS-regel [data-flink]:focus-visible
+  // (zie <style> hierboven), puur CSS dus geen aparte onFocus/onBlur nodig.
+  ftIn = (e)=>{ const u=e.currentTarget.querySelector('[data-uline]'); if(u) u.style.transform='scaleX(1)'; };
+  ftOut = (e)=>{ const u=e.currentTarget.querySelector('[data-uline]'); if(u) u.style.transform='scaleX(0)'; };
   skewIn = (e)=>{ const el=e.currentTarget;
     const f=el.querySelector('[data-fill]'); if(f) f.style.transform='skewX(-11deg) scaleX(1)';
     const l=el.querySelector('[data-lbl]'); if(l) l.style.color = l.hasAttribute('data-dark') ? '#111214' : '#ffffff';
