@@ -64,7 +64,10 @@ def shell(path, title, description, h1, trail, body_html, og_type="website", ext
 <meta property="og:title" content="{esc(title)}">
 <meta property="og:description" content="{esc(description)}">
 <meta property="og:url" content="{canonical}">
-<link rel="icon" href="data:,">
+<link rel="icon" href="/assets/favicon/wvb-icon-v1.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/favicon/wvb-icon-32-v1.png" type="image/png" sizes="32x32">
+<link rel="icon" href="/assets/favicon/wvb-icon-16-v1.png" type="image/png" sizes="16x16">
+<link rel="apple-touch-icon" href="/assets/favicon/wvb-apple-touch-icon-v1.png" sizes="180x180">
 <link rel="preload" as="font" href="/assets/fonts/archivo-latin-var.woff2" type="font/woff2" crossorigin="crossorigin">
 <style>{FONT_FACE}{BASE_CSS}
 .wvb-grid{{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:18px 0 8px}}
@@ -433,7 +436,7 @@ def vacature_page_html(v):
   <p class="wvb-intro">{esc(v.get('intro') or '')}</p>
   {meta_html}
   {_blokken_html(v.get('blokken'))}
-  {cta_html('Interesse in deze functie?', v.get('cta') or 'Solliciteer', '/contact/')}
+  {cta_html('Interesse in deze functie?', v.get('cta') or 'Solliciteer', '/contact/#contactformulier')}
 """
     return shell(f"/werken-bij/{v['id']}/", title, desc, v["titel"], trail, body, extra_css=".wvb-crow{display:flex;justify-content:space-between;gap:16px;padding:10px 0;border-bottom:1px solid #F1EFEA;font:400 15px/1 'Archivo',sans-serif}")
 

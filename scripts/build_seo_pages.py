@@ -291,7 +291,10 @@ def page_html(page):
 <meta property="og:title" content="{esc(page['title'])}">
 <meta property="og:description" content="{esc(page['description'])}">
 <meta property="og:url" content="{canonical}">
-<link rel="icon" href="data:,">
+<link rel="icon" href="/assets/favicon/wvb-icon-v1.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/favicon/wvb-icon-32-v1.png" type="image/png" sizes="32x32">
+<link rel="icon" href="/assets/favicon/wvb-icon-16-v1.png" type="image/png" sizes="16x16">
+<link rel="apple-touch-icon" href="/assets/favicon/wvb-apple-touch-icon-v1.png" sizes="180x180">
 <link rel="preload" as="font" href="/assets/fonts/archivo-latin-var.woff2" type="font/woff2" crossorigin="crossorigin">
 <style>{FONT_FACE}{BASE_CSS}</style>
 </head>
@@ -323,7 +326,7 @@ def cta_html(text, label, href):
 
 # Standaard-CTA gaat naar de nu écht bestaande /contact/-pagina (zie
 # contact_page_html) — nooit meer naar "/" als contact bedoeld is.
-DEFAULT_CTA = cta_html("Advies nodig over de juiste machine voor uw situatie?", "Neem contact op", "/contact/")
+DEFAULT_CTA = cta_html("Advies nodig over de juiste machine voor uw situatie?", "Neem contact op", "/contact/#contactformulier")
 
 def h2(title, *body):
     return f'<h2 class="wvb-h2">{esc(title)}</h2>' + "".join(body)
@@ -375,7 +378,10 @@ def machine_page_html(m):
 <meta property="og:title" content="{esc(title)}">
 <meta property="og:description" content="{esc(desc)}">
 <meta property="og:url" content="{canonical}">
-<link rel="icon" href="data:,">
+<link rel="icon" href="/assets/favicon/wvb-icon-v1.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/favicon/wvb-icon-32-v1.png" type="image/png" sizes="32x32">
+<link rel="icon" href="/assets/favicon/wvb-icon-16-v1.png" type="image/png" sizes="16x16">
+<link rel="apple-touch-icon" href="/assets/favicon/wvb-apple-touch-icon-v1.png" sizes="180x180">
 <link rel="preload" as="font" href="/assets/fonts/archivo-latin-var.woff2" type="font/woff2" crossorigin="crossorigin">
 <style>{FONT_FACE}{BASE_CSS}</style>
 </head>
@@ -423,7 +429,10 @@ def contact_page_html():
 <meta property="og:type" content="website">
 <meta property="og:title" content="Contact, openingstijden en route | Wim van Breda">
 <meta property="og:url" content="{DOMAIN}/contact/">
-<link rel="icon" href="data:,">
+<link rel="icon" href="/assets/favicon/wvb-icon-v1.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/favicon/wvb-icon-32-v1.png" type="image/png" sizes="32x32">
+<link rel="icon" href="/assets/favicon/wvb-icon-16-v1.png" type="image/png" sizes="16x16">
+<link rel="apple-touch-icon" href="/assets/favicon/wvb-apple-touch-icon-v1.png" sizes="180x180">
 <link rel="preload" as="font" href="/assets/fonts/archivo-latin-var.woff2" type="font/woff2" crossorigin="crossorigin">
 <style>{FONT_FACE}{BASE_CSS}
 .wvb-cform{{background:#fff;border:1px solid #EFECE6;padding:32px 28px;margin-top:32px}}
