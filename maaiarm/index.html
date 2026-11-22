@@ -107,8 +107,9 @@ footer.wvb-f{position:relative;background:#FBAE00;color:#111214;margin-top:72px}
 .wvb-f__legal{display:flex;gap:22px;flex-wrap:wrap}
 .wvb-f__legal a{color:rgba(17,18,20,.75);text-decoration:none;font:400 13px/1 'Archivo',sans-serif}
 .wvb-f__credit{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-.wvb-f__credit a{display:inline-flex;align-items:center;justify-content:center;height:33px;width:142px;padding:0 14px;background:#0B0C0C;border-radius:999px;overflow:hidden}
-.wvb-f__credit img{height:100%;width:100%;object-fit:contain}
+.wvb-f__credit a{display:inline-flex;align-items:center;line-height:0;transition:transform .18s}
+.wvb-f__credit a:hover{transform:translateY(-1px)}
+.wvb-f__credit img{height:22px;width:auto;max-width:100%;display:block}
 </style>
 </head>
 <body>
@@ -222,7 +223,7 @@ footer.wvb-f{position:relative;background:#FBAE00;color:#111214;margin-top:72px}
       <div class="wvb-f__credit">
         <span style="font:400 12px/1 'Archivo',sans-serif;color:rgba(17,18,20,.75)">Website gerealiseerd door:</span>
         <a href="https://aichecked.nl/" target="_blank" rel="noopener noreferrer" aria-label="AIChecked.nl">
-          <img src="/assets/aichecked-opt.png" alt="AIChecked.nl" width="300" height="100" loading="lazy" decoding="async">
+          <img src="/assets/aichecked-logo.png" alt="AIChecked.nl" width="614" height="84" loading="lazy" decoding="async">
         </a>
       </div>
     </div>

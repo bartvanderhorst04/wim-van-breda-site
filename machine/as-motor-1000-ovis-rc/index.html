@@ -222,6 +222,7 @@ a:active{color:#111214}
    de pagina. */
 [data-facet]{touch-action:pan-y;-webkit-overflow-scrolling:touch}
 @media (max-width:900px){[data-fcorner]{width:18px!important;height:18px!important;top:28px!important;left:30px!important}[data-fcorner]+[data-fcorner]{left:auto!important;right:30px!important}}
+[data-credit] a{transition:transform .18s}[data-credit] a:hover{transform:translateY(-1px)}
 @media (max-width:560px){[data-credit]{justify-content:center;width:100%}}
 /* Footervoetnoot mobiel (≤640px): de vier hoofdonderdelen (logo/adres,
    Aanbod, Over ons, Service & contact) stonden volledig onder elkaar,
@@ -3491,8 +3492,8 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
       </div>
       <div data-credit="" style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
         <span style="font:400 12px/1 'Archivo',sans-serif;color:rgba(17,18,20,.75)">{{ tr.foot_credit }}</span>
-        <a href="https://aichecked.nl/" target="_blank" rel="noopener noreferrer" onMouseEnter="{{ creditIn }}" onMouseLeave="{{ creditOut }}" aria-label="AIChecked.nl — website realisatie" style="display:inline-flex;align-items:center;justify-content:center;height:33px;width:142px;padding:0 14px;background:#0B0C0C;border-radius:999px;overflow:hidden;transition:transform .18s cubic-bezier(.2,.7,.3,1),box-shadow .18s,opacity .18s">
-          <img src="/assets/aichecked-opt.png" alt="AIChecked.nl" width="300" height="100" loading="lazy" decoding="async" style="height:100%;width:100%;object-fit:contain;display:block">
+        <a href="https://aichecked.nl/" target="_blank" rel="noopener noreferrer" aria-label="AIChecked.nl — website realisatie" style="display:inline-flex;align-items:center;line-height:0">
+          <img src="/assets/aichecked-logo.png" alt="AIChecked.nl" width="614" height="84" loading="lazy" decoding="async" style="height:22px;width:auto;max-width:100%;display:block">
         </a>
       </div>
     </div>
