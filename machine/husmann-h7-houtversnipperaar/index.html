@@ -1919,22 +1919,22 @@ image-slot[data-logo]:hover::part(empty){opacity:1}
       <h2 style="font:600 clamp(24px,2.7vw,36px)/1.12 Archivo,sans-serif;letter-spacing:-.024em;margin:18px 0 0">{{ tr.svc_cards_title }}</h2>
       <p style="font:400 17px/1.8 'Archivo',sans-serif;color:#43413C;margin:18px 0 0;max-width:60ch">{{ tr.svc_cards_intro }}</p>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:44px" data-split="">
-        <button onClick="{{ goWerkplaats }}" onMouseEnter="{{ hoverIn }}" onMouseLeave="{{ hoverOut }}" style="text-align:left;background:#fff;border:1px solid #E2DED7;padding:0;cursor:pointer;display:flex;flex-direction:column;overflow:hidden;transition:transform .28s cubic-bezier(.2,.7,.3,1),box-shadow .28s,border-color .28s">
+        <a href="/werkplaats/" onMouseEnter="{{ hoverIn }}" onMouseLeave="{{ hoverOut }}" style="text-align:left;background:#fff;border:1px solid #E2DED7;padding:0;cursor:pointer;display:flex;flex-direction:column;overflow:hidden;color:#111214;text-decoration:none;transition:transform .28s cubic-bezier(.2,.7,.3,1),box-shadow .28s,border-color .28s">
           <div style="aspect-ratio:4/3;overflow:hidden;background:#EDEAE4"><div data-zoom="" style="width:100%;height:100%;transition:transform .5s cubic-bezier(.2,.7,.3,1)"><image-slot data-shot id="svc-card-werkplaats" shape="rect" placeholder="Werkplaats" src="/assets/images/service/sv-w1.webp" loading="lazy"></image-slot></div></div>
           <div style="padding:32px 30px;display:flex;flex-direction:column;flex:1">
             <h3 style="font:600 clamp(20px,2.1vw,26px)/1.2 Archivo,sans-serif;letter-spacing:-.02em;margin:0">{{ tr.svc_card_werkplaats_title }}</h3>
             <div style="flex:1"></div>
             <span style="display:inline-flex;align-items:center;gap:10px;margin-top:20px;font:600 14px/1 'Archivo',sans-serif">{{ tr.common_lees_meer }} <span data-arrow="" style="color:#FBAE00;transition:transform .24s cubic-bezier(.2,.7,.3,1)">→</span></span>
           </div>
-        </button>
-        <button onClick="{{ goMagazijn }}" onMouseEnter="{{ hoverIn }}" onMouseLeave="{{ hoverOut }}" style="text-align:left;background:#fff;border:1px solid #E2DED7;padding:0;cursor:pointer;display:flex;flex-direction:column;overflow:hidden;transition:transform .28s cubic-bezier(.2,.7,.3,1),box-shadow .28s,border-color .28s">
+        </a>
+        <a href="/magazijn/" onMouseEnter="{{ hoverIn }}" onMouseLeave="{{ hoverOut }}" style="text-align:left;background:#fff;border:1px solid #E2DED7;padding:0;cursor:pointer;display:flex;flex-direction:column;overflow:hidden;color:#111214;text-decoration:none;transition:transform .28s cubic-bezier(.2,.7,.3,1),box-shadow .28s,border-color .28s">
           <div style="aspect-ratio:4/3;overflow:hidden;background:#EDEAE4"><div data-zoom="" style="width:100%;height:100%;transition:transform .5s cubic-bezier(.2,.7,.3,1)"><image-slot data-shot id="svc-card-magazijn" shape="rect" placeholder="Magazijn" src="/assets/images/werken-bij/vacature-monteur-mechanisatie.jpg" loading="lazy"></image-slot></div></div>
           <div style="padding:32px 30px;display:flex;flex-direction:column;flex:1">
             <h3 style="font:600 clamp(20px,2.1vw,26px)/1.2 Archivo,sans-serif;letter-spacing:-.02em;margin:0">{{ tr.svc_card_magazijn_title }}</h3>
             <div style="flex:1"></div>
             <span style="display:inline-flex;align-items:center;gap:10px;margin-top:20px;font:600 14px/1 'Archivo',sans-serif">{{ tr.common_lees_meer }} <span data-arrow="" style="color:#FBAE00;transition:transform .24s cubic-bezier(.2,.7,.3,1)">→</span></span>
           </div>
-        </button>
+        </a>
       </div>
     </div>
   </section>
